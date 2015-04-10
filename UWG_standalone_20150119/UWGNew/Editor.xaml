@@ -1,0 +1,841 @@
+﻿<Window x:Class="UWG.Editor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UWG Template Editor" Height="500" Width="850" Closing="closing" ResizeMode="CanMinimize"   Icon="Images/CENSAM Poster_diagrams2_3-21.png">
+
+    <Window.Resources>
+        <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="IsTabStop" Value="false" />
+            <Setter Property="Focusable" Value="false" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border   Background="LightGray" Width="15"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderRepeatButton1" TargetType="RepeatButton">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RepeatButton">
+                        <Border SnapsToDevicePixels="True" Background="Black"  BorderThickness="0" BorderBrush="YellowGreen" Width="15"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle Height="8" Width="15" Fill="Gray" ></Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="Slider"  TargetType="Slider">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" MinWidth="{TemplateBinding MinHeight}" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Track Grid.Column="1" x:Name="PART_Track"   >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton1}"  Command="Slider.DecreaseLarge" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource SliderThumb}"  />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource SliderRepeatButton}" Command="Slider.IncreaseLarge" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="Vertical_Slider" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Template" Value="{StaticResource Slider}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="idt" TargetType="TabItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="Black" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <Label Content="{TemplateBinding Header}" Foreground="White" HorizontalContentAlignment="Center" Width="{TemplateBinding Width}" FontSize="14"  FontFamily="MS PGothic" FontWeight="Light" VerticalContentAlignment="Center" Height="40"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="sec" TargetType="TabItem">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Height" Value="35"/>
+                    <Setter Property="Margin" Value="4,0,-6,0"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="6,1,-4,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <Label Content="{TemplateBinding Header}" Foreground="Black" HorizontalContentAlignment="Center" Width="100" FontSize="12" FontFamily="Segoe WP" FontWeight="SemiBold" VerticalContentAlignment="Top" VerticalAlignment="Top" Margin="0,0,0,0" Height="30"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF262626">
+        <TabControl  Name="Top" BorderBrush="Gray" BorderThickness="0">
+            <TabItem Header="Construction" Width="100"   Style="{StaticResource sec}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="400"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TreeView Name="materialTreeView" Grid.Column="0" Grid.Row="0" Height="380" Margin="20,10,10,10" ItemsSource="{Binding MaterialTypeList}" Visibility="Visible" SelectedItemChanged="materialSelect" Background="#6600B4B4" FontWeight="Bold" >
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding mat}">
+                                <TextBlock Text="{Binding Name}" />
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <DataTemplate>                                     
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </HierarchicalDataTemplate.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <TreeView Name="assemblyTreeView" Grid.Column="0" Grid.Row="0" Height="380" Margin="20,10,10,10" ItemsSource="{Binding AssemblyTypeList}" Visibility="Hidden" SelectedItemChanged="assemblySelect"  Background="#6600B4B4" FontWeight="Bold" >
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding ase}">
+                                <TextBlock Text="{Binding Name}" />
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </HierarchicalDataTemplate.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <TreeView Name="glazingTreeView" Grid.Column="0" Grid.Row="0" Height="380" Margin="20,10,10,10" ItemsSource="{Binding GlazingList}" Visibility="Hidden" SelectedItemChanged="glazingSelect" Background="#6600B4B4" FontWeight="Bold" >
+                        <TreeView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+
+                    <TabControl Grid.Column="1" Grid.Row="0" Height="382" Width="480" Margin="20,-2,4,0" FontWeight="Normal" SelectionChanged="constructionSelect" Name="constructionTab">
+                        <TabItem Header="Material" Width="80" Margin="-4,0,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="400"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="90"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Name" Grid.Column="0" Grid.Row="1" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="Type" Grid.Column="0" Grid.Row="2" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="Conductivity" Grid.Column="0" Grid.Row="3" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="VHC" Grid.Column="0" Grid.Row="4" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="Albedo" Grid.Column="0" Grid.Row="5" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="Emissivity" Grid.Column="0" Grid.Row="6" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="Source" Grid.Column="0" Grid.Row="7" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <Label Content="Comment" Grid.Column="0" Grid.Row="8" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                <TextBox Grid.Column="1" Grid.Row="1" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="materialName" TextChanged="materialValue_Change"/>
+                                <ComboBox Grid.Column="1" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="materialType" IsEditable="True" ItemsSource="{Binding MaterialTypeNameList}" SelectionChanged="materialValue_Change"/>
+                                <TextBox Grid.Column="1" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="materialConductivity" TextChanged="materialValue_Change"/>
+                                <TextBox Grid.Column="1" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="materialVHC" TextChanged="materialValue_Change"/>
+                                <TextBox Grid.Column="1" Grid.Row="5" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="materialAlbedo" TextChanged="materialValue_Change"/>
+                                <TextBox Grid.Column="1" Grid.Row="6" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="materialEmissivity" TextChanged="materialValue_Change"/>
+                                <TextBox Grid.Column="1" Grid.Row="7" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" TextWrapping="Wrap" Name="materialSource" TextChanged="materialValue_Change"/>
+                                <TextBox Grid.Column="1" Grid.Row="8" Margin="4,4,4,4" Height="auto" Width="342" HorizontalAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True" Name="materialComment" TextChanged="materialValue_Change"/>
+                                <Button Grid.Column="1" Grid.Row="9" Content="Save" Width="60" Height="20" Margin="110,4,0,0" Click="materialSave_Click"/>
+                                <Button Grid.Column="1" Grid.Row="9" Content="Delete" Width="60" Height="20" Margin=" 235,4,0,0" Click="materialDelete_Click" Name="materialDeleteButton" IsEnabled="False"/>
+                                <Button Grid.Column="1" Grid.Row="9" Content="New" Width="60" Height="20" Margin=" -15,4,0,0" Click="materialNew_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Assembly" Width="80" Margin="-4,0,1,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="165"/>
+                                    <RowDefinition Height="150"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="400"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="15"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="60"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Name" Grid.Column="0" Grid.Row="1" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <Label Content="Type" Grid.Column="0" Grid.Row="2" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <Label Content="Source" Grid.Column="0" Grid.Row="3" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <Label Content="Comment" Grid.Column="0" Grid.Row="4" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <TextBox Grid.Column="1" Grid.Row="1" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="assemblyName" TextChanged="assemblyValue_Change"/>
+                                    <ComboBox Grid.Column="1" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="assemblyType" IsEditable="True" ItemsSource="{Binding AssemblyTypeNameList}" SelectionChanged="assemblyValue_Change"/>
+                                    <TextBox Grid.Column="1" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" TextWrapping="Wrap" Name="assemblySource" TextChanged="assemblyValue_Change"/>
+                                    <TextBox Grid.Column="1" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="342" HorizontalAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True" Name="assemblyComment" TextChanged="assemblyValue_Change"/>
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="100"/> 
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Layer" Grid.Column="1" Grid.Row="1" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <Label Content="Material" Grid.Column="2" Grid.Row="1" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <Label Content="Thickness" Grid.Column="3" Grid.Row="1" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <Label Content="Outer" Grid.Column="1" Grid.Row="2" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <Label Content="2" Grid.Column="1" Grid.Row="3" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <Label Content="3" Grid.Column="1" Grid.Row="4" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <Label Content="4" Grid.Column="1" Grid.Row="5" Margin="4,0,4,0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                    <ComboBox Grid.Column="2" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="assemblyLayer1" IsEditable="True" SelectionChanged="assemblyValue_Change" ItemsSource="{Binding MaterialNameList}" />
+                                    <ComboBox Grid.Column="2" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="assemblyLayer2" IsEditable="True" SelectionChanged="assemblyValue_Change" ItemsSource="{Binding MaterialNameList}" />
+                                    <ComboBox Grid.Column="2" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="assemblyLayer3" IsEditable="True" SelectionChanged="assemblyValue_Change" ItemsSource="{Binding MaterialNameList}" />
+                                    <ComboBox Grid.Column="2" Grid.Row="5" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="assemblyLayer4" IsEditable="True" SelectionChanged="assemblyValue_Change" ItemsSource="{Binding MaterialNameList}" />
+                                    <TextBox Grid.Column="3" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="assemblyThickness1" />
+                                    <TextBox Grid.Column="3" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="assemblyThickness2" />
+                                    <TextBox Grid.Column="3" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="assemblyThickness3" />
+                                    <TextBox Grid.Column="3" Grid.Row="5" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="assemblyThickness4" />
+                                </Grid>
+                                <Grid Grid.Column="0" Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+                                    <Button Grid.Column="1" Grid.Row="0" Content="Save" Width="60" Height="20" Margin="110,4,0,0" Click="assemblySave_Click"/>
+                                    <Button Grid.Column="1" Grid.Row="0" Content="Delete" Width="60" Height="20" Margin=" 235,4,0,0" Click="assemblyDelete_Click" Name="assemblyDeleteButton" IsEnabled="False"/>
+                                    <Button Grid.Column="1" Grid.Row="0" Content="New" Width="60" Height="20" Margin=" -15,4,0,0" Click="assemblyNew_Click"/>
+                                </Grid>
+                            </Grid>
+
+                        </TabItem>
+                        <TabItem Header="Glazing" Width="80" Margin="-4,0,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="315"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="15"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="90"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Name" Grid.Column="0" Grid.Row="1" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <Label Content="Wall to Window Ratio" Grid.Column="0" Grid.Row="2" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <Label Content="Total U-Value" Grid.Column="0" Grid.Row="3" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <Label Content="Total Solar Heat Gain Coefficient" Grid.Column="0" Grid.Row="4" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                    <TextBox Grid.Column="1" Grid.Row="1" Margin="4,4,4,4" Height="auto" Width="142" HorizontalAlignment="Left" Name="Name" TextChanged="glazingValue_Change"/>
+                                    <TextBox Grid.Column="1" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="142" HorizontalAlignment="Left" Name="WWR" TextChanged="glazingValue_Change"/>
+                                    <TextBox Grid.Column="1" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="142" HorizontalAlignment="Left" Name="UValue" TextChanged="glazingValue_Change"/>
+                                    <TextBox Grid.Column="1" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="142" HorizontalAlignment="Left" Name="SHGC" TextChanged="glazingValue_Change"/>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+                                    <Button Grid.Column="1" Content="Save" Width="60" Height="20" Margin="110,4,0,0" Click="glazingSave_Click"/>
+                                    <Button Grid.Column="1" Content="Delete" Width="60" Height="20" Margin="235,4,0,0" Click="glazingDelete_Click" Name="glazingDeleteButton" IsEnabled="False"/>
+                                    <Button Grid.Column="1" Content="New" Width="60" Height="20" Margin=" -15,4,0,0" Click="glazingNew_Click"/>
+
+                                </Grid>
+
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Building" Width="100" Style="{StaticResource sec}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="400"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TreeView Name="scheduleTreeView" Grid.Column="0" Grid.Row="0" Height="380" Margin="20,10,10,10" ItemsSource="{Binding ScheduleTypeList}" Visibility="Visible" SelectedItemChanged="scheduleSelect" Background="#6600B4B4" FontWeight="Bold" >
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding sch}">
+                                <TextBlock Text="{Binding Name}" />
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </HierarchicalDataTemplate.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <TreeView Name="heatTreeView" Grid.Column="0" Grid.Row="0" Height="380" Margin="20,10,10,10" ItemsSource="{Binding HeatList}" Visibility="Hidden" SelectedItemChanged="heatSelect" Background="#6600B4B4" FontWeight="Bold" >
+                        <TreeView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <TabControl Grid.Column="1" Grid.Row="0" Height="382" Width="480" Margin="20,-2,4,0" FontWeight="Normal" Name="buildingTab" SelectionChanged="buildingSelect">
+                        <TabItem Header="Schedule" Width="80" Margin="-4,0,0,0">
+                            <ScrollViewer>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="500"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="205"/>
+                                        <RowDefinition Height="240"/>
+                                        <RowDefinition Height="240"/>
+                                        <RowDefinition Height="240"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="400"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="15"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="60"/>
+                                            <RowDefinition Height="40"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Name" Grid.Column="0" Grid.Row="1" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Type" Grid.Column="0" Grid.Row="2" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Source" Grid.Column="0" Grid.Row="3" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Comment" Grid.Column="0" Grid.Row="4" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <TextBox Grid.Column="1" Grid.Row="1" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="scheduleName" TextChanged="scheduleValue_Change"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="scheduleType" IsEditable="True" ItemsSource="{Binding ScheduleTypeNameList}" SelectionChanged="scheduleValue_Change"/>
+                                        <TextBox Grid.Column="1" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" TextWrapping="Wrap" Name="scheduleSource" TextChanged="scheduleValue_Change"/>
+                                        <TextBox Grid.Column="1" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="342" HorizontalAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True" Name="scheduleComment" TextChanged="scheduleValue_Change"/>
+                                        <Button Grid.Column="1" Grid.Row="5" Content="Save" Width="60" Height="20" Margin="110,4,0,0" Click="scheduleSave_Click"/>
+                                        <Button Grid.Column="1" Grid.Row="5" Content="Delete" Width="60" Height="20" Margin=" 235,4,0,0" Click="scheduleDelete_Click" Name="scheduleDeleteButton" IsEnabled="False"/>
+                                        <Button Grid.Column="1" Grid.Row="5" Content="New" Width="60" Height="20" Margin=" -15,4,0,0" Click="scheduleNew_Click"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="600"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="210"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Content="   Weekday:" Grid.Column="0" Grid.Row="0" Margin="4,0,4,0" HorizontalAlignment="Left" Foreground="#FF00B4B4" FontWeight="Bold" Width="120" Height="27"/>
+                                        <Grid Grid.Row="1" Name="weekdaysGrid">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="170"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays1" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="2" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays2" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="3" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays3" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="4" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays4" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="5" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays5" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="6" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays6" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="7" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays7" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="8" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays8" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="9" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays9" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="10" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays10" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="11" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays11" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="12" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays12" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="13" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays13" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="14" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays14" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="15" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays15" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="16" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays16" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="17" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays17" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="18" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays18" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="19" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays19" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="20" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays20" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="21" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays21" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="22" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays22" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="23" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays23" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="24" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Weekdays24" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Label Grid.Column="1" Grid.Row="2" Content=" 1" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="2" Grid.Row="2" Content=" 2" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="3" Grid.Row="2" Content=" 3" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="4" Grid.Row="2" Content=" 4" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="5" Grid.Row="2" Content=" 5" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="6" Grid.Row="2" Content=" 6" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="7" Grid.Row="2" Content=" 7" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="8" Grid.Row="2" Content=" 8" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="9" Grid.Row="2" Content=" 9" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="10" Grid.Row="2" Content="10" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="11" Grid.Row="2" Content="11" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="12" Grid.Row="2" Content="12" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="13" Grid.Row="2" Content="13" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="14" Grid.Row="2" Content="14" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="15" Grid.Row="2" Content="15" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="16" Grid.Row="2" Content="16" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="17" Grid.Row="2" Content="17" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="18" Grid.Row="2" Content="18" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="19" Grid.Row="2" Content="19" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="20" Grid.Row="2" Content="20" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="21" Grid.Row="2" Content="21" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="22" Grid.Row="2" Content="22" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="23" Grid.Row="2" Content="23" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="24" Grid.Row="2" Content="24" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding ElementName=Weekdays1, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding ElementName=Weekdays2, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="3" Grid.Row="0" Text="{Binding ElementName=Weekdays3, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="4" Grid.Row="0" Text="{Binding ElementName=Weekdays4, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="5" Grid.Row="0" Text="{Binding ElementName=Weekdays5, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="6" Grid.Row="0" Text="{Binding ElementName=Weekdays6, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="7" Grid.Row="0" Text="{Binding ElementName=Weekdays7, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="8" Grid.Row="0" Text="{Binding ElementName=Weekdays8, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="9" Grid.Row="0" Text="{Binding ElementName=Weekdays9, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="10" Grid.Row="0" Text="{Binding ElementName=Weekdays10, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="11" Grid.Row="0" Text="{Binding ElementName=Weekdays11, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="12" Grid.Row="0" Text="{Binding ElementName=Weekdays12, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="13" Grid.Row="0" Text="{Binding ElementName=Weekdays13, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="14" Grid.Row="0" Text="{Binding ElementName=Weekdays14, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="15" Grid.Row="0" Text="{Binding ElementName=Weekdays15, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="16" Grid.Row="0" Text="{Binding ElementName=Weekdays16, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="17" Grid.Row="0" Text="{Binding ElementName=Weekdays17, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="18" Grid.Row="0" Text="{Binding ElementName=Weekdays18, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="19" Grid.Row="0" Text="{Binding ElementName=Weekdays19, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="20" Grid.Row="0" Text="{Binding ElementName=Weekdays20, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="21" Grid.Row="0" Text="{Binding ElementName=Weekdays21, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="22" Grid.Row="0" Text="{Binding ElementName=Weekdays22, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="23" Grid.Row="0" Text="{Binding ElementName=Weekdays23, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="24" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding ElementName=Weekdays24, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="600"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="210"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Content="   Saturday:" Grid.Column="0" Grid.Row="0" Margin="4,0,4,0" HorizontalAlignment="Left"  Foreground="#FF00B4B4" FontWeight="Bold" Width="120" Height="27"/>
+                                        <Grid Grid.Row="1" Name="SaturdayGrid">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="170"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday1" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="2" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday2" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="3" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday3" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="4" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday4" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="5" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday5" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="6" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday6" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="7" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday7" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="8" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday8" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="9" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday9" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="10" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday10" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="11" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday11" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="12" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday12" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="13" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday13" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="14" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday14" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="15" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday15" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="16" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday16" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="17" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday17" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="18" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday18" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="19" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday19" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="20" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday20" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="21" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday21" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="22" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday22" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="23" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday23" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="24" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Saturday24" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Label Grid.Column="1" Grid.Row="2" Content=" 1" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="2" Grid.Row="2" Content=" 2" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="3" Grid.Row="2" Content=" 3" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="4" Grid.Row="2" Content=" 4" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="5" Grid.Row="2" Content=" 5" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="6" Grid.Row="2" Content=" 6" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="7" Grid.Row="2" Content=" 7" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="8" Grid.Row="2" Content=" 8" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="9" Grid.Row="2" Content=" 9" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="10" Grid.Row="2" Content="10" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="11" Grid.Row="2" Content="11" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="12" Grid.Row="2" Content="12" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="13" Grid.Row="2" Content="13" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="14" Grid.Row="2" Content="14" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="15" Grid.Row="2" Content="15" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="16" Grid.Row="2" Content="16" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="17" Grid.Row="2" Content="17" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="18" Grid.Row="2" Content="18" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="19" Grid.Row="2" Content="19" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="20" Grid.Row="2" Content="20" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="21" Grid.Row="2" Content="21" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="22" Grid.Row="2" Content="22" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="23" Grid.Row="2" Content="23" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="24" Grid.Row="2" Content="24" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding ElementName=Saturday1, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding ElementName=Saturday2, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="3" Grid.Row="0" Text="{Binding ElementName=Saturday3, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="4" Grid.Row="0" Text="{Binding ElementName=Saturday4, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="5" Grid.Row="0" Text="{Binding ElementName=Saturday5, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="6" Grid.Row="0" Text="{Binding ElementName=Saturday6, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="7" Grid.Row="0" Text="{Binding ElementName=Saturday7, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="8" Grid.Row="0" Text="{Binding ElementName=Saturday8, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="9" Grid.Row="0" Text="{Binding ElementName=Saturday9, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="10" Grid.Row="0" Text="{Binding ElementName=Saturday10, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="11" Grid.Row="0" Text="{Binding ElementName=Saturday11, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="12" Grid.Row="0" Text="{Binding ElementName=Saturday12, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="13" Grid.Row="0" Text="{Binding ElementName=Saturday13, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="14" Grid.Row="0" Text="{Binding ElementName=Saturday14, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="15" Grid.Row="0" Text="{Binding ElementName=Saturday15, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="16" Grid.Row="0" Text="{Binding ElementName=Saturday16, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="17" Grid.Row="0" Text="{Binding ElementName=Saturday17, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="18" Grid.Row="0" Text="{Binding ElementName=Saturday18, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="19" Grid.Row="0" Text="{Binding ElementName=Saturday19, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="20" Grid.Row="0" Text="{Binding ElementName=Saturday20, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="21" Grid.Row="0" Text="{Binding ElementName=Saturday21, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="22" Grid.Row="0" Text="{Binding ElementName=Saturday22, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="23" Grid.Row="0" Text="{Binding ElementName=Saturday23, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="24" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding ElementName=Saturday24, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="600"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="210"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Content="   Sunday:" Grid.Column="0" Grid.Row="0" Margin="4,0,4,0" HorizontalAlignment="Left"  Foreground="#FF00B4B4" FontWeight="Bold" Width="120" Height="27"/>
+                                        <Grid Grid.Row="1" Name="SundayGrid">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="18"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="170"/>
+                                                <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday1" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="2" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday2" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="3" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday3" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="4" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday4" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="5" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday5" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="6" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday6" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="7" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday7" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="8" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday8" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="9" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday9" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="10" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday10" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="11" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday11" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="12" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday12" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="13" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday13" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="14" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday14" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="15" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday15" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="16" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday16" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="17" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday17" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="18" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday18" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="19" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday19" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="20" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday20" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="21" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday21" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="22" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday22" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="23" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday23" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Slider Style="{StaticResource Vertical_Slider}" Orientation="Vertical" Grid.Row="1" Grid.Column="24" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.1" IsMoveToPointEnabled="True" Name="Sunday24" ValueChanged="scheduleValue_Change" HorizontalAlignment="Center"/>
+                                            <Label Grid.Column="1" Grid.Row="2" Content=" 1" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="2" Grid.Row="2" Content=" 2" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="3" Grid.Row="2" Content=" 3" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="4" Grid.Row="2" Content=" 4" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="5" Grid.Row="2" Content=" 5" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="6" Grid.Row="2" Content=" 6" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="7" Grid.Row="2" Content=" 7" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="8" Grid.Row="2" Content=" 8" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="9" Grid.Row="2" Content=" 9" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="10" Grid.Row="2" Content="10" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="11" Grid.Row="2" Content="11" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="12" Grid.Row="2" Content="12" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="13" Grid.Row="2" Content="13" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="14" Grid.Row="2" Content="14" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="15" Grid.Row="2" Content="15" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="16" Grid.Row="2" Content="16" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="17" Grid.Row="2" Content="17" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="18" Grid.Row="2" Content="18" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="19" Grid.Row="2" Content="19" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="20" Grid.Row="2" Content="20" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="21" Grid.Row="2" Content="21" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="22" Grid.Row="2" Content="22" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="23" Grid.Row="2" Content="23" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <Label Grid.Column="24" Grid.Row="2" Content="24" FontSize="8" Height="20" Width="18" Margin="-2,-8,0,0" />
+                                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding ElementName=Sunday1, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding ElementName=Sunday2, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="3" Grid.Row="0" Text="{Binding ElementName=Sunday3, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="4" Grid.Row="0" Text="{Binding ElementName=Sunday4, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="5" Grid.Row="0" Text="{Binding ElementName=Sunday5, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="6" Grid.Row="0" Text="{Binding ElementName=Sunday6, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="7" Grid.Row="0" Text="{Binding ElementName=Sunday7, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="8" Grid.Row="0" Text="{Binding ElementName=Sunday8, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="9" Grid.Row="0" Text="{Binding ElementName=Sunday9, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="10" Grid.Row="0" Text="{Binding ElementName=Sunday10, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="11" Grid.Row="0" Text="{Binding ElementName=Sunday11, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="12" Grid.Row="0" Text="{Binding ElementName=Sunday12, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="13" Grid.Row="0" Text="{Binding ElementName=Sunday13, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="14" Grid.Row="0" Text="{Binding ElementName=Sunday14, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="15" Grid.Row="0" Text="{Binding ElementName=Sunday15, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="16" Grid.Row="0" Text="{Binding ElementName=Sunday16, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="17" Grid.Row="0" Text="{Binding ElementName=Sunday17, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="18" Grid.Row="0" Text="{Binding ElementName=Sunday18, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="19" Grid.Row="0" Text="{Binding ElementName=Sunday19, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="20" Grid.Row="0" Text="{Binding ElementName=Sunday20, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="21" Grid.Row="0" Text="{Binding ElementName=Sunday21, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="22" Grid.Row="0" Text="{Binding ElementName=Sunday22, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="23" Grid.Row="0" Text="{Binding ElementName=Sunday23, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBox Grid.Column="24" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding ElementName=Sunday24, Path=Value}" FontSize="8" Height="14" Width="19" Margin="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+
+                                    </Grid>
+                                </Grid>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Header="HeatGains" Width="80" Margin="-4,0,0,0">
+                            <Grid>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="135"/>
+                                        <RowDefinition Height="180"/>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="400"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="15"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="60"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Name" Grid.Column="0" Grid.Row="1" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Source" Grid.Column="0" Grid.Row="2" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Comment" Grid.Column="0" Grid.Row="3" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <TextBox Grid.Column="1" Grid.Row="1" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="heatName" TextChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="1" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="200" HorizontalAlignment="Left" Name="heatSource" TextChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="1" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="342" HorizontalAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True" Name="heatComment" TextChanged="heatValue_Change"/>
+                                    </Grid>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="250"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="30"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Schedule" Grid.Column="1" Grid.Row="1" Margin="4,0,4,0" HorizontalAlignment="Center"/>
+                                        <Label Content="Maximum" Grid.Column="2" Grid.Row="1" Margin="4,0,4,0" HorizontalAlignment="Center"/>
+                                        <Label Content="Occupancy" Grid.Column="0" Grid.Row="2" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Lights" Grid.Column="0" Grid.Row="3" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Equipments" Grid.Column="0" Grid.Row="4" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Infiltration" Grid.Column="0" Grid.Row="5" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <Label Content="Ventilation" Grid.Column="0" Grid.Row="6" Margin="20,0,4,0" HorizontalAlignment="Left"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="Occupancy" IsEditable="True" ItemsSource="{Binding ScheduleNameList}" SelectionChanged="heatValue_Change"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="Lights" IsEditable="True" ItemsSource="{Binding ScheduleNameList}" SelectionChanged="heatValue_Change"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="Equipments" IsEditable="True" ItemsSource="{Binding ScheduleNameList}" SelectionChanged="heatValue_Change"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="5" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="Infiltration" IsEditable="True" ItemsSource="{Binding ScheduleNameList}" SelectionChanged="heatValue_Change"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="6" Margin="4,4,4,4" Height="auto" Width="242" HorizontalAlignment="Left" Name="Ventilation" IsEditable="True" ItemsSource="{Binding ScheduleNameList}" SelectionChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="2" Grid.Row="2" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="occupancyMax" TextChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="2" Grid.Row="3" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="lightsMax" TextChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="2" Grid.Row="4" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="equipMax" TextChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="2" Grid.Row="5" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="infiltrationMax" TextChanged="heatValue_Change"/>
+                                        <TextBox Grid.Column="2" Grid.Row="6" Margin="4,4,4,4" Height="auto" Width="92" HorizontalAlignment="Left" Name="ventilationMax" TextChanged="heatValue_Change"/>
+
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="400"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="1" Content="Save" Width="60" Height="20" Margin="110,4,0,0" Click="heatSave_Click"/>
+                                        <Button Grid.Column="1" Content="Delete" Width="60" Height="20" Margin="235,4,0,0" Click="heatDelete_Click" Name="heatDeleteButton" IsEnabled="False"/>
+                                        <Button Grid.Column="1" Content="New" Width="60" Height="20" Margin=" -15,4,0,0" Click="heatNew_Click"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            </TabControl>
+    </DockPanel>
+</Window>
