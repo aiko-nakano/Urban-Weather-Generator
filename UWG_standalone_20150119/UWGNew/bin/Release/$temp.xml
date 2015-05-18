@@ -2,28 +2,19 @@
 <xml_input>
   <construction>
     <wall>
-      <albedo>0.5</albedo>
-      <emissivity>0.5</emissivity>
+      <albedo></albedo>
+      <emissivity></emissivity>
       <materials>
         <names>
-          <item>Stucco</item>
-          <item>Concrete HW</item>
-          <item>Insulation</item>
-          <item>Gypsum</item>
+          <item></item>
         </names>
         <thermalConductivity>
-          <item>0.69</item>
-          <item>1.31</item>
-          <item>0.5</item>
-          <item>0.16</item>
+          <item></item>
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item>1555146</item>
-          <item>1874432</item>
-          <item>221752</item>
-          <item>651467</item>
+          <item></item>
         </volumetricHeatCapacity>
-        <thickness>[0.03,0.2,0.09,0.01]</thickness>
+        <thickness>[]</thickness>
       </materials>
       <vegetationCoverage></vegetationCoverage>
       <inclination>0</inclination>
@@ -49,17 +40,17 @@
       <initialTemperature>20</initialTemperature>
     </roof>
     <mass>
-      <albedo></albedo>
-      <emissivity></emissivity>
+      <albedo />
+      <emissivity />
       <materials>
         <names>
           <item></item>
         </names>
         <thermalConductivity>
-          <item></item>
+          <item />
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item></item>
+          <item />
         </volumetricHeatCapacity>
         <thickness>[]</thickness>
       </materials>
@@ -87,7 +78,7 @@
         </volumetricHeatCapacity>
         <thickness>1.25</thickness>
       </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
+      <vegetationCoverage />
       <inclination>1</inclination>
       <initialTemperature>20</initialTemperature>
     </urbanRoad>
@@ -106,7 +97,7 @@
         </volumetricHeatCapacity>
         <thickness>1.25</thickness>
       </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
+      <vegetationCoverage />
       <inclination>1</inclination>
       <initialTemperature>20</initialTemperature>
     </rural>
