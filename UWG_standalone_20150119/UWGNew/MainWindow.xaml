@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
-        Title="Urban Weather Generator" Name="UWGForm" Icon="Images/CENSAM Poster_diagrams2_3-21.png" Height="700" MinWidth="1000" Width="859.702" MinHeight="450" MaxWidth="1000" ResizeMode="CanResize">
+        Title="Urban Weather Generator" Name="UWGForm" Icon="Images/CENSAM Poster_diagrams2_3-21.png" Height="700" MinWidth="850" Width="1000" MinHeight="450" MaxWidth="1500" ResizeMode="CanResizeWithGrip">
 
     <Window.Resources>
         <Style TargetType="{x:Type Window}">
@@ -94,6 +94,7 @@
             <Setter Property="Width" Value="120" />
             <Setter Property="Height" Value="26" />
             <Setter Property="Margin" Value="4" />
+            <Setter Property="FontWeight" Value="Normal" />
         </Style>
         <!-- Button-->
         <Style TargetType="Button">
@@ -253,13 +254,7 @@
                 <MenuItem Header="_Run Simulation" Click="run_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
                 </MenuItem>
                 <!--simulation uwg -->
-                <MenuItem Header="_View Simulation Results" Click="sim_Click" Style="{StaticResource idd}" FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
-                    <MenuItem.ContextMenu>
-                        <ContextMenu HorizontalAlignment="Left" Name="viewSimContextMenu" >
-                            <MenuItem Header="Load Simulation" Click="loadSim_Click"  FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
-                        </ContextMenu>
-                    </MenuItem.ContextMenu>
-                </MenuItem>
+                <MenuItem Header="_View Simulation Results" Click="sim_Click" Style="{StaticResource idd}" FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" ></MenuItem>
                 <MenuItem Header="Help" Click="uwgWebsite_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
                 </MenuItem>
             </Menu>
@@ -295,18 +290,19 @@
                                 <Label Content="Distribution" Grid.Row="0" Grid.Column="2" Margin="20,0,0,0" HorizontalAlignment="Left"/>
                                 <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
                                 <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0">
-                                    <Label Content="Typology 1" HorizontalContentAlignment="Right" Name="typLabel1" />
-                                    <Label Content="Typology 2" HorizontalContentAlignment="Right" Name="typLabel2" Visibility="Collapsed"/>
-                                    <Label Content="Typology 3" HorizontalContentAlignment="Right" Name="typLabel3" Visibility="Collapsed"/>
-                                    <Label Content="Typology 4" HorizontalContentAlignment="Right" Name="typLabel4" Visibility="Collapsed"/>
-                                    <Button Click="addTypology" HorizontalAlignment="Right" Name="addTypButton">Add Typology</Button>
+                                    <Label Content="Typology 1" HorizontalContentAlignment="Left" Name="typLabel1" />
+                                    <Label Content="Typology 2" HorizontalContentAlignment="Left" Name="typLabel2" Visibility="Collapsed"/>
+                                    <Label Content="Typology 3" HorizontalContentAlignment="Left" Name="typLabel3" Visibility="Collapsed"/>
+                                    <Label Content="Typology 4" HorizontalContentAlignment="Left" Name="typLabel4" Visibility="Collapsed"/>
+                                    <Button Click="addTypology" HorizontalAlignment="Left" Name="addTypButton">Add Typology</Button> 
                                 </StackPanel>
+                                <Button Click="minusTypology" IsEnabled="False" HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="minusTypButton" Grid.Row="1" Grid.Column="0" Margin="4,4,4,4">Remove Typology</Button>
+
                                 <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="1">
                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="typology1Type" VerticalContentAlignment="Center"></TextBox>
                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology2Type" VerticalContentAlignment="Center"></TextBox>
                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed"  Name="typology3Type" VerticalContentAlignment="Center"></TextBox>
                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed"  Name="typology4Type" VerticalContentAlignment="Center"></TextBox>
-                                    <Button Click="minusTypology" IsEnabled="False" HorizontalAlignment="Left" Name="minusTypButton">Remove Typology</Button>
                                 </StackPanel>
                                 <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="2" Width="30" Margin="130,7,0,0">
                                     <Label Content="%" HorizontalContentAlignment="Left" Name="typPerc1" />
@@ -359,7 +355,7 @@
                                             <Label Content="Vegetation participation end month" />
                                             <!--BL-->
                                             <Label Content="Boundary Layer Parameters"  Margin="4,4,0,4" Width="196" HorizontalAlignment="Left" FontWeight="Bold" Background="#6600B4B4"  />
-                                            <Label Content="Daytime boundary layer height [m]" />
+                                            <Label Content="Daytime boundary layer height [m]"/>
                                             <Label Content="Nighttime boundary layer height [m]" />
                                             <Label Content="Reference height [m]" />
                                         </StackPanel>
@@ -373,7 +369,7 @@
                                             <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="vegStart" Text="{Binding XPath=urbanArea/vegStart}" Style="{StaticResource advSetting}"></TextBox>
                                             <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="vegEnd" Text="{Binding XPath=urbanArea/vegEnd}" Style="{StaticResource advSetting}"></TextBox>
                                             <Label Margin="4,4,0,4" Width="auto"/>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="daytimeBLHeight" Text="{Binding XPath=urbanArea/daytimeBLHeight}"></TextBox>
+                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="daytimeBLHeight" Text="{Binding XPath=urbanArea/daytimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
                                             <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="nighttimeBLHeight" Text="{Binding XPath=urbanArea/nighttimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
                                             <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="refHeight" Text="{Binding XPath=urbanArea/refHeight}" Style="{StaticResource advSetting}"></TextBox>
                                         </StackPanel>
@@ -832,7 +828,7 @@
                                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="coolingCapacity" Text="{Binding XPath=building/coolingCapacity}" Style="{StaticResource advSetting}"></TextBox>
                                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="heatingEfficiency" Text="{Binding XPath=building/heatingEfficiency}" Style="{StaticResource advSetting}"></TextBox>
                                                     <Label Margin="4,4,0,4" Width="auto" />
-                                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="daytimeCoolingSetpoint" Text="{Binding XPath=building/daytimeCoolingSetPoint}"></TextBox>
+                                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="daytimeCoolingSetpoint" Text="{Binding XPath=building/daytimeCoolingSetPoint}" Style="{StaticResource advSetting}"></TextBox>
                                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="nighttimeCoolingSetpoint" Text="{Binding XPath=building/nighttimeCoolingSetPoint}" Style="{StaticResource advSetting}"></TextBox>
                                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="daytimeHeatingSetPoint" Text="{Binding XPath=building/daytimeHeatingSetPoint}" Style="{StaticResource advSetting}"></TextBox>
                                                     <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" VerticalContentAlignment="Center" Name="nighttimeHeatingSetPoint" Text="{Binding XPath=building/nighttimeHeatingSetPoint}" Style="{StaticResource advSetting}"></TextBox>
@@ -2505,16 +2501,11 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="auto" />
+
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="300" />
                                     <ColumnDefinition Width="190" />
                                     <ColumnDefinition Width="190" />
                                 </Grid.ColumnDefinitions>
@@ -2524,30 +2515,73 @@
                                 <Label Content="Comfortable Hours (% of year)" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
                                 <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Top"></Label>
                                 <Label Content="Total Degree Days" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
-                                
-                                <Label Content="Reference Site" Grid.Row="1" Grid.Column="0"></Label>
-                                <Label Content="Simulation 1" Grid.Row="2" Grid.Column="0" Visibility="Visible"></Label>
-                                <Label Content="Simulation 2" Grid.Row="3" Grid.Column="0" Visibility="Collapsed" Name="labelSim2"></Label>
-                                <Label Content="Simulation 3" Grid.Row="4" Grid.Column="0" Visibility="Collapsed" Name="labelSim3"></Label>
-                                <Label Content="Simulation 4" Grid.Row="5" Grid.Column="0" Visibility="Collapsed" Name="labelSim4"></Label>
-                                <Label Content="Simulation 5" Grid.Row="6" Grid.Column="0" Visibility="Collapsed" Name="labelSim5"></Label>
-                                <Label Content="Simulation 6" Grid.Row="7" Grid.Column="0" Visibility="Collapsed" Name="labelSim6"></Label>
+                                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource PanelLeft}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="200" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="190" />
+                                            <ColumnDefinition Width="190" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Content="Reference Site" Grid.Row="0" Grid.Column="0"></Label>
+                                        <Label Content="Simulation 1" Grid.Row="1" Grid.Column="0" Visibility="Visible" Name="labelSim1"></Label>
+                                        <Label Content="Simulation 2" Grid.Row="2" Grid.Column="0" Visibility="Visible" Name="labelSim2"></Label>
+                                        <Label Content="Simulation 3" Grid.Row="3" Grid.Column="0" Visibility="Visible" Name="labelSim3"></Label>
+                                        <Label Content="Simulation 4" Grid.Row="4" Grid.Column="0" Visibility="Visible" Name="labelSim4"></Label>
+                                        <Label Content="Simulation 5" Grid.Row="5" Grid.Column="0" Visibility="Visible" Name="labelSim5"></Label>
+                                        <Label Content="Simulation 6" Grid.Row="6" Grid.Column="0" Visibility="Visible" Name="labelSim6"></Label>
 
-                                <Label Content="2%" Grid.Row="1" Grid.Column="1" Name="refSiteHours" Visibility="Visible"></Label>
-                                <Label Content="5%" Grid.Row="2" Grid.Column="1" Name="sim1Hours" Visibility="Visible"></Label>
-                                <Label Content="10%" Grid.Row="3" Grid.Column="1" Name="sim2Hours" Visibility="Collapsed"></Label>
-                                <Label Content="35%" Grid.Row="4" Grid.Column="1" Name="sim3Hours" Visibility="Collapsed"></Label>
-                                <Label Content="10%" Grid.Row="5" Grid.Column="1" Name="sim4Hours" Visibility="Collapsed"></Label>
-                                <Label Content="50%" Grid.Row="6" Grid.Column="1" Name="sim5Hours" Visibility="Collapsed"></Label>
-                                <Label Content="9%" Grid.Row="7" Grid.Column="1" Name="sim6Hours" Visibility="Collapsed"></Label>
+                                        <Button Content="Select" Name="pathbrowseSim1" Grid.Row="1" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
+                                        <Button Content="Select" Name="pathbrowseSim2" Grid.Row="2" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
+                                        <Button Content="Select" Name="pathbrowseSim3" Grid.Row="3" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
+                                        <Button Content="Select" Name="pathbrowseSim4" Grid.Row="4" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
+                                        <Button Content="Select" Name="pathbrowseSim5" Grid.Row="5" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
+                                        <Button Content="Select" Name="pathbrowseSim6" Grid.Row="6" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
 
-                                <Label Content="1200" Grid.Row="1" Grid.Column="2" Name="refSiteDegDays" Visibility="Visible"></Label>
-                                <Label Content="100" Grid.Row="2" Grid.Column="2" Name="sim1DegDays" Visibility="Visible"></Label>
-                                <Label Content="200" Grid.Row="3" Grid.Column="2" Name="sim2DegDays" Visibility="Collapsed"></Label>
-                                <Label Content="233" Grid.Row="4" Grid.Column="2" Name="sim3DegDays" Visibility="Collapsed"></Label>
-                                <Label Content="500" Grid.Row="5" Grid.Column="2" Name="sim4DegDays" Visibility="Collapsed"></Label>
-                                <Label Content="800" Grid.Row="6" Grid.Column="2" Name="sim5DegDays" Visibility="Collapsed"></Label>
-                                <Label Content="1000" Grid.Row="7" Grid.Column="2" Name="sim6DegDays" Visibility="Collapsed"></Label>
+                                        <Label Content="" Grid.Row="0" Grid.Column="2" Name="refSiteHours" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="1" Grid.Column="2" Name="sim1Hours" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="2" Grid.Column="2" Name="sim2Hours" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="3" Grid.Column="2" Name="sim3Hours" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="4" Grid.Column="2" Name="sim4Hours" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="5" Grid.Column="2" Name="sim5Hours" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="6" Grid.Column="2" Name="sim6Hours" Visibility="Visible"></Label>
+
+                                        <Label Content="" Grid.Row="0" Grid.Column="3" Name="refSiteDegDays" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="1" Grid.Column="3" Name="sim1DegDays" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="2" Grid.Column="3" Name="sim2DegDays" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="3" Grid.Column="3" Name="sim3DegDays" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="4" Grid.Column="3" Name="sim4DegDays" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="5" Grid.Column="3" Name="sim5DegDays" Visibility="Visible"></Label>
+                                        <Label Content="" Grid.Row="6" Grid.Column="3" Name="sim6DegDays" Visibility="Visible"></Label>
+
+                                        <!--<Label Content="2%" Grid.Row="0" Grid.Column="2" Name="refSiteHours" Visibility="Visible"></Label>
+                                        <Label Content="5%" Grid.Row="1" Grid.Column="2" Name="sim1Hours" Visibility="Visible"></Label>
+                                        <Label Content="10%" Grid.Row="2" Grid.Column="2" Name="sim2Hours" Visibility="Visible"></Label>
+                                        <Label Content="35%" Grid.Row="3" Grid.Column="2" Name="sim3Hours" Visibility="Visible"></Label>
+                                        <Label Content="10%" Grid.Row="4" Grid.Column="2" Name="sim4Hours" Visibility="Visible"></Label>
+                                        <Label Content="50%" Grid.Row="5" Grid.Column="2" Name="sim5Hours" Visibility="Visible"></Label>
+                                        <Label Content="9%" Grid.Row="6" Grid.Column="2" Name="sim6Hours" Visibility="Visible"></Label>
+
+                                        <Label Content="1200" Grid.Row="0" Grid.Column="3" Name="refSiteDegDays" Visibility="Visible"></Label>
+                                        <Label Content="100" Grid.Row="1" Grid.Column="3" Name="sim1DegDays" Visibility="Visible"></Label>
+                                        <Label Content="200" Grid.Row="2" Grid.Column="3" Name="sim2DegDays" Visibility="Visible"></Label>
+                                        <Label Content="233" Grid.Row="3" Grid.Column="3" Name="sim3DegDays" Visibility="Visible"></Label>
+                                        <Label Content="500" Grid.Row="4" Grid.Column="3" Name="sim4DegDays" Visibility="Visible"></Label>
+                                        <Label Content="800" Grid.Row="5" Grid.Column="3" Name="sim5DegDays" Visibility="Visible"></Label>
+                                        <Label Content="1000" Grid.Row="6" Grid.Column="3" Name="sim6DegDays" Visibility="Visible"></Label>-->
+
+                                    </Grid>
+
+                                </StackPanel>
 
                             </Grid>
 
@@ -2599,7 +2633,7 @@
                                             </ComboBox>
 
                                             <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
-                                                                   Name="ColumnChart1" 
+                                                                   Name="utciChartSim1" 
                                                                    Title="" 
                                                                    VerticalAlignment="Bottom" 
                                                                    Width="600" 
@@ -2645,7 +2679,7 @@
                                             </ComboBox>
 
                                             <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
-                                                                   Name="ColumnChart2" 
+                                                                   Name="tAirChartSim1" 
                                                                    Title="" 
                                                                    VerticalAlignment="Bottom" 
                                                                    Width="600" 
@@ -2708,18 +2742,773 @@
 
                         </TabItem>
                         <TabItem Header="Simulation 2" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="600" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <StackPanel Grid.Row="1" Grid.Column="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="170" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Comfortable Hours (% year)" Margin="0,-5,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim2Hours, Mode=TwoWay}" Margin="-180,-5,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Name="comfortableHoursSim2" FontWeight="SemiBold"></Label>
+                                        <StackPanel Margin="0,-50,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3">
+
+                                            <Label Content="UTCI" Margin="50,70,0,-64" HorizontalAlignment="Left" >
+                                                <Label.ToolTip>
+                                                    <TextBlock>
+                                                        Thermal comfort metric using air temperature,
+                                                        <LineBreak/>
+                                                        mean radiant temperature of the urban canyon,
+                                                        <LineBreak/>
+                                                        wind velocity, and relative humidity.
+                                                        <LineBreak/>
+                                                        [More on http://www.utci.org/]
+                                                    </TextBlock>
+                                                </Label.ToolTip>
+                                            </Label>
+                                            <ComboBox Margin="100,40,0,-60" Width="200" Height="25" Name="utciChangeboxSim2" SelectionChanged="utciSim2_change" >
+                                                <ComboBoxItem Content="Sidewalk" IsSelected="True" />
+                                                <ComboBoxItem Content="Urban Canyon" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="utciChartSim2" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="UTCI"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:ColumnSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:ColumnSeries>
+                                            </chartingToolkit:Chart>
+                                            <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
+                                            <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim2" SelectionChanged="tAirSim2_change" >
+                                                <ComboBoxItem Content="January" IsSelected="True" />
+                                                <ComboBoxItem Content="February" />
+                                                <ComboBoxItem Content="March" />
+                                                <ComboBoxItem Content="April" />
+                                                <ComboBoxItem Content="May" />
+                                                <ComboBoxItem Content="June" />
+                                                <ComboBoxItem Content="July" />
+                                                <ComboBoxItem Content="August" />
+                                                <ComboBoxItem Content="September" />
+                                                <ComboBoxItem Content="October" />
+                                                <ComboBoxItem Content="November" />
+                                                <ComboBoxItem Content="December" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="tAirChartSim2" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="Monthly Temperature"
+                                                                   Margin="0,-50,0,0"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:LineSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:LineSeries>
+                                            </chartingToolkit:Chart>
+
+
+                                        </StackPanel>
+
+
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,-5,0,0" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim2DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim2"></Label>
+                                        <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim2"></Label>
+                                        <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim2"></Label>
+
+                                    </Grid>
+                                </StackPanel>
+
+                            </Grid>
 
                         </TabItem>
                         <TabItem Header="Simulation 3" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab3">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="600" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <StackPanel Grid.Row="1" Grid.Column="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="170" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Comfortable Hours (% year)" Margin="0,-5,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim3Hours, Mode=TwoWay}" Margin="-180,-5,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Name="comfortableHoursSim3" FontWeight="SemiBold"></Label>
+                                        <StackPanel Margin="0,-50,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3">
+
+                                            <Label Content="UTCI" Margin="50,70,0,-64" HorizontalAlignment="Left" >
+                                                <Label.ToolTip>
+                                                    <TextBlock>
+                                                        Thermal comfort metric using air temperature,
+                                                        <LineBreak/>
+                                                        mean radiant temperature of the urban canyon,
+                                                        <LineBreak/>
+                                                        wind velocity, and relative humidity.
+                                                        <LineBreak/>
+                                                        [More on http://www.utci.org/]
+                                                    </TextBlock>
+                                                </Label.ToolTip>
+                                            </Label>
+                                            <ComboBox Margin="100,40,0,-60" Width="200" Height="25" Name="utciChangeboxSim3" SelectionChanged="utciSim3_change" >
+                                                <ComboBoxItem Content="Sidewalk" IsSelected="True" />
+                                                <ComboBoxItem Content="Urban Canyon" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="utciChartSim3" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="UTCI"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:ColumnSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:ColumnSeries>
+                                            </chartingToolkit:Chart>
+                                            <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
+                                            <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim3" SelectionChanged="tAirSim3_change" >
+                                                <ComboBoxItem Content="January" IsSelected="True" />
+                                                <ComboBoxItem Content="February" />
+                                                <ComboBoxItem Content="March" />
+                                                <ComboBoxItem Content="April" />
+                                                <ComboBoxItem Content="May" />
+                                                <ComboBoxItem Content="June" />
+                                                <ComboBoxItem Content="July" />
+                                                <ComboBoxItem Content="August" />
+                                                <ComboBoxItem Content="September" />
+                                                <ComboBoxItem Content="October" />
+                                                <ComboBoxItem Content="November" />
+                                                <ComboBoxItem Content="December" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="tAirChartSim3" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="Monthly Temperature"
+                                                                   Margin="0,-50,0,0"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:LineSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:LineSeries>
+                                            </chartingToolkit:Chart>
+
+
+                                        </StackPanel>
+
+
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,-5,0,0" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim3DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim3"></Label>
+                                        <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim3"></Label>
+                                        <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim3"></Label>
+
+                                    </Grid>
+                                </StackPanel>
+
+                            </Grid>
 
                         </TabItem>
                         <TabItem Header="Simulation 4" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab4">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="600" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <StackPanel Grid.Row="1" Grid.Column="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="170" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Comfortable Hours (% year)" Margin="0,-5,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim4Hours, Mode=TwoWay}" Margin="-180,-5,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Name="comfortableHoursSim4" FontWeight="SemiBold"></Label>
+                                        <StackPanel Margin="0,-50,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3">
+
+                                            <Label Content="UTCI" Margin="50,70,0,-64" HorizontalAlignment="Left" >
+                                                <Label.ToolTip>
+                                                    <TextBlock>
+                                                        Thermal comfort metric using air temperature,
+                                                        <LineBreak/>
+                                                        mean radiant temperature of the urban canyon,
+                                                        <LineBreak/>
+                                                        wind velocity, and relative humidity.
+                                                        <LineBreak/>
+                                                        [More on http://www.utci.org/]
+                                                    </TextBlock>
+                                                </Label.ToolTip>
+                                            </Label>
+                                            <ComboBox Margin="100,40,0,-60" Width="200" Height="25" Name="utciChangeboxSim4" SelectionChanged="utciSim4_change" >
+                                                <ComboBoxItem Content="Sidewalk" IsSelected="True" />
+                                                <ComboBoxItem Content="Urban Canyon" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="utciChartSim4" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="UTCI"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:ColumnSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:ColumnSeries>
+                                            </chartingToolkit:Chart>
+                                            <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
+                                            <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim4" SelectionChanged="tAirSim4_change" >
+                                                <ComboBoxItem Content="January" IsSelected="True" />
+                                                <ComboBoxItem Content="February" />
+                                                <ComboBoxItem Content="March" />
+                                                <ComboBoxItem Content="April" />
+                                                <ComboBoxItem Content="May" />
+                                                <ComboBoxItem Content="June" />
+                                                <ComboBoxItem Content="July" />
+                                                <ComboBoxItem Content="August" />
+                                                <ComboBoxItem Content="September" />
+                                                <ComboBoxItem Content="October" />
+                                                <ComboBoxItem Content="November" />
+                                                <ComboBoxItem Content="December" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="tAirChartSim4" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="Monthly Temperature"
+                                                                   Margin="0,-50,0,0"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:LineSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:LineSeries>
+                                            </chartingToolkit:Chart>
+
+
+                                        </StackPanel>
+
+
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,-5,0,0" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim4DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim4"></Label>
+                                        <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim4"></Label>
+                                        <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim4"></Label>
+
+                                    </Grid>
+                                </StackPanel>
+
+                            </Grid>
 
                         </TabItem>
                         <TabItem Header="Simulation 5" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="600" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <StackPanel Grid.Row="1" Grid.Column="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="170" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Comfortable Hours (% year)" Margin="0,-5,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim5Hours, Mode=TwoWay}" Margin="-180,-5,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Name="comfortableHoursSim5" FontWeight="SemiBold"></Label>
+                                        <StackPanel Margin="0,-50,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3">
+
+                                            <Label Content="UTCI" Margin="50,70,0,-64" HorizontalAlignment="Left" >
+                                                <Label.ToolTip>
+                                                    <TextBlock>
+                                                        Thermal comfort metric using air temperature,
+                                                        <LineBreak/>
+                                                        mean radiant temperature of the urban canyon,
+                                                        <LineBreak/>
+                                                        wind velocity, and relative humidity.
+                                                        <LineBreak/>
+                                                        [More on http://www.utci.org/]
+                                                    </TextBlock>
+                                                </Label.ToolTip>
+                                            </Label>
+                                            <ComboBox Margin="100,40,0,-60" Width="200" Height="25" Name="utciChangeboxSim5" SelectionChanged="utciSim5_change" >
+                                                <ComboBoxItem Content="Sidewalk" IsSelected="True" />
+                                                <ComboBoxItem Content="Urban Canyon" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="utciChartSim5" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="UTCI"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:ColumnSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:ColumnSeries>
+                                            </chartingToolkit:Chart>
+                                            <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
+                                            <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim5" SelectionChanged="tAirSim5_change" >
+                                                <ComboBoxItem Content="January" IsSelected="True" />
+                                                <ComboBoxItem Content="February" />
+                                                <ComboBoxItem Content="March" />
+                                                <ComboBoxItem Content="April" />
+                                                <ComboBoxItem Content="May" />
+                                                <ComboBoxItem Content="June" />
+                                                <ComboBoxItem Content="July" />
+                                                <ComboBoxItem Content="August" />
+                                                <ComboBoxItem Content="September" />
+                                                <ComboBoxItem Content="October" />
+                                                <ComboBoxItem Content="November" />
+                                                <ComboBoxItem Content="December" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="tAirChartSim5" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="Monthly Temperature"
+                                                                   Margin="0,-50,0,0"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:LineSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:LineSeries>
+                                            </chartingToolkit:Chart>
+
+
+                                        </StackPanel>
+
+
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,-5,0,0" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim5DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim5"></Label>
+                                        <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim5"></Label>
+                                        <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim5"></Label>
+
+                                    </Grid>
+                                </StackPanel>
+
+                            </Grid>
 
                         </TabItem>
                         <TabItem Header="Simulation 6" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab6">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="600" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <StackPanel Grid.Row="1" Grid.Column="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="170" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Comfortable Hours (% year)" Margin="0,-5,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim6Hours, Mode=TwoWay}" Margin="-180,-5,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Name="comfortableHoursSim6" FontWeight="SemiBold"></Label>
+                                        <StackPanel Margin="0,-50,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3">
+
+                                            <Label Content="UTCI" Margin="50,70,0,-64" HorizontalAlignment="Left" >
+                                                <Label.ToolTip>
+                                                    <TextBlock>
+                                                        Thermal comfort metric using air temperature,
+                                                        <LineBreak/>
+                                                        mean radiant temperature of the urban canyon,
+                                                        <LineBreak/>
+                                                        wind velocity, and relative humidity.
+                                                        <LineBreak/>
+                                                        [More on http://www.utci.org/]
+                                                    </TextBlock>
+                                                </Label.ToolTip>
+                                            </Label>
+                                            <ComboBox Margin="100,40,0,-60" Width="200" Height="25" Name="utciChangeboxSim6" SelectionChanged="utciSim6_change" >
+                                                <ComboBoxItem Content="Sidewalk" IsSelected="True" />
+                                                <ComboBoxItem Content="Urban Canyon" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="utciChartSim6" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="UTCI"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:ColumnSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:ColumnSeries>
+                                            </chartingToolkit:Chart>
+                                            <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
+                                            <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim6" SelectionChanged="tAirSim6_change" >
+                                                <ComboBoxItem Content="January" IsSelected="True" />
+                                                <ComboBoxItem Content="February" />
+                                                <ComboBoxItem Content="March" />
+                                                <ComboBoxItem Content="April" />
+                                                <ComboBoxItem Content="May" />
+                                                <ComboBoxItem Content="June" />
+                                                <ComboBoxItem Content="July" />
+                                                <ComboBoxItem Content="August" />
+                                                <ComboBoxItem Content="September" />
+                                                <ComboBoxItem Content="October" />
+                                                <ComboBoxItem Content="November" />
+                                                <ComboBoxItem Content="December" />
+                                            </ComboBox>
+
+                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
+                                                                   Name="tAirChartSim6" 
+                                                                   Title="" 
+                                                                   VerticalAlignment="Bottom" 
+                                                                   Width="600" 
+                                                                   BorderThickness="0"
+                                                                   LegendTitle="Monthly Temperature"
+                                                                   Margin="0,-50,0,0"
+                                                                   
+                                                                   >
+                                                <chartingToolkit:Chart.PlotAreaStyle>
+                                                    <Style TargetType="Grid">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.PlotAreaStyle>
+                                                <chartingToolkit:Chart.LegendStyle>
+                                                    <Style TargetType="datavis:Legend" >
+                                                        <Setter Property="Width" Value="0" />
+                                                    </Style>
+                                                </chartingToolkit:Chart.LegendStyle>
+                                                <chartingToolkit:Chart.Axes>
+                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
+                                                </chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:LineSeries DependentValuePath="Value"  
+                                                                              IndependentValuePath="Key" 
+                                                                              ItemsSource="{Binding}" 
+                                                                              Title=""
+                                                                              IsSelectionEnabled="True"
+                                                                              >
+                                                </chartingToolkit:LineSeries>
+                                            </chartingToolkit:Chart>
+
+
+                                        </StackPanel>
+
+
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,-5,0,0" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <Label Content="{Binding Path=Content, ElementName=sim6DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim6"></Label>
+                                        <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim6"></Label>
+                                        <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim6"></Label>
+
+                                    </Grid>
+                                </StackPanel>
+
+                            </Grid>
 
                         </TabItem>
 
