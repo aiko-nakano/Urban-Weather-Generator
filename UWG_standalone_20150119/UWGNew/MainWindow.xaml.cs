@@ -17,12 +17,17 @@ using System.Collections;
 using System.Diagnostics;
 using System.Xml;
 using System.ComponentModel;
+using System.Windows.Forms;
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace UWG
 {
 
     public partial class UWGInputs : Window
     {
+        double totalDist = 0.0;
+        simuParam p = new simuParam();
+        int numberOfSimulation = 1;
         int numberOfTypology = 1;
         private String xmlPath = "";
         private String xmlFileName = "";
@@ -36,8 +41,43 @@ namespace UWG
         private int ruralboxi = 0;
         private int heatboxi = 0;
         public String DialogName;
-        simuParam p = new simuParam();
         private XmlDocument defxml = new XmlDocument();
+        private String epwPathRun = "";
+        private String epwFileNameRun = "";
+        private String epwFileName1 = "";
+        private String epwFileName2 = "";
+        private String epwFileName3 = "";
+        private String epwFileName4 = "";
+        private String epwFileName5 = "";
+        private String filenameRun = "";
+        private String xmlUWGPathRun = "";
+        private String xmlUWGFileNameRun = "";
+        private String filename_xmlUWGRun = "";
+        private String xmlUWGPath1 = "";
+        private String xmlUWGFileName1 = "";
+        private String filename_xmlUWG1 = "";
+        private String xmlUWGPath2 = "";
+        private String xmlUWGFileName2 = "";
+        private String filename_xmlUWG2 = "";
+        private String xmlUWGPath3 = "";
+        private String xmlUWGFileName3 = "";
+        private String filename_xmlUWG3 = "";
+        private String xmlUWGPath4 = "";
+        private String xmlUWGFileName4 = "";
+        private String filename_xmlUWG4 = "";
+        private String xmlUWGPath5 = "";
+        private String xmlUWGFileName5 = "";
+        private String filename_xmlUWG5 = "";
+        private String resultPath="";
+        private String resultFileName="";
+        private String resultFilePath="";
+
+        String[,] sim1Data = new String[24, 87];
+        String[,] sim2Data = new String[24, 87];
+        String[,] sim3Data = new String[24, 87];
+        String[,] sim4Data = new String[24, 87];
+        String[,] sim5Data = new String[24, 87];
+        String[,] sim6Data = new String[24, 87];
 
 
         public UWGInputs()
@@ -48,7 +88,7 @@ namespace UWG
             }
             catch
             {
-                MessageBox.Show("Initializing failed, TemplateLibrary.xml missing!", "UWG");
+                System.Windows.MessageBox.Show("Initializing failed, TemplateLibrary.xml missing!", "UWG");
                 this.Close();
             }
             InitializeComponent();
@@ -62,6 +102,10 @@ namespace UWG
             buttonSave_Click(sender, e);
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
+            p.simuStartMonthValidate = "1";
+            p.simuStartDayValidate = "1";
+            p.simuDurationValidate = "365";
+            uwgRun.DataContext = p;
         }
         private void OnChange(object sender, EventArgs e)
         {
@@ -233,7 +277,7 @@ namespace UWG
                 glazingbox.SelectedIndex = glazingboxi + 1;
             }
             else glazingbox.SelectedIndex = 0;
-        }
+        } 
         private void roofbox_change(object sender, RoutedEventArgs e)
         {
             int ind = roofbox.SelectedIndex;
@@ -1099,16 +1143,243 @@ namespace UWG
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
         }
+        private void utciSim1_change(object sender, RoutedEventArgs e)
+        {
+            int ind = utciChangeboxSim1.SelectedIndex;
+            if (ind == 0)
+            {
+                try
+                {
+                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim1Data[9, 84].Substring(0, sim1Data[9, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim1Data[8, 84].Substring(0, sim1Data[8, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim1Data[7, 84].Substring(0, sim1Data[7, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim1Data[6, 84].Substring(0, sim1Data[6, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim1Data[5, 84].Substring(0, sim1Data[5, 84].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim1Data[4, 84].Substring(0, sim1Data[4, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim1Data[3, 84].Substring(0, sim1Data[3, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim1Data[2, 84].Substring(0, sim1Data[2, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim1Data[1, 84].Substring(0, sim1Data[1, 84].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim1Data[0, 84].Substring(0, sim1Data[0, 84].Length - 1))));
+                    ColumnChart1.DataContext = utciStressDaysSidewalk;
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim1Data[9, 86].Substring(0, sim1Data[9, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim1Data[8, 86].Substring(0, sim1Data[8, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim1Data[7, 86].Substring(0, sim1Data[7, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim1Data[6, 86].Substring(0, sim1Data[6, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim1Data[5, 86].Substring(0, sim1Data[5, 86].Length-1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim1Data[4, 86].Substring(0, sim1Data[4, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim1Data[3, 86].Substring(0, sim1Data[3, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim1Data[2, 86].Substring(0, sim1Data[2, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim1Data[1, 86].Substring(0, sim1Data[1, 86].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim1Data[0, 86].Substring(0, sim1Data[0, 86].Length-1))));
+                try
+                {
+                    ColumnChart1.DataContext = utciStressDaysUrbanCanyon;
+                }
+                catch
+                {
+
+                }
+
+
+            }
+
+
+
+
+        }
+        private void tAirSim1_change(object sender, RoutedEventArgs e)
+        {
+            int ind = tAirChangeboxSim1.SelectedIndex;
+            List<KeyValuePair<string, double>> averageTemperaturePerHour = new List<KeyValuePair<string, double>>();
+            int column = 12+ind*6;
+            try
+            {
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim1Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim1Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim1Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim1Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim1Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim1Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim1Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim1Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim1Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim1Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim1Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim1Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim1Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim1Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim1Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim1Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim1Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim1Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim1Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim1Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim1Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim1Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim1Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim1Data[23, column])));
+
+                ColumnChart2.DataContext = averageTemperaturePerHour;
+            }
+            catch
+            {
+
+            }
+
+        }
         private void run_Click(object sender, RoutedEventArgs e)
         {
-            RunWindow run = new RunWindow();
-            run.ShowDialog();
-            run.Closed += new EventHandler(Enable);
+            if (typologyCheck() == false)
+            {
+                //typologyCheck will present error message if there is a problem
+                //System.Windows.MessageBox.Show("Distributions don't add to 100%. Please adjust appropriately.");
+                return;
+            }
+            urbanCanyonTab.Visibility = System.Windows.Visibility.Collapsed;
+            refSiteTab.Visibility = System.Windows.Visibility.Collapsed;
+            runSimTab.Visibility = System.Windows.Visibility.Visible;
+            mainTabControl.SelectedItem = runSimTab;
+            //RunWindow run = new RunWindow();
+            //run.ShowDialog();
+            //run.Closed += new EventHandler(Enable);
         }
 
         private void sim_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Simulation page still needs to be connected.");
+            if (mainTabControl.SelectedItem == viewSimTab)
+            {
+                //viewSimContextMenu.IsOpen = true;
+            }
+            else if (mainTabControl.SelectedItem != viewSimTab)
+            {
+                simTabControl.SelectedItem = simOverview;
+            }
+            //this.resultPath path to where the resulting epw's are saved
+            if (numberOfSimulation >= 1)
+            {
+                //grab info for first simulation
+                String sim1File = resultName.Text;
+                String fullPath1 = System.IO.Path.Combine(resultPathText.Text, sim1File);
+
+                if (sim1File != "")
+                {
+                    var reader = new StreamReader(File.OpenRead(fullPath1));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim1Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    //need to run UTCI on the epw at fullPath#
+                    //then take output of UTCI and grab data
+                    //read appropriate lines out of CSV
+                    //File.Copy(fullPath1, System.IO.Path.ChangeExtension(fullPath1, ".csv"));
+                    simTab1.Visibility = System.Windows.Visibility.Visible;
+                }
+
+
+            }
+            if (numberOfSimulation >= 2)
+            {
+                //grab info for second simulation
+                String sim2File = resultName1.Text;
+                String fullPath2 = System.IO.Path.Combine(this.resultPath, sim2File);
+                simTab2.Visibility = System.Windows.Visibility.Visible;
+                sim2DegDays.Visibility = System.Windows.Visibility.Visible;
+                sim2Hours.Visibility = System.Windows.Visibility.Visible;
+                File.Copy(fullPath2, System.IO.Path.ChangeExtension(fullPath2, ".csv"));
+
+
+            }
+            if (numberOfSimulation >= 3)
+            {
+                //grab info for third simulation
+                String sim3File = resultName2.Text;
+                String fullPath3 = System.IO.Path.Combine(this.resultPath, sim3File);
+                simTab3.Visibility = System.Windows.Visibility.Visible;
+                sim3DegDays.Visibility = System.Windows.Visibility.Visible;
+                sim3Hours.Visibility = System.Windows.Visibility.Visible;
+                File.Copy(fullPath3, System.IO.Path.ChangeExtension(fullPath3, ".csv"));
+
+
+            }
+            if (numberOfSimulation >= 4)
+            {
+                //grab info for fourth simulation
+                String sim4File = resultName3.Text;
+                String fullPath4 = System.IO.Path.Combine(this.resultPath, sim4File);
+                simTab4.Visibility = System.Windows.Visibility.Visible;
+                sim4DegDays.Visibility = System.Windows.Visibility.Visible;
+                sim4Hours.Visibility = System.Windows.Visibility.Visible;
+                File.Copy(fullPath4, System.IO.Path.ChangeExtension(fullPath4, ".csv"));
+
+
+            }
+            if (numberOfSimulation >= 5)
+            {
+                //grab info for fifth simulation
+                String sim5File = resultName4.Text;
+                String fullPath5 = System.IO.Path.Combine(this.resultPath, sim5File);
+                simTab5.Visibility = System.Windows.Visibility.Visible;
+                sim5DegDays.Visibility = System.Windows.Visibility.Visible;
+                sim5Hours.Visibility = System.Windows.Visibility.Visible;
+                File.Copy(fullPath5, System.IO.Path.ChangeExtension(fullPath5, ".csv"));
+
+
+            }
+            if (numberOfSimulation >= 6)
+            {
+                //grab info for sixth simulation
+                String sim6File = resultName5.Text;
+                String fullPath6 = System.IO.Path.Combine(this.resultPath, sim6File);
+                simTab6.Visibility = System.Windows.Visibility.Visible;
+                sim6DegDays.Visibility = System.Windows.Visibility.Visible;
+                sim6Hours.Visibility = System.Windows.Visibility.Visible;
+                File.Copy(fullPath6, System.IO.Path.ChangeExtension(fullPath6, ".csv"));
+
+
+            }
+
+            //this.epwPathRun = System.IO.Path.GetDirectoryName(filenameRun);
+            //Get only the file name
+            //this.epwFileNameRun = System.IO.Path.GetFileName(filenameRun);
+            urbanCanyonTab.Visibility = System.Windows.Visibility.Collapsed;
+            refSiteTab.Visibility = System.Windows.Visibility.Collapsed;
+            runSimTab.Visibility = System.Windows.Visibility.Collapsed;
+            viewSimTab.Visibility = System.Windows.Visibility.Visible;
+            mainTabControl.SelectedItem = viewSimTab;
+            sim1DegDays.Content = "100";
+            utciChangeboxSim1.SelectedIndex = 0;
+            tAirChangeboxSim1.SelectedIndex = 0;
+
+            utciSim1_change(sender, e);
+            tAirSim1_change(sender, e);            
+
+            //System.Windows.MessageBox.Show("Simulation page still needs to be connected.");
             //SimWindow sim = new SimWindow();
             //sim.ShowDialog();
             //sim.Closed += new EventHandler(Enable);
@@ -1116,12 +1387,28 @@ namespace UWG
 
         private void makeFile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Make File to be made");
+            urbanCanyonTab.Visibility = System.Windows.Visibility.Visible;
+            refSiteTab.Visibility = System.Windows.Visibility.Visible;
+            runSimTab.Visibility = System.Windows.Visibility.Collapsed;
+            viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
+            if (mainTabControl.SelectedItem == urbanCanyonTab || mainTabControl.SelectedItem == refSiteTab)
+            {
+                makeFileContextMenu.IsOpen = true;
+            }
+            if (mainTabControl.SelectedItem != refSiteTab)
+            {
+                mainTabControl.SelectedItem = urbanCanyonTab;
+            }
         }
 
         private void importUMI(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Importing to be added");
+            System.Windows.MessageBox.Show("Importing to be added");
+        }
+
+        private void loadSim_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.MessageBox.Show("Importing to be added");
         }
 
         private void addTypology(object sender, RoutedEventArgs e)
@@ -1130,34 +1417,34 @@ namespace UWG
             numberOfTypology++;
             if(numberOfTypology==2)
             {
-                typLabel1.Visibility = System.Windows.Visibility.Visible;
-                typology1Type.Visibility = System.Windows.Visibility.Visible;
-                typology1Dist.Visibility = System.Windows.Visibility.Visible;
-                typPerc1.Visibility = System.Windows.Visibility.Visible;
-                typTab1.Visibility = System.Windows.Visibility.Visible;
-
-
-            }
-            else if (numberOfTypology == 3)
-            {
                 typLabel2.Visibility = System.Windows.Visibility.Visible;
                 typology2Type.Visibility = System.Windows.Visibility.Visible;
                 typology2Dist.Visibility = System.Windows.Visibility.Visible;
                 typPerc2.Visibility = System.Windows.Visibility.Visible;
                 typTab2.Visibility = System.Windows.Visibility.Visible;
 
+
             }
-            else if (numberOfTypology == 4)
+            else if (numberOfTypology == 3)
             {
                 typLabel3.Visibility = System.Windows.Visibility.Visible;
                 typology3Type.Visibility = System.Windows.Visibility.Visible;
                 typology3Dist.Visibility = System.Windows.Visibility.Visible;
                 typPerc3.Visibility = System.Windows.Visibility.Visible;
                 typTab3.Visibility = System.Windows.Visibility.Visible;
-                addTypButton.IsEnabled = false;
-                typologyCheck();
 
             }
+            else if (numberOfTypology == 4)
+            {
+                typLabel4.Visibility = System.Windows.Visibility.Visible;
+                typology4Type.Visibility = System.Windows.Visibility.Visible;
+                typology4Dist.Visibility = System.Windows.Visibility.Visible;
+                typPerc4.Visibility = System.Windows.Visibility.Visible;
+                typTab4.Visibility = System.Windows.Visibility.Visible;
+                addTypButton.IsEnabled = false;
+
+            }
+            typologyCheck();
 
 
         }
@@ -1166,43 +1453,76 @@ namespace UWG
             addTypButton.IsEnabled = true;
             if (numberOfTypology == 2)
             {
-                typLabel1.Visibility = System.Windows.Visibility.Collapsed;
-                typology1Type.Visibility = System.Windows.Visibility.Collapsed;
-                typology1Dist.Visibility = System.Windows.Visibility.Collapsed;
-                typPerc1.Visibility = System.Windows.Visibility.Collapsed;
-                typTab1.Visibility = System.Windows.Visibility.Collapsed;
+                typLabel2.Visibility = System.Windows.Visibility.Collapsed;
+                typology2Type.Visibility = System.Windows.Visibility.Collapsed;
+                typology2Dist.Visibility = System.Windows.Visibility.Collapsed;
+                typPerc2.Visibility = System.Windows.Visibility.Collapsed;
+                typTab2.Visibility = System.Windows.Visibility.Collapsed;
                 minusTypButton.IsEnabled = false;
 
 
             }
             else if (numberOfTypology == 3)
             {
-                typLabel2.Visibility = System.Windows.Visibility.Collapsed;
-                typology2Type.Visibility = System.Windows.Visibility.Collapsed;
-                typology2Dist.Visibility = System.Windows.Visibility.Collapsed;
-                typPerc2.Visibility = System.Windows.Visibility.Collapsed;
-                typTab2.Visibility = System.Windows.Visibility.Collapsed;
-
-            }
-            else if (numberOfTypology == 4)
-            {
                 typLabel3.Visibility = System.Windows.Visibility.Collapsed;
                 typology3Type.Visibility = System.Windows.Visibility.Collapsed;
                 typology3Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPerc3.Visibility = System.Windows.Visibility.Collapsed;
                 typTab3.Visibility = System.Windows.Visibility.Collapsed;
-                addTypButton.IsEnabled = false;
-                typologyCheck();
+
             }
+            else if (numberOfTypology == 4)
+            {
+                typLabel4.Visibility = System.Windows.Visibility.Collapsed;
+                typology4Type.Visibility = System.Windows.Visibility.Collapsed;
+                typology4Dist.Visibility = System.Windows.Visibility.Collapsed;
+                typPerc4.Visibility = System.Windows.Visibility.Collapsed;
+                typTab4.Visibility = System.Windows.Visibility.Collapsed;
+                addTypButton.IsEnabled = false;
+            }
+            typologyCheck();
             numberOfTypology--;
 
 
 
         }
 
-        private void typologyCheck()
+        private Boolean typologyCheck()
         {
-            MessageBox.Show("Still need to validate data!");
+            //convert dists to longs, add to make sure equal 1
+            totalDist = 0.0;
+            double dist = 0.0;
+            try
+            {
+                totalDist += double.Parse(typology1Dist.Text);
+                if (typLabel2.Visibility == System.Windows.Visibility.Visible)
+                {
+                    dist = double.Parse(typology2Dist.Text);
+                    totalDist += dist;
+                }
+                if (typLabel3.Visibility == System.Windows.Visibility.Visible)
+                {
+                    dist = double.Parse(typology3Dist.Text);
+                    totalDist += dist;
+                }
+                if (typLabel4.Visibility == System.Windows.Visibility.Visible)
+                {
+                    dist = double.Parse(typology4Dist.Text);
+                    totalDist += dist;
+                }
+                if (totalDist != 100.0)
+                {
+                    System.Windows.MessageBox.Show("Distributions don't add to 100%. Please adjust appropriately.");
+                    return false;
+                }
+
+                return true;
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("Distributions don't add to 100%. Please adjust appropriately.");
+                return false;
+            }
         }
         
         private void Enable(object sender, EventArgs e)
@@ -1219,7 +1539,7 @@ namespace UWG
             else
             {
                 buttonSave_Click(sender, e);
-                MessageBox.Show("Saving succeeded!");
+                System.Windows.MessageBox.Show("Saving succeeded!");
             }
         }
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -2028,16 +2348,16 @@ namespace UWG
         {
             try
             {
-                if (epwFileName == null)
+                if (epwFileNameRun == null)
                 {
-                    MessageBox.Show("Please select epw file");
+                    System.Windows.MessageBox.Show("Please select epw file");
                 }     
                 ProcessStartInfo startUWG = new ProcessStartInfo();
 
                 //startUWG.FileName = "C:\\Users\\anakano\\Documents\\Research\\UWG2.1\\For_Installer\\UWGv2.0.exe";
                 startUWG.FileName = "UWGEngine.exe";
                 //make sure there is space in between each of the four inputs and that folder extension ends with \\
-                startUWG.Arguments = this.epwPath + "\\ " + this.epwFileName + " " + this.xmlUWGPath + "\\ " + this.xmlUWGFileName;
+                startUWG.Arguments = epwPathRun + "\\ " + this.epwFileNameRun + " " + this.xmlUWGPathRun + "\\ " + this.xmlUWGFileNameRun;
                 //startUWG.Arguments = this.epwPath + this.epwFileName + this.xmlPath + this.xmlFilename;
                 Process.Start(startUWG);
                         
@@ -2070,7 +2390,7 @@ namespace UWG
             string message = "Please make sure to save your current XML file before loading.";
             string captain = "UWG";
             MessageBoxButton buttons = MessageBoxButton.OKCancel;
-            var result = MessageBox.Show(message, captain, buttons);
+            var result = System.Windows.MessageBox.Show(message, captain, buttons);
             if (result == MessageBoxResult.Cancel) return;
 
             var provider = (XmlDataProvider)this.DataContext;
@@ -2203,7 +2523,7 @@ namespace UWG
             string message = "Please make sure to save your current XML file before continue.";
             string captain = "UWG";
             MessageBoxButton buttons = MessageBoxButton.OKCancel;
-            var result= MessageBox.Show(message, captain, buttons);
+            var result= System.Windows.MessageBox.Show(message, captain, buttons);
             if (result == MessageBoxResult.Cancel) return;
             this.xmlPath = "";
             this.xmlFileName = "";
@@ -2363,6 +2683,421 @@ namespace UWG
         private void uwgWebsite_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("http://urbanmicroclimate.scripts.mit.edu/uwg_parameters.php");
+        }
+
+        //copied from RunWindow.xaml.cs
+
+        private void plus_Click(object sender, RoutedEventArgs e)
+        {
+            numberOfSimulation++;
+            minus.IsEnabled = true;
+            if(numberOfSimulation==2)
+            {
+                rs1.Visibility = System.Windows.Visibility.Visible;
+                bb1.Visibility = System.Windows.Visibility.Visible;
+                bx1.Visibility = System.Windows.Visibility.Visible;
+                sim2FNLabel.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (numberOfSimulation == 3)
+            {
+                rs2.Visibility = System.Windows.Visibility.Visible;
+                bb2.Visibility = System.Windows.Visibility.Visible;
+                bx2.Visibility = System.Windows.Visibility.Visible;
+                sim3FNLabel.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (numberOfSimulation == 4)
+            {
+                rs3.Visibility = System.Windows.Visibility.Visible;
+                bb3.Visibility = System.Windows.Visibility.Visible;
+                bx3.Visibility = System.Windows.Visibility.Visible;
+                sim4FNLabel.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (numberOfSimulation == 5)
+            {
+                rs4.Visibility = System.Windows.Visibility.Visible;
+                bb4.Visibility = System.Windows.Visibility.Visible;
+                bx4.Visibility = System.Windows.Visibility.Visible;
+                sim5FNLabel.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (numberOfSimulation == 6)
+            {
+                rs5.Visibility = System.Windows.Visibility.Visible;
+                bb5.Visibility = System.Windows.Visibility.Visible;
+                bx5.Visibility = System.Windows.Visibility.Visible;
+                sim6FNLabel.Visibility = System.Windows.Visibility.Visible;
+                plus.IsEnabled = false;
+            }
+            check();
+        }
+        private void minus_Click(object sender, RoutedEventArgs e)
+        {
+            plus.IsEnabled = true;
+            if (numberOfSimulation == 2)
+            {
+                rs1.Visibility = System.Windows.Visibility.Collapsed;
+                bb1.Visibility = System.Windows.Visibility.Collapsed;
+                bx1.Visibility = System.Windows.Visibility.Collapsed;
+                sim2FNLabel.Visibility = System.Windows.Visibility.Collapsed;
+                minus.IsEnabled = false;
+            }
+            if (numberOfSimulation == 3)
+            {
+                rs2.Visibility = System.Windows.Visibility.Collapsed;
+                bb2.Visibility = System.Windows.Visibility.Collapsed;
+                bx2.Visibility = System.Windows.Visibility.Collapsed;
+                sim3FNLabel.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (numberOfSimulation == 4)
+            {
+                rs3.Visibility = System.Windows.Visibility.Collapsed;
+                bb3.Visibility = System.Windows.Visibility.Collapsed;
+                bx3.Visibility = System.Windows.Visibility.Collapsed;
+                sim4FNLabel.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (numberOfSimulation == 5)
+            {
+                rs4.Visibility = System.Windows.Visibility.Collapsed;
+                bb4.Visibility = System.Windows.Visibility.Collapsed;
+                bx4.Visibility = System.Windows.Visibility.Collapsed;
+                sim5FNLabel.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (numberOfSimulation == 6)
+            {
+                rs5.Visibility = System.Windows.Visibility.Collapsed;
+                bb5.Visibility = System.Windows.Visibility.Collapsed;
+                bx5.Visibility = System.Windows.Visibility.Collapsed;
+                sim6FNLabel.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            numberOfSimulation--;
+            check();
+        }
+        private void check_(object sender, RoutedEventArgs e)
+        {
+            check();
+        }
+        private void back(object sender, EventArgs e)
+        {
+            this.IsEnabled = true;
+        }
+        private void startUWG_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                String mon = p.simuStartMonthValidate;
+                String day = p.simuStartDayValidate;
+                String dur = p.simuDurationValidate;
+
+                feedBack feed = new feedBack();
+                feed.runNum = numberOfSimulation;
+                feed.ep = this.epwPathRun;
+                feed.ef = this.epwFileNameRun;
+                feed.ef1 = "$1" + this.epwFileNameRun;
+                feed.ef2 = "$2" + this.epwFileNameRun;
+                feed.ef3 = "$3" + this.epwFileNameRun;
+                feed.ef4 = "$4" + this.epwFileNameRun;
+                feed.ef5 = "$5" + this.epwFileNameRun;
+                feed.xp = this.xmlUWGPathRun;
+                feed.xf = this.xmlUWGFileNameRun;
+                feed.xp1 = this.xmlUWGPath1;
+                feed.xf1 = this.xmlUWGFileName1;
+                feed.xp2 = this.xmlUWGPath2;
+                feed.xf2 = this.xmlUWGFileName2;
+                feed.xp3 = this.xmlUWGPath3;
+                feed.xf3 = this.xmlUWGFileName3;
+                feed.xp4 = this.xmlUWGPath4;
+                feed.xf4 = this.xmlUWGFileName4;
+                feed.xp5 = this.xmlUWGPath5;
+                feed.xf5 = this.xmlUWGFileName5;
+                feed.day = day;
+                feed.mon = mon;
+                feed.dur = dur;
+                feed.rp = resultPathText.Text;
+                resultPath = resultPathText.Text;
+                feed.rf = resultName.Text + ".epw";
+                feed.rf1 = resultName1.Text + ".epw";
+                feed.rf2 = resultName2.Text + ".epw";
+                feed.rf3 = resultName3.Text + ".epw";
+                feed.rf4 = resultName4.Text + ".epw";
+                feed.rf5 = resultName5.Text + ".epw";
+                feed.Show();
+                feed.startrun();
+                if(numberOfSimulation > 1)
+                {
+                    System.IO.File.Delete(System.IO.Path.Combine(feed.ep, feed.ef1));
+                    System.IO.File.Copy(System.IO.Path.Combine(feed.ep, feed.ef), System.IO.Path.Combine(feed.ep, feed.ef1));
+                    feed.startrun1();
+                    //System.IO.Path.Combine(feed.ep, eed.ef1) is where the epw for simulation 1 is saved
+                    //we want to send that to UTCI to get the output file
+                }
+                if (numberOfSimulation > 2)
+                {
+                    System.IO.File.Delete(System.IO.Path.Combine(feed.ep, feed.ef2));
+                    System.IO.File.Copy(System.IO.Path.Combine(feed.ep, feed.ef), System.IO.Path.Combine(feed.ep, feed.ef2));
+                    feed.startrun2();
+                }
+                if (numberOfSimulation > 3)
+                {
+                    System.IO.File.Delete(System.IO.Path.Combine(feed.ep, feed.ef3));
+                    System.IO.File.Copy(System.IO.Path.Combine(feed.ep, feed.ef), System.IO.Path.Combine(feed.ep, feed.ef3));
+                    feed.startrun3();
+                }
+                if (numberOfSimulation > 4)
+                {
+                    System.IO.File.Delete(System.IO.Path.Combine(feed.ep, feed.ef4));
+                    System.IO.File.Copy(System.IO.Path.Combine(feed.ep, feed.ef), System.IO.Path.Combine(feed.ep, feed.ef4));
+                    feed.startrun4();
+                }
+                if (numberOfSimulation > 5)
+                {
+                    System.IO.File.Delete(System.IO.Path.Combine(feed.ep, feed.ef5));
+                    System.IO.File.Copy(System.IO.Path.Combine(feed.ep, feed.ef), System.IO.Path.Combine(feed.ep, feed.ef5));
+                    feed.startrun5();
+                }
+                feed.Closed += new EventHandler(back);
+          //      ProcessStartInfo startUWG = new ProcessStartInfo();
+          //      //startUWG.FileName = "C:\\Users\\anakano\\Documents\\Research\\UWG2.1\\For_Installer\\UWGv2.0.exe";
+          //      startUWG.FileName = "UWGEngine.exe";
+          //      //make sure there is space in between each of the four inputs and that folder extension ends with \\
+          //      startUWG.Arguments = this.epwPath + "\\ " + this.epwFileName + " " + this.xmlUWGPath + "\\ " + this.xmlUWGFileName + " " + this.resultPath + "\\ " + this.resultFileName + " " + mon + " " + day + " " + dur;
+          //      //startUWG.Arguments = this.epwPath + this.epwFileName + this.xmlPath + this.xmlFilename;
+          //      startUWG.UseShellExecute = false;
+          //      startUWG.RedirectStandardOutput = true;
+          //      UWGAbort.IsEnabled = true;
+          //      UWGStart.IsEnabled = false;
+          //      Process UWGs = Process.Start(startUWG);
+          //      StreamReader UWGreader=UWGs.StandardOutput;  
+          //      String UWGreaderst = UWGreader.ReadLine();
+          //      RunningInfo.Text = UWGreaderst;
+            }
+
+            catch (Exception error)
+            {
+                textBoxRun.Text = error.ToString();
+            }
+            //MessageBox.Show("UWG has finished running. Your urban weather file is created");
+        }
+
+        //SELECT EPW FILE FOR UWG
+
+        // Create OpenFileDialog
+        private void browse_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".epw";
+            dlg.Filter = "Weather Files (.epw)|*.epw";
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filenameRun = dlg.FileName;
+                epwFileEmpty.Text = filenameRun;
+                //Get directory path only
+                this.epwPathRun = System.IO.Path.GetDirectoryName(filenameRun);
+                //Get only the file name
+                this.epwFileNameRun = System.IO.Path.GetFileName(filenameRun);
+                check();
+            };
+        }
+
+        //SELECT XML FILE FOR UWG
+        private void check()
+        {
+            if(epwPathRun=="" || xmlUWGFileNameRun == "" || resultPathText.Text=="" || resultName.Text=="")
+            {
+                UWGStart.IsEnabled = false;
+                return;
+            }
+            if(numberOfSimulation > 1 && (xmlUWGFileName1 == "" || resultName1.Text=="" ))
+            {
+                UWGStart.IsEnabled = false;
+                return;
+            }
+            if (numberOfSimulation > 2 && (xmlUWGFileName2 == "" || resultName2.Text == ""))
+            {
+                UWGStart.IsEnabled = false;
+                return;
+            }
+            if (numberOfSimulation > 3 && (xmlUWGFileName3 == "" || resultName3.Text == ""))
+            {
+                UWGStart.IsEnabled = false;
+                return;
+            }
+            if (numberOfSimulation > 4 && (xmlUWGFileName4 == "" || resultName4.Text == ""))
+            {
+                UWGStart.IsEnabled = false;
+                return;
+            }
+            if (numberOfSimulation > 5 && (xmlUWGFileName5 == "" || resultName5.Text == ""))
+            {
+                UWGStart.IsEnabled = false;
+                return;
+            }
+            UWGStart.IsEnabled = true;
+        }
+        private void xmlBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".xml";
+            dlg.Filter = "XML files (.xml)|*.xml";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename_xmlUWGRun = dlg.FileName;
+                xmlFileEmpty.Text = filename_xmlUWG;
+                //Get directory path only
+                this.xmlUWGPathRun = System.IO.Path.GetDirectoryName(filename_xmlUWG);
+                //Get only the file name
+                this.xmlUWGFileNameRun = System.IO.Path.GetFileName(filename_xmlUWG);
+                check();
+            };
+        }
+        private void xmlBrowse_Click1(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".xml";
+            dlg.Filter = "XML files (.xml)|*.xml";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename_xmlUWG1 = dlg.FileName;
+                xmlFileEmpty1.Text = filename_xmlUWG1;
+                //Get directory path only
+                this.xmlUWGPath1 = System.IO.Path.GetDirectoryName(filename_xmlUWG1);
+                //Get only the file name
+                this.xmlUWGFileName1 = System.IO.Path.GetFileName(filename_xmlUWG1);
+                check();
+            };
+        }
+        private void xmlBrowse_Click2(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".xml";
+            dlg.Filter = "XML files (.xml)|*.xml";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename_xmlUWG2 = dlg.FileName;
+                xmlFileEmpty2.Text = filename_xmlUWG2;
+                //Get directory path only
+                this.xmlUWGPath2 = System.IO.Path.GetDirectoryName(filename_xmlUWG2);
+                //Get only the file name
+                this.xmlUWGFileName2 = System.IO.Path.GetFileName(filename_xmlUWG2);
+                check();
+            }
+        }
+        private void xmlBrowse_Click3(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".xml";
+            dlg.Filter = "XML files (.xml)|*.xml";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename_xmlUWG3 = dlg.FileName;
+                xmlFileEmpty3.Text = filename_xmlUWG3;
+                //Get directory path only
+                this.xmlUWGPath3 = System.IO.Path.GetDirectoryName(filename_xmlUWG3);
+                //Get only the file name
+                this.xmlUWGFileName3 = System.IO.Path.GetFileName(filename_xmlUWG3);
+                check();
+            };
+        }
+        private void xmlBrowse_Click4(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".xml";
+            dlg.Filter = "XML files (.xml)|*.xml";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename_xmlUWG4 = dlg.FileName;
+                xmlFileEmpty4.Text = filename_xmlUWG4;
+                //Get directory path only
+                this.xmlUWGPath4 = System.IO.Path.GetDirectoryName(filename_xmlUWG4);
+                //Get only the file name
+                this.xmlUWGFileName4 = System.IO.Path.GetFileName(filename_xmlUWGRun);
+                check();
+            };
+        }
+        private void xmlBrowse_Click5(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".xml";
+            dlg.Filter = "XML files (.xml)|*.xml";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename_xmlUWG5 = dlg.FileName;
+                xmlFileEmpty5.Text = filename_xmlUWG5;
+                //Get directory path only
+                this.xmlUWGPath5 = System.IO.Path.GetDirectoryName(filename_xmlUWG5);
+                //Get only the file name
+                this.xmlUWGFileName5 = System.IO.Path.GetFileName(filename_xmlUWG5);
+                check();
+            };
+        }
+
+        private void select(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            dlg.ShowDialog();
+            resultPathText.Text = dlg.SelectedPath;
+            check();
+        }
+
+        //trigger valiation at beginning
+        public void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // we manually fire the bindings so we get the validation initially
+            simuStartMonth.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
+            simuStartDay.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
+            simuDuration.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
         }
 
 
