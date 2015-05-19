@@ -59,9 +59,9 @@
       <initialTemperature>20</initialTemperature>
     </mass>
     <glazing>
-      <glazingRatio></glazingRatio>
-      <windowUvalue></windowUvalue>
-      <windowSHGC></windowSHGC>
+      <glazingRatio>1</glazingRatio>
+      <windowUvalue>3</windowUvalue>
+      <windowSHGC>0</windowSHGC>
     </glazing>
     <urbanRoad>
       <albedo>0.165</albedo>
