@@ -86,6 +86,13 @@ namespace UWG
         String pathSim5 = "";
         String pathSim6 = "";
 
+        String csvPathSim1 = "";
+        String csvPathSim2 = "";
+        String csvPathSim3 = "";
+        String csvPathSim4 = "";
+        String csvPathSim5 = "";
+        String csvPathSim6 = "";
+
 
         public UWGInputs()
         {
@@ -1867,34 +1874,57 @@ namespace UWG
             //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-                //File.Copy(origPath1, csvPathSim1); //copy runSim output to csv
-                //String utciOutputSim1 = utci_sim1();
-            }
-            catch
-            {
 
-            }
-            //need to run UTCI on this csv at fullPath#
-            //then take output of UTCI and grab data
-            var reader = new StreamReader(File.OpenRead(pathSim1));
-
-            int row = 0;
-            int column = 0;
-            while (row < 24)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                while (column < 87)
+                String csvPathInput = System.IO.Path.ChangeExtension(pathSim1, ".csv");
+                String csvFilename = System.IO.Path.GetFileName(csvPathInput);
+                if (!File.Exists(csvPathInput))
                 {
-                    sim1Data[row, column] = values[column];
-                    column += 1;
+                    File.Copy(pathSim1, csvPathInput);
                 }
-                row += 1;
-                column = 0;
+                UTCI_calc.UTCIWindow utci = new UTCI_calc.UTCIWindow();
+
+                string working_folder = "";
+                string csv_file = "";
+                working_folder = System.IO.Path.GetDirectoryName(pathSim1);
+                string csv_filename = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (!File.Exists(csv_filePath))
+                {
+                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                }
+                if (csv_filePath != "")
+                {
+                    //String utciOutputSim1 = utci_sim1();
+
+                    //need to run UTCI on this csv at fullPath#
+                    //then take output of UTCI and grab data
+                    var reader = new StreamReader(File.OpenRead(csv_filePath));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim1Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    utciSim1_change(sender, e);
+                    tAirSim1_change(sender, e);
+                }
 
             }
-            utciSim1_change(sender, e);
-            tAirSim1_change(sender, e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Second exception caught.", ex);
+            }
         }
 
         private void loadDataSim2(object sender, RoutedEventArgs e)
@@ -1905,186 +1935,301 @@ namespace UWG
             //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-                //File.Copy(origPath1, csvPathSim1); //copy runSim output to csv
-                //String utciOutputSim1 = utci_sim1();
-            }
-            catch
-            {
 
-            }
-            //need to run UTCI on this csv at fullPath#
-            //then take output of UTCI and grab data
-            var reader = new StreamReader(File.OpenRead(pathSim2));
-
-            int row = 0;
-            int column = 0;
-            while (row < 24)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                while (column < 87)
+                String csvPathInput = System.IO.Path.ChangeExtension(pathSim2, ".csv");
+                String csvFilename = System.IO.Path.GetFileName(csvPathInput);
+                if (!File.Exists(csvPathInput))
                 {
-                    sim2Data[row, column] = values[column];
-                    column += 1;
+                    File.Copy(pathSim2, csvPathInput);
                 }
-                row += 1;
-                column = 0;
+                UTCI_calc.UTCIWindow utci = new UTCI_calc.UTCIWindow();
+
+                string working_folder = "";
+                string csv_file = "";
+                working_folder = System.IO.Path.GetDirectoryName(pathSim2);
+                string csv_filename = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (!File.Exists(csv_filePath))
+                {
+                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                }
+                if (csv_filePath != "")
+                {
+                    //String utciOutputSim2 = utci_sim2();
+
+                    //need to run UTCI on this csv at fullPath#
+                    //then take output of UTCI and grab data
+                    var reader = new StreamReader(File.OpenRead(csv_filePath));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim2Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    utciSim2_change(sender, e);
+                    tAirSim2_change(sender, e);
+                }
 
             }
-            utciSim2_change(sender, e);
-            tAirSim2_change(sender, e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Second exception caught.", ex);
+            }
         }
 
         private void loadDataSim3(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
-            //String sim1File = resultName.Text;
-            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim1File); //path to the simulation output
-            //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
+            //String sim3File = resultName.Text;
+            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim3File); //path to the simulation output
+            //String csvPathSim3 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-                //File.Copy(origPath1, csvPathSim1); //copy runSim output to csv
-                //String utciOutputSim1 = utci_sim1();
-            }
-            catch
-            {
 
-            }
-            //need to run UTCI on this csv at fullPath#
-            //then take output of UTCI and grab data
-            var reader = new StreamReader(File.OpenRead(pathSim3));
-
-            int row = 0;
-            int column = 0;
-            while (row < 24)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                while (column < 87)
+                String csvPathInput = System.IO.Path.ChangeExtension(pathSim3, ".csv");
+                String csvFilename = System.IO.Path.GetFileName(csvPathInput);
+                if (!File.Exists(csvPathInput))
                 {
-                    sim3Data[row, column] = values[column];
-                    column += 1;
+                    File.Copy(pathSim3, csvPathInput);
                 }
-                row += 1;
-                column = 0;
+                UTCI_calc.UTCIWindow utci = new UTCI_calc.UTCIWindow();
+
+                string working_folder = "";
+                string csv_file = "";
+                working_folder = System.IO.Path.GetDirectoryName(pathSim3);
+                string csv_filename = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (!File.Exists(csv_filePath))
+                {
+                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                }
+                if (csv_filePath != "")
+                {
+                    //String utciOutputSim3 = utci_sim3();
+
+                    //need to run UTCI on this csv at fullPath#
+                    //then take output of UTCI and grab data
+                    var reader = new StreamReader(File.OpenRead(csv_filePath));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim3Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    utciSim3_change(sender, e);
+                    tAirSim3_change(sender, e);
+                }
 
             }
-            utciSim3_change(sender, e);
-            tAirSim3_change(sender, e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Second exception caught.", ex);
+            }
         }
 
         private void loadDataSim4(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
-            //String sim1File = resultName.Text;
-            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim1File); //path to the simulation output
-            //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
+            //String sim4File = resultName.Text;
+            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim4File); //path to the simulation output
+            //String csvPathSim4 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-                //File.Copy(origPath1, csvPathSim1); //copy runSim output to csv
-                //String utciOutputSim1 = utci_sim1();
-            }
-            catch
-            {
 
-            }
-            //need to run UTCI on this csv at fullPath#
-            //then take output of UTCI and grab data
-            var reader = new StreamReader(File.OpenRead(pathSim4));
-
-            int row = 0;
-            int column = 0;
-            while (row < 24)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                while (column < 87)
+                String csvPathInput = System.IO.Path.ChangeExtension(pathSim4, ".csv");
+                String csvFilename = System.IO.Path.GetFileName(csvPathInput);
+                if (!File.Exists(csvPathInput))
                 {
-                    sim4Data[row, column] = values[column];
-                    column += 1;
+                    File.Copy(pathSim4, csvPathInput);
                 }
-                row += 1;
-                column = 0;
+                UTCI_calc.UTCIWindow utci = new UTCI_calc.UTCIWindow();
+
+                string working_folder = "";
+                string csv_file = "";
+                working_folder = System.IO.Path.GetDirectoryName(pathSim4);
+                string csv_filename = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (!File.Exists(csv_filePath))
+                {
+                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                }
+                if (csv_filePath != "")
+                {
+                    //String utciOutputSim4 = utci_sim4();
+
+                    //need to run UTCI on this csv at fullPath#
+                    //then take output of UTCI and grab data
+                    var reader = new StreamReader(File.OpenRead(csv_filePath));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim4Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    utciSim4_change(sender, e);
+                    tAirSim4_change(sender, e);
+                }
 
             }
-            utciSim4_change(sender, e);
-            tAirSim4_change(sender, e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Second exception caught.", ex);
+            }
         }
 
         private void loadDataSim5(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
-            //String sim1File = resultName.Text;
-            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim1File); //path to the simulation output
-            //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
+            //String sim5File = resultName.Text;
+            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim5File); //path to the simulation output
+            //String csvPathSim5 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-                //File.Copy(origPath1, csvPathSim1); //copy runSim output to csv
-                //String utciOutputSim1 = utci_sim1();
-            }
-            catch
-            {
 
-            }
-            //need to run UTCI on this csv at fullPath#
-            //then take output of UTCI and grab data
-            var reader = new StreamReader(File.OpenRead(pathSim5));
-
-            int row = 0;
-            int column = 0;
-            while (row < 24)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                while (column < 87)
+                String csvPathInput = System.IO.Path.ChangeExtension(pathSim5, ".csv");
+                String csvFilename = System.IO.Path.GetFileName(csvPathInput);
+                if (!File.Exists(csvPathInput))
                 {
-                    sim5Data[row, column] = values[column];
-                    column += 1;
+                    File.Copy(pathSim5, csvPathInput);
                 }
-                row += 1;
-                column = 0;
+                UTCI_calc.UTCIWindow utci = new UTCI_calc.UTCIWindow();
+
+                string working_folder = "";
+                string csv_file = "";
+                working_folder = System.IO.Path.GetDirectoryName(pathSim5);
+                string csv_filename = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (!File.Exists(csv_filePath))
+                {
+                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                }
+                if (csv_filePath != "")
+                {
+                    //String utciOutputSim5 = utci_sim5();
+
+                    //need to run UTCI on this csv at fullPath#
+                    //then take output of UTCI and grab data
+                    var reader = new StreamReader(File.OpenRead(csv_filePath));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim5Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    utciSim5_change(sender, e);
+                    tAirSim5_change(sender, e);
+                }
 
             }
-            utciSim5_change(sender, e);
-            tAirSim5_change(sender, e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Second exception caught.", ex);
+            }
         }
 
         private void loadDataSim6(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
-            //String sim1File = resultName.Text;
-            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim1File); //path to the simulation output
-            //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
+            //String sim6File = resultName.Text;
+            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim6File); //path to the simulation output
+            //String csvPathSim6 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-                //File.Copy(origPath1, csvPathSim1); //copy runSim output to csv
-                //String utciOutputSim1 = utci_sim1();
-            }
-            catch
-            {
 
-            }
-            //need to run UTCI on this csv at fullPath#
-            //then take output of UTCI and grab data
-            var reader = new StreamReader(File.OpenRead(pathSim6));
-
-            int row = 0;
-            int column = 0;
-            while (row < 24)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                while (column < 87)
+                String csvPathInput = System.IO.Path.ChangeExtension(pathSim6, ".csv");
+                String csvFilename = System.IO.Path.GetFileName(csvPathInput);
+                if (!File.Exists(csvPathInput))
                 {
-                    sim6Data[row, column] = values[column];
-                    column += 1;
+                    File.Copy(pathSim6, csvPathInput);
                 }
-                row += 1;
-                column = 0;
+                UTCI_calc.UTCIWindow utci = new UTCI_calc.UTCIWindow();
+
+                string working_folder = "";
+                string csv_file = "";
+                working_folder = System.IO.Path.GetDirectoryName(pathSim6);
+                string csv_filename = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (!File.Exists(csv_filePath))
+                {
+                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                }
+                if (csv_filePath != "")
+                {
+                    //String utciOutputSim6 = utci_sim6();
+
+                    //need to run UTCI on this csv at fullPath#
+                    //then take output of UTCI and grab data
+                    var reader = new StreamReader(File.OpenRead(csv_filePath));
+
+                    int row = 0;
+                    int column = 0;
+                    while (row < 24)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        while (column < 87)
+                        {
+                            sim6Data[row, column] = values[column];
+                            column += 1;
+                        }
+                        row += 1;
+                        column = 0;
+
+                    }
+                    utciSim6_change(sender, e);
+                    tAirSim6_change(sender, e);
+                }
 
             }
-            utciSim6_change(sender, e);
-            tAirSim6_change(sender, e);
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0} Second exception caught.", ex);
+            }
         }
 
 
@@ -3801,6 +3946,7 @@ namespace UWG
             dlg.ShowDialog();
             if (dlg.CheckFileExists)
             {
+
                 var buttonSim = sender as System.Windows.Controls.Button;
                 if (buttonSim.Name == "pathbrowseSim1")
                 {
@@ -3808,6 +3954,7 @@ namespace UWG
                     labelSim1.Content = dlg.SafeFileName;
                     loadDataSim1(sender, e);
                     simTab1.Visibility = System.Windows.Visibility.Visible;
+
                 }
                 else if (buttonSim.Name == "pathbrowseSim2")
                 {
@@ -3841,7 +3988,6 @@ namespace UWG
                     labelSim5.Content = dlg.SafeFileName;
                     loadDataSim5(sender, e);
                     simTab5.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim6")
