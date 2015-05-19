@@ -1888,6 +1888,10 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim1);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                {
+                    csv_filePath = csvPathInput;
+                }
                 if (!File.Exists(csv_filePath))
                 {
                     csv_file = utci.UTCI_calc(working_folder, csvFilename);
