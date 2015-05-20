@@ -311,10 +311,10 @@
                                     <Label Content="%" HorizontalContentAlignment="Left" Name="typPercLabel4" Visibility="Collapsed"/>
                                 </StackPanel>
                                 <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="2" Margin="10,8,0,0">
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Name="typology1Dist" VerticalContentAlignment="Center" Text="0"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology2Dist" VerticalContentAlignment="Center" Text="0"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology3Dist" VerticalContentAlignment="Center" Text="0"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology4Dist" VerticalContentAlignment="Center" Text="0"></TextBox>
+                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Visible" Name="typology1Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkPerc" ></TextBox>
+                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology2Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkPerc" ></TextBox>
+                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology3Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkPerc" ></TextBox>
+                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology4Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkPerc" ></TextBox>
                                 </StackPanel>
                                 <!--Panels from Urban Area-->
                                 <Label Content="URBAN CANYON CHARACTERISTICS" Grid.Row="2" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" />
@@ -377,7 +377,7 @@
                                 </Expander>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Typology 1" Style="{StaticResource sec}" Width="150" Visibility="Visible" Name="typTab1">
+                        <TabItem Header="Typology 1" Style="{StaticResource sec}" Width="150" Visibility="Collapsed" Name="typTab1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
@@ -2509,6 +2509,7 @@
                                     <ColumnDefinition Width="190" />
                                     <ColumnDefinition Width="190" />
                                 </Grid.ColumnDefinitions>
+                                <Label Content="Please run UWG simulation to visualize the results." ></Label>
                                 <Label Content="Simulation" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Top"></Label>

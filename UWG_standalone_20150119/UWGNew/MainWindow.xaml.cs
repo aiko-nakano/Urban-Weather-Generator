@@ -5632,7 +5632,7 @@ namespace UWG
                 typology2Type.Visibility = System.Windows.Visibility.Visible;
                 typology2Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel2.Visibility = System.Windows.Visibility.Visible;
-                typTab2.Visibility = System.Windows.Visibility.Visible;
+                //typTab2.Visibility = System.Windows.Visibility.Visible;
 
 
             }
@@ -5642,7 +5642,7 @@ namespace UWG
                 typology3Type.Visibility = System.Windows.Visibility.Visible;
                 typology3Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel3.Visibility = System.Windows.Visibility.Visible;
-                typTab3.Visibility = System.Windows.Visibility.Visible;
+                //typTab3.Visibility = System.Windows.Visibility.Visible;
 
             }
             else if (numberOfTypology == 4)
@@ -5651,7 +5651,7 @@ namespace UWG
                 typology4Type.Visibility = System.Windows.Visibility.Visible;
                 typology4Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel4.Visibility = System.Windows.Visibility.Visible;
-                typTab4.Visibility = System.Windows.Visibility.Visible;
+                //typTab4.Visibility = System.Windows.Visibility.Visible;
                 addTypButton.IsEnabled = false;
 
             }
@@ -5773,321 +5773,30 @@ namespace UWG
                     {
                         // Form input and building template insertion for XML file creation
                         // WALL MATERIALS:
-                        XElement wallMaterialsNames;
-                        if (wallLayer2Material.Content.Equals(""))
+                        XDocument doc = new XDocument(new XElement("xml_input"));
+                        if (typology1Dist.Text != "0" || typology1Dist.Text != "")
                         {
-                            wallMaterialsNames = new XElement("names",
-                                new XElement("item", wallLayer1Material.Content));
-                        }
-                        else
-                        {
-                            if (wallLayer3Material.Content.Equals(""))
-                            {
-                                wallMaterialsNames = new XElement("names",
-                                    new XElement("item", wallLayer1Material.Content),
-                                    new XElement("item", wallLayer2Material.Content));
-                            }
-                            else
-                            {
-                                if (wallLayer4Material.Content.Equals(""))
-                                {
+                            
+                            doc.Root.Add(typ1XML_create());
 
-                                    wallMaterialsNames = new XElement("names",
-                                        new XElement("item", wallLayer1Material.Content),
-                                        new XElement("item", wallLayer2Material.Content),
-                                        new XElement("item", wallLayer3Material.Content));
-                                }
-                                else
-                                {
-                                    wallMaterialsNames = new XElement("names",
-                                        new XElement("item", wallLayer1Material.Content),
-                                        new XElement("item", wallLayer2Material.Content),
-                                        new XElement("item", wallLayer3Material.Content),
-                                        new XElement("item", wallLayer4Material.Content));
-                                }
-                            }
+                        }
+                        if (typology2Dist.Text != "0")
+                        {
+                            doc.Root.Add(typ2XML_create());
+
+                        }
+                        if (typology3Dist.Text != "0")
+                        {
+                            doc.Root.Add(typ3XML_create());
+
+                        }
+                        if (typology4Dist.Text != "0")
+                        {
+                            doc.Root.Add(typ4XML_create());
+
                         }
 
-                        XElement wallMaterialsThermalConductivity;
-                        if (wallLayer2K.Content.Equals(""))
-                        {
-                            wallMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                new XElement("item", wallLayer1K.Content));
-                        }
-                        else
-                        {
-                            if (wallLayer3K.Content.Equals(""))
-                            {
-                                wallMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                    new XElement("item", wallLayer1K.Content),
-                                    new XElement("item", wallLayer2K.Content));
-                            }
-                            else
-                            {
-                                if (wallLayer4K.Content.Equals(""))
-                                {
-
-                                    wallMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                        new XElement("item", wallLayer1K.Content),
-                                        new XElement("item", wallLayer2K.Content),
-                                        new XElement("item", wallLayer3K.Content));
-                                }
-                                else
-                                {
-                                    wallMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                        new XElement("item", wallLayer1K.Content),
-                                        new XElement("item", wallLayer2K.Content),
-                                        new XElement("item", wallLayer3K.Content),
-                                        new XElement("item", wallLayer4K.Content));
-                                }
-                            }
-                        }
-
-                        XElement wallMaterialsVolumetricHeatCapacity;
-                        if (wallLayer2VHC.Content.Equals(""))
-                        {
-                            wallMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                new XElement("item", wallLayer1VHC.Content));
-                        }
-                        else
-                        {
-                            if (wallLayer3VHC.Equals(""))
-                            {
-                                wallMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                    new XElement("item", wallLayer1VHC.Content),
-                                    new XElement("item", wallLayer2VHC.Content));
-                            }
-                            else
-                            {
-                                if (wallLayer4VHC.Content.Equals(""))
-                                {
-
-                                    wallMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                        new XElement("item", wallLayer1VHC.Content),
-                                        new XElement("item", wallLayer2VHC.Content),
-                                        new XElement("item", wallLayer3VHC.Content));
-                                }
-                                else
-                                {
-                                    wallMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                        new XElement("item", wallLayer1VHC.Content),
-                                        new XElement("item", wallLayer2VHC.Content),
-                                        new XElement("item", wallLayer3VHC.Content),
-                                        new XElement("item", wallLayer4VHC.Content));
-                                }
-                            }
-                        }
-                        XElement wallMaterialsThickness;
-                        if (wallLayer2Thickness.Content.Equals(""))
-                        {
-                            wallMaterialsThickness = new XElement("thickness", "[" + wallLayer1Thickness.Content + "]");
-                        }
-                        else
-                        {
-                            if (wallLayer3Thickness.Equals(""))
-                            {
-                                wallMaterialsThickness = new XElement("thickness", "[" + wallLayer1Thickness.Content + "," + wallLayer2Thickness.Content + "]");
-                            }
-                            else
-                            {
-                                if (wallLayer4Thickness.Content.Equals(""))
-                                {
-                                    wallMaterialsThickness = new XElement("thickness", "[" + wallLayer1Thickness.Content + "," + wallLayer2Thickness.Content + "," + wallLayer3Thickness.Content + "]");
-                                }
-                                else
-                                {
-                                    wallMaterialsThickness = new XElement("thickness", "[" + wallLayer1Thickness.Content + "," + wallLayer2Thickness.Content + "," + wallLayer3Thickness.Content + "," + wallLayer4Thickness.Content + "]");
-                                }
-                            }
-                        }
-
-                        //ROOF MATERIALS:
-                        XElement roofMaterialsNames;
-                        if (roofLayer2Material.Content.Equals(""))
-                        {
-                            roofMaterialsNames = new XElement("names",
-                                new XElement("item", roofLayer1Material.Content));
-                        }
-                        else
-                        {
-                            if (roofLayer3Material.Equals(""))
-                            {
-                                roofMaterialsNames = new XElement("names",
-                                    new XElement("item", roofLayer1Material.Content),
-                                    new XElement("item", roofLayer2Material.Content));
-                            }
-                            else
-                            {
-                                roofMaterialsNames = new XElement("names",
-                                    new XElement("item", roofLayer1Material.Content),
-                                    new XElement("item", roofLayer2Material.Content),
-                                    new XElement("item", roofLayer3Material.Content));
-                            }
-                        }
-
-                        XElement roofMaterialsThermalConductivity;
-                        if (roofLayer2K.Content.Equals(""))
-                        {
-                            roofMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                new XElement("item", roofLayer1K.Content));
-                        }
-                        else
-                        {
-                            if (roofLayer3K.Content.Equals(""))
-                            {
-                                roofMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                    new XElement("item", roofLayer1K.Content),
-                                    new XElement("item", roofLayer2K.Content));
-                            }
-                            else
-                            {
-                                roofMaterialsThermalConductivity = new XElement("thermalConductivity",
-                                    new XElement("item", roofLayer1K.Content),
-                                    new XElement("item", roofLayer2K.Content),
-                                    new XElement("item", roofLayer3K.Content));
-                            }
-                        }
-
-                        XElement roofMaterialsVolumetricHeatCapacity;
-                        if (roofLayer2VHC.Content.Equals(""))
-                        {
-                            roofMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                new XElement("item", roofLayer1VHC.Content));
-                        }
-                        else
-                        {
-                            if (roofLayer3VHC.Content.Equals(""))
-                            {
-                                roofMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                    new XElement("item", roofLayer1VHC.Content),
-                                    new XElement("item", roofLayer2VHC.Content));
-                            }
-                            else
-                            {
-                                roofMaterialsVolumetricHeatCapacity = new XElement("volumetricHeatCapacity",
-                                    new XElement("item", roofLayer1VHC.Content),
-                                    new XElement("item", roofLayer2VHC.Content),
-                                    new XElement("item", roofLayer3VHC.Content));
-                            }
-                        }
-                        XElement roofMaterialsThickness;
-                        if (roofLayer2Thickness.Content.Equals(""))
-                        {
-                            roofMaterialsThickness = new XElement("thickness", "[" + roofLayer1Thickness.Content + "]");
-                        }
-                        else
-                        {
-                            if (roofLayer3Thickness.Content.Equals(""))
-                            {
-                                roofMaterialsThickness = new XElement("thickness", "[" + roofLayer1Thickness.Content + "," + roofLayer2Thickness.Content + "]");
-                            }
-                            else
-                            {
-                                roofMaterialsThickness = new XElement("thickness", "[" + roofLayer1Thickness.Content + "," + roofLayer2Thickness.Content + "," + roofLayer3Thickness.Content + "]");
-                            }
-                        }
-
-                        XDocument doc = new XDocument(new XElement("xml_input",
-                                                            new XElement("construction",
-                                                                new XElement("wall",
-                                                                    new XElement("albedo", wallAlbedo.Text),
-                                                                    new XElement("emissivity", wallEmissivity.Text),
-                                                                    new XElement("materials",
-                                                                        wallMaterialsNames,
-                                                                        wallMaterialsThermalConductivity,
-                                                                        wallMaterialsVolumetricHeatCapacity,
-                                                                        wallMaterialsThickness),
-                                                                    new XElement("vegetationCoverage", wallVegCoverage.Text),
-                                                                    new XElement("inclination", wallInclination.Text),
-                                                                    new XElement("initialTemperature", 20)),
-
-                                                                new XElement("roof",
-                                                                    new XElement("albedo", roofAlbedo.Text),
-                                                                    new XElement("emissivity", roofEmissivity.Text),
-                                                                    new XElement("materials",
-                                                                        roofMaterialsNames,
-                                                                        roofMaterialsThermalConductivity,
-                                                                        roofMaterialsVolumetricHeatCapacity,
-                                                                        roofMaterialsThickness),
-                                                                    new XElement("vegetationCoverage", roofVegCoverage.Text),
-                                                                    new XElement("inclination", roofInclination.Text),
-                                                                    new XElement("initialTemperature", 20)),
-
-                                                                new XElement("mass",
-                                                                    new XElement("albedo", massAlbedo.Content),
-                                                                        new XElement("emissivity", massEmissivity.Content),
-                                                                        new XElement("materials",
-                                                                            new XElement("names",
-                                                                                new XElement("item", massLayer1Material.Content)),
-                                                                            new XElement("thermalConductivity",
-                                                                                new XElement("item", massLayer1K.Content)),
-                                                                            new XElement("volumetricHeatCapacity",
-                                                                                new XElement("item", massLayer1VHC.Content)),
-                                                                            new XElement("thickness", "[" + massLayer1Thickness.Content + "]")),
-                                                                                new XElement("vegetationCoverage", 0),
-                                                                                new XElement("inclination", 1),
-                                                                                 new XElement("initialTemperature", 20)),
-
-                                                                new XElement("glazing",
-                                                                    new XElement("glazingRatio", wwr.Content),
-                                                                    new XElement("windowUvalue", uValue.Content),
-                                                                    new XElement("windowSHGC", SHGC.Content)),
-
-                                                                new XElement("urbanRoad",
-                                                                    new XElement("albedo", urbanRoadAlbedo.Content),
-                                                                    new XElement("emissivity", urbanRoadEmissivity.Content),
-                                                                    new XElement("materials",
-                                                                        new XElement("names",
-                                                                            new XElement("item", urbanRoadMaterial.Content)),
-                                                                        new XElement("thermalConductivity",
-                                                                            new XElement("item", urbanRoadK.Content)),
-                                                                        new XElement("volumetricHeatCapacity",
-                                                                            new XElement("item", urbanRoadVHC.Content)),
-                                                                        new XElement("thickness", urbanRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", urbanRoadVegFraction.Content),
-                                                                    new XElement("inclination", 1),
-                                                                    new XElement("initialTemperature", 20)),
-
-                                                                new XElement("rural",
-                                                                    new XElement("albedo", ruralRoadAlbedo.Content),
-                                                                    new XElement("emissivity", ruralRoadEmissivity.Content),
-                                                                    new XElement("materials",
-                                                                        new XElement("names",
-                                                                            new XElement("item", ruralRoadMaterial.Content)),
-                                                                        new XElement("thermalConductivity",
-                                                                            new XElement("item", ruralRoadK.Content)),
-                                                                        new XElement("volumetricHeatCapacity",
-                                                                            new XElement("item", ruralRoadVHC.Content)),
-                                                                        new XElement("thickness", ruralRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Content),
-                                                                    new XElement("inclination", 1),
-                                                                    new XElement("initialTemperature", 20))
-                                                            ),
-
-                                                            //BUILDING GEOMETRY:
-                                                            new XElement("building",
-                                                                new XElement("floorHeight", floorHeight.Text),
-                                                                new XElement("dayInternalGains", dayInternalHeatGain.Content),
-                                                                new XElement("nightInternalGains", nightInternalHeatGain.Content),
-                                                                new XElement("radiantFraction", radiantFraction.Text),
-                                                                new XElement("latentFraction", latentFraction.Text),
-                                                                new XElement("infiltration", infiltration.Content),
-                                                                new XElement("ventilation", ventilation.Content),
-                                                                new XElement("coolingSystemType", coolingSystemType.Text),
-                                                                new XElement("coolingCOP", coolingCOP.Text),
-                                                                new XElement("daytimeCoolingSetPoint", daytimeCoolingSetpoint.Text),
-                                                                new XElement("nighttimeCoolingSetPoint", nighttimeCoolingSetpoint.Text),
-                                                                new XElement("daytimeHeatingSetPoint", daytimeHeatingSetPoint.Text),
-                                                                new XElement("nighttimeHeatingSetPoint", nighttimeHeatingSetPoint.Text),
-                                                                new XElement("coolingCapacity", coolingCapacity.Text),
-                                                                new XElement("heatingEfficiency", heatingEfficiency.Text),
-                                                                new XElement("nightSetStart", nightSetStart.Text),
-                                                                new XElement("nightSetEnd", nightSetEnd.Text),
-                                                                new XElement("heatReleasedToCanyon", 0),
-                                                                new XElement("initialT", 20)
-                                                            ),
-
-                                                            new XElement("urbanArea",
+                        doc.Root.Add(new XElement("urbanArea",
                                                                 new XElement("averageBuildingHeight", avgBldgHeight.Text),
                                                                 new XElement("horizontalBuildingDensity", hBDensity.Text),
                                                                 new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
@@ -6120,8 +5829,9 @@ namespace UWG
                                                                 new XElement("wgmax", 0.05),
                                                                 new XElement("exCoeff", 0.3)
                                                             )
-                                                        )
-                                                    );
+                                                        );
+
+
                         this.xmlFilePath = this.xmlPath + "\\" + this.xmlFileName;
                         doc.Save(xmlFilePath);
                     } //CLOSES: Change each sensitivity analysis parameter one at a time
@@ -6141,18 +5851,79 @@ namespace UWG
             button1_Click(sender, e);
         }
 
+        private void checkPerc(object sender, RoutedEventArgs e)
+        {
+            var inputTyp = sender as System.Windows.Controls.TextBox;
+            var visibility = System.Windows.Visibility.Visible;
+            if (inputTyp.Text == "0" || inputTyp.Text == "")
+            {
+                visibility = System.Windows.Visibility.Collapsed;
+            }
+            try
+            {
+                if (inputTyp == typology1Dist)
+                {
+                    typTab1.Visibility = visibility;
+                }
+                if (inputTyp == typology2Dist)
+                {
+                    typTab2.Visibility = visibility;
+                }
+                if (inputTyp == typology3Dist)
+                {
+                    typTab3.Visibility = visibility;
+                }
+                if (inputTyp == typology4Dist)
+                {
+                    typTab4.Visibility = visibility;
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 XDocument doc = new XDocument(new XElement("xml_input"));
-                
-                doc.Element("xml_input").Add(typ1XML_create());
-                doc.Element("xml_input").Add(typ2XML_create());
-                doc.Element("xml_input").Add(typ3XML_create());
-                doc.Element("xml_input").Add(typ4XML_create());
+                if (typology1Dist.Text != "0" || typology1Dist.Text != "")
+                {
+                    doc.Root.Add(typ1XML_create());
+                }
+                else
+                {
+                    typTab1.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                if (typology2Dist.Text != "0" || typology2Dist.Text != "")
+                {
+                    doc.Root.Add(typ2XML_create());
+                }
+                else
+                {
+                    typTab2.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                if (typology3Dist.Text != "0" || typology3Dist.Text != "")
+                {
+                    doc.Root.Add(typ3XML_create());
+                }
+                else
+                {
+                    typTab3.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                if (typology4Dist.Text != "0" || typology4Dist.Text != "")
+                {
+                    doc.Root.Add(typ4XML_create());
+                }
+                else
+                {
+                    typTab4.Visibility = System.Windows.Visibility.Collapsed;
+                }
 
-                doc.Element("xml_input").Add(new XElement("urbanArea",
+                doc.Root.Add(new XElement("urbanArea",
                                                         new XElement("averageBuildingHeight", avgBldgHeight.Text),
                                                         new XElement("horizontalBuildingDensity", hBDensity.Text),
                                                         new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
@@ -6230,7 +6001,7 @@ namespace UWG
             }
         } //closes BUTTON1_CLICK [xml]
 
-        private XDocument typ1XML_create()
+        private XElement typ1XML_create()
         {
             try
             {
@@ -6452,7 +6223,7 @@ namespace UWG
                     }
                 }
 
-                XDocument doc = new XDocument(new XElement("typology1",
+                XElement elem = new XElement("typology1",
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedo.Text),
@@ -6551,12 +6322,10 @@ namespace UWG
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
                                                     )
-                                                    
-                                                )
                                             );
-                doc.Root.Add(perc);
-                doc.Root.Add(name);
-                return doc;
+                elem.Add(perc);
+                elem.Add(name);
+                return elem;
             } //closes TRY
 
             catch (Exception error)
@@ -6566,8 +6335,7 @@ namespace UWG
             }
 
         }
-
-        private XDocument typ2XML_create()
+        private XElement typ2XML_create()
         {
             try
             {
@@ -6618,7 +6386,7 @@ namespace UWG
                 }
                 else
                 {
-                    if (wallLayer3K.Content.Equals(""))
+                    if (wallLayer3KTyp2.Content.Equals(""))
                     {
                         wallMaterialsThermalConductivity = new XElement("thermalConductivity",
                             new XElement("item", wallLayer1KTyp2.Content),
@@ -6789,7 +6557,7 @@ namespace UWG
                     }
                 }
 
-                XDocument doc = new XDocument(new XElement("typology1",
+                XElement elem = new XElement("typology2",
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedoTyp2.Text),
@@ -6888,11 +6656,10 @@ namespace UWG
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
                                                     )
-                                                )
                                             );
-                doc.Root.Add(perc);
-                doc.Root.Add(name);
-                return doc;
+                elem.Add(perc);
+                elem.Add(name);
+                return elem;
             } //closes TRY
 
             catch (Exception error)
@@ -6902,13 +6669,12 @@ namespace UWG
             }
 
         }
-
-        private XDocument typ3XML_create()
+        private XElement typ3XML_create()
         {
             try
             {
                 XAttribute perc = new XAttribute("dist", typology3Dist);
-                XAttribute name = new XAttribute("name", typology1Type.Text);
+                XAttribute name = new XAttribute("name", typology3Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
                 XElement wallMaterialsNames;
@@ -6954,7 +6720,7 @@ namespace UWG
                 }
                 else
                 {
-                    if (wallLayer3K.Content.Equals(""))
+                    if (wallLayer3KTyp3.Content.Equals(""))
                     {
                         wallMaterialsThermalConductivity = new XElement("thermalConductivity",
                             new XElement("item", wallLayer1KTyp3.Content),
@@ -7125,7 +6891,7 @@ namespace UWG
                     }
                 }
 
-                XDocument doc = new XDocument(new XElement("typology1",
+                XElement elem = new XElement("typology3",
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedoTyp3.Text),
@@ -7224,11 +6990,10 @@ namespace UWG
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
                                                     )
-                                                )
                                             );
-                doc.Root.Add(perc);
-                doc.Root.Add(name);
-                return doc;
+                elem.Add(perc);
+                elem.Add(name);
+                return elem;
             } //closes TRY
 
             catch (Exception error)
@@ -7238,13 +7003,12 @@ namespace UWG
             }
 
         }
-
-        private XDocument typ4XML_create()
+        private XElement typ4XML_create()
         {
             try
             {
                 XAttribute perc = new XAttribute("dist", typology4Dist);
-                XAttribute name = new XAttribute("name", typology1Type.Text);
+                XAttribute name = new XAttribute("name", typology4Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
                 XElement wallMaterialsNames;
@@ -7290,7 +7054,7 @@ namespace UWG
                 }
                 else
                 {
-                    if (wallLayer3K.Content.Equals(""))
+                    if (wallLayer3KTyp4.Content.Equals(""))
                     {
                         wallMaterialsThermalConductivity = new XElement("thermalConductivity",
                             new XElement("item", wallLayer1KTyp4.Content),
@@ -7461,7 +7225,7 @@ namespace UWG
                     }
                 }
 
-                XDocument doc = new XDocument(new XElement("typology1",
+                XElement elem = new XElement("typology4",
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedoTyp4.Text),
@@ -7560,11 +7324,10 @@ namespace UWG
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
                                                     )
-                                                )
                                             );
-                doc.Root.Add(perc);
-                doc.Root.Add(name);
-                return doc;
+                elem.Add(perc);
+                elem.Add(name);
+                return elem;
             } //closes TRY
 
             catch (Exception error)
@@ -7574,8 +7337,6 @@ namespace UWG
             }
 
         }
-
-
 
         private void startEditor(object sender, RoutedEventArgs e)
         {
