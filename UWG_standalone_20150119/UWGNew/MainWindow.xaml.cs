@@ -40,6 +40,31 @@ namespace UWG
         private int glazingboxi = 0;
         private int ruralboxi = 0;
         private int heatboxi = 0;
+
+        private int wallboxiTyp2 = 0;
+        private int massboxiTyp2 = 0;
+        private int urbanRoadboxiTyp2 = 0;
+        private int roofboxiTyp2 = 0;
+        private int glazingboxiTyp2 = 0;
+        private int ruralboxiTyp2 = 0;
+        private int heatboxiTyp2 = 0;
+
+        private int wallboxiTyp3 = 0;
+        private int massboxiTyp3 = 0;
+        private int urbanRoadboxiTyp3 = 0;
+        private int roofboxiTyp3 = 0;
+        private int glazingboxiTyp3 = 0;
+        private int ruralboxiTyp3 = 0;
+        private int heatboxiTyp3 = 0;
+
+        private int wallboxiTyp4 = 0;
+        private int massboxiTyp4 = 0;
+        private int urbanRoadboxiTyp4 = 0;
+        private int roofboxiTyp4 = 0;
+        private int glazingboxiTyp4 = 0;
+        private int ruralboxiTyp4 = 0;
+        private int heatboxiTyp4 = 0;
+
         public String DialogName;
         private XmlDocument defxml = new XmlDocument();
         private String epwPathRun = "";
@@ -133,6 +158,33 @@ namespace UWG
             ruralbox_load(sender, e1);
             glazingbox_load(sender, e1);
             heatbox_load(sender, e1);
+
+            roofboxTyp2_load(sender, e1);
+            wallboxTyp2_load(sender, e1);
+            massboxTyp2_load(sender, e1);
+            urbanRoadboxTyp2_load(sender, e1);
+            ruralboxTyp2_load(sender, e1);
+            glazingboxTyp2_load(sender, e1);
+            heatboxTyp2_load(sender, e1);
+
+            roofboxTyp3_load(sender, e1);
+            wallboxTyp3_load(sender, e1);
+            massboxTyp3_load(sender, e1);
+            urbanRoadboxTyp3_load(sender, e1);
+            ruralboxTyp3_load(sender, e1);
+            glazingboxTyp3_load(sender, e1);
+            heatboxTyp3_load(sender, e1);
+
+            roofboxTyp4_load(sender, e1);
+            wallboxTyp4_load(sender, e1);
+            massboxTyp4_load(sender, e1);
+            urbanRoadboxTyp4_load(sender, e1);
+            ruralboxTyp4_load(sender, e1);
+            glazingboxTyp4_load(sender, e1);
+            heatboxTyp4_load(sender, e1);
+
+
+
         }
         private void heatbox_load(object sender, RoutedEventArgs e)
         {
@@ -1157,6 +1209,3080 @@ namespace UWG
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
         }
+
+        private void heatboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList heatx = defxml.GetElementsByTagName("HeatTemplate");
+            List<string> heatlist = new List<string>();
+            heatlist.Add("Blank");
+            foreach (XmlNode no in heatx)
+            {
+                string temp = no.SelectSingleNode("Name").InnerText;
+                heatlist.Add(temp);
+            }
+            heatlist.Add("New Template");
+            heatboxTyp2.ItemsSource = heatlist;
+            if (heatlist[heatboxiTyp2] == "New Template") heatboxiTyp2 = 0;
+            if (heatboxiTyp2 != 0)
+            {
+                heatboxTyp2.SelectedIndex = heatboxiTyp2 - 1;
+                heatboxTyp2.SelectedIndex = heatboxiTyp2 + 1;
+            }
+            else heatboxTyp2.SelectedIndex = 0;
+        }
+        private void wallboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList wallx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> walllist = new List<string>();
+            walllist.Add("Blank");
+            foreach (XmlNode no in wallx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Wall")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    walllist.Add(temp);
+                }
+            }
+            walllist.Add("New Template");
+            wallboxTyp2.ItemsSource = walllist;
+            if (walllist[wallboxiTyp2] == "New Template") wallboxiTyp2 = 0;
+            if (wallboxiTyp2 != 0)
+            {
+                wallboxTyp2.SelectedIndex = wallboxiTyp2 - 1;
+                wallboxTyp2.SelectedIndex = wallboxiTyp2 + 1;
+            }
+            else wallboxTyp2.SelectedIndex = 0;
+        }
+        private void massboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Blank");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Internal Mass")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            massboxTyp2.ItemsSource = masslist;
+            if (masslist[massboxiTyp2] == "New Template") massboxiTyp2 = 0;
+            if (massboxiTyp2 != 0)
+            {
+                massboxTyp2.SelectedIndex = massboxiTyp2 - 1;
+                massboxTyp2.SelectedIndex = massboxiTyp2 + 1;
+            }
+            else massboxTyp2.SelectedIndex = 0;
+        }
+        private void urbanRoadboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Default");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Urban Road")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            urbanRoadboxTyp2.ItemsSource = masslist;
+            if (masslist[urbanRoadboxiTyp2] == "New Template") urbanRoadboxiTyp2 = 0;
+            if (urbanRoadboxiTyp2 != 0)
+            {
+                urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2 - 1;
+                urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2 + 1;
+            }
+            else urbanRoadboxTyp2.SelectedIndex = 0;
+        }
+        private void ruralboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Default");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Rural Road")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            ruralboxTyp2.ItemsSource = masslist;
+            if (masslist[ruralboxiTyp2] == "New Template") ruralboxiTyp2 = 0;
+            if (ruralboxiTyp2 != 0)
+            {
+                ruralboxTyp2.SelectedIndex = ruralboxiTyp2 - 1;
+                ruralboxTyp2.SelectedIndex = ruralboxiTyp2 + 1;
+            }
+            else ruralboxTyp2.SelectedIndex = 0;
+        }
+        private void roofboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> rooflist = new List<string>();
+            rooflist.Add("Blank");
+            foreach (XmlNode no in roofx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Roof")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    rooflist.Add(temp);
+                }
+            }
+            rooflist.Add("New Template");
+            roofboxTyp2.ItemsSource = rooflist;
+            if (rooflist[roofboxiTyp2] == "New Template") roofboxiTyp2 = 0;
+            if (roofboxiTyp2 != 0)
+            {
+                roofboxTyp2.SelectedIndex = roofboxiTyp2 - 1;
+                roofboxTyp2.SelectedIndex = roofboxiTyp2 + 1;
+            }
+            else roofboxTyp2.SelectedIndex = 0;
+        }
+        private void glazingboxTyp2_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList glazingx = defxml.GetElementsByTagName("GlazingConstruction");
+            List<string> glazinglist = new List<string>();
+            glazinglist.Add("Blank");
+            foreach (XmlNode no in glazingx)
+            {
+                if (no.SelectNodes("WWR").Count != 0)
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    glazinglist.Add(temp);
+                }
+            }
+            glazinglist.Add("New Template");
+            glazingboxTyp2.ItemsSource = glazinglist;
+            if (glazinglist[glazingboxiTyp2] == "New Template") glazingboxiTyp2 = 0;
+            if (glazingboxiTyp2 != 0)
+            {
+                glazingboxTyp2.SelectedIndex = glazingboxiTyp2 - 1;
+                glazingboxTyp2.SelectedIndex = glazingboxiTyp2 + 1;
+            }
+            else glazingboxTyp2.SelectedIndex = 0;
+        }
+        private void roofboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = roofboxTyp2.SelectedIndex;
+            roofLayer1KTyp2.Content = "";
+            roofLayer2KTyp2.Content = "";
+            roofLayer3KTyp2.Content = "";
+            roofLayer1VHCTyp2.Content = "";
+            roofLayer2VHCTyp2.Content = "";
+            roofLayer3VHCTyp2.Content = "";
+            if (ind == 0)
+            {
+                roofLayer1MaterialTyp2.Content = "";
+                roofLayer1ThicknessTyp2.Content = "";
+                roofLayer2MaterialTyp2.Content = "";
+                roofLayer2ThicknessTyp2.Content = "";
+                roofLayer3MaterialTyp2.Content = "";
+                roofLayer3ThicknessTyp2.Content = "";
+                roofboxiTyp2 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            if (ind == 0) return;
+            XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode croof = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in roofx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Roof")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    croof = nod;
+                    break;
+                }
+                j++;
+                if (j == roofx.Count && ind == i + 1)
+                {
+                    roofboxTyp2.SelectedIndex = roofboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= roofx.Count)
+                {
+                    roofboxTyp2.SelectedIndex = 0;
+                    return;
+                }
+            }
+            roofboxiTyp2 = ind;
+            XmlNodeList names = croof.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            for (ind = 0; ind != names.Count; ind++)
+            {
+                if (ind == 0)
+                {
+                    roofLayer1MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer1ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content)
+                        {
+                            roofLayer1KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer1VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                            roofAlbedoTyp2.Text = ma.SelectSingleNode("Albedo").InnerText;
+                            roofEmissivityTyp2.Text = ma.SelectSingleNode("Emissivity").InnerText;
+                        }
+                    }
+                }
+                if (ind == 1)
+                {
+                    roofLayer2MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer2ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        {
+                            roofLayer2KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer2VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 2)
+                {
+                    roofLayer3MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer3ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        {
+                            roofLayer3KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer3VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+            }
+            for (ind = names.Count; ind <= 2; ind++)
+            {
+                if (ind == 0)
+                {
+                    roofLayer1MaterialTyp2.Content = "";
+                    roofLayer1ThicknessTyp2.Content = "";
+                    roofLayer1KTyp2.Content = "";
+                    roofLayer1VHCTyp2.Content = "";
+                }
+                if (ind == 1)
+                {
+                    roofLayer2MaterialTyp2.Content = "";
+                    roofLayer2ThicknessTyp2.Content = "";
+                    roofLayer2KTyp2.Content = "";
+                    roofLayer2VHCTyp2.Content = "";
+                }
+                if (ind == 2)
+                {
+                    roofLayer3MaterialTyp2.Content = "";
+                    roofLayer3ThicknessTyp2.Content = "";
+                    roofLayer3KTyp2.Content = "";
+                    roofLayer3VHCTyp2.Content = "";
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void wallboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = wallboxTyp2.SelectedIndex;
+            wallLayer1KTyp2.Content = "";
+            wallLayer2KTyp2.Content = "";
+            wallLayer3KTyp2.Content = "";
+            wallLayer4KTyp2.Content = "";
+            wallLayer1VHCTyp2.Content = "";
+            wallLayer2VHCTyp2.Content = "";
+            wallLayer3VHCTyp2.Content = "";
+            wallLayer4VHCTyp2.Content = "";
+            if (ind == 0)
+            {
+                wallLayer1MaterialTyp2.Content = "";
+                wallLayer1ThicknessTyp2.Content = "";
+                wallLayer2MaterialTyp2.Content = "";
+                wallLayer2ThicknessTyp2.Content = "";
+                wallLayer3MaterialTyp2.Content = "";
+                wallLayer3ThicknessTyp2.Content = "";
+                wallLayer4MaterialTyp2.Content = "";
+                wallLayer4ThicknessTyp2.Content = "";
+                wallboxiTyp2 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            if (ind == 0) return;
+            XmlNodeList wallx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cwall = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in wallx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Wall")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cwall = nod;
+                    break;
+                }
+                j++;
+                if (j == wallx.Count && ind == i + 1)
+                {
+                    wallboxTyp2.SelectedIndex = wallboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= wallx.Count)
+                {
+                    wallboxTyp2.SelectedIndex = 0;
+                    return;
+                }
+            }
+            wallboxiTyp2 = ind;
+            XmlNodeList names = cwall.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            for (ind = 0; ind != names.Count; ind++)
+            {
+                if (ind == 0)
+                {
+                    wallLayer1MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer1ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        {
+                            wallLayer1KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer1VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                            wallAlbedoTyp2.Text = ma.SelectSingleNode("Albedo").InnerText;
+                            wallEmissivityTyp2.Text = ma.SelectSingleNode("Emissivity").InnerText;
+                        }
+                    }
+                }
+                if (ind == 1)
+                {
+                    wallLayer2MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer2ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        {
+                            wallLayer2KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer2VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 2)
+                {
+                    wallLayer3MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer3ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        {
+                            wallLayer3KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer3VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 3)
+                {
+                    wallLayer4MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer4ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        {
+                            wallLayer4KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer4VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+            }
+            for (ind = names.Count; ind <= 3; ind++)
+            {
+                if (ind == 0)
+                {
+                    wallLayer1MaterialTyp2.Content = "";
+                    wallLayer1ThicknessTyp2.Content = "";
+                    wallLayer1KTyp2.Content = "";
+                    wallLayer1VHCTyp2.Content = "";
+                }
+                if (ind == 1)
+                {
+                    wallLayer2MaterialTyp2.Content = "";
+                    wallLayer2ThicknessTyp2.Content = "";
+                    wallLayer2KTyp2.Content = "";
+                    wallLayer2VHCTyp2.Content = "";
+                }
+                if (ind == 2)
+                {
+                    wallLayer3MaterialTyp2.Content = "";
+                    wallLayer3ThicknessTyp2.Content = "";
+                    wallLayer3KTyp2.Content = "";
+                    wallLayer3VHCTyp2.Content = "";
+                }
+                if (ind == 3)
+                {
+                    wallLayer4MaterialTyp2.Content = "";
+                    wallLayer4ThicknessTyp2.Content = "";
+                    wallLayer4KTyp2.Content = "";
+                    wallLayer4VHCTyp2.Content = "";
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void massboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = massboxTyp2.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                massLayer1MaterialTyp2.Content = "";
+                massLayer1ThicknessTyp2.Content = "";
+                massboxiTyp2 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cmass = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in massx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Internal Mass")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cmass = nod;
+                    break;
+                }
+                j++;
+                if (j == massx.Count && ind == i + 1)
+                {
+                    massboxTyp2.SelectedIndex = massboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= massx.Count)
+                {
+                    massboxTyp2.SelectedIndex = 0;
+                    return;
+                }
+            }
+            massboxiTyp2 = ind;
+            XmlNodeList names = cmass.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            massLayer1MaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            massLayer1ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                {
+                    massLayer1KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    massLayer1VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                    massAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    massEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void urbanRoadboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = urbanRoadboxTyp2.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                urbanRoadMaterialTyp2.Content = "asphalt";
+                urbanRoadThicknessTyp2.Content = "1.25";
+                urbanRoadVHCTyp2.Content = "1600000";
+                urbanRoadKTyp2.Content = "1";
+                urbanRoadEmissivityTyp2.Content = "0.95";
+                urbanRoadAlbedoTyp2.Content = "0.165";
+                urbanRoadboxiTyp2 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in uRoadx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cuRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == uRoadx.Count && ind == i + 1)
+                {
+                    urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= uRoadx.Count)
+                {
+                    urbanRoadboxTyp2.SelectedIndex = 0;
+                    return;
+                }
+            }
+            urbanRoadboxiTyp2 = ind;
+            XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            urbanRoadMaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            urbanRoadThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+                {
+                    urbanRoadKTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    urbanRoadVHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                    urbanRoadAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    urbanRoadEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void ruralboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = ruralboxTyp2.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                ruralRoadMaterialTyp2.Content = "asphalt";
+                ruralRoadThicknessTyp2.Content = "1.25";
+                ruralRoadVHCTyp2.Content = "1600000";
+                ruralRoadKTyp2.Content = "1";
+                ruralRoadEmissivityTyp2.Content = "0.95";
+                ruralRoadAlbedoTyp2.Content = "0.165";
+                ruralboxiTyp2 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in rRoadx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    crRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == rRoadx.Count && ind == i + 1)
+                {
+                    ruralboxTyp2.SelectedIndex = ruralboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= rRoadx.Count)
+                {
+                    ruralbox.SelectedIndex = 0;
+                    return;
+                }
+            }
+            ruralboxiTyp2 = ind;
+            XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            ruralRoadMaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            ruralRoadThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+                {
+                    ruralRoadKTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    ruralRoadVHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+                    ruralRoadAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    ruralRoadEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void glazingboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = glazingboxTyp2.SelectedIndex;
+            if (ind == 0)
+            {
+                uValueTyp2.Content = "";
+                wwrTyp2.Content = "";
+                SHGCTyp2.Content = "";
+                glazingboxiTyp2 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            XmlNodeList rRoadx = defxml.GetElementsByTagName("GlazingConstruction");
+            XmlNode crRoad = defxml.CreateElement("GlazingConstruction");
+            int j = 0;
+            foreach (XmlNode nod in rRoadx)
+            {
+                if (nod.SelectNodes("WWR").Count != 0)
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    crRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == rRoadx.Count && ind == i + 1)
+                {
+                    glazingboxTyp2.SelectedIndex = glazingboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 2;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= rRoadx.Count)
+                {
+                    glazingboxTyp2.SelectedIndex = 0;
+                    return;
+                }
+            }
+            glazingboxiTyp2 = ind;
+            wwrTyp2.Content = crRoad.SelectSingleNode("WWR").InnerText;
+            uValueTyp2.Content = crRoad.SelectSingleNode("UValue").InnerText;
+            SHGCTyp2.Content = crRoad.SelectSingleNode("SHGC").InnerText;
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void heatboxTyp2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = heatboxTyp2.SelectedIndex;
+            if (ind == 0)
+            {
+                dayInternalHeatGainTyp2.Content = "";
+                nightInternalHeatGainTyp2.Content = "";
+                infiltrationTyp2.Content = "";
+                ventilationTyp2.Content = "";
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            XmlNodeList heatx = defxml.GetElementsByTagName("HeatTemplate");
+            XmlNode cheat = defxml.CreateElement("HeatTemplate");
+            int j = 0;
+            foreach (XmlNode nod in heatx)
+            {
+                i++;
+                if (i == ind)
+                {
+                    cheat = nod;
+                    break;
+                }
+                j++;
+                if (j == heatx.Count && ind == i + 1)
+                {
+                    heatboxTyp2.SelectedIndex = heatboxiTyp2;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 1;
+                    s.buildingTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= heatx.Count)
+                {
+                    heatboxTyp2.SelectedIndex = 0;
+                    return;
+                }
+            }
+            heatboxiTyp2 = ind;
+            string Os = cheat.SelectSingleNode("OccupancySched").InnerText;
+            string Ls = cheat.SelectSingleNode("LightsSched").InnerText;
+            string Es = cheat.SelectSingleNode("EquipSched").InnerText;
+            string Is = cheat.SelectSingleNode("InfiltrationSched").InnerText;
+            string Vs = cheat.SelectSingleNode("VentilationSched").InnerText;
+            double Od = 0;
+            double On = 0;
+            double Ld = 0;
+            double Ln = 0;
+            double Ed = 0;
+            double En = 0;
+            double I = 0;
+            double V = 0;
+            foreach (XmlNode no in defxml.GetElementsByTagName("WeekSchedule"))
+            {
+                if (no.SelectSingleNode("Name").InnerText == Os)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) On += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Od += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    On = On / 7.0;
+                    Od = Od / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Ls)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) Ln += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Ld += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    Ln = Ln / 7.0;
+                    Ld = Ld / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Es)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) En += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Ed += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    En = En / 7.0;
+                    Ed = Ed / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Is)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    I += Convert.ToDouble(sd.InnerText) / 24.0;
+                                }
+                            }
+                        }
+                    }
+                    I = I / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Vs)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    V += Convert.ToDouble(sd.InnerText) / 24.0;
+                                }
+                            }
+                        }
+                    }
+                    V = V / 7.0;
+                }
+            }
+            Od = Od * Convert.ToDouble(cheat.SelectSingleNode("OccupancyMax").InnerText);
+            On = On * Convert.ToDouble(cheat.SelectSingleNode("OccupancyMax").InnerText);
+            Ld = Ld * Convert.ToDouble(cheat.SelectSingleNode("LightsMax").InnerText);
+            Ln = Ln * Convert.ToDouble(cheat.SelectSingleNode("LightsMax").InnerText);
+            Ed = Ed * Convert.ToDouble(cheat.SelectSingleNode("EquipMax").InnerText);
+            En = En * Convert.ToDouble(cheat.SelectSingleNode("EquipMax").InnerText);
+            I = I * Convert.ToDouble(cheat.SelectSingleNode("InfiltrationMax").InnerText);
+            V = V * Convert.ToDouble(cheat.SelectSingleNode("VentilationMax").InnerText);
+            dayInternalHeatGainTyp2.Content = Convert.ToString(Od + Ld + Ed);
+            nightInternalHeatGainTyp2.Content = Convert.ToString(On + Ln + En);
+            infiltrationTyp2.Content = Convert.ToString(I);
+            ventilationTyp2.Content = Convert.ToString(V);
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+
+        private void heatboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList heatx = defxml.GetElementsByTagName("HeatTemplate");
+            List<string> heatlist = new List<string>();
+            heatlist.Add("Blank");
+            foreach (XmlNode no in heatx)
+            {
+                string temp = no.SelectSingleNode("Name").InnerText;
+                heatlist.Add(temp);
+            }
+            heatlist.Add("New Template");
+            heatboxTyp3.ItemsSource = heatlist;
+            if (heatlist[heatboxiTyp3] == "New Template") heatboxiTyp3 = 0;
+            if (heatboxiTyp3 != 0)
+            {
+                heatboxTyp3.SelectedIndex = heatboxiTyp3 - 1;
+                heatboxTyp3.SelectedIndex = heatboxiTyp3 + 1;
+            }
+            else heatboxTyp3.SelectedIndex = 0;
+        }
+        private void wallboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList wallx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> walllist = new List<string>();
+            walllist.Add("Blank");
+            foreach (XmlNode no in wallx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Wall")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    walllist.Add(temp);
+                }
+            }
+            walllist.Add("New Template");
+            wallboxTyp3.ItemsSource = walllist;
+            if (walllist[wallboxiTyp3] == "New Template") wallboxiTyp3 = 0;
+            if (wallboxiTyp3 != 0)
+            {
+                wallboxTyp3.SelectedIndex = wallboxiTyp3 - 1;
+                wallboxTyp3.SelectedIndex = wallboxiTyp3 + 1;
+            }
+            else wallboxTyp3.SelectedIndex = 0;
+        }
+        private void massboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Blank");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Internal Mass")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            massboxTyp3.ItemsSource = masslist;
+            if (masslist[massboxiTyp3] == "New Template") massboxiTyp3 = 0;
+            if (massboxiTyp3 != 0)
+            {
+                massboxTyp3.SelectedIndex = massboxiTyp3 - 1;
+                massboxTyp3.SelectedIndex = massboxiTyp3 + 1;
+            }
+            else massboxTyp3.SelectedIndex = 0;
+        }
+        private void urbanRoadboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Default");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Urban Road")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            urbanRoadboxTyp3.ItemsSource = masslist;
+            if (masslist[urbanRoadboxiTyp3] == "New Template") urbanRoadboxiTyp3 = 0;
+            if (urbanRoadboxiTyp3 != 0)
+            {
+                urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3 - 1;
+                urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3 + 1;
+            }
+            else urbanRoadboxTyp3.SelectedIndex = 0;
+        }
+        private void ruralboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Default");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Rural Road")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            ruralboxTyp3.ItemsSource = masslist;
+            if (masslist[ruralboxiTyp3] == "New Template") ruralboxiTyp3 = 0;
+            if (ruralboxiTyp3 != 0)
+            {
+                ruralboxTyp3.SelectedIndex = ruralboxiTyp3 - 1;
+                ruralboxTyp3.SelectedIndex = ruralboxiTyp3 + 1;
+            }
+            else ruralboxTyp3.SelectedIndex = 0;
+        }
+        private void roofboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> rooflist = new List<string>();
+            rooflist.Add("Blank");
+            foreach (XmlNode no in roofx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Roof")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    rooflist.Add(temp);
+                }
+            }
+            rooflist.Add("New Template");
+            roofboxTyp3.ItemsSource = rooflist;
+            if (rooflist[roofboxiTyp3] == "New Template") roofboxiTyp3 = 0;
+            if (roofboxiTyp3 != 0)
+            {
+                roofboxTyp3.SelectedIndex = roofboxiTyp3 - 1;
+                roofboxTyp3.SelectedIndex = roofboxiTyp3 + 1;
+            }
+            else roofboxTyp3.SelectedIndex = 0;
+        }
+        private void glazingboxTyp3_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList glazingx = defxml.GetElementsByTagName("GlazingConstruction");
+            List<string> glazinglist = new List<string>();
+            glazinglist.Add("Blank");
+            foreach (XmlNode no in glazingx)
+            {
+                if (no.SelectNodes("WWR").Count != 0)
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    glazinglist.Add(temp);
+                }
+            }
+            glazinglist.Add("New Template");
+            glazingboxTyp3.ItemsSource = glazinglist;
+            if (glazinglist[glazingboxiTyp3] == "New Template") glazingboxiTyp3 = 0;
+            if (glazingboxiTyp3 != 0)
+            {
+                glazingboxTyp3.SelectedIndex = glazingboxiTyp3 - 1;
+                glazingboxTyp3.SelectedIndex = glazingboxiTyp3 + 1;
+            }
+            else glazingboxTyp3.SelectedIndex = 0;
+        }
+        private void roofboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = roofboxTyp3.SelectedIndex;
+            roofLayer1KTyp3.Content = "";
+            roofLayer2KTyp3.Content = "";
+            roofLayer3KTyp3.Content = "";
+            roofLayer1VHCTyp3.Content = "";
+            roofLayer2VHCTyp3.Content = "";
+            roofLayer3VHCTyp3.Content = "";
+            if (ind == 0)
+            {
+                roofLayer1MaterialTyp3.Content = "";
+                roofLayer1ThicknessTyp3.Content = "";
+                roofLayer2MaterialTyp3.Content = "";
+                roofLayer2ThicknessTyp3.Content = "";
+                roofLayer3MaterialTyp3.Content = "";
+                roofLayer3ThicknessTyp3.Content = "";
+                roofboxiTyp3 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            if (ind == 0) return;
+            XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode croof = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in roofx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Roof")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    croof = nod;
+                    break;
+                }
+                j++;
+                if (j == roofx.Count && ind == i + 1)
+                {
+                    roofboxTyp3.SelectedIndex = roofboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= roofx.Count)
+                {
+                    roofboxTyp3.SelectedIndex = 0;
+                    return;
+                }
+            }
+            roofboxiTyp3 = ind;
+            XmlNodeList names = croof.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            for (ind = 0; ind != names.Count; ind++)
+            {
+                if (ind == 0)
+                {
+                    roofLayer1MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer1ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content)
+                        {
+                            roofLayer1KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer1VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                            roofAlbedoTyp3.Text = ma.SelectSingleNode("Albedo").InnerText;
+                            roofEmissivityTyp3.Text = ma.SelectSingleNode("Emissivity").InnerText;
+                        }
+                    }
+                }
+                if (ind == 1)
+                {
+                    roofLayer2MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer2ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        {
+                            roofLayer2KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer2VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 2)
+                {
+                    roofLayer3MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer3ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        {
+                            roofLayer3KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer3VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+            }
+            for (ind = names.Count; ind <= 2; ind++)
+            {
+                if (ind == 0)
+                {
+                    roofLayer1MaterialTyp3.Content = "";
+                    roofLayer1ThicknessTyp3.Content = "";
+                    roofLayer1KTyp3.Content = "";
+                    roofLayer1VHCTyp3.Content = "";
+                }
+                if (ind == 1)
+                {
+                    roofLayer2MaterialTyp3.Content = "";
+                    roofLayer2ThicknessTyp3.Content = "";
+                    roofLayer2KTyp3.Content = "";
+                    roofLayer2VHCTyp3.Content = "";
+                }
+                if (ind == 2)
+                {
+                    roofLayer3MaterialTyp3.Content = "";
+                    roofLayer3ThicknessTyp3.Content = "";
+                    roofLayer3KTyp3.Content = "";
+                    roofLayer3VHCTyp3.Content = "";
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void wallboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = wallboxTyp3.SelectedIndex;
+            wallLayer1KTyp3.Content = "";
+            wallLayer2KTyp3.Content = "";
+            wallLayer3KTyp3.Content = "";
+            wallLayer4KTyp3.Content = "";
+            wallLayer1VHCTyp3.Content = "";
+            wallLayer2VHCTyp3.Content = "";
+            wallLayer3VHCTyp3.Content = "";
+            wallLayer4VHCTyp3.Content = "";
+            if (ind == 0)
+            {
+                wallLayer1MaterialTyp3.Content = "";
+                wallLayer1ThicknessTyp3.Content = "";
+                wallLayer2MaterialTyp3.Content = "";
+                wallLayer2ThicknessTyp3.Content = "";
+                wallLayer3MaterialTyp3.Content = "";
+                wallLayer3ThicknessTyp3.Content = "";
+                wallLayer4MaterialTyp3.Content = "";
+                wallLayer4ThicknessTyp3.Content = "";
+                wallboxiTyp3 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            if (ind == 0) return;
+            XmlNodeList wallx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cwall = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in wallx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Wall")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cwall = nod;
+                    break;
+                }
+                j++;
+                if (j == wallx.Count && ind == i + 1)
+                {
+                    wallboxTyp3.SelectedIndex = wallboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= wallx.Count)
+                {
+                    wallboxTyp3.SelectedIndex = 0;
+                    return;
+                }
+            }
+            wallboxiTyp3 = ind;
+            XmlNodeList names = cwall.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            for (ind = 0; ind != names.Count; ind++)
+            {
+                if (ind == 0)
+                {
+                    wallLayer1MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer1ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        {
+                            wallLayer1KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer1VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                            wallAlbedoTyp3.Text = ma.SelectSingleNode("Albedo").InnerText;
+                            wallEmissivityTyp3.Text = ma.SelectSingleNode("Emissivity").InnerText;
+                        }
+                    }
+                }
+                if (ind == 1)
+                {
+                    wallLayer2MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer2ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        {
+                            wallLayer2KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer2VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 2)
+                {
+                    wallLayer3MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer3ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        {
+                            wallLayer3KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer3VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 3)
+                {
+                    wallLayer4MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer4ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        {
+                            wallLayer4KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer4VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+            }
+            for (ind = names.Count; ind <= 3; ind++)
+            {
+                if (ind == 0)
+                {
+                    wallLayer1MaterialTyp3.Content = "";
+                    wallLayer1ThicknessTyp3.Content = "";
+                    wallLayer1KTyp3.Content = "";
+                    wallLayer1VHCTyp3.Content = "";
+                }
+                if (ind == 1)
+                {
+                    wallLayer2MaterialTyp3.Content = "";
+                    wallLayer2ThicknessTyp3.Content = "";
+                    wallLayer2KTyp3.Content = "";
+                    wallLayer2VHCTyp3.Content = "";
+                }
+                if (ind == 2)
+                {
+                    wallLayer3MaterialTyp3.Content = "";
+                    wallLayer3ThicknessTyp3.Content = "";
+                    wallLayer3KTyp3.Content = "";
+                    wallLayer3VHCTyp3.Content = "";
+                }
+                if (ind == 3)
+                {
+                    wallLayer4MaterialTyp3.Content = "";
+                    wallLayer4ThicknessTyp3.Content = "";
+                    wallLayer4KTyp3.Content = "";
+                    wallLayer4VHCTyp3.Content = "";
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void massboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = massboxTyp3.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                massLayer1MaterialTyp3.Content = "";
+                massLayer1ThicknessTyp3.Content = "";
+                massboxiTyp3 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cmass = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in massx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Internal Mass")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cmass = nod;
+                    break;
+                }
+                j++;
+                if (j == massx.Count && ind == i + 1)
+                {
+                    massboxTyp3.SelectedIndex = massboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= massx.Count)
+                {
+                    massboxTyp3.SelectedIndex = 0;
+                    return;
+                }
+            }
+            massboxiTyp3 = ind;
+            XmlNodeList names = cmass.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            massLayer1MaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            massLayer1ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                {
+                    massLayer1KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    massLayer1VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                    massAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    massEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void urbanRoadboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = urbanRoadboxTyp3.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                urbanRoadMaterialTyp3.Content = "asphalt";
+                urbanRoadThicknessTyp3.Content = "1.25";
+                urbanRoadVHCTyp3.Content = "1600000";
+                urbanRoadKTyp3.Content = "1";
+                urbanRoadEmissivityTyp3.Content = "0.95";
+                urbanRoadAlbedoTyp3.Content = "0.165";
+                urbanRoadboxiTyp3 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in uRoadx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cuRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == uRoadx.Count && ind == i + 1)
+                {
+                    urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= uRoadx.Count)
+                {
+                    urbanRoadboxTyp3.SelectedIndex = 0;
+                    return;
+                }
+            }
+            urbanRoadboxiTyp3 = ind;
+            XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            urbanRoadMaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            urbanRoadThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+                {
+                    urbanRoadKTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    urbanRoadVHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                    urbanRoadAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    urbanRoadEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void ruralboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = ruralboxTyp3.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                ruralRoadMaterialTyp3.Content = "asphalt";
+                ruralRoadThicknessTyp3.Content = "1.25";
+                ruralRoadVHCTyp3.Content = "1600000";
+                ruralRoadKTyp3.Content = "1";
+                ruralRoadEmissivityTyp3.Content = "0.95";
+                ruralRoadAlbedoTyp3.Content = "0.165";
+                ruralboxiTyp3 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in rRoadx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    crRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == rRoadx.Count && ind == i + 1)
+                {
+                    ruralboxTyp3.SelectedIndex = ruralboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= rRoadx.Count)
+                {
+                    ruralbox.SelectedIndex = 0;
+                    return;
+                }
+            }
+            ruralboxiTyp3 = ind;
+            XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            ruralRoadMaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            ruralRoadThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+                {
+                    ruralRoadKTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    ruralRoadVHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+                    ruralRoadAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    ruralRoadEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void glazingboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = glazingboxTyp3.SelectedIndex;
+            if (ind == 0)
+            {
+                uValueTyp3.Content = "";
+                wwrTyp3.Content = "";
+                SHGCTyp3.Content = "";
+                glazingboxiTyp3 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            XmlNodeList rRoadx = defxml.GetElementsByTagName("GlazingConstruction");
+            XmlNode crRoad = defxml.CreateElement("GlazingConstruction");
+            int j = 0;
+            foreach (XmlNode nod in rRoadx)
+            {
+                if (nod.SelectNodes("WWR").Count != 0)
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    crRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == rRoadx.Count && ind == i + 1)
+                {
+                    glazingboxTyp3.SelectedIndex = glazingboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 2;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= rRoadx.Count)
+                {
+                    glazingboxTyp3.SelectedIndex = 0;
+                    return;
+                }
+            }
+            glazingboxiTyp3 = ind;
+            wwrTyp3.Content = crRoad.SelectSingleNode("WWR").InnerText;
+            uValueTyp3.Content = crRoad.SelectSingleNode("UValue").InnerText;
+            SHGCTyp3.Content = crRoad.SelectSingleNode("SHGC").InnerText;
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void heatboxTyp3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = heatboxTyp3.SelectedIndex;
+            if (ind == 0)
+            {
+                dayInternalHeatGainTyp3.Content = "";
+                nightInternalHeatGainTyp3.Content = "";
+                infiltrationTyp3.Content = "";
+                ventilationTyp3.Content = "";
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            XmlNodeList heatx = defxml.GetElementsByTagName("HeatTemplate");
+            XmlNode cheat = defxml.CreateElement("HeatTemplate");
+            int j = 0;
+            foreach (XmlNode nod in heatx)
+            {
+                i++;
+                if (i == ind)
+                {
+                    cheat = nod;
+                    break;
+                }
+                j++;
+                if (j == heatx.Count && ind == i + 1)
+                {
+                    heatboxTyp3.SelectedIndex = heatboxiTyp3;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 1;
+                    s.buildingTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= heatx.Count)
+                {
+                    heatboxTyp3.SelectedIndex = 0;
+                    return;
+                }
+            }
+            heatboxiTyp3 = ind;
+            string Os = cheat.SelectSingleNode("OccupancySched").InnerText;
+            string Ls = cheat.SelectSingleNode("LightsSched").InnerText;
+            string Es = cheat.SelectSingleNode("EquipSched").InnerText;
+            string Is = cheat.SelectSingleNode("InfiltrationSched").InnerText;
+            string Vs = cheat.SelectSingleNode("VentilationSched").InnerText;
+            double Od = 0;
+            double On = 0;
+            double Ld = 0;
+            double Ln = 0;
+            double Ed = 0;
+            double En = 0;
+            double I = 0;
+            double V = 0;
+            foreach (XmlNode no in defxml.GetElementsByTagName("WeekSchedule"))
+            {
+                if (no.SelectSingleNode("Name").InnerText == Os)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) On += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Od += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    On = On / 7.0;
+                    Od = Od / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Ls)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) Ln += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Ld += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    Ln = Ln / 7.0;
+                    Ld = Ld / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Es)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) En += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Ed += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    En = En / 7.0;
+                    Ed = Ed / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Is)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    I += Convert.ToDouble(sd.InnerText) / 24.0;
+                                }
+                            }
+                        }
+                    }
+                    I = I / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Vs)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    V += Convert.ToDouble(sd.InnerText) / 24.0;
+                                }
+                            }
+                        }
+                    }
+                    V = V / 7.0;
+                }
+            }
+            Od = Od * Convert.ToDouble(cheat.SelectSingleNode("OccupancyMax").InnerText);
+            On = On * Convert.ToDouble(cheat.SelectSingleNode("OccupancyMax").InnerText);
+            Ld = Ld * Convert.ToDouble(cheat.SelectSingleNode("LightsMax").InnerText);
+            Ln = Ln * Convert.ToDouble(cheat.SelectSingleNode("LightsMax").InnerText);
+            Ed = Ed * Convert.ToDouble(cheat.SelectSingleNode("EquipMax").InnerText);
+            En = En * Convert.ToDouble(cheat.SelectSingleNode("EquipMax").InnerText);
+            I = I * Convert.ToDouble(cheat.SelectSingleNode("InfiltrationMax").InnerText);
+            V = V * Convert.ToDouble(cheat.SelectSingleNode("VentilationMax").InnerText);
+            dayInternalHeatGainTyp3.Content = Convert.ToString(Od + Ld + Ed);
+            nightInternalHeatGainTyp3.Content = Convert.ToString(On + Ln + En);
+            infiltrationTyp3.Content = Convert.ToString(I);
+            ventilationTyp3.Content = Convert.ToString(V);
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+
+        private void heatboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList heatx = defxml.GetElementsByTagName("HeatTemplate");
+            List<string> heatlist = new List<string>();
+            heatlist.Add("Blank");
+            foreach (XmlNode no in heatx)
+            {
+                string temp = no.SelectSingleNode("Name").InnerText;
+                heatlist.Add(temp);
+            }
+            heatlist.Add("New Template");
+            heatboxTyp4.ItemsSource = heatlist;
+            if (heatlist[heatboxiTyp4] == "New Template") heatboxiTyp4 = 0;
+            if (heatboxiTyp4 != 0)
+            {
+                heatboxTyp4.SelectedIndex = heatboxiTyp4 - 1;
+                heatboxTyp4.SelectedIndex = heatboxiTyp4 + 1;
+            }
+            else heatboxTyp4.SelectedIndex = 0;
+        }
+        private void wallboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList wallx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> walllist = new List<string>();
+            walllist.Add("Blank");
+            foreach (XmlNode no in wallx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Wall")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    walllist.Add(temp);
+                }
+            }
+            walllist.Add("New Template");
+            wallboxTyp4.ItemsSource = walllist;
+            if (walllist[wallboxiTyp4] == "New Template") wallboxiTyp4 = 0;
+            if (wallboxiTyp4 != 0)
+            {
+                wallboxTyp4.SelectedIndex = wallboxiTyp4 - 1;
+                wallboxTyp4.SelectedIndex = wallboxiTyp4 + 1;
+            }
+            else wallboxTyp4.SelectedIndex = 0;
+        }
+        private void massboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Blank");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Internal Mass")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            massboxTyp4.ItemsSource = masslist;
+            if (masslist[massboxiTyp4] == "New Template") massboxiTyp4 = 0;
+            if (massboxiTyp4 != 0)
+            {
+                massboxTyp4.SelectedIndex = massboxiTyp4 - 1;
+                massboxTyp4.SelectedIndex = massboxiTyp4 + 1;
+            }
+            else massboxTyp4.SelectedIndex = 0;
+        }
+        private void urbanRoadboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Default");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Urban Road")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            urbanRoadboxTyp4.ItemsSource = masslist;
+            if (masslist[urbanRoadboxiTyp4] == "New Template") urbanRoadboxiTyp4 = 0;
+            if (urbanRoadboxiTyp4 != 0)
+            {
+                urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4 - 1;
+                urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4 + 1;
+            }
+            else urbanRoadboxTyp4.SelectedIndex = 0;
+        }
+        private void ruralboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> masslist = new List<string>();
+            masslist.Add("Default");
+            foreach (XmlNode no in massx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Rural Road")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    masslist.Add(temp);
+                }
+            }
+            masslist.Add("New Template");
+            ruralboxTyp4.ItemsSource = masslist;
+            if (masslist[ruralboxiTyp4] == "New Template") ruralboxiTyp4 = 0;
+            if (ruralboxiTyp4 != 0)
+            {
+                ruralboxTyp4.SelectedIndex = ruralboxiTyp4 - 1;
+                ruralboxTyp4.SelectedIndex = ruralboxiTyp4 + 1;
+            }
+            else ruralboxTyp4.SelectedIndex = 0;
+        }
+        private void roofboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
+            List<string> rooflist = new List<string>();
+            rooflist.Add("Blank");
+            foreach (XmlNode no in roofx)
+            {
+                if (no.SelectSingleNode("Type").InnerText == "Roof")
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    rooflist.Add(temp);
+                }
+            }
+            rooflist.Add("New Template");
+            roofboxTyp4.ItemsSource = rooflist;
+            if (rooflist[roofboxiTyp4] == "New Template") roofboxiTyp4 = 0;
+            if (roofboxiTyp4 != 0)
+            {
+                roofboxTyp4.SelectedIndex = roofboxiTyp4 - 1;
+                roofboxTyp4.SelectedIndex = roofboxiTyp4 + 1;
+            }
+            else roofboxTyp4.SelectedIndex = 0;
+        }
+        private void glazingboxTyp4_load(object sender, RoutedEventArgs e)
+        {
+            XmlNodeList glazingx = defxml.GetElementsByTagName("GlazingConstruction");
+            List<string> glazinglist = new List<string>();
+            glazinglist.Add("Blank");
+            foreach (XmlNode no in glazingx)
+            {
+                if (no.SelectNodes("WWR").Count != 0)
+                {
+                    string temp = no.SelectSingleNode("Name").InnerText;
+                    glazinglist.Add(temp);
+                }
+            }
+            glazinglist.Add("New Template");
+            glazingboxTyp4.ItemsSource = glazinglist;
+            if (glazinglist[glazingboxiTyp4] == "New Template") glazingboxiTyp4 = 0;
+            if (glazingboxiTyp4 != 0)
+            {
+                glazingboxTyp4.SelectedIndex = glazingboxiTyp4 - 1;
+                glazingboxTyp4.SelectedIndex = glazingboxiTyp4 + 1;
+            }
+            else glazingboxTyp4.SelectedIndex = 0;
+        }
+        private void roofboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = roofboxTyp4.SelectedIndex;
+            roofLayer1KTyp4.Content = "";
+            roofLayer2KTyp4.Content = "";
+            roofLayer3KTyp4.Content = "";
+            roofLayer1VHCTyp4.Content = "";
+            roofLayer2VHCTyp4.Content = "";
+            roofLayer3VHCTyp4.Content = "";
+            if (ind == 0)
+            {
+                roofLayer1MaterialTyp4.Content = "";
+                roofLayer1ThicknessTyp4.Content = "";
+                roofLayer2MaterialTyp4.Content = "";
+                roofLayer2ThicknessTyp4.Content = "";
+                roofLayer3MaterialTyp4.Content = "";
+                roofLayer3ThicknessTyp4.Content = "";
+                roofboxiTyp4 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            if (ind == 0) return;
+            XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode croof = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in roofx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Roof")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    croof = nod;
+                    break;
+                }
+                j++;
+                if (j == roofx.Count && ind == i + 1)
+                {
+                    roofboxTyp4.SelectedIndex = roofboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= roofx.Count)
+                {
+                    roofboxTyp4.SelectedIndex = 0;
+                    return;
+                }
+            }
+            roofboxiTyp4 = ind;
+            XmlNodeList names = croof.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            for (ind = 0; ind != names.Count; ind++)
+            {
+                if (ind == 0)
+                {
+                    roofLayer1MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer1ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content)
+                        {
+                            roofLayer1KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer1VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                            roofAlbedoTyp4.Text = ma.SelectSingleNode("Albedo").InnerText;
+                            roofEmissivityTyp4.Text = ma.SelectSingleNode("Emissivity").InnerText;
+                        }
+                    }
+                }
+                if (ind == 1)
+                {
+                    roofLayer2MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer2ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        {
+                            roofLayer2KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer2VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 2)
+                {
+                    roofLayer3MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    roofLayer3ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        {
+                            roofLayer3KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            roofLayer3VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+            }
+            for (ind = names.Count; ind <= 2; ind++)
+            {
+                if (ind == 0)
+                {
+                    roofLayer1MaterialTyp4.Content = "";
+                    roofLayer1ThicknessTyp4.Content = "";
+                    roofLayer1KTyp4.Content = "";
+                    roofLayer1VHCTyp4.Content = "";
+                }
+                if (ind == 1)
+                {
+                    roofLayer2MaterialTyp4.Content = "";
+                    roofLayer2ThicknessTyp4.Content = "";
+                    roofLayer2KTyp4.Content = "";
+                    roofLayer2VHCTyp4.Content = "";
+                }
+                if (ind == 2)
+                {
+                    roofLayer3MaterialTyp4.Content = "";
+                    roofLayer3ThicknessTyp4.Content = "";
+                    roofLayer3KTyp4.Content = "";
+                    roofLayer3VHCTyp4.Content = "";
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void wallboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = wallboxTyp4.SelectedIndex;
+            wallLayer1KTyp4.Content = "";
+            wallLayer2KTyp4.Content = "";
+            wallLayer3KTyp4.Content = "";
+            wallLayer4KTyp4.Content = "";
+            wallLayer1VHCTyp4.Content = "";
+            wallLayer2VHCTyp4.Content = "";
+            wallLayer3VHCTyp4.Content = "";
+            wallLayer4VHCTyp4.Content = "";
+            if (ind == 0)
+            {
+                wallLayer1MaterialTyp4.Content = "";
+                wallLayer1ThicknessTyp4.Content = "";
+                wallLayer2MaterialTyp4.Content = "";
+                wallLayer2ThicknessTyp4.Content = "";
+                wallLayer3MaterialTyp4.Content = "";
+                wallLayer3ThicknessTyp4.Content = "";
+                wallLayer4MaterialTyp4.Content = "";
+                wallLayer4ThicknessTyp4.Content = "";
+                wallboxiTyp4 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            if (ind == 0) return;
+            XmlNodeList wallx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cwall = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in wallx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Wall")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cwall = nod;
+                    break;
+                }
+                j++;
+                if (j == wallx.Count && ind == i + 1)
+                {
+                    wallboxTyp4.SelectedIndex = wallboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= wallx.Count)
+                {
+                    wallboxTyp4.SelectedIndex = 0;
+                    return;
+                }
+            }
+            wallboxiTyp4 = ind;
+            XmlNodeList names = cwall.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            for (ind = 0; ind != names.Count; ind++)
+            {
+                if (ind == 0)
+                {
+                    wallLayer1MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer1ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        {
+                            wallLayer1KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer1VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                            wallAlbedoTyp4.Text = ma.SelectSingleNode("Albedo").InnerText;
+                            wallEmissivityTyp4.Text = ma.SelectSingleNode("Emissivity").InnerText;
+                        }
+                    }
+                }
+                if (ind == 1)
+                {
+                    wallLayer2MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer2ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        {
+                            wallLayer2KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer2VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 2)
+                {
+                    wallLayer3MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer3ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        {
+                            wallLayer3KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer3VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+                if (ind == 3)
+                {
+                    wallLayer4MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+                    wallLayer4ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+                    foreach (XmlNode ma in mat)
+                    {
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        {
+                            wallLayer4KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                            wallLayer4VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                        }
+                    }
+                }
+            }
+            for (ind = names.Count; ind <= 3; ind++)
+            {
+                if (ind == 0)
+                {
+                    wallLayer1MaterialTyp4.Content = "";
+                    wallLayer1ThicknessTyp4.Content = "";
+                    wallLayer1KTyp4.Content = "";
+                    wallLayer1VHCTyp4.Content = "";
+                }
+                if (ind == 1)
+                {
+                    wallLayer2MaterialTyp4.Content = "";
+                    wallLayer2ThicknessTyp4.Content = "";
+                    wallLayer2KTyp4.Content = "";
+                    wallLayer2VHCTyp4.Content = "";
+                }
+                if (ind == 2)
+                {
+                    wallLayer3MaterialTyp4.Content = "";
+                    wallLayer3ThicknessTyp4.Content = "";
+                    wallLayer3KTyp4.Content = "";
+                    wallLayer3VHCTyp4.Content = "";
+                }
+                if (ind == 3)
+                {
+                    wallLayer4MaterialTyp4.Content = "";
+                    wallLayer4ThicknessTyp4.Content = "";
+                    wallLayer4KTyp4.Content = "";
+                    wallLayer4VHCTyp4.Content = "";
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void massboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = massboxTyp4.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                massLayer1MaterialTyp4.Content = "";
+                massLayer1ThicknessTyp4.Content = "";
+                massboxiTyp4 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cmass = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in massx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Internal Mass")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cmass = nod;
+                    break;
+                }
+                j++;
+                if (j == massx.Count && ind == i + 1)
+                {
+                    massboxTyp4.SelectedIndex = massboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= massx.Count)
+                {
+                    massboxTyp4.SelectedIndex = 0;
+                    return;
+                }
+            }
+            massboxiTyp4 = ind;
+            XmlNodeList names = cmass.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            massLayer1MaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            massLayer1ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                {
+                    massLayer1KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    massLayer1VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                    massAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    massEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void urbanRoadboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = urbanRoadboxTyp4.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                urbanRoadMaterialTyp4.Content = "asphalt";
+                urbanRoadThicknessTyp4.Content = "1.25";
+                urbanRoadVHCTyp4.Content = "1600000";
+                urbanRoadKTyp4.Content = "1";
+                urbanRoadEmissivityTyp4.Content = "0.95";
+                urbanRoadAlbedoTyp4.Content = "0.165";
+                urbanRoadboxiTyp4 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in uRoadx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    cuRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == uRoadx.Count && ind == i + 1)
+                {
+                    urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= uRoadx.Count)
+                {
+                    urbanRoadboxTyp4.SelectedIndex = 0;
+                    return;
+                }
+            }
+            urbanRoadboxiTyp4 = ind;
+            XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            urbanRoadMaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            urbanRoadThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+                {
+                    urbanRoadKTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    urbanRoadVHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                    urbanRoadAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    urbanRoadEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void ruralboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = ruralboxTyp4.SelectedIndex;
+            int i = 0;
+            if (ind == 0)
+            {
+                ruralRoadMaterialTyp4.Content = "asphalt";
+                ruralRoadThicknessTyp4.Content = "1.25";
+                ruralRoadVHCTyp4.Content = "1600000";
+                ruralRoadKTyp4.Content = "1";
+                ruralRoadEmissivityTyp4.Content = "0.95";
+                ruralRoadAlbedoTyp4.Content = "0.165";
+                ruralboxiTyp4 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+            XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
+            int j = 0;
+            foreach (XmlNode nod in rRoadx)
+            {
+                if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    crRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == rRoadx.Count && ind == i + 1)
+                {
+                    ruralboxTyp4.SelectedIndex = ruralboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= rRoadx.Count)
+                {
+                    ruralbox.SelectedIndex = 0;
+                    return;
+                }
+            }
+            ruralboxiTyp4 = ind;
+            XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
+            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+            ind = 0;
+            ruralRoadMaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            ruralRoadThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            foreach (XmlNode ma in mat)
+            {
+                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+                {
+                    ruralRoadKTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+                    ruralRoadVHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+                    ruralRoadAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
+                    ruralRoadEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
+                }
+            }
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void glazingboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = glazingboxTyp4.SelectedIndex;
+            if (ind == 0)
+            {
+                uValueTyp4.Content = "";
+                wwrTyp4.Content = "";
+                SHGCTyp4.Content = "";
+                glazingboxiTyp4 = 0;
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            XmlNodeList rRoadx = defxml.GetElementsByTagName("GlazingConstruction");
+            XmlNode crRoad = defxml.CreateElement("GlazingConstruction");
+            int j = 0;
+            foreach (XmlNode nod in rRoadx)
+            {
+                if (nod.SelectNodes("WWR").Count != 0)
+                {
+                    i++;
+                }
+                if (i == ind)
+                {
+                    crRoad = nod;
+                    break;
+                }
+                j++;
+                if (j == rRoadx.Count && ind == i + 1)
+                {
+                    glazingboxTyp4.SelectedIndex = glazingboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 0;
+                    s.constructionTab.SelectedIndex = 2;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= rRoadx.Count)
+                {
+                    glazingboxTyp4.SelectedIndex = 0;
+                    return;
+                }
+            }
+            glazingboxiTyp4 = ind;
+            wwrTyp4.Content = crRoad.SelectSingleNode("WWR").InnerText;
+            uValueTyp4.Content = crRoad.SelectSingleNode("UValue").InnerText;
+            SHGCTyp4.Content = crRoad.SelectSingleNode("SHGC").InnerText;
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+        private void heatboxTyp4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = heatboxTyp4.SelectedIndex;
+            if (ind == 0)
+            {
+                dayInternalHeatGainTyp4.Content = "";
+                nightInternalHeatGainTyp4.Content = "";
+                infiltrationTyp4.Content = "";
+                ventilationTyp4.Content = "";
+                string pathx = Directory.GetCurrentDirectory();
+                string temp1x = this.xmlPath;
+                string temp2x = this.xmlFileName;
+                this.xmlPath = pathx;
+                this.xmlFileName = "$temp.xml";
+                buttonSave_Click(sender, e);
+                var providerx = (XmlDataProvider)this.DataContext;
+                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+                providerx.Refresh();
+                this.xmlPath = temp1x;
+                this.xmlFileName = temp2x;
+                return;
+            }
+            int i = 0;
+            XmlNodeList heatx = defxml.GetElementsByTagName("HeatTemplate");
+            XmlNode cheat = defxml.CreateElement("HeatTemplate");
+            int j = 0;
+            foreach (XmlNode nod in heatx)
+            {
+                i++;
+                if (i == ind)
+                {
+                    cheat = nod;
+                    break;
+                }
+                j++;
+                if (j == heatx.Count && ind == i + 1)
+                {
+                    heatboxTyp4.SelectedIndex = heatboxiTyp4;
+                    Editor s = new Editor();
+                    s.Top.SelectedIndex = 1;
+                    s.buildingTab.SelectedIndex = 1;
+                    try
+                    {
+                        s.Show();
+                    }
+                    catch { };
+                    this.IsEnabled = false;
+                    s.Closed += new EventHandler(OnChange);
+                    return;
+                }
+                if (j >= heatx.Count)
+                {
+                    heatboxTyp4.SelectedIndex = 0;
+                    return;
+                }
+            }
+            heatboxiTyp4 = ind;
+            string Os = cheat.SelectSingleNode("OccupancySched").InnerText;
+            string Ls = cheat.SelectSingleNode("LightsSched").InnerText;
+            string Es = cheat.SelectSingleNode("EquipSched").InnerText;
+            string Is = cheat.SelectSingleNode("InfiltrationSched").InnerText;
+            string Vs = cheat.SelectSingleNode("VentilationSched").InnerText;
+            double Od = 0;
+            double On = 0;
+            double Ld = 0;
+            double Ln = 0;
+            double Ed = 0;
+            double En = 0;
+            double I = 0;
+            double V = 0;
+            foreach (XmlNode no in defxml.GetElementsByTagName("WeekSchedule"))
+            {
+                if (no.SelectSingleNode("Name").InnerText == Os)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) On += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Od += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    On = On / 7.0;
+                    Od = Od / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Ls)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) Ln += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Ld += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    Ln = Ln / 7.0;
+                    Ld = Ld / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Es)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    if (k < 7 || k > 17) En += Convert.ToDouble(sd.InnerText) / 13.0;
+                                    else Ed += Convert.ToDouble(sd.InnerText) / 11.0;
+                                    k++;
+                                }
+                            }
+                        }
+                    }
+                    En = En / 7.0;
+                    Ed = Ed / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Is)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    I += Convert.ToDouble(sd.InnerText) / 24.0;
+                                }
+                            }
+                        }
+                    }
+                    I = I / 7.0;
+                }
+                if (no.SelectSingleNode("Name").InnerText == Vs)
+                {
+                    foreach (XmlNode nd in no.SelectNodes("Days/string"))
+                    {
+                        foreach (XmlNode dd in defxml.GetElementsByTagName("DaySchedule"))
+                        {
+                            if (nd.InnerText == dd.SelectSingleNode("Name").InnerText)
+                            {
+                                int k = 0;
+                                foreach (XmlNode sd in dd.SelectNodes("Values/double"))
+                                {
+                                    V += Convert.ToDouble(sd.InnerText) / 24.0;
+                                }
+                            }
+                        }
+                    }
+                    V = V / 7.0;
+                }
+            }
+            Od = Od * Convert.ToDouble(cheat.SelectSingleNode("OccupancyMax").InnerText);
+            On = On * Convert.ToDouble(cheat.SelectSingleNode("OccupancyMax").InnerText);
+            Ld = Ld * Convert.ToDouble(cheat.SelectSingleNode("LightsMax").InnerText);
+            Ln = Ln * Convert.ToDouble(cheat.SelectSingleNode("LightsMax").InnerText);
+            Ed = Ed * Convert.ToDouble(cheat.SelectSingleNode("EquipMax").InnerText);
+            En = En * Convert.ToDouble(cheat.SelectSingleNode("EquipMax").InnerText);
+            I = I * Convert.ToDouble(cheat.SelectSingleNode("InfiltrationMax").InnerText);
+            V = V * Convert.ToDouble(cheat.SelectSingleNode("VentilationMax").InnerText);
+            dayInternalHeatGainTyp4.Content = Convert.ToString(Od + Ld + Ed);
+            nightInternalHeatGainTyp4.Content = Convert.ToString(On + Ln + En);
+            infiltrationTyp4.Content = Convert.ToString(I);
+            ventilationTyp4.Content = Convert.ToString(V);
+            string path = Directory.GetCurrentDirectory();
+            string temp1 = this.xmlPath;
+            string temp2 = this.xmlFileName;
+            this.xmlPath = path;
+            this.xmlFileName = "$temp.xml";
+            buttonSave_Click(sender, e);
+            var provider = (XmlDataProvider)this.DataContext;
+            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+            provider.Refresh();
+            this.xmlPath = temp1;
+            this.xmlFileName = temp2;
+        }
+
+
 
         private void utciSim1_change(object sender, RoutedEventArgs e)
         {
@@ -3020,22 +6146,11 @@ namespace UWG
             try
             {
                 XDocument doc = new XDocument(new XElement("xml_input"));
-                if (typology1Dist.Text != "0")
-                {
-                    doc.Element("xml_input").Add(typ1XML_create());
-                }
-                if (typology2Dist.Text != "0")
-                {
-                    doc.Element("xml_input").Add(typ2XML_create());
-                }
-                if (typology3Dist.Text != "0")
-                {
-                    doc.Element("xml_input").Add(typ3XML_create());
-                }
-                if (typology4Dist.Text != "0")
-                {
-                    doc.Element("xml_input").Add(typ4XML_create());
-                }
+                
+                doc.Element("xml_input").Add(typ1XML_create());
+                doc.Element("xml_input").Add(typ2XML_create());
+                doc.Element("xml_input").Add(typ3XML_create());
+                doc.Element("xml_input").Add(typ4XML_create());
 
                 doc.Element("xml_input").Add(new XElement("urbanArea",
                                                         new XElement("averageBuildingHeight", avgBldgHeight.Text),
@@ -3119,7 +6234,8 @@ namespace UWG
         {
             try
             {
-                XAttribute perc = new XAttribute("dist", typology1Dist);
+                XAttribute perc = new XAttribute("dist", typology1Dist.Text);
+                XAttribute name = new XAttribute("name", typology1Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
                 XElement wallMaterialsNames;
@@ -3439,6 +6555,7 @@ namespace UWG
                                                 )
                                             );
                 doc.Root.Add(perc);
+                doc.Root.Add(name);
                 return doc;
             } //closes TRY
 
@@ -3455,6 +6572,7 @@ namespace UWG
             try
             {
                 XAttribute perc = new XAttribute("dist", typology2Dist);
+                XAttribute name = new XAttribute("name", typology2Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
                 XElement wallMaterialsNames;
@@ -3773,6 +6891,7 @@ namespace UWG
                                                 )
                                             );
                 doc.Root.Add(perc);
+                doc.Root.Add(name);
                 return doc;
             } //closes TRY
 
@@ -3789,6 +6908,7 @@ namespace UWG
             try
             {
                 XAttribute perc = new XAttribute("dist", typology3Dist);
+                XAttribute name = new XAttribute("name", typology1Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
                 XElement wallMaterialsNames;
@@ -4107,6 +7227,7 @@ namespace UWG
                                                 )
                                             );
                 doc.Root.Add(perc);
+                doc.Root.Add(name);
                 return doc;
             } //closes TRY
 
@@ -4123,6 +7244,7 @@ namespace UWG
             try
             {
                 XAttribute perc = new XAttribute("dist", typology4Dist);
+                XAttribute name = new XAttribute("name", typology1Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
                 XElement wallMaterialsNames;
@@ -4441,6 +7563,7 @@ namespace UWG
                                                 )
                                             );
                 doc.Root.Add(perc);
+                doc.Root.Add(name);
                 return doc;
             } //closes TRY
 
@@ -4657,6 +7780,31 @@ namespace UWG
             glazingbox.SelectedIndex = 0;
             massbox.SelectedIndex = 0;
             heatbox.SelectedIndex = 0;
+
+            wallboxTyp2.SelectedIndex = 0;
+            roofboxTyp2.SelectedIndex = 0;
+            ruralboxTyp2.SelectedIndex = 0;
+            urbanRoadboxTyp2.SelectedIndex = 0;
+            glazingboxTyp2.SelectedIndex = 0;
+            massboxTyp2.SelectedIndex = 0;
+            heatboxTyp2.SelectedIndex = 0;
+
+            wallboxTyp3.SelectedIndex = 0;
+            roofboxTyp3.SelectedIndex = 0;
+            ruralboxTyp3.SelectedIndex = 0;
+            urbanRoadboxTyp3.SelectedIndex = 0;
+            glazingboxTyp3.SelectedIndex = 0;
+            massboxTyp3.SelectedIndex = 0;
+            heatboxTyp3.SelectedIndex = 0;
+            
+            wallboxTyp4.SelectedIndex = 0;
+            roofboxTyp4.SelectedIndex = 0;
+            ruralboxTyp4.SelectedIndex = 0;
+            urbanRoadboxTyp4.SelectedIndex = 0;
+            glazingboxTyp4.SelectedIndex = 0;
+            massboxTyp4.SelectedIndex = 0;
+            heatboxTyp4.SelectedIndex = 0;
+
             var provider = (XmlDataProvider)this.DataContext;
             provider.Source = new Uri("default_input.xml", UriKind.RelativeOrAbsolute);
             provider.Refresh();
