@@ -1998,7 +1998,7 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim1);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
-                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                if (System.IO.Path.GetExtension(pathSim1) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
@@ -2080,7 +2080,7 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim2);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
-                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                if (System.IO.Path.GetExtension(pathSim2) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
@@ -2162,7 +2162,7 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim3);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
-                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                if (System.IO.Path.GetExtension(pathSim3) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
@@ -2244,7 +2244,7 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim4);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
-                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                if (System.IO.Path.GetExtension(pathSim4) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
@@ -2324,7 +2324,7 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim5);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
-                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                if (System.IO.Path.GetExtension(pathSim5) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
@@ -2406,7 +2406,7 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim6);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
-                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                if (System.IO.Path.GetExtension(pathSim6) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
