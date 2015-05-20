@@ -72,12 +72,12 @@ namespace UWG
         private String resultFileName="";
         private String resultFilePath="";
 
-        String[,] sim1Data = new String[24, 87];
-        String[,] sim2Data = new String[24, 87];
-        String[,] sim3Data = new String[24, 87];
-        String[,] sim4Data = new String[24, 87];
-        String[,] sim5Data = new String[24, 87];
-        String[,] sim6Data = new String[24, 87];
+        String[,] sim1Data = new String[24, 88];
+        String[,] sim2Data = new String[24, 88];
+        String[,] sim3Data = new String[24, 88];
+        String[,] sim4Data = new String[24, 88];
+        String[,] sim5Data = new String[24, 88];
+        String[,] sim6Data = new String[24, 88];
 
         String pathSim1 = "";
         String pathSim2 = "";
@@ -1157,27 +1157,39 @@ namespace UWG
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
         }
+
         private void utciSim1_change(object sender, RoutedEventArgs e)
         {
             int ind = utciChangeboxSim1.SelectedIndex;
             int sidewalkStressColumnNumber = 84;
             int canyonStressColumnNumber = 86;
+            int descTextColNum = 87;
             if (ind == 0)
             {
                 try
                 {
                     List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim1Data[9, sidewalkStressColumnNumber].Substring(0, sim1Data[9, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim1Data[8, sidewalkStressColumnNumber].Substring(0, sim1Data[8, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim1Data[7, sidewalkStressColumnNumber].Substring(0, sim1Data[7, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim1Data[6, sidewalkStressColumnNumber].Substring(0, sim1Data[6, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim1Data[5, sidewalkStressColumnNumber].Substring(0, sim1Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[0,descTextColNum], Int32.Parse(sim1Data[0, sidewalkStressColumnNumber].Substring(0, sim1Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[1,descTextColNum], Int32.Parse(sim1Data[1, sidewalkStressColumnNumber].Substring(0, sim1Data[1, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[2, descTextColNum], Int32.Parse(sim1Data[2, sidewalkStressColumnNumber].Substring(0, sim1Data[2, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[3, descTextColNum], Int32.Parse(sim1Data[3, sidewalkStressColumnNumber].Substring(0, sim1Data[3, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[4, descTextColNum], Int32.Parse(sim1Data[4, sidewalkStressColumnNumber].Substring(0, sim1Data[4, sidewalkStressColumnNumber].Length - 1))));
 
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim1Data[4, sidewalkStressColumnNumber].Substring(0, sim1Data[4, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim1Data[3, sidewalkStressColumnNumber].Substring(0, sim1Data[3, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim1Data[2, sidewalkStressColumnNumber].Substring(0, sim1Data[2, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim1Data[1, sidewalkStressColumnNumber].Substring(0, sim1Data[1, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim1Data[0, sidewalkStressColumnNumber].Substring(0, sim1Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[5, descTextColNum], Int32.Parse(sim1Data[5, sidewalkStressColumnNumber].Substring(0, sim1Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[6, descTextColNum], Int32.Parse(sim1Data[6, sidewalkStressColumnNumber].Substring(0, sim1Data[6, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[7, descTextColNum], Int32.Parse(sim1Data[7, sidewalkStressColumnNumber].Substring(0, sim1Data[7, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[8, descTextColNum], Int32.Parse(sim1Data[8, sidewalkStressColumnNumber].Substring(0, sim1Data[8, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[9, descTextColNum], Int32.Parse(sim1Data[9, sidewalkStressColumnNumber].Substring(0, sim1Data[9, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[10, descTextColNum], Int32.Parse(sim1Data[10, sidewalkStressColumnNumber].Substring(0, sim1Data[10, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[11, descTextColNum], Int32.Parse(sim1Data[11, sidewalkStressColumnNumber].Substring(0, sim1Data[11, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[12, descTextColNum], Int32.Parse(sim1Data[12, sidewalkStressColumnNumber].Substring(0, sim1Data[12, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[13, descTextColNum], Int32.Parse(sim1Data[13, sidewalkStressColumnNumber].Substring(0, sim1Data[13, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[14, descTextColNum], Int32.Parse(sim1Data[14, sidewalkStressColumnNumber].Substring(0, sim1Data[14, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[15, descTextColNum], Int32.Parse(sim1Data[15, sidewalkStressColumnNumber].Substring(0, sim1Data[15, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[16, descTextColNum], Int32.Parse(sim1Data[16, sidewalkStressColumnNumber].Substring(0, sim1Data[16, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim1Data[17, descTextColNum], Int32.Parse(sim1Data[17, sidewalkStressColumnNumber].Substring(0, sim1Data[17, sidewalkStressColumnNumber].Length - 1))));
                     utciChartSim1.DataContext = utciStressDaysSidewalk;
                     
 
@@ -1191,17 +1203,28 @@ namespace UWG
             else
             {
                 List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim1Data[9, canyonStressColumnNumber].Substring(0, sim1Data[9, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim1Data[8, canyonStressColumnNumber].Substring(0, sim1Data[8, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim1Data[7, canyonStressColumnNumber].Substring(0, sim1Data[7, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim1Data[6, canyonStressColumnNumber].Substring(0, sim1Data[6, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim1Data[5, canyonStressColumnNumber].Substring(0, sim1Data[5, canyonStressColumnNumber].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[0, descTextColNum], Int32.Parse(sim1Data[0, canyonStressColumnNumber].Substring(0, sim1Data[0, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[1, descTextColNum], Int32.Parse(sim1Data[1, canyonStressColumnNumber].Substring(0, sim1Data[1, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[2, descTextColNum], Int32.Parse(sim1Data[2, canyonStressColumnNumber].Substring(0, sim1Data[2, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[3, descTextColNum], Int32.Parse(sim1Data[3, canyonStressColumnNumber].Substring(0, sim1Data[3, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[4, descTextColNum], Int32.Parse(sim1Data[4, canyonStressColumnNumber].Substring(0, sim1Data[4, canyonStressColumnNumber].Length - 1))));
 
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim1Data[4, canyonStressColumnNumber].Substring(0, sim1Data[4, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim1Data[3, canyonStressColumnNumber].Substring(0, sim1Data[3, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim1Data[2, canyonStressColumnNumber].Substring(0, sim1Data[2, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim1Data[1, canyonStressColumnNumber].Substring(0, sim1Data[1, canyonStressColumnNumber].Length-1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim1Data[0, canyonStressColumnNumber].Substring(0, sim1Data[0, canyonStressColumnNumber].Length-1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[5, descTextColNum], Int32.Parse(sim1Data[5, canyonStressColumnNumber].Substring(0, sim1Data[5, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[6, descTextColNum], Int32.Parse(sim1Data[6, canyonStressColumnNumber].Substring(0, sim1Data[6, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[7, descTextColNum], Int32.Parse(sim1Data[7, canyonStressColumnNumber].Substring(0, sim1Data[7, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[8, descTextColNum], Int32.Parse(sim1Data[8, canyonStressColumnNumber].Substring(0, sim1Data[8, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[9, descTextColNum], Int32.Parse(sim1Data[9, canyonStressColumnNumber].Substring(0, sim1Data[9, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[10, descTextColNum], Int32.Parse(sim1Data[10, canyonStressColumnNumber].Substring(0, sim1Data[10, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[11, descTextColNum], Int32.Parse(sim1Data[11, canyonStressColumnNumber].Substring(0, sim1Data[11, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[12, descTextColNum], Int32.Parse(sim1Data[12, canyonStressColumnNumber].Substring(0, sim1Data[12, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[13, descTextColNum], Int32.Parse(sim1Data[13, canyonStressColumnNumber].Substring(0, sim1Data[13, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[14, descTextColNum], Int32.Parse(sim1Data[14, canyonStressColumnNumber].Substring(0, sim1Data[14, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[15, descTextColNum], Int32.Parse(sim1Data[15, canyonStressColumnNumber].Substring(0, sim1Data[15, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[16, descTextColNum], Int32.Parse(sim1Data[16, canyonStressColumnNumber].Substring(0, sim1Data[16, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim1Data[17, descTextColNum], Int32.Parse(sim1Data[17, canyonStressColumnNumber].Substring(0, sim1Data[17, canyonStressColumnNumber].Length - 1))));
+                    
                 try
                 {
                     utciChartSim1.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
@@ -1218,6 +1241,422 @@ namespace UWG
 
 
         }
+        private void utciSim2_change(object sender, RoutedEventArgs e)
+        {
+            int ind = utciChangeboxSim2.SelectedIndex;
+            int sidewalkStressColumnNumber = 84;
+            int canyonStressColumnNumber = 86;
+            int descTextColNum = 87;
+            if (ind == 0)
+            {
+                try
+                {
+                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[0, descTextColNum], Int32.Parse(sim2Data[0, sidewalkStressColumnNumber].Substring(0, sim2Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[1, descTextColNum], Int32.Parse(sim2Data[1, sidewalkStressColumnNumber].Substring(0, sim2Data[1, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[2, descTextColNum], Int32.Parse(sim2Data[2, sidewalkStressColumnNumber].Substring(0, sim2Data[2, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[3, descTextColNum], Int32.Parse(sim2Data[3, sidewalkStressColumnNumber].Substring(0, sim2Data[3, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[4, descTextColNum], Int32.Parse(sim2Data[4, sidewalkStressColumnNumber].Substring(0, sim2Data[4, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[5, descTextColNum], Int32.Parse(sim2Data[5, sidewalkStressColumnNumber].Substring(0, sim2Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[6, descTextColNum], Int32.Parse(sim2Data[6, sidewalkStressColumnNumber].Substring(0, sim2Data[6, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[7, descTextColNum], Int32.Parse(sim2Data[7, sidewalkStressColumnNumber].Substring(0, sim2Data[7, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[8, descTextColNum], Int32.Parse(sim2Data[8, sidewalkStressColumnNumber].Substring(0, sim2Data[8, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[9, descTextColNum], Int32.Parse(sim2Data[9, sidewalkStressColumnNumber].Substring(0, sim2Data[9, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[10, descTextColNum], Int32.Parse(sim2Data[10, sidewalkStressColumnNumber].Substring(0, sim2Data[10, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[11, descTextColNum], Int32.Parse(sim2Data[11, sidewalkStressColumnNumber].Substring(0, sim2Data[11, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[12, descTextColNum], Int32.Parse(sim2Data[12, sidewalkStressColumnNumber].Substring(0, sim2Data[12, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[13, descTextColNum], Int32.Parse(sim2Data[13, sidewalkStressColumnNumber].Substring(0, sim2Data[13, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[14, descTextColNum], Int32.Parse(sim2Data[14, sidewalkStressColumnNumber].Substring(0, sim2Data[14, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[15, descTextColNum], Int32.Parse(sim2Data[15, sidewalkStressColumnNumber].Substring(0, sim2Data[15, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[16, descTextColNum], Int32.Parse(sim2Data[16, sidewalkStressColumnNumber].Substring(0, sim2Data[16, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim2Data[17, descTextColNum], Int32.Parse(sim2Data[17, sidewalkStressColumnNumber].Substring(0, sim2Data[17, sidewalkStressColumnNumber].Length - 1))));
+                    utciChartSim2.DataContext = utciStressDaysSidewalk;
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[0, descTextColNum], Int32.Parse(sim2Data[0, canyonStressColumnNumber].Substring(0, sim2Data[0, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[1, descTextColNum], Int32.Parse(sim2Data[1, canyonStressColumnNumber].Substring(0, sim2Data[1, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[2, descTextColNum], Int32.Parse(sim2Data[2, canyonStressColumnNumber].Substring(0, sim2Data[2, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[3, descTextColNum], Int32.Parse(sim2Data[3, canyonStressColumnNumber].Substring(0, sim2Data[3, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[4, descTextColNum], Int32.Parse(sim2Data[4, canyonStressColumnNumber].Substring(0, sim2Data[4, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[5, descTextColNum], Int32.Parse(sim2Data[5, canyonStressColumnNumber].Substring(0, sim2Data[5, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[6, descTextColNum], Int32.Parse(sim2Data[6, canyonStressColumnNumber].Substring(0, sim2Data[6, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[7, descTextColNum], Int32.Parse(sim2Data[7, canyonStressColumnNumber].Substring(0, sim2Data[7, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[8, descTextColNum], Int32.Parse(sim2Data[8, canyonStressColumnNumber].Substring(0, sim2Data[8, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[9, descTextColNum], Int32.Parse(sim2Data[9, canyonStressColumnNumber].Substring(0, sim2Data[9, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[10, descTextColNum], Int32.Parse(sim2Data[10, canyonStressColumnNumber].Substring(0, sim2Data[10, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[11, descTextColNum], Int32.Parse(sim2Data[11, canyonStressColumnNumber].Substring(0, sim2Data[11, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[12, descTextColNum], Int32.Parse(sim2Data[12, canyonStressColumnNumber].Substring(0, sim2Data[12, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[13, descTextColNum], Int32.Parse(sim2Data[13, canyonStressColumnNumber].Substring(0, sim2Data[13, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[14, descTextColNum], Int32.Parse(sim2Data[14, canyonStressColumnNumber].Substring(0, sim2Data[14, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[15, descTextColNum], Int32.Parse(sim2Data[15, canyonStressColumnNumber].Substring(0, sim2Data[15, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[16, descTextColNum], Int32.Parse(sim2Data[16, canyonStressColumnNumber].Substring(0, sim2Data[16, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim2Data[17, descTextColNum], Int32.Parse(sim2Data[17, canyonStressColumnNumber].Substring(0, sim2Data[17, canyonStressColumnNumber].Length - 1))));
+
+                try
+                {
+                    utciChartSim2.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
+                }
+                catch
+                {
+
+                }
+
+
+            }
+
+
+
+
+        }
+        private void utciSim3_change(object sender, RoutedEventArgs e)
+        {
+            int ind = utciChangeboxSim3.SelectedIndex;
+            int sidewalkStressColumnNumber = 84;
+            int canyonStressColumnNumber = 86;
+            int descTextColNum = 87;
+            if (ind == 0)
+            {
+                try
+                {
+                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[0, descTextColNum], Int32.Parse(sim3Data[0, sidewalkStressColumnNumber].Substring(0, sim3Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[1, descTextColNum], Int32.Parse(sim3Data[1, sidewalkStressColumnNumber].Substring(0, sim3Data[1, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[2, descTextColNum], Int32.Parse(sim3Data[2, sidewalkStressColumnNumber].Substring(0, sim3Data[2, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[3, descTextColNum], Int32.Parse(sim3Data[3, sidewalkStressColumnNumber].Substring(0, sim3Data[3, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[4, descTextColNum], Int32.Parse(sim3Data[4, sidewalkStressColumnNumber].Substring(0, sim3Data[4, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[5, descTextColNum], Int32.Parse(sim3Data[5, sidewalkStressColumnNumber].Substring(0, sim3Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[6, descTextColNum], Int32.Parse(sim3Data[6, sidewalkStressColumnNumber].Substring(0, sim3Data[6, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[7, descTextColNum], Int32.Parse(sim3Data[7, sidewalkStressColumnNumber].Substring(0, sim3Data[7, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[8, descTextColNum], Int32.Parse(sim3Data[8, sidewalkStressColumnNumber].Substring(0, sim3Data[8, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[9, descTextColNum], Int32.Parse(sim3Data[9, sidewalkStressColumnNumber].Substring(0, sim3Data[9, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[10, descTextColNum], Int32.Parse(sim3Data[10, sidewalkStressColumnNumber].Substring(0, sim3Data[10, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[11, descTextColNum], Int32.Parse(sim3Data[11, sidewalkStressColumnNumber].Substring(0, sim3Data[11, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[12, descTextColNum], Int32.Parse(sim3Data[12, sidewalkStressColumnNumber].Substring(0, sim3Data[12, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[13, descTextColNum], Int32.Parse(sim3Data[13, sidewalkStressColumnNumber].Substring(0, sim3Data[13, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[14, descTextColNum], Int32.Parse(sim3Data[14, sidewalkStressColumnNumber].Substring(0, sim3Data[14, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[15, descTextColNum], Int32.Parse(sim3Data[15, sidewalkStressColumnNumber].Substring(0, sim3Data[15, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[16, descTextColNum], Int32.Parse(sim3Data[16, sidewalkStressColumnNumber].Substring(0, sim3Data[16, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim3Data[17, descTextColNum], Int32.Parse(sim3Data[17, sidewalkStressColumnNumber].Substring(0, sim3Data[17, sidewalkStressColumnNumber].Length - 1))));
+                    utciChartSim3.DataContext = utciStressDaysSidewalk;
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[0, descTextColNum], Int32.Parse(sim3Data[0, canyonStressColumnNumber].Substring(0, sim3Data[0, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[1, descTextColNum], Int32.Parse(sim3Data[1, canyonStressColumnNumber].Substring(0, sim3Data[1, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[2, descTextColNum], Int32.Parse(sim3Data[2, canyonStressColumnNumber].Substring(0, sim3Data[2, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[3, descTextColNum], Int32.Parse(sim3Data[3, canyonStressColumnNumber].Substring(0, sim3Data[3, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[4, descTextColNum], Int32.Parse(sim3Data[4, canyonStressColumnNumber].Substring(0, sim3Data[4, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[5, descTextColNum], Int32.Parse(sim3Data[5, canyonStressColumnNumber].Substring(0, sim3Data[5, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[6, descTextColNum], Int32.Parse(sim3Data[6, canyonStressColumnNumber].Substring(0, sim3Data[6, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[7, descTextColNum], Int32.Parse(sim3Data[7, canyonStressColumnNumber].Substring(0, sim3Data[7, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[8, descTextColNum], Int32.Parse(sim3Data[8, canyonStressColumnNumber].Substring(0, sim3Data[8, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[9, descTextColNum], Int32.Parse(sim3Data[9, canyonStressColumnNumber].Substring(0, sim3Data[9, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[10, descTextColNum], Int32.Parse(sim3Data[10, canyonStressColumnNumber].Substring(0, sim3Data[10, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[11, descTextColNum], Int32.Parse(sim3Data[11, canyonStressColumnNumber].Substring(0, sim3Data[11, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[12, descTextColNum], Int32.Parse(sim3Data[12, canyonStressColumnNumber].Substring(0, sim3Data[12, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[13, descTextColNum], Int32.Parse(sim3Data[13, canyonStressColumnNumber].Substring(0, sim3Data[13, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[14, descTextColNum], Int32.Parse(sim3Data[14, canyonStressColumnNumber].Substring(0, sim3Data[14, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[15, descTextColNum], Int32.Parse(sim3Data[15, canyonStressColumnNumber].Substring(0, sim3Data[15, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[16, descTextColNum], Int32.Parse(sim3Data[16, canyonStressColumnNumber].Substring(0, sim3Data[16, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim3Data[17, descTextColNum], Int32.Parse(sim3Data[17, canyonStressColumnNumber].Substring(0, sim3Data[17, canyonStressColumnNumber].Length - 1))));
+
+                try
+                {
+                    utciChartSim3.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
+                }
+                catch
+                {
+
+                }
+
+
+            }
+
+
+
+
+        }
+        private void utciSim4_change(object sender, RoutedEventArgs e)
+        {
+            int ind = utciChangeboxSim4.SelectedIndex;
+            int sidewalkStressColumnNumber = 84;
+            int canyonStressColumnNumber = 86;
+            int descTextColNum = 87;
+            if (ind == 0)
+            {
+                try
+                {
+                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[0, descTextColNum], Int32.Parse(sim4Data[0, sidewalkStressColumnNumber].Substring(0, sim4Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[1, descTextColNum], Int32.Parse(sim4Data[1, sidewalkStressColumnNumber].Substring(0, sim4Data[1, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[2, descTextColNum], Int32.Parse(sim4Data[2, sidewalkStressColumnNumber].Substring(0, sim4Data[2, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[3, descTextColNum], Int32.Parse(sim4Data[3, sidewalkStressColumnNumber].Substring(0, sim4Data[3, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[4, descTextColNum], Int32.Parse(sim4Data[4, sidewalkStressColumnNumber].Substring(0, sim4Data[4, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[5, descTextColNum], Int32.Parse(sim4Data[5, sidewalkStressColumnNumber].Substring(0, sim4Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[6, descTextColNum], Int32.Parse(sim4Data[6, sidewalkStressColumnNumber].Substring(0, sim4Data[6, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[7, descTextColNum], Int32.Parse(sim4Data[7, sidewalkStressColumnNumber].Substring(0, sim4Data[7, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[8, descTextColNum], Int32.Parse(sim4Data[8, sidewalkStressColumnNumber].Substring(0, sim4Data[8, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[9, descTextColNum], Int32.Parse(sim4Data[9, sidewalkStressColumnNumber].Substring(0, sim4Data[9, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[10, descTextColNum], Int32.Parse(sim4Data[10, sidewalkStressColumnNumber].Substring(0, sim4Data[10, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[11, descTextColNum], Int32.Parse(sim4Data[11, sidewalkStressColumnNumber].Substring(0, sim4Data[11, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[12, descTextColNum], Int32.Parse(sim4Data[12, sidewalkStressColumnNumber].Substring(0, sim4Data[12, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[13, descTextColNum], Int32.Parse(sim4Data[13, sidewalkStressColumnNumber].Substring(0, sim4Data[13, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[14, descTextColNum], Int32.Parse(sim4Data[14, sidewalkStressColumnNumber].Substring(0, sim4Data[14, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[15, descTextColNum], Int32.Parse(sim4Data[15, sidewalkStressColumnNumber].Substring(0, sim4Data[15, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[16, descTextColNum], Int32.Parse(sim4Data[16, sidewalkStressColumnNumber].Substring(0, sim4Data[16, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim4Data[17, descTextColNum], Int32.Parse(sim4Data[17, sidewalkStressColumnNumber].Substring(0, sim4Data[17, sidewalkStressColumnNumber].Length - 1))));
+                    utciChartSim4.DataContext = utciStressDaysSidewalk;
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[0, descTextColNum], Int32.Parse(sim4Data[0, canyonStressColumnNumber].Substring(0, sim4Data[0, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[1, descTextColNum], Int32.Parse(sim4Data[1, canyonStressColumnNumber].Substring(0, sim4Data[1, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[2, descTextColNum], Int32.Parse(sim4Data[2, canyonStressColumnNumber].Substring(0, sim4Data[2, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[3, descTextColNum], Int32.Parse(sim4Data[3, canyonStressColumnNumber].Substring(0, sim4Data[3, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[4, descTextColNum], Int32.Parse(sim4Data[4, canyonStressColumnNumber].Substring(0, sim4Data[4, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[5, descTextColNum], Int32.Parse(sim4Data[5, canyonStressColumnNumber].Substring(0, sim4Data[5, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[6, descTextColNum], Int32.Parse(sim4Data[6, canyonStressColumnNumber].Substring(0, sim4Data[6, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[7, descTextColNum], Int32.Parse(sim4Data[7, canyonStressColumnNumber].Substring(0, sim4Data[7, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[8, descTextColNum], Int32.Parse(sim4Data[8, canyonStressColumnNumber].Substring(0, sim4Data[8, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[9, descTextColNum], Int32.Parse(sim4Data[9, canyonStressColumnNumber].Substring(0, sim4Data[9, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[10, descTextColNum], Int32.Parse(sim4Data[10, canyonStressColumnNumber].Substring(0, sim4Data[10, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[11, descTextColNum], Int32.Parse(sim4Data[11, canyonStressColumnNumber].Substring(0, sim4Data[11, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[12, descTextColNum], Int32.Parse(sim4Data[12, canyonStressColumnNumber].Substring(0, sim4Data[12, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[13, descTextColNum], Int32.Parse(sim4Data[13, canyonStressColumnNumber].Substring(0, sim4Data[13, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[14, descTextColNum], Int32.Parse(sim4Data[14, canyonStressColumnNumber].Substring(0, sim4Data[14, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[15, descTextColNum], Int32.Parse(sim4Data[15, canyonStressColumnNumber].Substring(0, sim4Data[15, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[16, descTextColNum], Int32.Parse(sim4Data[16, canyonStressColumnNumber].Substring(0, sim4Data[16, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim4Data[17, descTextColNum], Int32.Parse(sim4Data[17, canyonStressColumnNumber].Substring(0, sim4Data[17, canyonStressColumnNumber].Length - 1))));
+
+                try
+                {
+                    utciChartSim4.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
+                }
+                catch
+                {
+
+                }
+
+
+            }
+
+
+
+
+        }
+        private void utciSim5_change(object sender, RoutedEventArgs e)
+        {
+            int ind = utciChangeboxSim5.SelectedIndex;
+            int sidewalkStressColumnNumber = 84;
+            int canyonStressColumnNumber = 86;
+            int descTextColNum = 87;
+            if (ind == 0)
+            {
+                try
+                {
+                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[0, descTextColNum], Int32.Parse(sim5Data[0, sidewalkStressColumnNumber].Substring(0, sim5Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[1, descTextColNum], Int32.Parse(sim5Data[1, sidewalkStressColumnNumber].Substring(0, sim5Data[1, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[2, descTextColNum], Int32.Parse(sim5Data[2, sidewalkStressColumnNumber].Substring(0, sim5Data[2, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[3, descTextColNum], Int32.Parse(sim5Data[3, sidewalkStressColumnNumber].Substring(0, sim5Data[3, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[4, descTextColNum], Int32.Parse(sim5Data[4, sidewalkStressColumnNumber].Substring(0, sim5Data[4, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[5, descTextColNum], Int32.Parse(sim5Data[5, sidewalkStressColumnNumber].Substring(0, sim5Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[6, descTextColNum], Int32.Parse(sim5Data[6, sidewalkStressColumnNumber].Substring(0, sim5Data[6, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[7, descTextColNum], Int32.Parse(sim5Data[7, sidewalkStressColumnNumber].Substring(0, sim5Data[7, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[8, descTextColNum], Int32.Parse(sim5Data[8, sidewalkStressColumnNumber].Substring(0, sim5Data[8, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[9, descTextColNum], Int32.Parse(sim5Data[9, sidewalkStressColumnNumber].Substring(0, sim5Data[9, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[10, descTextColNum], Int32.Parse(sim5Data[10, sidewalkStressColumnNumber].Substring(0, sim5Data[10, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[11, descTextColNum], Int32.Parse(sim5Data[11, sidewalkStressColumnNumber].Substring(0, sim5Data[11, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[12, descTextColNum], Int32.Parse(sim5Data[12, sidewalkStressColumnNumber].Substring(0, sim5Data[12, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[13, descTextColNum], Int32.Parse(sim5Data[13, sidewalkStressColumnNumber].Substring(0, sim5Data[13, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[14, descTextColNum], Int32.Parse(sim5Data[14, sidewalkStressColumnNumber].Substring(0, sim5Data[14, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[15, descTextColNum], Int32.Parse(sim5Data[15, sidewalkStressColumnNumber].Substring(0, sim5Data[15, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[16, descTextColNum], Int32.Parse(sim5Data[16, sidewalkStressColumnNumber].Substring(0, sim5Data[16, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim5Data[17, descTextColNum], Int32.Parse(sim5Data[17, sidewalkStressColumnNumber].Substring(0, sim5Data[17, sidewalkStressColumnNumber].Length - 1))));
+                    utciChartSim5.DataContext = utciStressDaysSidewalk;
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[0, descTextColNum], Int32.Parse(sim5Data[0, canyonStressColumnNumber].Substring(0, sim5Data[0, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[1, descTextColNum], Int32.Parse(sim5Data[1, canyonStressColumnNumber].Substring(0, sim5Data[1, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[2, descTextColNum], Int32.Parse(sim5Data[2, canyonStressColumnNumber].Substring(0, sim5Data[2, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[3, descTextColNum], Int32.Parse(sim5Data[3, canyonStressColumnNumber].Substring(0, sim5Data[3, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[4, descTextColNum], Int32.Parse(sim5Data[4, canyonStressColumnNumber].Substring(0, sim5Data[4, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[5, descTextColNum], Int32.Parse(sim5Data[5, canyonStressColumnNumber].Substring(0, sim5Data[5, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[6, descTextColNum], Int32.Parse(sim5Data[6, canyonStressColumnNumber].Substring(0, sim5Data[6, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[7, descTextColNum], Int32.Parse(sim5Data[7, canyonStressColumnNumber].Substring(0, sim5Data[7, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[8, descTextColNum], Int32.Parse(sim5Data[8, canyonStressColumnNumber].Substring(0, sim5Data[8, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[9, descTextColNum], Int32.Parse(sim5Data[9, canyonStressColumnNumber].Substring(0, sim5Data[9, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[10, descTextColNum], Int32.Parse(sim5Data[10, canyonStressColumnNumber].Substring(0, sim5Data[10, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[11, descTextColNum], Int32.Parse(sim5Data[11, canyonStressColumnNumber].Substring(0, sim5Data[11, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[12, descTextColNum], Int32.Parse(sim5Data[12, canyonStressColumnNumber].Substring(0, sim5Data[12, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[13, descTextColNum], Int32.Parse(sim5Data[13, canyonStressColumnNumber].Substring(0, sim5Data[13, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[14, descTextColNum], Int32.Parse(sim5Data[14, canyonStressColumnNumber].Substring(0, sim5Data[14, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[15, descTextColNum], Int32.Parse(sim5Data[15, canyonStressColumnNumber].Substring(0, sim5Data[15, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[16, descTextColNum], Int32.Parse(sim5Data[16, canyonStressColumnNumber].Substring(0, sim5Data[16, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim5Data[17, descTextColNum], Int32.Parse(sim5Data[17, canyonStressColumnNumber].Substring(0, sim5Data[17, canyonStressColumnNumber].Length - 1))));
+
+                try
+                {
+                    utciChartSim5.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
+                }
+                catch
+                {
+
+                }
+
+
+            }
+
+
+
+
+        }
+        private void utciSim6_change(object sender, RoutedEventArgs e)
+        {
+            int ind = utciChangeboxSim6.SelectedIndex;
+            int sidewalkStressColumnNumber = 84;
+            int canyonStressColumnNumber = 86;
+            int descTextColNum = 87;
+            if (ind == 0)
+            {
+                try
+                {
+                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[0, descTextColNum], Int32.Parse(sim6Data[0, sidewalkStressColumnNumber].Substring(0, sim6Data[0, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[1, descTextColNum], Int32.Parse(sim6Data[1, sidewalkStressColumnNumber].Substring(0, sim6Data[1, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[2, descTextColNum], Int32.Parse(sim6Data[2, sidewalkStressColumnNumber].Substring(0, sim6Data[2, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[3, descTextColNum], Int32.Parse(sim6Data[3, sidewalkStressColumnNumber].Substring(0, sim6Data[3, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[4, descTextColNum], Int32.Parse(sim6Data[4, sidewalkStressColumnNumber].Substring(0, sim6Data[4, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[5, descTextColNum], Int32.Parse(sim6Data[5, sidewalkStressColumnNumber].Substring(0, sim6Data[5, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[6, descTextColNum], Int32.Parse(sim6Data[6, sidewalkStressColumnNumber].Substring(0, sim6Data[6, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[7, descTextColNum], Int32.Parse(sim6Data[7, sidewalkStressColumnNumber].Substring(0, sim6Data[7, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[8, descTextColNum], Int32.Parse(sim6Data[8, sidewalkStressColumnNumber].Substring(0, sim6Data[8, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[9, descTextColNum], Int32.Parse(sim6Data[9, sidewalkStressColumnNumber].Substring(0, sim6Data[9, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[10, descTextColNum], Int32.Parse(sim6Data[10, sidewalkStressColumnNumber].Substring(0, sim6Data[10, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[11, descTextColNum], Int32.Parse(sim6Data[11, sidewalkStressColumnNumber].Substring(0, sim6Data[11, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[12, descTextColNum], Int32.Parse(sim6Data[12, sidewalkStressColumnNumber].Substring(0, sim6Data[12, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[13, descTextColNum], Int32.Parse(sim6Data[13, sidewalkStressColumnNumber].Substring(0, sim6Data[13, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[14, descTextColNum], Int32.Parse(sim6Data[14, sidewalkStressColumnNumber].Substring(0, sim6Data[14, sidewalkStressColumnNumber].Length - 1))));
+
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[15, descTextColNum], Int32.Parse(sim6Data[15, sidewalkStressColumnNumber].Substring(0, sim6Data[15, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[16, descTextColNum], Int32.Parse(sim6Data[16, sidewalkStressColumnNumber].Substring(0, sim6Data[16, sidewalkStressColumnNumber].Length - 1))));
+                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(sim6Data[17, descTextColNum], Int32.Parse(sim6Data[17, sidewalkStressColumnNumber].Substring(0, sim6Data[17, sidewalkStressColumnNumber].Length - 1))));
+                    utciChartSim6.DataContext = utciStressDaysSidewalk;
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[0, descTextColNum], Int32.Parse(sim6Data[0, canyonStressColumnNumber].Substring(0, sim6Data[0, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[1, descTextColNum], Int32.Parse(sim6Data[1, canyonStressColumnNumber].Substring(0, sim6Data[1, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[2, descTextColNum], Int32.Parse(sim6Data[2, canyonStressColumnNumber].Substring(0, sim6Data[2, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[3, descTextColNum], Int32.Parse(sim6Data[3, canyonStressColumnNumber].Substring(0, sim6Data[3, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[4, descTextColNum], Int32.Parse(sim6Data[4, canyonStressColumnNumber].Substring(0, sim6Data[4, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[5, descTextColNum], Int32.Parse(sim6Data[5, canyonStressColumnNumber].Substring(0, sim6Data[5, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[6, descTextColNum], Int32.Parse(sim6Data[6, canyonStressColumnNumber].Substring(0, sim6Data[6, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[7, descTextColNum], Int32.Parse(sim6Data[7, canyonStressColumnNumber].Substring(0, sim6Data[7, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[8, descTextColNum], Int32.Parse(sim6Data[8, canyonStressColumnNumber].Substring(0, sim6Data[8, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[9, descTextColNum], Int32.Parse(sim6Data[9, canyonStressColumnNumber].Substring(0, sim6Data[9, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[10, descTextColNum], Int32.Parse(sim6Data[10, canyonStressColumnNumber].Substring(0, sim6Data[10, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[11, descTextColNum], Int32.Parse(sim6Data[11, canyonStressColumnNumber].Substring(0, sim6Data[11, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[12, descTextColNum], Int32.Parse(sim6Data[12, canyonStressColumnNumber].Substring(0, sim6Data[12, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[13, descTextColNum], Int32.Parse(sim6Data[13, canyonStressColumnNumber].Substring(0, sim6Data[13, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[14, descTextColNum], Int32.Parse(sim6Data[14, canyonStressColumnNumber].Substring(0, sim6Data[14, canyonStressColumnNumber].Length - 1))));
+
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[15, descTextColNum], Int32.Parse(sim6Data[15, canyonStressColumnNumber].Substring(0, sim6Data[15, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[16, descTextColNum], Int32.Parse(sim6Data[16, canyonStressColumnNumber].Substring(0, sim6Data[16, canyonStressColumnNumber].Length - 1))));
+                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(sim6Data[17, descTextColNum], Int32.Parse(sim6Data[17, canyonStressColumnNumber].Substring(0, sim6Data[17, canyonStressColumnNumber].Length - 1))));
+
+                try
+                {
+                    utciChartSim6.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
+                }
+                catch
+                {
+
+                }
+
+
+            }
+
+
+
+
+        }
+
         private void tAirSim1_change(object sender, RoutedEventArgs e)
         {
             int ind = tAirChangeboxSim1.SelectedIndex;
@@ -1257,68 +1696,6 @@ namespace UWG
             {
 
             }
-
-        }
-
-        private void utciSim2_change(object sender, RoutedEventArgs e)
-        {
-            int ind = utciChangeboxSim2.SelectedIndex;
-            int sidewalkStressColumnNumber = 84;
-            int canyonStressColumnNumber = 86;
-            if (ind == 0)
-            {
-                try
-                {
-                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim2Data[9, sidewalkStressColumnNumber].Substring(0, sim2Data[9, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim2Data[8, sidewalkStressColumnNumber].Substring(0, sim2Data[8, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim2Data[7, sidewalkStressColumnNumber].Substring(0, sim2Data[7, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim2Data[6, sidewalkStressColumnNumber].Substring(0, sim2Data[6, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim2Data[5, sidewalkStressColumnNumber].Substring(0, sim2Data[5, sidewalkStressColumnNumber].Length - 1))));
-
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim2Data[4, sidewalkStressColumnNumber].Substring(0, sim2Data[4, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim2Data[3, sidewalkStressColumnNumber].Substring(0, sim2Data[3, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim2Data[2, sidewalkStressColumnNumber].Substring(0, sim2Data[2, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim2Data[1, sidewalkStressColumnNumber].Substring(0, sim2Data[1, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim2Data[0, sidewalkStressColumnNumber].Substring(0, sim2Data[0, sidewalkStressColumnNumber].Length - 1))));
-                    utciChartSim2.DataContext = utciStressDaysSidewalk;
-
-
-                }
-                catch
-                {
-
-                }
-
-            }
-            else
-            {
-                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim2Data[9, canyonStressColumnNumber].Substring(0, sim2Data[9, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim2Data[8, canyonStressColumnNumber].Substring(0, sim2Data[8, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim2Data[7, canyonStressColumnNumber].Substring(0, sim2Data[7, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim2Data[6, canyonStressColumnNumber].Substring(0, sim2Data[6, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim2Data[5, canyonStressColumnNumber].Substring(0, sim2Data[5, canyonStressColumnNumber].Length - 1))));
-
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim2Data[4, canyonStressColumnNumber].Substring(0, sim2Data[4, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim2Data[3, canyonStressColumnNumber].Substring(0, sim2Data[3, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim2Data[2, canyonStressColumnNumber].Substring(0, sim2Data[2, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim2Data[1, canyonStressColumnNumber].Substring(0, sim2Data[1, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim2Data[0, canyonStressColumnNumber].Substring(0, sim2Data[0, canyonStressColumnNumber].Length - 1))));
-                try
-                {
-                    utciChartSim2.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
-                }
-                catch
-                {
-
-                }
-
-
-            }
-
-
-
 
         }
         private void tAirSim2_change(object sender, RoutedEventArgs e)
@@ -1362,68 +1739,6 @@ namespace UWG
             }
 
         }
-
-        private void utciSim3_change(object sender, RoutedEventArgs e)
-        {
-            int ind = utciChangeboxSim3.SelectedIndex;
-            int sidewalkStressColumnNumber = 84;
-            int canyonStressColumnNumber = 86;
-            if (ind == 0)
-            {
-                try
-                {
-                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim3Data[9, sidewalkStressColumnNumber].Substring(0, sim3Data[9, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim3Data[8, sidewalkStressColumnNumber].Substring(0, sim3Data[8, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim3Data[7, sidewalkStressColumnNumber].Substring(0, sim3Data[7, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim3Data[6, sidewalkStressColumnNumber].Substring(0, sim3Data[6, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim3Data[5, sidewalkStressColumnNumber].Substring(0, sim3Data[5, sidewalkStressColumnNumber].Length - 1))));
-
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim3Data[4, sidewalkStressColumnNumber].Substring(0, sim3Data[4, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim3Data[3, sidewalkStressColumnNumber].Substring(0, sim3Data[3, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim3Data[2, sidewalkStressColumnNumber].Substring(0, sim3Data[2, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim3Data[1, sidewalkStressColumnNumber].Substring(0, sim3Data[1, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim3Data[0, sidewalkStressColumnNumber].Substring(0, sim3Data[0, sidewalkStressColumnNumber].Length - 1))));
-                    utciChartSim3.DataContext = utciStressDaysSidewalk;
-
-
-                }
-                catch
-                {
-
-                }
-
-            }
-            else
-            {
-                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim3Data[9, canyonStressColumnNumber].Substring(0, sim3Data[9, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim3Data[8, canyonStressColumnNumber].Substring(0, sim3Data[8, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim3Data[7, canyonStressColumnNumber].Substring(0, sim3Data[7, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim3Data[6, canyonStressColumnNumber].Substring(0, sim3Data[6, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim3Data[5, canyonStressColumnNumber].Substring(0, sim3Data[5, canyonStressColumnNumber].Length - 1))));
-
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim3Data[4, canyonStressColumnNumber].Substring(0, sim3Data[4, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim3Data[3, canyonStressColumnNumber].Substring(0, sim3Data[3, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim3Data[2, canyonStressColumnNumber].Substring(0, sim3Data[2, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim3Data[1, canyonStressColumnNumber].Substring(0, sim3Data[1, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim3Data[0, canyonStressColumnNumber].Substring(0, sim3Data[0, canyonStressColumnNumber].Length - 1))));
-                try
-                {
-                    utciChartSim3.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
-                }
-                catch
-                {
-
-                }
-
-
-            }
-
-
-
-
-        }
         private void tAirSim3_change(object sender, RoutedEventArgs e)
         {
             int ind = tAirChangeboxSim3.SelectedIndex;
@@ -1463,68 +1778,6 @@ namespace UWG
             {
 
             }
-
-        }
-
-        private void utciSim4_change(object sender, RoutedEventArgs e)
-        {
-            int ind = utciChangeboxSim4.SelectedIndex;
-            int sidewalkStressColumnNumber = 84;
-            int canyonStressColumnNumber = 86;
-            if (ind == 0)
-            {
-                try
-                {
-                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim4Data[9, sidewalkStressColumnNumber].Substring(0, sim4Data[9, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim4Data[8, sidewalkStressColumnNumber].Substring(0, sim4Data[8, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim4Data[7, sidewalkStressColumnNumber].Substring(0, sim4Data[7, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim4Data[6, sidewalkStressColumnNumber].Substring(0, sim4Data[6, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim4Data[5, sidewalkStressColumnNumber].Substring(0, sim4Data[5, sidewalkStressColumnNumber].Length - 1))));
-
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim4Data[4, sidewalkStressColumnNumber].Substring(0, sim4Data[4, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim4Data[3, sidewalkStressColumnNumber].Substring(0, sim4Data[3, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim4Data[2, sidewalkStressColumnNumber].Substring(0, sim4Data[2, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim4Data[1, sidewalkStressColumnNumber].Substring(0, sim4Data[1, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim4Data[0, sidewalkStressColumnNumber].Substring(0, sim4Data[0, sidewalkStressColumnNumber].Length - 1))));
-                    utciChartSim4.DataContext = utciStressDaysSidewalk;
-
-
-                }
-                catch
-                {
-
-                }
-
-            }
-            else
-            {
-                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim4Data[9, canyonStressColumnNumber].Substring(0, sim4Data[9, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim4Data[8, canyonStressColumnNumber].Substring(0, sim4Data[8, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim4Data[7, canyonStressColumnNumber].Substring(0, sim4Data[7, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim4Data[6, canyonStressColumnNumber].Substring(0, sim4Data[6, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim4Data[5, canyonStressColumnNumber].Substring(0, sim4Data[5, canyonStressColumnNumber].Length - 1))));
-
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim4Data[4, canyonStressColumnNumber].Substring(0, sim4Data[4, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim4Data[3, canyonStressColumnNumber].Substring(0, sim4Data[3, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim4Data[2, canyonStressColumnNumber].Substring(0, sim4Data[2, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim4Data[1, canyonStressColumnNumber].Substring(0, sim4Data[1, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim4Data[0, canyonStressColumnNumber].Substring(0, sim4Data[0, canyonStressColumnNumber].Length - 1))));
-                try
-                {
-                    utciChartSim4.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
-                }
-                catch
-                {
-
-                }
-
-
-            }
-
-
-
 
         }
         private void tAirSim4_change(object sender, RoutedEventArgs e)
@@ -1568,68 +1821,6 @@ namespace UWG
             }
 
         }
-
-        private void utciSim5_change(object sender, RoutedEventArgs e)
-        {
-            int ind = utciChangeboxSim5.SelectedIndex;
-            int sidewalkStressColumnNumber = 84;
-            int canyonStressColumnNumber = 86;
-            if (ind == 0)
-            {
-                try
-                {
-                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim5Data[9, sidewalkStressColumnNumber].Substring(0, sim5Data[9, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim5Data[8, sidewalkStressColumnNumber].Substring(0, sim5Data[8, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim5Data[7, sidewalkStressColumnNumber].Substring(0, sim5Data[7, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim5Data[6, sidewalkStressColumnNumber].Substring(0, sim5Data[6, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim5Data[5, sidewalkStressColumnNumber].Substring(0, sim5Data[5, sidewalkStressColumnNumber].Length - 1))));
-
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim5Data[4, sidewalkStressColumnNumber].Substring(0, sim5Data[4, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim5Data[3, sidewalkStressColumnNumber].Substring(0, sim5Data[3, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim5Data[2, sidewalkStressColumnNumber].Substring(0, sim5Data[2, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim5Data[1, sidewalkStressColumnNumber].Substring(0, sim5Data[1, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim5Data[0, sidewalkStressColumnNumber].Substring(0, sim5Data[0, sidewalkStressColumnNumber].Length - 1))));
-                    utciChartSim5.DataContext = utciStressDaysSidewalk;
-
-
-                }
-                catch
-                {
-
-                }
-
-            }
-            else
-            {
-                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim5Data[9, canyonStressColumnNumber].Substring(0, sim5Data[9, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim5Data[8, canyonStressColumnNumber].Substring(0, sim5Data[8, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim5Data[7, canyonStressColumnNumber].Substring(0, sim5Data[7, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim5Data[6, canyonStressColumnNumber].Substring(0, sim5Data[6, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim5Data[5, canyonStressColumnNumber].Substring(0, sim5Data[5, canyonStressColumnNumber].Length - 1))));
-
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim5Data[4, canyonStressColumnNumber].Substring(0, sim5Data[4, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim5Data[3, canyonStressColumnNumber].Substring(0, sim5Data[3, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim5Data[2, canyonStressColumnNumber].Substring(0, sim5Data[2, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim5Data[1, canyonStressColumnNumber].Substring(0, sim5Data[1, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim5Data[0, canyonStressColumnNumber].Substring(0, sim5Data[0, canyonStressColumnNumber].Length - 1))));
-                try
-                {
-                    utciChartSim5.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
-                }
-                catch
-                {
-
-                }
-
-
-            }
-
-
-
-
-        }
         private void tAirSim5_change(object sender, RoutedEventArgs e)
         {
             int ind = tAirChangeboxSim5.SelectedIndex;
@@ -1669,68 +1860,6 @@ namespace UWG
             {
 
             }
-
-        }
-
-        private void utciSim6_change(object sender, RoutedEventArgs e)
-        {
-            int ind = utciChangeboxSim6.SelectedIndex;
-            int sidewalkStressColumnNumber = 84;
-            int canyonStressColumnNumber = 86;
-            if (ind == 0)
-            {
-                try
-                {
-                    List<KeyValuePair<string, int>> utciStressDaysSidewalk = new List<KeyValuePair<string, int>>();
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim6Data[9, sidewalkStressColumnNumber].Substring(0, sim6Data[9, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim6Data[8, sidewalkStressColumnNumber].Substring(0, sim6Data[8, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim6Data[7, sidewalkStressColumnNumber].Substring(0, sim6Data[7, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim6Data[6, sidewalkStressColumnNumber].Substring(0, sim6Data[6, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim6Data[5, sidewalkStressColumnNumber].Substring(0, sim6Data[5, sidewalkStressColumnNumber].Length - 1))));
-
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim6Data[4, sidewalkStressColumnNumber].Substring(0, sim6Data[4, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim6Data[3, sidewalkStressColumnNumber].Substring(0, sim6Data[3, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim6Data[2, sidewalkStressColumnNumber].Substring(0, sim6Data[2, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim6Data[1, sidewalkStressColumnNumber].Substring(0, sim6Data[1, sidewalkStressColumnNumber].Length - 1))));
-                    utciStressDaysSidewalk.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim6Data[0, sidewalkStressColumnNumber].Substring(0, sim6Data[0, sidewalkStressColumnNumber].Length - 1))));
-                    utciChartSim6.DataContext = utciStressDaysSidewalk;
-
-
-                }
-                catch
-                {
-
-                }
-
-            }
-            else
-            {
-                List<KeyValuePair<string, int>> utciStressDaysUrbanCanyon = new List<KeyValuePair<string, int>>();
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("<40C", Int32.Parse(sim6Data[9, canyonStressColumnNumber].Substring(0, sim6Data[9, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-40 to -27", Int32.Parse(sim6Data[8, canyonStressColumnNumber].Substring(0, sim6Data[8, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-27 to -13", Int32.Parse(sim6Data[7, canyonStressColumnNumber].Substring(0, sim6Data[7, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("-13 to 0", Int32.Parse(sim6Data[6, canyonStressColumnNumber].Substring(0, sim6Data[6, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("0 to 9", Int32.Parse(sim6Data[5, canyonStressColumnNumber].Substring(0, sim6Data[5, canyonStressColumnNumber].Length - 1))));
-
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("9 to 26", Int32.Parse(sim6Data[4, canyonStressColumnNumber].Substring(0, sim6Data[4, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("26 to 32", Int32.Parse(sim6Data[3, canyonStressColumnNumber].Substring(0, sim6Data[3, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("32 to 38", Int32.Parse(sim6Data[2, canyonStressColumnNumber].Substring(0, sim6Data[2, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>("38 to 46", Int32.Parse(sim6Data[1, canyonStressColumnNumber].Substring(0, sim6Data[1, canyonStressColumnNumber].Length - 1))));
-                utciStressDaysUrbanCanyon.Add(new KeyValuePair<string, int>(">46C", Int32.Parse(sim6Data[0, canyonStressColumnNumber].Substring(0, sim6Data[0, canyonStressColumnNumber].Length - 1))));
-                try
-                {
-                    utciChartSim6.DataContext = utciStressDaysUrbanCanyon; //keeps giving an error, but definitely exists in the XAML
-                }
-                catch
-                {
-
-                }
-
-
-            }
-
-
-
 
         }
         private void tAirSim6_change(object sender, RoutedEventArgs e)
@@ -1804,46 +1933,33 @@ namespace UWG
             }
             if (pathSim1 != "")
             {
-                loadDataSim1(sender, e);
-                simTab1.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim1(sender, e); 
 
             }
             if (pathSim2 != "")
             {
-                loadDataSim2(sender, e);
-                simTab2.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim2(sender, e);  
 
             }
             if (pathSim3 != "")
             {
                 loadDataSim3(sender, e);
-                simTab3.Visibility = System.Windows.Visibility.Visible;
 
             }
             if (pathSim4 != "")
             {
-                loadDataSim4(sender, e);
-                simTab4.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim4(sender, e);  
 
             }
             if (pathSim5 != "")
             {
                 loadDataSim5(sender, e);
-                simTab5.Visibility = System.Windows.Visibility.Visible;
 
             }
             if (pathSim6 != "")
             {
-                loadDataSim6(sender, e);
-                simTab6.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim6(sender, e);   
 
-                //grab info for sixth simulation
-                //String sim6File = resultName5.Text;
-                //String fullPath6 = System.IO.Path.Combine(this.resultPath, sim6File);
-                //simTab6.Visibility = System.Windows.Visibility.Visible;
-                //sim6DegDays.Visibility = System.Windows.Visibility.Visible;
-                //sim6Hours.Visibility = System.Windows.Visibility.Visible;
-                //File.Copy(fullPath6, System.IO.Path.ChangeExtension(fullPath6, ".csv"));
             }
 
             //this.epwPathRun = System.IO.Path.GetDirectoryName(filenameRun);
@@ -1855,15 +1971,9 @@ namespace UWG
             viewSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = viewSimTab;
             //sim1DegDays.Content = "100";
-            utciChangeboxSim1.SelectedIndex = 0;
-            tAirChangeboxSim1.SelectedIndex = 0;
 
-            utciSim1_change(sender, e);
-            tAirSim1_change(sender, e);            
-            //System.Windows.MessageBox.Show("Simulation page still needs to be connected.");
-            //SimWindow sim = new SimWindow();
-            //sim.ShowDialog();
-            //sim.Closed += new EventHandler(Enable);
+
+
         }
 
         private void loadDataSim1(object sender, RoutedEventArgs e)
@@ -1911,10 +2021,25 @@ namespace UWG
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        while (column < 87)
+                        while (!reader.EndOfStream && column < 88)
                         {
-                            sim1Data[row, column] = values[column];
-                            column += 1;
+                            if (column < values.Length)
+                            {
+                                if (column == 87)
+                                {
+                                    sim1Data[row, column] = values[column].Split(':')[0];
+                                }
+                                else
+                                {
+                                    sim1Data[row, column] = values[column];
+                                }
+                                column += 1;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                         row += 1;
                         column = 0;
@@ -1922,6 +2047,9 @@ namespace UWG
                     }
                     utciSim1_change(sender, e);
                     tAirSim1_change(sender, e);
+                    sim1Hours.Content = (Int32.Parse(sim1Data[9, 86].Substring(0, sim1Data[9, 86].Length - 1)) + Int32.Parse(sim1Data[10, 86].Substring(0, sim1Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab1.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -1930,13 +2058,12 @@ namespace UWG
                 Console.WriteLine("{0} Second exception caught.", ex);
             }
         }
-
         private void loadDataSim2(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
-            //String sim1File = resultName.Text;
-            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim1File); //path to the simulation output
-            //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
+            //String sim2File = resultName.Text;
+            //String origPath1 = System.IO.Path.Combine(resultPathText.Text, sim2File); //path to the simulation output
+            //String csvPathSim2 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
 
@@ -1953,6 +2080,10 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim2);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                {
+                    csv_filePath = csvPathInput;
+                }
                 if (!File.Exists(csv_filePath))
                 {
                     csv_file = utci.UTCI_calc(working_folder, csvFilename);
@@ -1972,10 +2103,25 @@ namespace UWG
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        while (column < 87)
+                        while (!reader.EndOfStream && column < 88)
                         {
-                            sim2Data[row, column] = values[column];
-                            column += 1;
+                            if (column < values.Length)
+                            {
+                                if (column == 87)
+                                {
+                                    sim2Data[row, column] = values[column].Split(':')[0];
+                                }
+                                else
+                                {
+                                    sim2Data[row, column] = values[column];
+                                }
+                                column += 1;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                         row += 1;
                         column = 0;
@@ -1983,6 +2129,9 @@ namespace UWG
                     }
                     utciSim2_change(sender, e);
                     tAirSim2_change(sender, e);
+                    sim2Hours.Content = (Int32.Parse(sim2Data[9, 86].Substring(0, sim2Data[9, 86].Length - 1)) + Int32.Parse(sim2Data[10, 86].Substring(0, sim2Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab2.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -1991,7 +2140,6 @@ namespace UWG
                 Console.WriteLine("{0} Second exception caught.", ex);
             }
         }
-
         private void loadDataSim3(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
@@ -2014,6 +2162,10 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim3);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                {
+                    csv_filePath = csvPathInput;
+                }
                 if (!File.Exists(csv_filePath))
                 {
                     csv_file = utci.UTCI_calc(working_folder, csvFilename);
@@ -2033,10 +2185,25 @@ namespace UWG
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        while (column < 87)
+                        while (!reader.EndOfStream && column < 88)
                         {
-                            sim3Data[row, column] = values[column];
-                            column += 1;
+                            if (column < values.Length)
+                            {
+                                if (column == 87)
+                                {
+                                    sim3Data[row, column] = values[column].Split(':')[0];
+                                }
+                                else
+                                {
+                                    sim3Data[row, column] = values[column];
+                                }
+                                column += 1;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                         row += 1;
                         column = 0;
@@ -2044,6 +2211,9 @@ namespace UWG
                     }
                     utciSim3_change(sender, e);
                     tAirSim3_change(sender, e);
+                    sim3Hours.Content = (Int32.Parse(sim3Data[9, 86].Substring(0, sim3Data[9, 86].Length - 1)) + Int32.Parse(sim3Data[10, 86].Substring(0, sim3Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab3.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2052,7 +2222,6 @@ namespace UWG
                 Console.WriteLine("{0} Second exception caught.", ex);
             }
         }
-
         private void loadDataSim4(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
@@ -2075,6 +2244,10 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim4);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                {
+                    csv_filePath = csvPathInput;
+                }
                 if (!File.Exists(csv_filePath))
                 {
                     csv_file = utci.UTCI_calc(working_folder, csvFilename);
@@ -2094,10 +2267,25 @@ namespace UWG
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        while (column < 87)
+                        while (!reader.EndOfStream && column < 88)
                         {
-                            sim4Data[row, column] = values[column];
-                            column += 1;
+                            if (column < values.Length)
+                            {
+                                if (column == 87)
+                                {
+                                    sim4Data[row, column] = values[column].Split(':')[0];
+                                }
+                                else
+                                {
+                                    sim4Data[row, column] = values[column];
+                                }
+                                column += 1;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                         row += 1;
                         column = 0;
@@ -2105,6 +2293,7 @@ namespace UWG
                     }
                     utciSim4_change(sender, e);
                     tAirSim4_change(sender, e);
+                    sim4Hours.Content = (Int32.Parse(sim4Data[9, 86].Substring(0, sim4Data[9, 86].Length - 1)) + Int32.Parse(sim4Data[10, 86].Substring(0, sim4Data[10, 86].Length - 1))).ToString() + "%";
                 }
 
             }
@@ -2113,7 +2302,6 @@ namespace UWG
                 Console.WriteLine("{0} Second exception caught.", ex);
             }
         }
-
         private void loadDataSim5(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
@@ -2136,6 +2324,10 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim5);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                {
+                    csv_filePath = csvPathInput;
+                }
                 if (!File.Exists(csv_filePath))
                 {
                     csv_file = utci.UTCI_calc(working_folder, csvFilename);
@@ -2155,10 +2347,25 @@ namespace UWG
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        while (column < 87)
+                        while (!reader.EndOfStream && column < 88)
                         {
-                            sim5Data[row, column] = values[column];
-                            column += 1;
+                            if (column < values.Length)
+                            {
+                                if (column == 87)
+                                {
+                                    sim5Data[row, column] = values[column].Split(':')[0];
+                                }
+                                else
+                                {
+                                    sim5Data[row, column] = values[column];
+                                }
+                                column += 1;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                         row += 1;
                         column = 0;
@@ -2166,6 +2373,9 @@ namespace UWG
                     }
                     utciSim5_change(sender, e);
                     tAirSim5_change(sender, e);
+                    sim5Hours.Content = (Int32.Parse(sim5Data[9, 86].Substring(0, sim5Data[9, 86].Length - 1)) + Int32.Parse(sim5Data[10, 86].Substring(0, sim5Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab5.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2174,7 +2384,6 @@ namespace UWG
                 Console.WriteLine("{0} Second exception caught.", ex);
             }
         }
-
         private void loadDataSim6(object sender, RoutedEventArgs e)
         {
             //grab info for first simulation
@@ -2197,6 +2406,10 @@ namespace UWG
                 working_folder = System.IO.Path.GetDirectoryName(pathSim6);
                 string csv_filename = "UTCI_" + csvFilename;
                 string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                if (System.IO.Path.GetExtension(csvPathInput) == ".csv")
+                {
+                    csv_filePath = csvPathInput;
+                }
                 if (!File.Exists(csv_filePath))
                 {
                     csv_file = utci.UTCI_calc(working_folder, csvFilename);
@@ -2216,10 +2429,25 @@ namespace UWG
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        while (column < 87)
+                        while (!reader.EndOfStream && column < 88)
                         {
-                            sim6Data[row, column] = values[column];
-                            column += 1;
+                            if (column < values.Length)
+                            {
+                                if (column == 87)
+                                {
+                                    sim6Data[row, column] = values[column].Split(':')[0];
+                                }
+                                else
+                                {
+                                    sim6Data[row, column] = values[column];
+                                }
+                                column += 1;
+
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                         row += 1;
                         column = 0;
@@ -2227,6 +2455,9 @@ namespace UWG
                     }
                     utciSim6_change(sender, e);
                     tAirSim6_change(sender, e);
+                    sim6Hours.Content = (Int32.Parse(sim6Data[9, 86].Substring(0, sim6Data[9, 86].Length - 1)) + Int32.Parse(sim6Data[10, 86].Substring(0, sim6Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab6.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2235,6 +2466,7 @@ namespace UWG
                 Console.WriteLine("{0} Second exception caught.", ex);
             }
         }
+
 
 
         private void makeFile_Click(object sender, RoutedEventArgs e)
@@ -3957,7 +4189,6 @@ namespace UWG
                     pathSim1 = dlg.FileName;
                     labelSim1.Content = dlg.SafeFileName;
                     loadDataSim1(sender, e);
-                    simTab1.Visibility = System.Windows.Visibility.Visible;
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim2")
@@ -3965,7 +4196,6 @@ namespace UWG
                     pathSim2 = dlg.FileName;
                     labelSim2.Content = dlg.SafeFileName;
                     loadDataSim2(sender, e);
-                    simTab2.Visibility = System.Windows.Visibility.Visible;
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim3")
@@ -3973,8 +4203,6 @@ namespace UWG
                     pathSim3 = dlg.FileName;
                     labelSim3.Content = dlg.SafeFileName;
                     loadDataSim3(sender, e);
-                    simTab3.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim4")
@@ -3982,8 +4210,6 @@ namespace UWG
                     pathSim4 = dlg.FileName;
                     labelSim4.Content = dlg.SafeFileName;
                     loadDataSim4(sender, e);
-                    simTab4.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim5")
@@ -3991,7 +4217,6 @@ namespace UWG
                     pathSim5 = dlg.FileName;
                     labelSim5.Content = dlg.SafeFileName;
                     loadDataSim5(sender, e);
-                    simTab5.Visibility = System.Windows.Visibility.Visible;
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim6")
@@ -3999,8 +4224,6 @@ namespace UWG
                     pathSim6 = dlg.FileName;
                     labelSim6.Content = dlg.SafeFileName;
                     loadDataSim6(sender, e);
-                    simTab6.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
             }
