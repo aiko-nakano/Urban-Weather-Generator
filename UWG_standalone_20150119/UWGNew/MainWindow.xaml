@@ -2513,8 +2513,8 @@
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Top"></Label>
                                 <Label Content="Comfortable Hours (% of year)" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Top"></Label>
-                                <Label Content="Total Degree Days" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Top"></Label>
+                                <Label Content="Total Degree Days" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource PanelLeft}">
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -2563,22 +2563,6 @@
                                         <Label Content="" Grid.Row="5" Grid.Column="3" Name="sim5DegDays" Visibility="Visible"></Label>
                                         <Label Content="" Grid.Row="6" Grid.Column="3" Name="sim6DegDays" Visibility="Visible"></Label>
 
-                                        <!--<Label Content="2%" Grid.Row="0" Grid.Column="2" Name="refSiteHours" Visibility="Visible"></Label>
-                                        <Label Content="5%" Grid.Row="1" Grid.Column="2" Name="sim1Hours" Visibility="Visible"></Label>
-                                        <Label Content="10%" Grid.Row="2" Grid.Column="2" Name="sim2Hours" Visibility="Visible"></Label>
-                                        <Label Content="35%" Grid.Row="3" Grid.Column="2" Name="sim3Hours" Visibility="Visible"></Label>
-                                        <Label Content="10%" Grid.Row="4" Grid.Column="2" Name="sim4Hours" Visibility="Visible"></Label>
-                                        <Label Content="50%" Grid.Row="5" Grid.Column="2" Name="sim5Hours" Visibility="Visible"></Label>
-                                        <Label Content="9%" Grid.Row="6" Grid.Column="2" Name="sim6Hours" Visibility="Visible"></Label>
-
-                                        <Label Content="1200" Grid.Row="0" Grid.Column="3" Name="refSiteDegDays" Visibility="Visible"></Label>
-                                        <Label Content="100" Grid.Row="1" Grid.Column="3" Name="sim1DegDays" Visibility="Visible"></Label>
-                                        <Label Content="200" Grid.Row="2" Grid.Column="3" Name="sim2DegDays" Visibility="Visible"></Label>
-                                        <Label Content="233" Grid.Row="3" Grid.Column="3" Name="sim3DegDays" Visibility="Visible"></Label>
-                                        <Label Content="500" Grid.Row="4" Grid.Column="3" Name="sim4DegDays" Visibility="Visible"></Label>
-                                        <Label Content="800" Grid.Row="5" Grid.Column="3" Name="sim5DegDays" Visibility="Visible"></Label>
-                                        <Label Content="1000" Grid.Row="6" Grid.Column="3" Name="sim6DegDays" Visibility="Visible"></Label>-->
-
                                     </Grid>
 
                                 </StackPanel>
@@ -2598,7 +2582,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -2727,12 +2711,12 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <!--<Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim1" ></Label>
                                         <Label Content="{Binding Path=Content, ElementName=sim1DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim1"></Label>
                                         <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim1"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
-                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim1"></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim1"></Label> to be added later-->
 
                                     </Grid>
                                 </StackPanel>
@@ -2753,7 +2737,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -2882,12 +2866,12 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <!--<Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
                                         <Label Content="{Binding Path=Content, ElementName=sim2DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim2"></Label>
                                         <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim2"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
-                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim2"></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim2"></Label>-->
 
                                     </Grid>
                                 </StackPanel>
@@ -2907,7 +2891,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -3036,12 +3020,12 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <!--<Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
                                         <Label Content="{Binding Path=Content, ElementName=sim3DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim3"></Label>
                                         <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim3"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
-                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim3"></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim3"></Label>-->
 
                                     </Grid>
                                 </StackPanel>
@@ -3061,7 +3045,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -3190,12 +3174,12 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <!--<Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
                                         <Label Content="{Binding Path=Content, ElementName=sim4DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim4"></Label>
                                         <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim4"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
-                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim4"></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim4"></Label>-->
 
                                     </Grid>
                                 </StackPanel>
@@ -3215,7 +3199,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -3344,12 +3328,12 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <!--<Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
                                         <Label Content="{Binding Path=Content, ElementName=sim5DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim5"></Label>
                                         <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim5"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
-                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim5"></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim5"></Label>-->
 
                                     </Grid>
                                 </StackPanel>
@@ -3369,7 +3353,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
                                 <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
+                                <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
                                 <StackPanel Grid.Row="1" Grid.Column="0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -3498,12 +3482,12 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
+                                        <!--<Label Content="Total Degree Days" Grid.Column="0" Grid.Row="0" FontWeight="SemiBold"></Label>
                                         <Label Content="{Binding Path=Content, ElementName=sim6DegDays, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Name="totalDegDaysSim6"></Label>
                                         <Label Content="Heating Degree Days" Grid.Column="0" Grid.Row="1" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim6"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
-                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim6"></Label>
+                                        <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim6"></Label>-->
 
                                     </Grid>
                                 </StackPanel>

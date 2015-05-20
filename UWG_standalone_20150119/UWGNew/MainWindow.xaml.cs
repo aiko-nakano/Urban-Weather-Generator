@@ -1933,46 +1933,33 @@ namespace UWG
             }
             if (pathSim1 != "")
             {
-                loadDataSim1(sender, e);
-                simTab1.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim1(sender, e); 
 
             }
             if (pathSim2 != "")
             {
-                loadDataSim2(sender, e);
-                simTab2.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim2(sender, e);  
 
             }
             if (pathSim3 != "")
             {
                 loadDataSim3(sender, e);
-                simTab3.Visibility = System.Windows.Visibility.Visible;
 
             }
             if (pathSim4 != "")
             {
-                loadDataSim4(sender, e);
-                simTab4.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim4(sender, e);  
 
             }
             if (pathSim5 != "")
             {
                 loadDataSim5(sender, e);
-                simTab5.Visibility = System.Windows.Visibility.Visible;
 
             }
             if (pathSim6 != "")
             {
-                loadDataSim6(sender, e);
-                simTab6.Visibility = System.Windows.Visibility.Visible;
+                loadDataSim6(sender, e);   
 
-                //grab info for sixth simulation
-                //String sim6File = resultName5.Text;
-                //String fullPath6 = System.IO.Path.Combine(this.resultPath, sim6File);
-                //simTab6.Visibility = System.Windows.Visibility.Visible;
-                //sim6DegDays.Visibility = System.Windows.Visibility.Visible;
-                //sim6Hours.Visibility = System.Windows.Visibility.Visible;
-                //File.Copy(fullPath6, System.IO.Path.ChangeExtension(fullPath6, ".csv"));
             }
 
             //this.epwPathRun = System.IO.Path.GetDirectoryName(filenameRun);
@@ -1984,15 +1971,9 @@ namespace UWG
             viewSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = viewSimTab;
             //sim1DegDays.Content = "100";
-            utciChangeboxSim1.SelectedIndex = 0;
-            tAirChangeboxSim1.SelectedIndex = 0;
 
-            utciSim1_change(sender, e);
-            tAirSim1_change(sender, e);            
-            //System.Windows.MessageBox.Show("Simulation page still needs to be connected.");
-            //SimWindow sim = new SimWindow();
-            //sim.ShowDialog();
-            //sim.Closed += new EventHandler(Enable);
+
+
         }
 
         private void loadDataSim1(object sender, RoutedEventArgs e)
@@ -2066,6 +2047,9 @@ namespace UWG
                     }
                     utciSim1_change(sender, e);
                     tAirSim1_change(sender, e);
+                    sim1Hours.Content = (Int32.Parse(sim1Data[9, 86].Substring(0, sim1Data[9, 86].Length - 1)) + Int32.Parse(sim1Data[10, 86].Substring(0, sim1Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab1.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2145,6 +2129,9 @@ namespace UWG
                     }
                     utciSim2_change(sender, e);
                     tAirSim2_change(sender, e);
+                    sim2Hours.Content = (Int32.Parse(sim2Data[9, 86].Substring(0, sim2Data[9, 86].Length - 1)) + Int32.Parse(sim2Data[10, 86].Substring(0, sim2Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab2.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2224,6 +2211,9 @@ namespace UWG
                     }
                     utciSim3_change(sender, e);
                     tAirSim3_change(sender, e);
+                    sim3Hours.Content = (Int32.Parse(sim3Data[9, 86].Substring(0, sim3Data[9, 86].Length - 1)) + Int32.Parse(sim3Data[10, 86].Substring(0, sim3Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab3.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2303,6 +2293,7 @@ namespace UWG
                     }
                     utciSim4_change(sender, e);
                     tAirSim4_change(sender, e);
+                    sim4Hours.Content = (Int32.Parse(sim4Data[9, 86].Substring(0, sim4Data[9, 86].Length - 1)) + Int32.Parse(sim4Data[10, 86].Substring(0, sim4Data[10, 86].Length - 1))).ToString() + "%";
                 }
 
             }
@@ -2382,6 +2373,9 @@ namespace UWG
                     }
                     utciSim5_change(sender, e);
                     tAirSim5_change(sender, e);
+                    sim5Hours.Content = (Int32.Parse(sim5Data[9, 86].Substring(0, sim5Data[9, 86].Length - 1)) + Int32.Parse(sim5Data[10, 86].Substring(0, sim5Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab5.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -2461,6 +2455,9 @@ namespace UWG
                     }
                     utciSim6_change(sender, e);
                     tAirSim6_change(sender, e);
+                    sim6Hours.Content = (Int32.Parse(sim6Data[9, 86].Substring(0, sim6Data[9, 86].Length - 1)) + Int32.Parse(sim6Data[10, 86].Substring(0, sim6Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab6.Visibility = System.Windows.Visibility.Visible;
+
                 }
 
             }
@@ -4192,7 +4189,6 @@ namespace UWG
                     pathSim1 = dlg.FileName;
                     labelSim1.Content = dlg.SafeFileName;
                     loadDataSim1(sender, e);
-                    simTab1.Visibility = System.Windows.Visibility.Visible;
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim2")
@@ -4200,7 +4196,6 @@ namespace UWG
                     pathSim2 = dlg.FileName;
                     labelSim2.Content = dlg.SafeFileName;
                     loadDataSim2(sender, e);
-                    simTab2.Visibility = System.Windows.Visibility.Visible;
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim3")
@@ -4208,8 +4203,6 @@ namespace UWG
                     pathSim3 = dlg.FileName;
                     labelSim3.Content = dlg.SafeFileName;
                     loadDataSim3(sender, e);
-                    simTab3.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim4")
@@ -4217,8 +4210,6 @@ namespace UWG
                     pathSim4 = dlg.FileName;
                     labelSim4.Content = dlg.SafeFileName;
                     loadDataSim4(sender, e);
-                    simTab4.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim5")
@@ -4226,7 +4217,6 @@ namespace UWG
                     pathSim5 = dlg.FileName;
                     labelSim5.Content = dlg.SafeFileName;
                     loadDataSim5(sender, e);
-                    simTab5.Visibility = System.Windows.Visibility.Visible;
 
                 }
                 else if (buttonSim.Name == "pathbrowseSim6")
@@ -4234,8 +4224,6 @@ namespace UWG
                     pathSim6 = dlg.FileName;
                     labelSim6.Content = dlg.SafeFileName;
                     loadDataSim6(sender, e);
-                    simTab6.Visibility = System.Windows.Visibility.Visible;
-
 
                 }
             }
