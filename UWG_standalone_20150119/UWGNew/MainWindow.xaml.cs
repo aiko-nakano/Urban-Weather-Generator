@@ -3019,24 +3019,61 @@ namespace UWG
         {
             try
             {
-                XDocument doc = new XDocument(new XElement("xml_inputs"));
+                XDocument doc = new XDocument(new XElement("xml_input"));
                 if (typology1Dist.Text != "0")
                 {
-                    doc.Element("xml_inputs").Add(typ1XML_create());
+                    doc.Element("xml_input").Add(typ1XML_create());
                 }
                 if (typology2Dist.Text != "0")
                 {
-                    doc.Element("xml_inputs").Add(typ2XML_create());
+                    doc.Element("xml_input").Add(typ2XML_create());
                 }
                 if (typology3Dist.Text != "0")
                 {
-                    doc.Element("xml_inputs").Add(typ3XML_create());
+                    doc.Element("xml_input").Add(typ3XML_create());
                 }
                 if (typology4Dist.Text != "0")
                 {
-                    doc.Element("xml_inputs").Add(typ4XML_create());
+                    doc.Element("xml_input").Add(typ4XML_create());
                 }
 
+                doc.Element("xml_input").Add(new XElement("urbanArea",
+                                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
+                                                        new XElement("horizontalBuildingDensity", hBDensity.Text),
+                                                        new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
+                                                        new XElement("treeCoverage", treeCoverage.Text),
+                                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
+                                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
+                                                        new XElement("charLength", charLength.Text),
+                                                        new XElement("treeLatent", latentTrees.Text),
+                                                        new XElement("grassLatent", latentGrass.Text),
+                                                        new XElement("vegAlbedo", vegAlbedo.Text),
+                                                        new XElement("vegStart", vegStart.Text),
+                                                        new XElement("vegEnd", vegEnd.Text),
+                                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
+                                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
+                                                        new XElement("refHeight", refHeight.Text)
+                                                    ),
+                                                    new XElement("referenceSite",
+                                                        new XElement("latitude", latitude.Text),
+                                                        new XElement("longitude", longitude.Text),
+                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text)
+                                                    ),
+                                                    new XElement("parameter",
+                                                        new XElement("tempHeight", tempHeight.Text),
+                                                        new XElement("windHeight", windHeight.Text),
+                                                        new XElement("circCoeff", 1.2),
+                                                        new XElement("dayThreshold", 200),
+                                                        new XElement("nightThreshold", 50),
+                                                        new XElement("windMin", 0.1),
+                                                        new XElement("windMax", 10),
+                                                        new XElement("wgmax", 0.005),
+                                                        new XElement("exCoeff", 0.3),
+                                                        new XElement("simuStartMonth" , p.simuStartMonthValidate),
+                                                        new XElement("simuStartDay", p.simuStartDayValidate),
+                                                        new XElement("simuDuration", p.simuDurationValidate)
+                                
+                                                    ));
 
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
                 dlg.Title = DialogName;
@@ -3397,41 +3434,8 @@ namespace UWG
                                                         new XElement("nightSetEnd", nightSetEnd.Text),
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
-                                                    ),
-
-                                                    new XElement("urbanArea",
-                                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                                        new XElement("horizontalBuildingDensity", hBDensity.Text),
-                                                        new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
-                                                        new XElement("treeCoverage", treeCoverage.Text),
-                                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
-                                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
-                                                        new XElement("charLength", charLength.Text),
-                                                        new XElement("treeLatent", latentTrees.Text),
-                                                        new XElement("grassLatent", latentGrass.Text),
-                                                        new XElement("vegAlbedo", vegAlbedo.Text),
-                                                        new XElement("vegStart", vegStart.Text),
-                                                        new XElement("vegEnd", vegEnd.Text),
-                                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
-                                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                        new XElement("refHeight", refHeight.Text)
-                                                    ),
-                                                    new XElement("referenceSite",
-                                                        new XElement("latitude", latitude.Text),
-                                                        new XElement("longitude", longitude.Text),
-                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text)
-                                                    ),
-                                                    new XElement("parameter",
-                                                        new XElement("tempHeight", tempHeight.Text),
-                                                        new XElement("windHeight", windHeight.Text),
-                                                        new XElement("circCoeff", 1.2),
-                                                        new XElement("dayThreshold", 200),
-                                                        new XElement("nightThreshold", 50),
-                                                        new XElement("windMin", 0.1),
-                                                        new XElement("windMax", 10),
-                                                        new XElement("wgmax", 0.005),
-                                                        new XElement("exCoeff", 0.3)
                                                     )
+                                                    
                                                 )
                                             );
                 doc.Root.Add(perc);
@@ -3765,40 +3769,6 @@ namespace UWG
                                                         new XElement("nightSetEnd", nightSetEndTyp2.Text),
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
-                                                    ),
-
-                                                    new XElement("urbanArea",
-                                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                                        new XElement("horizontalBuildingDensity", hBDensity.Text),
-                                                        new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
-                                                        new XElement("treeCoverage", treeCoverage.Text),
-                                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
-                                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
-                                                        new XElement("charLength", charLength.Text),
-                                                        new XElement("treeLatent", latentTrees.Text),
-                                                        new XElement("grassLatent", latentGrass.Text),
-                                                        new XElement("vegAlbedo", vegAlbedo.Text),
-                                                        new XElement("vegStart", vegStart.Text),
-                                                        new XElement("vegEnd", vegEnd.Text),
-                                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
-                                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                        new XElement("refHeight", refHeight.Text)
-                                                    ),
-                                                    new XElement("referenceSite",
-                                                        new XElement("latitude", latitude.Text),
-                                                        new XElement("longitude", longitude.Text),
-                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text)
-                                                    ),
-                                                    new XElement("parameter",
-                                                        new XElement("tempHeight", tempHeight.Text),
-                                                        new XElement("windHeight", windHeight.Text),
-                                                        new XElement("circCoeff", 1.2),
-                                                        new XElement("dayThreshold", 200),
-                                                        new XElement("nightThreshold", 50),
-                                                        new XElement("windMin", 0.1),
-                                                        new XElement("windMax", 10),
-                                                        new XElement("wgmax", 0.005),
-                                                        new XElement("exCoeff", 0.3)
                                                     )
                                                 )
                                             );
@@ -4133,40 +4103,6 @@ namespace UWG
                                                         new XElement("nightSetEnd", nightSetEndTyp3.Text),
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
-                                                    ),
-
-                                                    new XElement("urbanArea",
-                                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                                        new XElement("horizontalBuildingDensity", hBDensity.Text),
-                                                        new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
-                                                        new XElement("treeCoverage", treeCoverage.Text),
-                                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
-                                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
-                                                        new XElement("charLength", charLength.Text),
-                                                        new XElement("treeLatent", latentTrees.Text),
-                                                        new XElement("grassLatent", latentGrass.Text),
-                                                        new XElement("vegAlbedo", vegAlbedo.Text),
-                                                        new XElement("vegStart", vegStart.Text),
-                                                        new XElement("vegEnd", vegEnd.Text),
-                                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
-                                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                        new XElement("refHeight", refHeight.Text)
-                                                    ),
-                                                    new XElement("referenceSite",
-                                                        new XElement("latitude", latitude.Text),
-                                                        new XElement("longitude", longitude.Text),
-                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text)
-                                                    ),
-                                                    new XElement("parameter",
-                                                        new XElement("tempHeight", tempHeight.Text),
-                                                        new XElement("windHeight", windHeight.Text),
-                                                        new XElement("circCoeff", 1.2),
-                                                        new XElement("dayThreshold", 200),
-                                                        new XElement("nightThreshold", 50),
-                                                        new XElement("windMin", 0.1),
-                                                        new XElement("windMax", 10),
-                                                        new XElement("wgmax", 0.005),
-                                                        new XElement("exCoeff", 0.3)
                                                     )
                                                 )
                                             );
@@ -4501,40 +4437,6 @@ namespace UWG
                                                         new XElement("nightSetEnd", nightSetEndTyp4.Text),
                                                         new XElement("heatReleasedToCanyon", 0),
                                                         new XElement("initialT", 20)
-                                                    ),
-
-                                                    new XElement("urbanArea",
-                                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                                        new XElement("horizontalBuildingDensity", hBDensity.Text),
-                                                        new XElement("verticalToHorizontalUrbanAreaRatio", vHRatios.Text),
-                                                        new XElement("treeCoverage", treeCoverage.Text),
-                                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
-                                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
-                                                        new XElement("charLength", charLength.Text),
-                                                        new XElement("treeLatent", latentTrees.Text),
-                                                        new XElement("grassLatent", latentGrass.Text),
-                                                        new XElement("vegAlbedo", vegAlbedo.Text),
-                                                        new XElement("vegStart", vegStart.Text),
-                                                        new XElement("vegEnd", vegEnd.Text),
-                                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
-                                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                        new XElement("refHeight", refHeight.Text)
-                                                    ),
-                                                    new XElement("referenceSite",
-                                                        new XElement("latitude", latitude.Text),
-                                                        new XElement("longitude", longitude.Text),
-                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text)
-                                                    ),
-                                                    new XElement("parameter",
-                                                        new XElement("tempHeight", tempHeight.Text),
-                                                        new XElement("windHeight", windHeight.Text),
-                                                        new XElement("circCoeff", 1.2),
-                                                        new XElement("dayThreshold", 200),
-                                                        new XElement("nightThreshold", 50),
-                                                        new XElement("windMin", 0.1),
-                                                        new XElement("windMax", 10),
-                                                        new XElement("wgmax", 0.005),
-                                                        new XElement("exCoeff", 0.3)
                                                     )
                                                 )
                                             );
