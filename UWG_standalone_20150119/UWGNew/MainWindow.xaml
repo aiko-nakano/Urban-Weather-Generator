@@ -2383,7 +2383,7 @@
                             </StackPanel>
                             <Label Margin="4 0 4 0" FontSize="10" Height="Auto" Width="auto" Grid.Row="3" Grid.Column="0">
                                 <TextBlock>*Please make sure that there is no space
-                                    anywhere <LineBreak /> in the file exntesion or name
+                                    anywhere <LineBreak /> in the file extension or name
                                 </TextBlock>
                             </Label>
                             <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="4" Grid.Column="0" Width="400">

@@ -5025,7 +5025,7 @@ namespace UWG
 
         private void run_Click(object sender, RoutedEventArgs e)
         {
-            if (typologyCheck() == false)
+            if (typologyCheck(sender, e) == false)
             {
                 //typologyCheck will present error message if there is a problem
                 //System.Windows.MessageBox.Show("Distributions don't add to 100%. Please adjust appropriately.");
@@ -5174,7 +5174,7 @@ namespace UWG
                     tAirSim1_change(sender, e);
                     sim1Hours.Content = (Int32.Parse(sim1Data[9, 86].Substring(0, sim1Data[9, 86].Length - 1)) + Int32.Parse(sim1Data[10, 86].Substring(0, sim1Data[10, 86].Length - 1))).ToString() + "%";
                     simTab1.Visibility = System.Windows.Visibility.Visible;
-
+                    labelSim1.Content = System.IO.Path.GetFileName(pathSim1);
                 }
 
             }
@@ -5264,6 +5264,7 @@ namespace UWG
                     tAirSim2_change(sender, e);
                     sim2Hours.Content = (Int32.Parse(sim2Data[9, 86].Substring(0, sim2Data[9, 86].Length - 1)) + Int32.Parse(sim2Data[10, 86].Substring(0, sim2Data[10, 86].Length - 1))).ToString() + "%";
                     simTab2.Visibility = System.Windows.Visibility.Visible;
+                    labelSim2.Content = System.IO.Path.GetFileName(pathSim2);
 
                 }
 
@@ -5354,6 +5355,7 @@ namespace UWG
                     tAirSim3_change(sender, e);
                     sim3Hours.Content = (Int32.Parse(sim3Data[9, 86].Substring(0, sim3Data[9, 86].Length - 1)) + Int32.Parse(sim3Data[10, 86].Substring(0, sim3Data[10, 86].Length - 1))).ToString() + "%";
                     simTab3.Visibility = System.Windows.Visibility.Visible;
+                    labelSim3.Content = System.IO.Path.GetFileName(pathSim3);
 
                 }
 
@@ -5443,6 +5445,9 @@ namespace UWG
                     utciSim4_change(sender, e);
                     tAirSim4_change(sender, e);
                     sim4Hours.Content = (Int32.Parse(sim4Data[9, 86].Substring(0, sim4Data[9, 86].Length - 1)) + Int32.Parse(sim4Data[10, 86].Substring(0, sim4Data[10, 86].Length - 1))).ToString() + "%";
+                    simTab4.Visibility = System.Windows.Visibility.Visible;
+                    labelSim4.Content = System.IO.Path.GetFileName(pathSim4);
+
                 }
 
             }
@@ -5532,6 +5537,7 @@ namespace UWG
                     tAirSim5_change(sender, e);
                     sim5Hours.Content = (Int32.Parse(sim5Data[9, 86].Substring(0, sim5Data[9, 86].Length - 1)) + Int32.Parse(sim5Data[10, 86].Substring(0, sim5Data[10, 86].Length - 1))).ToString() + "%";
                     simTab5.Visibility = System.Windows.Visibility.Visible;
+                    labelSim5.Content = System.IO.Path.GetFileName(pathSim5);
 
                 }
 
@@ -5622,6 +5628,7 @@ namespace UWG
                     tAirSim6_change(sender, e);
                     sim6Hours.Content = (Int32.Parse(sim6Data[9, 86].Substring(0, sim6Data[9, 86].Length - 1)) + Int32.Parse(sim6Data[10, 86].Substring(0, sim6Data[10, 86].Length - 1))).ToString() + "%";
                     simTab6.Visibility = System.Windows.Visibility.Visible;
+                    labelSim6.Content = System.IO.Path.GetFileName(pathSim6);
 
                 }
 
@@ -5694,7 +5701,7 @@ namespace UWG
                 addTypButton.IsEnabled = false;
 
             }
-            typologyCheck();
+            typologyCheck(sender, e);
 
 
         }
@@ -5730,14 +5737,14 @@ namespace UWG
                 typTab4.Visibility = System.Windows.Visibility.Collapsed;
                 addTypButton.IsEnabled = false;
             }
-            typologyCheck();
+            typologyCheck(sender, e);
             numberOfTypology--;
 
 
 
         }
 
-        private Boolean typologyCheck()
+        private Boolean typologyCheck(object sender, RoutedEventArgs e)
         {
             //convert dists to longs, add to make sure equal 1
             totalDist = 0.0;
@@ -5759,6 +5766,13 @@ namespace UWG
                 {
                     dist = double.Parse(typology4Dist.Text);
                     totalDist += dist;
+                }
+                if (totalDist == 0.0)
+                {
+                    if (!(e.OriginalSource is System.Windows.Controls.MenuItem))
+                    {
+                        return true;
+                    }
                 }
                 if (totalDist != 100.0)
                 {
@@ -5782,7 +5796,7 @@ namespace UWG
         //Save Button
         private void buttonSave_Click1(object sender, RoutedEventArgs e)
         {
-            if (typologyCheck() == false)
+            if (typologyCheck(sender, e) == false)
             {
                 //will display message if typology doesn't sum to 100%
             }
@@ -5820,23 +5834,23 @@ namespace UWG
                         // Form input and building template insertion for XML file creation
                         // WALL MATERIALS:
                         XDocument doc = new XDocument(new XElement("xml_input"));
-                        if (typology1Dist.Text != "0" || typology1Dist.Text != "")
+                        if (typology1Dist.Text != "0" && typology1Dist.Text != "")
                         {
 
                             doc.Root.Add(typ1XML_create());
 
                         }
-                        if (typology2Dist.Text != "0")
+                        if (typology2Dist.Text != "0" && typology2Dist.Text != "")
                         {
                             doc.Root.Add(typ2XML_create());
 
                         }
-                        if (typology3Dist.Text != "0")
+                        if (typology3Dist.Text != "0" && typology3Dist.Text != "")
                         {
                             doc.Root.Add(typ3XML_create());
 
                         }
-                        if (typology4Dist.Text != "0")
+                        if (typology4Dist.Text != "0" && typology4Dist.Text != "")
                         {
                             doc.Root.Add(typ4XML_create());
 
@@ -5893,7 +5907,7 @@ namespace UWG
         //Save As Button
         private void buttonSaveAs_Click(object sender, RoutedEventArgs e)
         {
-            if (typologyCheck() == false)
+            if (typologyCheck(sender, e) == false)
             {
                 //will display error message
             }
@@ -5943,7 +5957,7 @@ namespace UWG
             try
             {
                 XDocument doc = new XDocument(new XElement("xml_input"));
-                if (typology1Dist.Text != "0" || typology1Dist.Text != "")
+                if (typology1Dist.Text != "0" && typology1Dist.Text != "")
                 {
                     doc.Root.Add(typ1XML_create());
                 }
@@ -5951,7 +5965,7 @@ namespace UWG
                 {
                     typTab1.Visibility = System.Windows.Visibility.Collapsed;
                 }
-                if (typology2Dist.Text != "0" || typology2Dist.Text != "")
+                if (typology2Dist.Text != "0" && typology2Dist.Text != "")
                 {
                     doc.Root.Add(typ2XML_create());
                 }
@@ -5959,7 +5973,7 @@ namespace UWG
                 {
                     typTab2.Visibility = System.Windows.Visibility.Collapsed;
                 }
-                if (typology3Dist.Text != "0" || typology3Dist.Text != "")
+                if (typology3Dist.Text != "0" && typology3Dist.Text != "")
                 {
                     doc.Root.Add(typ3XML_create());
                 }
@@ -5967,7 +5981,7 @@ namespace UWG
                 {
                     typTab3.Visibility = System.Windows.Visibility.Collapsed;
                 }
-                if (typology4Dist.Text != "0" || typology4Dist.Text != "")
+                if (typology4Dist.Text != "0" && typology4Dist.Text != "")
                 {
                     doc.Root.Add(typ4XML_create());
                 }
@@ -8177,6 +8191,7 @@ namespace UWG
         private void selectSim(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Weather Files (.epw)|*.epw";
             DialogResult userClickedOK = dlg.ShowDialog();
             if (userClickedOK == System.Windows.Forms.DialogResult.OK)
             {
@@ -8186,42 +8201,36 @@ namespace UWG
                     if (buttonSim.Name == "pathbrowseSim1")
                     {
                         pathSim1 = dlg.FileName;
-                        labelSim1.Content = dlg.SafeFileName;
                         loadDataSim1(sender, e);
 
                     }
                     else if (buttonSim.Name == "pathbrowseSim2")
                     {
                         pathSim2 = dlg.FileName;
-                        labelSim2.Content = dlg.SafeFileName;
                         loadDataSim2(sender, e);
 
                     }
                     else if (buttonSim.Name == "pathbrowseSim3")
                     {
                         pathSim3 = dlg.FileName;
-                        labelSim3.Content = dlg.SafeFileName;
                         loadDataSim3(sender, e);
 
                     }
                     else if (buttonSim.Name == "pathbrowseSim4")
                     {
                         pathSim4 = dlg.FileName;
-                        labelSim4.Content = dlg.SafeFileName;
                         loadDataSim4(sender, e);
 
                     }
                     else if (buttonSim.Name == "pathbrowseSim5")
                     {
                         pathSim5 = dlg.FileName;
-                        labelSim5.Content = dlg.SafeFileName;
                         loadDataSim5(sender, e);
 
                     }
                     else if (buttonSim.Name == "pathbrowseSim6")
                     {
                         pathSim6 = dlg.FileName;
-                        labelSim6.Content = dlg.SafeFileName;
                         loadDataSim6(sender, e);
 
                     }
