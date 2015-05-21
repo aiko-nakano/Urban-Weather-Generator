@@ -111,13 +111,6 @@ namespace UWG
         String pathSim5 = "";
         String pathSim6 = "";
 
-        String csvPathSim1 = "";
-        String csvPathSim2 = "";
-        String csvPathSim3 = "";
-        String csvPathSim4 = "";
-        String csvPathSim5 = "";
-        String csvPathSim6 = "";
-
 
         public UWGInputs()
         {
@@ -4790,30 +4783,30 @@ namespace UWG
             int column = 12+ind*6;
             try
             {
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim1Data[0, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim1Data[1, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim1Data[2, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim1Data[3, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim1Data[4, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim1Data[5, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim1Data[6, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim1Data[7, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim1Data[8, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim1Data[9, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim1Data[10, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim1Data[11, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim1Data[12, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim1Data[13, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim1Data[14, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim1Data[15, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim1Data[16, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim1Data[17, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim1Data[18, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim1Data[19, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim1Data[20, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim1Data[21, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim1Data[22, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim1Data[23, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0h", Double.Parse(sim1Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1h", Double.Parse(sim1Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2h", Double.Parse(sim1Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3h", Double.Parse(sim1Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4h", Double.Parse(sim1Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5h", Double.Parse(sim1Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6h", Double.Parse(sim1Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7h", Double.Parse(sim1Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8h", Double.Parse(sim1Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9h", Double.Parse(sim1Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10h", Double.Parse(sim1Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11h", Double.Parse(sim1Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12h", Double.Parse(sim1Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13h", Double.Parse(sim1Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14h", Double.Parse(sim1Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15h", Double.Parse(sim1Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16h", Double.Parse(sim1Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17h", Double.Parse(sim1Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18h", Double.Parse(sim1Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19h", Double.Parse(sim1Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20h", Double.Parse(sim1Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21h", Double.Parse(sim1Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22h", Double.Parse(sim1Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23h", Double.Parse(sim1Data[23, column])));
 
                 tAirChartSim1.DataContext = averageTemperaturePerHour;  //keeps giving an error, but definitely exists in the XAML
                 
@@ -4831,30 +4824,30 @@ namespace UWG
             int column = 12 + ind * 6;
             try
             {
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim2Data[0, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim2Data[1, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim2Data[2, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim2Data[3, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim2Data[4, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim2Data[5, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim2Data[6, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim2Data[7, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim2Data[8, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim2Data[9, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim2Data[10, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim2Data[11, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim2Data[12, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim2Data[13, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim2Data[14, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim2Data[15, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim2Data[16, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim2Data[17, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim2Data[18, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim2Data[19, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim2Data[20, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim2Data[21, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim2Data[22, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim2Data[23, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0h", Double.Parse(sim2Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1h", Double.Parse(sim2Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2h", Double.Parse(sim2Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3h", Double.Parse(sim2Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4h", Double.Parse(sim2Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5h", Double.Parse(sim2Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6h", Double.Parse(sim2Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7h", Double.Parse(sim2Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8h", Double.Parse(sim2Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9h", Double.Parse(sim2Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10h", Double.Parse(sim2Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11h", Double.Parse(sim2Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12h", Double.Parse(sim2Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13h", Double.Parse(sim2Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14h", Double.Parse(sim2Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15h", Double.Parse(sim2Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16h", Double.Parse(sim2Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17h", Double.Parse(sim2Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18h", Double.Parse(sim2Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19h", Double.Parse(sim2Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20h", Double.Parse(sim2Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21h", Double.Parse(sim2Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22h", Double.Parse(sim2Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23h", Double.Parse(sim2Data[23, column])));
 
                 tAirChartSim2.DataContext = averageTemperaturePerHour;  //keeps giving an error, but definitely exists in the XAML
 
@@ -4872,30 +4865,30 @@ namespace UWG
             int column = 12 + ind * 6;
             try
             {
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim3Data[0, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim3Data[1, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim3Data[2, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim3Data[3, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim3Data[4, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim3Data[5, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim3Data[6, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim3Data[7, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim3Data[8, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim3Data[9, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim3Data[10, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim3Data[11, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim3Data[12, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim3Data[13, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim3Data[14, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim3Data[15, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim3Data[16, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim3Data[17, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim3Data[18, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim3Data[19, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim3Data[20, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim3Data[21, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim3Data[22, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim3Data[23, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0h", Double.Parse(sim3Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1h", Double.Parse(sim3Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2h", Double.Parse(sim3Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3h", Double.Parse(sim3Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4h", Double.Parse(sim3Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5h", Double.Parse(sim3Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6h", Double.Parse(sim3Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7h", Double.Parse(sim3Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8h", Double.Parse(sim3Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9h", Double.Parse(sim3Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10h", Double.Parse(sim3Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11h", Double.Parse(sim3Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12h", Double.Parse(sim3Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13h", Double.Parse(sim3Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14h", Double.Parse(sim3Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15h", Double.Parse(sim3Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16h", Double.Parse(sim3Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17h", Double.Parse(sim3Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18h", Double.Parse(sim3Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19h", Double.Parse(sim3Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20h", Double.Parse(sim3Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21h", Double.Parse(sim3Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22h", Double.Parse(sim3Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23h", Double.Parse(sim3Data[23, column])));
 
                 tAirChartSim3.DataContext = averageTemperaturePerHour;  //keeps giving an error, but definitely exists in the XAML
 
@@ -4913,30 +4906,30 @@ namespace UWG
             int column = 12 + ind * 6;
             try
             {
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim4Data[0, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim4Data[1, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim4Data[2, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim4Data[3, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim4Data[4, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim4Data[5, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim4Data[6, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim4Data[7, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim4Data[8, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim4Data[9, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim4Data[10, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim4Data[11, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim4Data[12, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim4Data[13, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim4Data[14, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim4Data[15, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim4Data[16, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim4Data[17, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim4Data[18, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim4Data[19, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim4Data[20, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim4Data[21, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim4Data[22, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim4Data[23, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0h", Double.Parse(sim4Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1h", Double.Parse(sim4Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2h", Double.Parse(sim4Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3h", Double.Parse(sim4Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4h", Double.Parse(sim4Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5h", Double.Parse(sim4Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6h", Double.Parse(sim4Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7h", Double.Parse(sim4Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8h", Double.Parse(sim4Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9h", Double.Parse(sim4Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10h", Double.Parse(sim4Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11h", Double.Parse(sim4Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12h", Double.Parse(sim4Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13h", Double.Parse(sim4Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14h", Double.Parse(sim4Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15h", Double.Parse(sim4Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16h", Double.Parse(sim4Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17h", Double.Parse(sim4Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18h", Double.Parse(sim4Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19h", Double.Parse(sim4Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20h", Double.Parse(sim4Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21h", Double.Parse(sim4Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22h", Double.Parse(sim4Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23h", Double.Parse(sim4Data[23, column])));
 
                 tAirChartSim4.DataContext = averageTemperaturePerHour;  //keeps giving an error, but definitely exists in the XAML
 
@@ -4954,30 +4947,30 @@ namespace UWG
             int column = 12 + ind * 6;
             try
             {
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim5Data[0, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim5Data[1, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim5Data[2, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim5Data[3, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim5Data[4, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim5Data[5, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim5Data[6, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim5Data[7, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim5Data[8, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim5Data[9, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim5Data[10, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim5Data[11, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim5Data[12, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim5Data[13, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim5Data[14, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim5Data[15, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim5Data[16, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim5Data[17, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim5Data[18, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim5Data[19, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim5Data[20, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim5Data[21, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim5Data[22, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim5Data[23, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0h", Double.Parse(sim5Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1h", Double.Parse(sim5Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2h", Double.Parse(sim5Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3h", Double.Parse(sim5Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4h", Double.Parse(sim5Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5h", Double.Parse(sim5Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6h", Double.Parse(sim5Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7h", Double.Parse(sim5Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8h", Double.Parse(sim5Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9h", Double.Parse(sim5Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10h", Double.Parse(sim5Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11h", Double.Parse(sim5Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12h", Double.Parse(sim5Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13h", Double.Parse(sim5Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14h", Double.Parse(sim5Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15h", Double.Parse(sim5Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16h", Double.Parse(sim5Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17h", Double.Parse(sim5Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18h", Double.Parse(sim5Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19h", Double.Parse(sim5Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20h", Double.Parse(sim5Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21h", Double.Parse(sim5Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22h", Double.Parse(sim5Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23h", Double.Parse(sim5Data[23, column])));
 
                 tAirChartSim5.DataContext = averageTemperaturePerHour;  //keeps giving an error, but definitely exists in the XAML
 
@@ -4995,30 +4988,30 @@ namespace UWG
             int column = 12 + ind * 6;
             try
             {
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0hr", Double.Parse(sim6Data[0, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1hr", Double.Parse(sim6Data[1, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2hr", Double.Parse(sim6Data[2, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3hr", Double.Parse(sim6Data[3, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4hr", Double.Parse(sim6Data[4, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5hr", Double.Parse(sim6Data[5, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6hr", Double.Parse(sim6Data[6, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7hr", Double.Parse(sim6Data[7, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8hr", Double.Parse(sim6Data[8, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9hr", Double.Parse(sim6Data[9, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10hr", Double.Parse(sim6Data[10, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11hr", Double.Parse(sim6Data[11, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12hr", Double.Parse(sim6Data[12, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13hr", Double.Parse(sim6Data[13, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14hr", Double.Parse(sim6Data[14, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15hr", Double.Parse(sim6Data[15, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16hr", Double.Parse(sim6Data[16, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17hr", Double.Parse(sim6Data[17, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18hr", Double.Parse(sim6Data[18, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19hr", Double.Parse(sim6Data[19, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20hr", Double.Parse(sim6Data[20, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21hr", Double.Parse(sim6Data[21, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22hr", Double.Parse(sim6Data[22, column])));
-                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23hr", Double.Parse(sim6Data[23, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("0h", Double.Parse(sim6Data[0, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("1h", Double.Parse(sim6Data[1, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("2h", Double.Parse(sim6Data[2, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("3h", Double.Parse(sim6Data[3, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("4h", Double.Parse(sim6Data[4, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("5h", Double.Parse(sim6Data[5, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("6h", Double.Parse(sim6Data[6, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("7h", Double.Parse(sim6Data[7, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("8h", Double.Parse(sim6Data[8, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("9h", Double.Parse(sim6Data[9, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("10h", Double.Parse(sim6Data[10, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("11h", Double.Parse(sim6Data[11, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("12h", Double.Parse(sim6Data[12, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("13h", Double.Parse(sim6Data[13, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("14h", Double.Parse(sim6Data[14, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("15h", Double.Parse(sim6Data[15, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("16h", Double.Parse(sim6Data[16, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("17h", Double.Parse(sim6Data[17, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("18h", Double.Parse(sim6Data[18, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("19h", Double.Parse(sim6Data[19, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("20h", Double.Parse(sim6Data[20, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("21h", Double.Parse(sim6Data[21, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("22h", Double.Parse(sim6Data[22, column])));
+                averageTemperaturePerHour.Add(new KeyValuePair<string, double>("23h", Double.Parse(sim6Data[23, column])));
 
                 tAirChartSim6.DataContext = averageTemperaturePerHour;  //keeps giving an error, but definitely exists in the XAML
 
@@ -5049,11 +5042,7 @@ namespace UWG
 
         private void sim_Click(object sender, RoutedEventArgs e)
         {
-            if (mainTabControl.SelectedItem == viewSimTab)
-            {
-                //viewSimContextMenu.IsOpen = true;
-            }
-            else if (mainTabControl.SelectedItem != viewSimTab)
+            if (mainTabControl.SelectedItem != viewSimTab)
             {
                 simTabControl.SelectedItem = simOverview;
             }
@@ -5122,17 +5111,27 @@ namespace UWG
                 string working_folder = "";
                 string csv_file = "";
                 working_folder = System.IO.Path.GetDirectoryName(pathSim1);
-                string csv_filename = "UTCI_" + csvFilename;
-                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                string csv_filenameUTCI = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filenameUTCI);
                 if (System.IO.Path.GetExtension(pathSim1) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
+
                 if (!File.Exists(csv_filePath))
                 {
-                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
-                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    if (!File.Exists(System.IO.Path.Combine(working_folder, "Trad_" + csvFilename)))
+                    {
+                        System.Windows.MessageBox.Show("Other files generated from UWG simulation not found. Please run UWG simulation first before visualizing results.");
+                        return;
+                    }
+                    else
+                    {
+                        csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                        csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    }
                 }
+
                 if (csv_filePath != "")
                 {
                     //String utciOutputSim1 = utci_sim1();
@@ -5204,16 +5203,24 @@ namespace UWG
                 string working_folder = "";
                 string csv_file = "";
                 working_folder = System.IO.Path.GetDirectoryName(pathSim2);
-                string csv_filename = "UTCI_" + csvFilename;
-                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                string csv_filenameUTCI = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filenameUTCI);
                 if (System.IO.Path.GetExtension(pathSim2) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
                 if (!File.Exists(csv_filePath))
                 {
-                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
-                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    if (!File.Exists(System.IO.Path.Combine(working_folder, "Trad_" + csvFilename)))
+                    {
+                        System.Windows.MessageBox.Show("Other files generated from UWG simulation not found. Please run UWG simulation first before visualizing results.");
+                        return;
+                    }
+                    else
+                    {
+                        csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                        csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    }
                 }
                 if (csv_filePath != "")
                 {
@@ -5286,16 +5293,24 @@ namespace UWG
                 string working_folder = "";
                 string csv_file = "";
                 working_folder = System.IO.Path.GetDirectoryName(pathSim3);
-                string csv_filename = "UTCI_" + csvFilename;
-                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                string csv_filenameUTCI = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filenameUTCI);
                 if (System.IO.Path.GetExtension(pathSim3) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
                 if (!File.Exists(csv_filePath))
                 {
-                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
-                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    if (!File.Exists(System.IO.Path.Combine(working_folder, "Trad_" + csvFilename)))
+                    {
+                        System.Windows.MessageBox.Show("Other files generated from UWG simulation not found. Please run UWG simulation first before visualizing results.");
+                        return;
+                    }
+                    else
+                    {
+                        csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                        csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    }
                 }
                 if (csv_filePath != "")
                 {
@@ -5368,16 +5383,24 @@ namespace UWG
                 string working_folder = "";
                 string csv_file = "";
                 working_folder = System.IO.Path.GetDirectoryName(pathSim4);
-                string csv_filename = "UTCI_" + csvFilename;
-                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                string csv_filenameUTCI = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filenameUTCI);
                 if (System.IO.Path.GetExtension(pathSim4) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
                 if (!File.Exists(csv_filePath))
                 {
-                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
-                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    if (!File.Exists(System.IO.Path.Combine(working_folder, "Trad_" + csvFilename)))
+                    {
+                        System.Windows.MessageBox.Show("Other files generated from UWG simulation not found. Please run UWG simulation first before visualizing results.");
+                        return;
+                    }
+                    else
+                    {
+                        csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                        csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    }
                 }
                 if (csv_filePath != "")
                 {
@@ -5448,16 +5471,24 @@ namespace UWG
                 string working_folder = "";
                 string csv_file = "";
                 working_folder = System.IO.Path.GetDirectoryName(pathSim5);
-                string csv_filename = "UTCI_" + csvFilename;
-                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                string csv_filenameUTCI = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filenameUTCI);
                 if (System.IO.Path.GetExtension(pathSim5) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
                 if (!File.Exists(csv_filePath))
                 {
-                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
-                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    if (!File.Exists(System.IO.Path.Combine(working_folder, "Trad_" + csvFilename)))
+                    {
+                        System.Windows.MessageBox.Show("Other files generated from UWG simulation not found. Please run UWG simulation first before visualizing results.");
+                        return;
+                    }
+                    else
+                    {
+                        csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                        csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    }
                 }
                 if (csv_filePath != "")
                 {
@@ -5530,16 +5561,24 @@ namespace UWG
                 string working_folder = "";
                 string csv_file = "";
                 working_folder = System.IO.Path.GetDirectoryName(pathSim6);
-                string csv_filename = "UTCI_" + csvFilename;
-                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filename);
+                string csv_filenameUTCI = "UTCI_" + csvFilename;
+                string csv_filePath = System.IO.Path.Combine(working_folder, csv_filenameUTCI);
                 if (System.IO.Path.GetExtension(pathSim6) == ".csv")
                 {
                     csv_filePath = csvPathInput;
                 }
                 if (!File.Exists(csv_filePath))
                 {
-                    csv_file = utci.UTCI_calc(working_folder, csvFilename);
-                    csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    if (!File.Exists(System.IO.Path.Combine(working_folder, "Trad_" + csvFilename)))
+                    {
+                        System.Windows.MessageBox.Show("Other files generated from UWG simulation not found. Please run UWG simulation first before visualizing results.");
+                        return;
+                    }
+                    else
+                    {
+                        csv_file = utci.UTCI_calc(working_folder, csvFilename);
+                        csv_filePath = System.IO.Path.Combine(working_folder, csv_file);
+                    }
                 }
                 if (csv_filePath != "")
                 {
@@ -5731,7 +5770,7 @@ namespace UWG
             }
             catch
             {
-                System.Windows.MessageBox.Show("Distributions don't add to 100%. Please adjust appropriately.");
+                System.Windows.MessageBox.Show("Distributions don't add to 100%. It may be due to non-numbers in the input. Please adjust appropriately.");
                 return false;
             }
         }
@@ -5743,14 +5782,21 @@ namespace UWG
         //Save Button
         private void buttonSave_Click1(object sender, RoutedEventArgs e)
         {
-            if (this.xmlFileName == "")
+            if (typologyCheck() == false)
             {
-                button1_Click(sender, e);
+                //will display message if typology doesn't sum to 100%
             }
             else
             {
-                buttonSave_Click(sender, e);
-                System.Windows.MessageBox.Show("Saving succeeded!");
+                if (this.xmlFileName == "")
+                {
+                    button1_Click(sender, e);
+                }
+                else
+                {
+                    buttonSave_Click(sender, e);
+                    System.Windows.MessageBox.Show("Saving succeeded!");
+                }
             }
         }
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -5776,7 +5822,7 @@ namespace UWG
                         XDocument doc = new XDocument(new XElement("xml_input"));
                         if (typology1Dist.Text != "0" || typology1Dist.Text != "")
                         {
-                            
+
                             doc.Root.Add(typ1XML_create());
 
                         }
@@ -5841,17 +5887,24 @@ namespace UWG
                 {
                     textBox1.Text = error.ToString();
                 }
-
             }
         }
+
         //Save As Button
         private void buttonSaveAs_Click(object sender, RoutedEventArgs e)
         {
-            DialogName = "Save As";
-            button1_Click(sender, e);
+            if (typologyCheck() == false)
+            {
+                //will display error message
+            }
+            else {
+
+                DialogName = "Save As";
+                button1_Click(sender, e);
+            }
         }
 
-        private void checkPerc(object sender, RoutedEventArgs e)
+        private void checkIfPercEquals0(object sender, RoutedEventArgs e)
         {
             var inputTyp = sender as System.Windows.Controls.TextBox;
             var visibility = System.Windows.Visibility.Visible;
@@ -6339,7 +6392,7 @@ namespace UWG
         {
             try
             {
-                XAttribute perc = new XAttribute("dist", typology2Dist);
+                XAttribute perc = new XAttribute("dist", typology2Dist.Text);
                 XAttribute name = new XAttribute("name", typology2Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
@@ -6673,7 +6726,7 @@ namespace UWG
         {
             try
             {
-                XAttribute perc = new XAttribute("dist", typology3Dist);
+                XAttribute perc = new XAttribute("dist", typology3Dist.Text);
                 XAttribute name = new XAttribute("name", typology3Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
@@ -7007,7 +7060,7 @@ namespace UWG
         {
             try
             {
-                XAttribute perc = new XAttribute("dist", typology4Dist);
+                XAttribute perc = new XAttribute("dist", typology4Dist.Text);
                 XAttribute name = new XAttribute("name", typology4Type.Text);
                 // Form input and building template insertion for XML file creation
                 // WALL MATERIALS:
@@ -8124,52 +8177,54 @@ namespace UWG
         private void selectSim(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.ShowDialog();
-            if (dlg.CheckFileExists)
+            DialogResult userClickedOK = dlg.ShowDialog();
+            if (userClickedOK == System.Windows.Forms.DialogResult.OK)
             {
-
-                var buttonSim = sender as System.Windows.Controls.Button;
-                if (buttonSim.Name == "pathbrowseSim1")
+                if (dlg.CheckFileExists)
                 {
-                    pathSim1 = dlg.FileName;
-                    labelSim1.Content = dlg.SafeFileName;
-                    loadDataSim1(sender, e);
+                    var buttonSim = sender as System.Windows.Controls.Button;
+                    if (buttonSim.Name == "pathbrowseSim1")
+                    {
+                        pathSim1 = dlg.FileName;
+                        labelSim1.Content = dlg.SafeFileName;
+                        loadDataSim1(sender, e);
 
-                }
-                else if (buttonSim.Name == "pathbrowseSim2")
-                {
-                    pathSim2 = dlg.FileName;
-                    labelSim2.Content = dlg.SafeFileName;
-                    loadDataSim2(sender, e);
+                    }
+                    else if (buttonSim.Name == "pathbrowseSim2")
+                    {
+                        pathSim2 = dlg.FileName;
+                        labelSim2.Content = dlg.SafeFileName;
+                        loadDataSim2(sender, e);
 
-                }
-                else if (buttonSim.Name == "pathbrowseSim3")
-                {
-                    pathSim3 = dlg.FileName;
-                    labelSim3.Content = dlg.SafeFileName;
-                    loadDataSim3(sender, e);
+                    }
+                    else if (buttonSim.Name == "pathbrowseSim3")
+                    {
+                        pathSim3 = dlg.FileName;
+                        labelSim3.Content = dlg.SafeFileName;
+                        loadDataSim3(sender, e);
 
-                }
-                else if (buttonSim.Name == "pathbrowseSim4")
-                {
-                    pathSim4 = dlg.FileName;
-                    labelSim4.Content = dlg.SafeFileName;
-                    loadDataSim4(sender, e);
+                    }
+                    else if (buttonSim.Name == "pathbrowseSim4")
+                    {
+                        pathSim4 = dlg.FileName;
+                        labelSim4.Content = dlg.SafeFileName;
+                        loadDataSim4(sender, e);
 
-                }
-                else if (buttonSim.Name == "pathbrowseSim5")
-                {
-                    pathSim5 = dlg.FileName;
-                    labelSim5.Content = dlg.SafeFileName;
-                    loadDataSim5(sender, e);
+                    }
+                    else if (buttonSim.Name == "pathbrowseSim5")
+                    {
+                        pathSim5 = dlg.FileName;
+                        labelSim5.Content = dlg.SafeFileName;
+                        loadDataSim5(sender, e);
 
-                }
-                else if (buttonSim.Name == "pathbrowseSim6")
-                {
-                    pathSim6 = dlg.FileName;
-                    labelSim6.Content = dlg.SafeFileName;
-                    loadDataSim6(sender, e);
+                    }
+                    else if (buttonSim.Name == "pathbrowseSim6")
+                    {
+                        pathSim6 = dlg.FileName;
+                        labelSim6.Content = dlg.SafeFileName;
+                        loadDataSim6(sender, e);
 
+                    }
                 }
             }
         }
