@@ -2644,6 +2644,25 @@
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
+                                                    <chartingToolkit:ColumnSeries.IndependentAxis>
+                                                        <chartingToolkit:CategoryAxis Orientation="X">
+                                                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                                <Style TargetType="chartingToolkit:AxisLabel">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="chartingToolkit:AxisLabel">
+                                                                                <TextBlock Text="{TemplateBinding FormattedContent}">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="-90"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                        </chartingToolkit:CategoryAxis>
+                                                    </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
                                             
@@ -2800,6 +2819,25 @@
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
+                                                    <chartingToolkit:ColumnSeries.IndependentAxis>
+                                                        <chartingToolkit:CategoryAxis Orientation="X">
+                                                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                                <Style TargetType="chartingToolkit:AxisLabel">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="chartingToolkit:AxisLabel">
+                                                                                <TextBlock Text="{TemplateBinding FormattedContent}">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="-90"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                        </chartingToolkit:CategoryAxis>
+                                                    </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
@@ -2954,6 +2992,25 @@
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
+                                                    <chartingToolkit:ColumnSeries.IndependentAxis>
+                                                        <chartingToolkit:CategoryAxis Orientation="X">
+                                                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                                <Style TargetType="chartingToolkit:AxisLabel">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="chartingToolkit:AxisLabel">
+                                                                                <TextBlock Text="{TemplateBinding FormattedContent}">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="-90"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                        </chartingToolkit:CategoryAxis>
+                                                    </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
@@ -3108,6 +3165,25 @@
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
+                                                    <chartingToolkit:ColumnSeries.IndependentAxis>
+                                                        <chartingToolkit:CategoryAxis Orientation="X">
+                                                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                                <Style TargetType="chartingToolkit:AxisLabel">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="chartingToolkit:AxisLabel">
+                                                                                <TextBlock Text="{TemplateBinding FormattedContent}">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="-90"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                        </chartingToolkit:CategoryAxis>
+                                                    </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
@@ -3262,7 +3338,27 @@
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
+                                                    <chartingToolkit:ColumnSeries.IndependentAxis>
+                                                        <chartingToolkit:CategoryAxis Orientation="X">
+                                                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                                <Style TargetType="chartingToolkit:AxisLabel">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="chartingToolkit:AxisLabel">
+                                                                                <TextBlock Text="{TemplateBinding FormattedContent}">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="-90"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                        </chartingToolkit:CategoryAxis>
+                                                    </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
+                                                
                                             </chartingToolkit:Chart>
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
                                             <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim5" SelectionChanged="tAirSim5_change" >
@@ -3416,6 +3512,25 @@
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
+                                                    <chartingToolkit:ColumnSeries.IndependentAxis>
+                                                        <chartingToolkit:CategoryAxis Orientation="X">
+                                                            <chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                                <Style TargetType="chartingToolkit:AxisLabel">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="chartingToolkit:AxisLabel">
+                                                                                <TextBlock Text="{TemplateBinding FormattedContent}">
+                                                                                    <TextBlock.LayoutTransform>
+                                                                                        <RotateTransform Angle="-90"/>
+                                                                                    </TextBlock.LayoutTransform>
+                                                                                </TextBlock>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </chartingToolkit:CategoryAxis.AxisLabelStyle>
+                                                        </chartingToolkit:CategoryAxis>
+                                                    </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
