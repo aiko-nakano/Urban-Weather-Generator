@@ -8034,6 +8034,18 @@ namespace UWG
             massboxTyp4.SelectedIndex = 0;
             heatboxTyp4.SelectedIndex = 0;
 
+            typology1Dist.Text = "0";
+            typology2Dist.Text = "0";
+            typology3Dist.Text = "0";
+            typology4Dist.Text = "0";
+
+            typology1Type.Text = "";
+            typology2Type.Text = "";
+            typology3Type.Text = "";
+            typology4Type.Text = "";
+
+            typTabControl.SelectedIndex = 0;
+
             var provider = (XmlDataProvider)this.DataContext;
             provider.Source = new Uri("default_input.xml", UriKind.RelativeOrAbsolute);
             provider.Refresh();
