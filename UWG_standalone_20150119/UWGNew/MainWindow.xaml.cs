@@ -5769,7 +5769,7 @@ namespace UWG
                 }
                 if (totalDist == 0.0)
                 {
-                    if (!(e.OriginalSource is System.Windows.Controls.MenuItem))
+                    if (!(e.OriginalSource.Equals(saveButton)))
                     {
                         return true;
                     }
@@ -7480,113 +7480,514 @@ namespace UWG
             //parse xml to load existing xml
             XmlDocument parseXml = new XmlDocument();
             parseXml.Load(dialog.FileName);
+
+            int numOfTypsInXML = 0;
+            IEnumerator xmlEnum = parseXml.GetElementsByTagName("xml_input")[0].GetEnumerator();
+            XmlNode typNode;
+            int numThickPerTyp = 5;
+            bool loadTyp1 = false;
+            bool loadTyp2 = false;
+            bool loadTyp3 = false;
+            bool loadTyp4 = false;
+            int startTyp2 = 0;
+            int startTyp3 = 0;
+            int startTyp4 = 0;
+
+            int endTyp2 = numThickPerTyp;
+            int endTyp3 = numThickPerTyp;
+            int endTyp4 = numThickPerTyp;
+
+            while (xmlEnum.MoveNext())
+            {
+                typNode = (XmlNode)xmlEnum.Current;
+                if (typNode.Name == "typology1")
+                {
+                    loadTyp1 = true;
+                    typology1Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology1Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                    startTyp2 += numThickPerTyp;
+                    startTyp3 += numThickPerTyp;
+                    startTyp4 += numThickPerTyp;
+
+                    endTyp2 += numThickPerTyp;
+                    endTyp3 += numThickPerTyp;
+                    endTyp4 += numThickPerTyp;
+                }
+                else if (typNode.Name == "typology2")
+                {
+                    loadTyp2 = true;
+                    typology2Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology2Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                    startTyp3 += numThickPerTyp;
+                    startTyp4 += numThickPerTyp;
+
+                    endTyp3 += numThickPerTyp;
+                    endTyp4 += numThickPerTyp;
+
+                }
+                else if (typNode.Name == "typology3")
+                {
+                    loadTyp3 = true;
+                    typology3Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology3Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                    startTyp4 += numThickPerTyp;
+
+                    endTyp4 += numThickPerTyp;
+                }
+                else if (typNode.Name == "typology4")
+                {
+                    loadTyp4 = true;
+                    typology4Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology4Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                }
+
+
+            }
       
             XmlNodeList elemList = parseXml.GetElementsByTagName("thickness");
-            List<string> wall = new List<string>();
-            List<string> roof = new List<string>();
-            List<string> mass = new List<string>();
-            List<string> urbanRoad = new List<string>();
-            List<string> ruralRoad = new List<string>();
-            for (int i=0; i < elemList.Count; i++)
+
+            if (loadTyp1 == true)
             {
-                //display all strings 
-                System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
-                string[] element = elemList[i].InnerXml.Split(',');
-                foreach (string value in element)
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = 0; i < numThickPerTyp; i++)
                 {
-                    // Wall
-                    if (i == 0)
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
                     {
-                        wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        // Wall
+                        if (i == 0)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
-                    // Roof
-                    if (i == 1)
-                    {
-                        roof.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
-                    // Mass
-                    if (i == 2)
-                    {
-                        mass.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
-                    
-                    // Urban Road
-                    if (i == 3)
-                    {
-                        urbanRoad.Add(value.Trim(new Char[] {'[', ']' }));
-                    }
-                    // Rural
-                    if (i == 4)
-                    {
-                       ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
-                    //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer1Thickness.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer2Thickness.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer3Thickness.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer4Thickness.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1Thickness.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1Thickness.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2Thickness.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2Thickness.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3Thickness.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3Thickness.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1Thickness.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
                 }
             }
-            //wall
-            int desiredIndex = 0;
-            if (desiredIndex < wall.Count)
+
+            if (loadTyp2 == true)
             {
-                wallLayer1Thickness.Content = wall[desiredIndex];
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = startTyp2; i < endTyp2; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
+                    {
+                        // Wall
+                        if (i == startTyp2)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == startTyp2 + 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == startTyp2 + 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == startTyp2 + 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == startTyp2 + 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                    }
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer1ThicknessTyp2.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer2ThicknessTyp2.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer3ThicknessTyp2.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer4ThicknessTyp2.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1ThicknessTyp2.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1ThicknessTyp2.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2ThicknessTyp2.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2ThicknessTyp2.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3ThicknessTyp2.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3ThicknessTyp2.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1ThicknessTyp2.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
+                }
             }
-            else { wallLayer1Thickness.Content = ""; }
-            desiredIndex = 1;
-            if (desiredIndex < wall.Count)
+
+            if (loadTyp3 == true)
             {
-                wallLayer2Thickness.Content = wall[desiredIndex];
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = startTyp3; i < endTyp3; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
+                    {
+                        // Wall
+                        if (i == startTyp3)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == startTyp3 + 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == startTyp3 + 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == startTyp3 + 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == startTyp3 + 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                    }
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer1ThicknessTyp3.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer2ThicknessTyp3.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer3ThicknessTyp3.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer4ThicknessTyp3.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1ThicknessTyp3.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1ThicknessTyp3.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2ThicknessTyp3.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2ThicknessTyp3.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3ThicknessTyp3.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3ThicknessTyp3.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1ThicknessTyp3.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
+                }
             }
-            else { wallLayer2Thickness.Content = ""; }
-            desiredIndex = 2;
-            if (desiredIndex < wall.Count)
+
+            if (loadTyp4 == true)
             {
-                wallLayer3Thickness.Content = wall[desiredIndex];
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = startTyp4; i < endTyp4; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
+                    {
+                        // Wall
+                        if (i == startTyp4)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == startTyp4 + 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == startTyp4 + 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == startTyp4 + 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == startTyp4 + 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                    }
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer1ThicknessTyp4.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer2ThicknessTyp4.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer3ThicknessTyp4.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer4ThicknessTyp4.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1ThicknessTyp4.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1ThicknessTyp4.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2ThicknessTyp4.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2ThicknessTyp4.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3ThicknessTyp4.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3ThicknessTyp4.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1ThicknessTyp4.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
+                }
             }
-            else { wallLayer3Thickness.Content = ""; }
-            desiredIndex = 3;
-            if (desiredIndex < wall.Count)
-            {
-                wallLayer4Thickness.Content = wall[desiredIndex];
-            }
-            else { wallLayer4Thickness.Content = ""; }
-            //roof
-            int desiredIndexRoof = 0;
-            if (desiredIndexRoof < roof.Count)
-            {
-                roofLayer1Thickness.Content = roof[desiredIndexRoof];
-            }
-            else { roofLayer1Thickness.Content = ""; }
-            desiredIndexRoof = 1;
-            if (desiredIndexRoof < roof.Count)
-            {
-                roofLayer2Thickness.Content = roof[desiredIndexRoof];
-            }
-            else { roofLayer2Thickness.Content = ""; }
-            desiredIndexRoof = 2;
-            if (desiredIndexRoof < roof.Count)
-            {
-                roofLayer3Thickness.Content = roof[desiredIndexRoof];
-            }
-            else { roofLayer3Thickness.Content = ""; }
-            //mass
-            System.Diagnostics.Debug.WriteLine(mass[0]);
-            int desiredIndexMass = 0;
-            if (desiredIndexMass < mass.Count)
-            {
-                massLayer1Thickness.Content = mass[desiredIndexMass];
-            }
-            //urbanRoad
-            int desiredIndexUrban = 0;
-            if (desiredIndexUrban < urbanRoad.Count)
-            {
-                urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
-            }
-            //Rural
-            System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-            int desiredIndexRural = 0;
-            if (desiredIndexRural < ruralRoad.Count)
-            {
-                ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
-            }
+
+
+
         }
 
         //New xml = default to default_input.xml
@@ -7657,112 +8058,510 @@ namespace UWG
             XmlDocument parseXml = new XmlDocument();
             parseXml.Load("default_input.xml");
 
-            XmlNodeList elemList = parseXml.GetElementsByTagName("thickness");
-            List<string> wall = new List<string>();
-            List<string> roof = new List<string>();
-            List<string> mass = new List<string>();
-            List<string> urbanRoad = new List<string>();
-            List<string> ruralRoad = new List<string>();
-            for (int i = 0; i < elemList.Count; i++)
-            {
-                //display all strings 
-                System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
-                string[] element = elemList[i].InnerXml.Split(',');
-                foreach (string value in element)
-                {
-                    // Wall
-                    if (i == 0)
-                    {
-                        wall.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
-                    // Roof
-                    if (i == 1)
-                    {
-                        roof.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
-                    // Mass
-                    if (i == 2)
-                    {
-                        mass.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
+            int numOfTypsInXML = 0;
+            IEnumerator xmlEnum = parseXml.GetElementsByTagName("xml_input")[0].GetEnumerator();
+            XmlNode typNode;
+            int numThickPerTyp = 5;
+            bool loadTyp1 = false;
+            bool loadTyp2 = false;
+            bool loadTyp3 = false;
+            bool loadTyp4 = false;
+            int startTyp2 = 0;
+            int startTyp3 = 0;
+            int startTyp4 = 0;
 
-                    // Urban Road
-                    if (i == 3)
+            int endTyp2 = numThickPerTyp;
+            int endTyp3 = numThickPerTyp;
+            int endTyp4 = numThickPerTyp;
+
+            while (xmlEnum.MoveNext())
+            {
+                typNode = (XmlNode)xmlEnum.Current;
+                if (typNode.Name == "typology1")
+                {
+                    loadTyp1 = true;
+                    typology1Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology1Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                    startTyp2 += numThickPerTyp;
+                    startTyp3 += numThickPerTyp;
+                    startTyp4 += numThickPerTyp;
+
+                    endTyp2 += numThickPerTyp;
+                    endTyp3 += numThickPerTyp;
+                    endTyp4 += numThickPerTyp;
+                }
+                else if (typNode.Name == "typology2")
+                {
+                    loadTyp2 = true;
+                    typology2Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology2Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                    startTyp3 += numThickPerTyp;
+                    startTyp4 += numThickPerTyp;
+
+                    endTyp3 += numThickPerTyp;
+                    endTyp4 += numThickPerTyp;
+
+                }
+                else if (typNode.Name == "typology3")
+                {
+                    loadTyp3 = true;
+                    typology3Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology3Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                    startTyp4 += numThickPerTyp;
+
+                    endTyp4 += numThickPerTyp;
+                }
+                else if (typNode.Name == "typology4")
+                {
+                    loadTyp4 = true;
+                    typology4Dist.Text = typNode.Attributes["dist"].Value.ToString();
+                    typology4Type.Text = typNode.Attributes["name"].Value.ToString();
+                    numOfTypsInXML++;
+                }
+
+            }
+
+            XmlNodeList elemList = parseXml.GetElementsByTagName("thickness");
+
+            if (loadTyp1 == true)
+            {
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = 0; i < numThickPerTyp; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
                     {
-                        urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        // Wall
+                        if (i == 0)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
-                    // Rural
-                    if (i == 4)
-                    {
-                        ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                    }
-                    //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer1Thickness.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer2Thickness.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer3Thickness.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4Thickness.Content = wall[desiredIndex];
+                }
+                else { wallLayer4Thickness.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1Thickness.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1Thickness.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2Thickness.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2Thickness.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3Thickness.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3Thickness.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1Thickness.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
                 }
             }
-            //wall
-            int desiredIndex = 0;
-            if (desiredIndex < wall.Count)
+
+            if (loadTyp2 == true)
             {
-                wallLayer1Thickness.Content = wall[desiredIndex];
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = startTyp2; i < endTyp2 + 1; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
+                    {
+                        // Wall
+                        if (i == startTyp2)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == startTyp2 + 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == startTyp2 + 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == startTyp2 + 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == startTyp2 + 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                    }
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer1ThicknessTyp2.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer2ThicknessTyp2.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer3ThicknessTyp2.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4ThicknessTyp2.Content = wall[desiredIndex];
+                }
+                else { wallLayer4ThicknessTyp2.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1ThicknessTyp2.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1ThicknessTyp2.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2ThicknessTyp2.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2ThicknessTyp2.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3ThicknessTyp2.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3ThicknessTyp2.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1ThicknessTyp2.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
+                }
             }
-            else { wallLayer1Thickness.Content = ""; }
-            desiredIndex = 1;
-            if (desiredIndex < wall.Count)
+
+            if (loadTyp3 == true)
             {
-                wallLayer2Thickness.Content = wall[desiredIndex];
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = startTyp3; i < endTyp3 + 1; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
+                    {
+                        // Wall
+                        if (i == startTyp3)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == startTyp3 + 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == startTyp3 + 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == startTyp3 + 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == startTyp3 + 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                    }
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer1ThicknessTyp3.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer2ThicknessTyp3.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer3ThicknessTyp3.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4ThicknessTyp3.Content = wall[desiredIndex];
+                }
+                else { wallLayer4ThicknessTyp3.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1ThicknessTyp3.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1ThicknessTyp3.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2ThicknessTyp3.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2ThicknessTyp3.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3ThicknessTyp3.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3ThicknessTyp3.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1ThicknessTyp3.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
+                }
             }
-            else { wallLayer2Thickness.Content = ""; }
-            desiredIndex = 2;
-            if (desiredIndex < wall.Count)
+
+            if (loadTyp4 == true)
             {
-                wallLayer3Thickness.Content = wall[desiredIndex];
+                List<string> wall = new List<string>();
+                List<string> roof = new List<string>();
+                List<string> mass = new List<string>();
+                List<string> urbanRoad = new List<string>();
+                List<string> ruralRoad = new List<string>();
+                for (int i = startTyp4; i < endTyp4 + 1; i++)
+                {
+                    //display all strings 
+                    System.Diagnostics.Debug.WriteLine(elemList[i].InnerXml);
+                    string[] element = elemList[i].InnerXml.Split(',');
+                    foreach (string value in element)
+                    {
+                        // Wall
+                        if (i == startTyp4)
+                        {
+                            wall.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Roof
+                        if (i == startTyp4 + 1)
+                        {
+                            roof.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Mass
+                        if (i == startTyp4 + 2)
+                        {
+                            mass.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+
+                        // Urban Road
+                        if (i == startTyp4 + 3)
+                        {
+                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        // Rural
+                        if (i == startTyp4 + 4)
+                        {
+                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        }
+                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                    }
+                }
+                //wall
+                int desiredIndex = 0;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer1ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer1ThicknessTyp4.Content = ""; }
+                desiredIndex = 1;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer2ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer2ThicknessTyp4.Content = ""; }
+                desiredIndex = 2;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer3ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer3ThicknessTyp4.Content = ""; }
+                desiredIndex = 3;
+                if (desiredIndex < wall.Count)
+                {
+                    wallLayer4ThicknessTyp4.Content = wall[desiredIndex];
+                }
+                else { wallLayer4ThicknessTyp4.Content = ""; }
+                //roof
+                int desiredIndexRoof = 0;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer1ThicknessTyp4.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer1ThicknessTyp4.Content = ""; }
+                desiredIndexRoof = 1;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer2ThicknessTyp4.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer2ThicknessTyp4.Content = ""; }
+                desiredIndexRoof = 2;
+                if (desiredIndexRoof < roof.Count)
+                {
+                    roofLayer3ThicknessTyp4.Content = roof[desiredIndexRoof];
+                }
+                else { roofLayer3ThicknessTyp4.Content = ""; }
+                //mass
+                System.Diagnostics.Debug.WriteLine(mass[0]);
+                int desiredIndexMass = 0;
+                if (desiredIndexMass < mass.Count)
+                {
+                    massLayer1ThicknessTyp4.Content = mass[desiredIndexMass];
+                }
+                //urbanRoad
+                int desiredIndexUrban = 0;
+                if (desiredIndexUrban < urbanRoad.Count)
+                {
+                    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
+                }
+                //Rural
+                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                int desiredIndexRural = 0;
+                if (desiredIndexRural < ruralRoad.Count)
+                {
+                    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
+                }
             }
-            else { wallLayer3Thickness.Content = ""; }
-            desiredIndex = 3;
-            if (desiredIndex < wall.Count)
-            {
-                wallLayer4Thickness.Content = wall[desiredIndex];
-            }
-            else { wallLayer4Thickness.Content = ""; }
-            //roof
-            int desiredIndexRoof = 0;
-            if (desiredIndexRoof < roof.Count)
-            {
-                roofLayer1Thickness.Content = roof[desiredIndexRoof];
-            }
-            else { roofLayer1Thickness.Content = ""; }
-            desiredIndexRoof = 1;
-            if (desiredIndexRoof < roof.Count)
-            {
-                roofLayer2Thickness.Content = roof[desiredIndexRoof];
-            }
-            else { roofLayer2Thickness.Content = ""; }
-            desiredIndexRoof = 2;
-            if (desiredIndexRoof < roof.Count)
-            {
-                roofLayer3Thickness.Content = roof[desiredIndexRoof];
-            }
-            else { roofLayer3Thickness.Content = ""; }
-            //mass
-            System.Diagnostics.Debug.WriteLine(mass[0]);
-            int desiredIndexMass = 0;
-            if (desiredIndexMass < mass.Count)
-            {
-                massLayer1Thickness.Content = mass[desiredIndexMass];
-            }
-            //urbanRoad
-            int desiredIndexUrban = 0;
-            if (desiredIndexUrban < urbanRoad.Count)
-            {
-                urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
-            }
-            //Rural
-            System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-            int desiredIndexRural = 0;
-            if (desiredIndexRural < ruralRoad.Count)
-            {
-                ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
-            }
+
             this.xmlPath = "";
             this.xmlFileName = "";
             this.filename_xml = "";

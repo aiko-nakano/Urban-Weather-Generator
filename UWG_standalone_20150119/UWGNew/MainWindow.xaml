@@ -244,7 +244,7 @@
                         <ContextMenu HorizontalAlignment="Left" Name="makeFileContextMenu" >
                             <MenuItem Header="_New..." Click="newXml_Click"  FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
                             <MenuItem Header="_Open..." Click="openXml_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
-                            <MenuItem Header="_Save..." Click="buttonSave_Click1" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14"></MenuItem>
+                            <MenuItem Header="_Save..." Click="buttonSave_Click1" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" Name="saveButton"></MenuItem>
                             <MenuItem Header="_Save As..." Click="buttonSaveAs_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" /></ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
