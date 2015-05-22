@@ -5834,27 +5834,10 @@ namespace UWG
                         // Form input and building template insertion for XML file creation
                         // WALL MATERIALS:
                         XDocument doc = new XDocument(new XElement("xml_input"));
-                        if (typology1Dist.Text != "0" && typology1Dist.Text != "")
-                        {
-
-                            doc.Root.Add(typ1XML_create());
-
-                        }
-                        if (typology2Dist.Text != "0" && typology2Dist.Text != "")
-                        {
-                            doc.Root.Add(typ2XML_create());
-
-                        }
-                        if (typology3Dist.Text != "0" && typology3Dist.Text != "")
-                        {
-                            doc.Root.Add(typ3XML_create());
-
-                        }
-                        if (typology4Dist.Text != "0" && typology4Dist.Text != "")
-                        {
-                            doc.Root.Add(typ4XML_create());
-
-                        }
+                        doc.Root.Add(typ1XML_create());
+                        doc.Root.Add(typ2XML_create());
+                        doc.Root.Add(typ3XML_create());
+                        doc.Root.Add(typ4XML_create());
 
                         doc.Root.Add(new XElement("urbanArea",
                                                                 new XElement("averageBuildingHeight", avgBldgHeight.Text),
@@ -5957,38 +5940,27 @@ namespace UWG
             try
             {
                 XDocument doc = new XDocument(new XElement("xml_input"));
-                if (typology1Dist.Text != "0" && typology1Dist.Text != "")
-                {
-                    doc.Root.Add(typ1XML_create());
-                }
-                else
+                if (typology1Dist.Text == "0" || typology1Dist.Text == "")
                 {
                     typTab1.Visibility = System.Windows.Visibility.Collapsed;
                 }
-                if (typology2Dist.Text != "0" && typology2Dist.Text != "")
-                {
-                    doc.Root.Add(typ2XML_create());
-                }
-                else
+                if (typology2Dist.Text == "0" || typology2Dist.Text == "")
                 {
                     typTab2.Visibility = System.Windows.Visibility.Collapsed;
                 }
-                if (typology3Dist.Text != "0" && typology3Dist.Text != "")
-                {
-                    doc.Root.Add(typ3XML_create());
-                }
-                else
+                if (typology3Dist.Text == "0" || typology3Dist.Text == "")
                 {
                     typTab3.Visibility = System.Windows.Visibility.Collapsed;
                 }
-                if (typology4Dist.Text != "0" && typology4Dist.Text != "")
-                {
-                    doc.Root.Add(typ4XML_create());
-                }
-                else
+                if (typology4Dist.Text == "0" || typology4Dist.Text == "")
                 {
                     typTab4.Visibility = System.Windows.Visibility.Collapsed;
                 }
+
+                doc.Root.Add(typ1XML_create());
+                doc.Root.Add(typ2XML_create());
+                doc.Root.Add(typ3XML_create());
+                doc.Root.Add(typ4XML_create());
 
                 doc.Root.Add(new XElement("urbanArea",
                                                         new XElement("averageBuildingHeight", avgBldgHeight.Text),
