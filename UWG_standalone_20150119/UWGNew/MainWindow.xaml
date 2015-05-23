@@ -148,11 +148,7 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="idd" TargetType="MenuItem">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="Black" />
-                </Trigger>
-            </Style.Triggers>
+            <Setter Property="Background" Value="#00000000" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -239,7 +235,7 @@
                     <ImageBrush AlignmentY="Center" ImageSource="/Images/UWGParam-12.png" Stretch="None" AlignmentX="Left"/>
                 </Menu.Background>
                 <!--make xml-->
-                <MenuItem Header="Make Input File" Click="makeFile_Click" Style="{StaticResource idd}" ContextMenuService.Placement="Bottom" ContextMenuService.ShowOnDisabled="True" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Margin="200,0,0,0" Height="40" FontSize="14" >
+                <MenuItem Header="Make Input File" Click="makeFile_Click" Style="{StaticResource idd}" ContextMenuService.Placement="Bottom" ContextMenuService.ShowOnDisabled="True" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Margin="200,0,0,0" Height="40" FontSize="14" Name="makeFileMenuItem" >
                     <MenuItem.ContextMenu>
                         <ContextMenu HorizontalAlignment="Left" Name="makeFileContextMenu" >
                             <MenuItem Header="_New..." Click="newXml_Click"  FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
@@ -248,13 +244,13 @@
                             <MenuItem Header="_Save As..." Click="buttonSaveAs_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" /></ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
-                <MenuItem Header="_Edit Building Template Library" Click="startEditor" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
+                <MenuItem Header="_Edit Building Template Library" Click="startEditor" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="editMenuItem" >
                 </MenuItem>
                 <!--run uwg -->
-                <MenuItem Header="_Run Simulation" Click="run_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
+                <MenuItem Header="_Run Simulation" Click="run_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="runMenuItem" >
                 </MenuItem>
                 <!--simulation uwg -->
-                <MenuItem Header="_View Simulation Results" Click="sim_Click" Style="{StaticResource idd}" FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" ></MenuItem>
+                <MenuItem Header="_View Simulation Results" Click="sim_Click" Style="{StaticResource idd}" FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="simMenuItem" ></MenuItem>
                 <MenuItem Header="Help" Click="uwgWebsite_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
                 </MenuItem>
             </Menu>

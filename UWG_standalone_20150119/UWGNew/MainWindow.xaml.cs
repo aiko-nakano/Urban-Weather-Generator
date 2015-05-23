@@ -138,6 +138,8 @@ namespace UWG
             p.simuStartDayValidate = "1";
             p.simuDurationValidate = "365";
             uwgRun.DataContext = p;
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+
         }
         private void OnChange(object sender, EventArgs e)
         {
@@ -5035,6 +5037,12 @@ namespace UWG
             refSiteTab.Visibility = System.Windows.Visibility.Collapsed;
             runSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = runSimTab;
+
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+
+            //runMenuItem.Background = new SolidColorBrush(Colors.Black);
             //RunWindow run = new RunWindow();
             //run.ShowDialog();
             //run.Closed += new EventHandler(Enable);
@@ -5085,6 +5093,11 @@ namespace UWG
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = viewSimTab;
+
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+
             //sim1DegDays.Content = "100";
 
 
@@ -5647,6 +5660,11 @@ namespace UWG
             refSiteTab.Visibility = System.Windows.Visibility.Visible;
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
+
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+
             if (mainTabControl.SelectedItem == urbanCanyonTab || mainTabControl.SelectedItem == refSiteTab)
             {
                 makeFileContextMenu.IsOpen = true;
@@ -8836,9 +8854,10 @@ namespace UWG
                 filename_xmlUWGRun = dlg.FileName;
                 xmlFileEmpty.Text = filename_xmlUWG;
                 //Get directory path only
-                this.xmlUWGPathRun = System.IO.Path.GetDirectoryName(filename_xmlUWG);
+                this.xmlUWGPathRun = System.IO.Path.GetDirectoryName(filename_xmlUWGRun);
                 //Get only the file name
-                this.xmlUWGFileNameRun = System.IO.Path.GetFileName(filename_xmlUWG);
+                this.xmlUWGFileNameRun = System.IO.Path.GetFileName(filename_xmlUWGRun);
+                xmlFileEmpty.Text = xmlUWGFileNameRun;
                 check();
             };
         }
@@ -8863,6 +8882,7 @@ namespace UWG
                 this.xmlUWGPath1 = System.IO.Path.GetDirectoryName(filename_xmlUWG1);
                 //Get only the file name
                 this.xmlUWGFileName1 = System.IO.Path.GetFileName(filename_xmlUWG1);
+                xmlFileEmpty1.Text = this.xmlUWGFileName1;
                 check();
             };
         }
@@ -8887,6 +8907,7 @@ namespace UWG
                 this.xmlUWGPath2 = System.IO.Path.GetDirectoryName(filename_xmlUWG2);
                 //Get only the file name
                 this.xmlUWGFileName2 = System.IO.Path.GetFileName(filename_xmlUWG2);
+                xmlFileEmpty2.Text = this.xmlUWGFileName2;
                 check();
             }
         }
@@ -8911,6 +8932,7 @@ namespace UWG
                 this.xmlUWGPath3 = System.IO.Path.GetDirectoryName(filename_xmlUWG3);
                 //Get only the file name
                 this.xmlUWGFileName3 = System.IO.Path.GetFileName(filename_xmlUWG3);
+                xmlFileEmpty3.Text = this.xmlUWGFileName3;
                 check();
             };
         }
@@ -8934,7 +8956,8 @@ namespace UWG
                 //Get directory path only
                 this.xmlUWGPath4 = System.IO.Path.GetDirectoryName(filename_xmlUWG4);
                 //Get only the file name
-                this.xmlUWGFileName4 = System.IO.Path.GetFileName(filename_xmlUWGRun);
+                this.xmlUWGFileName4 = System.IO.Path.GetFileName(filename_xmlUWG4);
+                xmlFileEmpty4.Text = this.xmlUWGFileName4;
                 check();
             };
         }
@@ -8959,6 +8982,7 @@ namespace UWG
                 this.xmlUWGPath5 = System.IO.Path.GetDirectoryName(filename_xmlUWG5);
                 //Get only the file name
                 this.xmlUWGFileName5 = System.IO.Path.GetFileName(filename_xmlUWG5);
+                xmlFileEmpty5.Text = this.xmlUWGFileName5;
                 check();
             };
         }
