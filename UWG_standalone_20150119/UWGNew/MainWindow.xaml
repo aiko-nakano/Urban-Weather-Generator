@@ -34,6 +34,7 @@
             <Setter Property="Width" Value="240" />
             <Setter Property="Margin" Value="4" />
             <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <!--Tab Control -->
         <Style TargetType="TabControl">
@@ -106,13 +107,16 @@
         <Style TargetType="Expander">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
             <Setter Property="Grid.ColumnSpan" Value="2" />
         </Style>
         <Style x:Key="headerExpander" TargetType="Expander">
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="White" />
         </Style>
+        <DataTemplate x:Key="expanderHeader">
+            <TextBlock Text="{Binding}" FontWeight="Bold" Foreground="Gray"/>
+        </DataTemplate>
         <!--menu item -->
         <Style TargetType="MenuItem">
             <Setter Property="Margin" Value="8 4 8 4" />
@@ -125,7 +129,6 @@
             <Setter Property="FontSize" Value="15" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
-            
         </Style>
         <!--start uwg button styling-->
         <Style  x:Key="validate" TargetType="{x:Type Button}">
@@ -158,7 +161,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
         </Style>
 
         <Style x:Key="sec" TargetType="TabItem">
@@ -197,7 +199,6 @@
                                 Path=ColumnDefinitions.Count,  
                                 RelativeSource={RelativeSource AncestorType=Grid}}"/>
         </Style>
-
     </Window.Resources>
     <Window.DataContext>
         <XmlDataProvider Source="default_input.xml" XPath="xml_input" />
@@ -241,7 +242,8 @@
                             <MenuItem Header="_New..." Click="newXml_Click"  FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
                             <MenuItem Header="_Open..." Click="openXml_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
                             <MenuItem Header="_Save..." Click="buttonSave_Click1" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" Name="saveButton"></MenuItem>
-                            <MenuItem Header="_Save As..." Click="buttonSaveAs_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" /></ContextMenu>
+                            <MenuItem Header="_Save As..." Click="buttonSaveAs_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" />
+                        </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
                 <MenuItem Header="_Edit Building Template Library" Click="startEditor" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="editMenuItem" >
@@ -276,29 +278,31 @@
                                     <RowDefinition Height="40" />
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="40" />
-                                    <RowDefinition Height="0" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="40" />
                                     <!-- 0 instead of 30 as a result of image size -->
                                     <RowDefinition Height="175" />
-                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Label Content="TYPOLOGIES" Style="{StaticResource SectionHeader}" Grid.Row="0" Grid.Column="0" FontWeight="Bold" />
-                                <Label Content="Type" Grid.Row="0" Grid.Column="1" />
+                                <Label Content="Type" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,8,369,7" />
                                 <Label Content="Distribution" Grid.Row="0" Grid.Column="2" Margin="20,0,0,0" HorizontalAlignment="Left"/>
                                 <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
-                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0">
-                                    <Label Content="Typology 1" HorizontalContentAlignment="Left" Name="typLabel1" />
-                                    <Label Content="Typology 2" HorizontalContentAlignment="Left" Name="typLabel2" Visibility="Collapsed"/>
-                                    <Label Content="Typology 3" HorizontalContentAlignment="Left" Name="typLabel3" Visibility="Collapsed"/>
-                                    <Label Content="Typology 4" HorizontalContentAlignment="Left" Name="typLabel4" Visibility="Collapsed"/>
-                                    <Button Click="addTypology" HorizontalAlignment="Left" Name="addTypButton">Add Typology</Button> 
+                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+                                    <Label Content="Typology 1" Name="typLabel1" />
+                                    <Label Content="Typology 2" Name="typLabel2" Visibility="Collapsed"/>
+                                    <Label Content="Typology 3" Name="typLabel3" Visibility="Collapsed"/>
+                                    <Label Content="Typology 4" Name="typLabel4" Visibility="Collapsed"/>
+                                    <Button Click="addTypology" HorizontalAlignment="Left" Name="addTypButton">Add Typology</Button>
                                 </StackPanel>
-                                <Button Click="minusTypology" IsEnabled="False" HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="minusTypButton" Grid.Row="1" Grid.Column="0" Margin="4,4,4,4">Remove Typology</Button>
+                                <Button Click="minusTypology" IsEnabled="False" HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="minusTypButton" Grid.Row="2" Grid.Column="0" Margin="0,0,10,10">Remove Typology</Button>
 
-                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="1">
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="typology1Type" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology2Type" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed"  Name="typology3Type" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed"  Name="typology4Type" VerticalContentAlignment="Center"></TextBox>
+                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                                    <TextBox Name="typology1Type" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Visibility="Collapsed" Name="typology2Type" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Visibility="Collapsed"  Name="typology3Type" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Visibility="Collapsed"  Name="typology4Type" VerticalContentAlignment="Center"></TextBox>
                                 </StackPanel>
                                 <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="2" Width="30" Margin="130,7,0,0">
                                     <Label Content="%" HorizontalContentAlignment="Left" Name="typPercLabel1" />
@@ -306,34 +310,34 @@
                                     <Label Content="%" HorizontalContentAlignment="Left" Name="typPercLabel3" Visibility="Collapsed"/>
                                     <Label Content="%" HorizontalContentAlignment="Left" Name="typPercLabel4" Visibility="Collapsed"/>
                                 </StackPanel>
-                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="2" Margin="10,8,0,0">
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Visible" Name="typology1Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology2Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology3Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black" Visibility="Collapsed" Name="typology4Dist" VerticalContentAlignment="Center" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
+                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="2" Margin="10,8,0,0" Grid.RowSpan="2">
+                                    <TextBox Visibility="Visible" Name="typology1Dist" Text="100" TextChanged="checkIfPercEquals0" ></TextBox>
+                                    <TextBox Visibility="Collapsed" Name="typology2Dist" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
+                                    <TextBox Visibility="Collapsed" Name="typology3Dist" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
+                                    <TextBox Visibility="Collapsed" Name="typology4Dist" Text="0" TextChanged="checkIfPercEquals0" ></TextBox>
                                 </StackPanel>
                                 <!--Panels from Urban Area-->
-                                <Label Content="URBAN CANYON CHARACTERISTICS" Grid.Row="2" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" />
+                                <Label Content="Urban Canyon Characteristics" Grid.Row="4" Grid.Column="0" Style="{StaticResource heading}"  />
                                 <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
                                 <!--<Button Grid.Row="2" Grid.Column="1" FontWeight="SemiBold" Click="importUMI" VerticalAlignment="Bottom">Import from UMI</Button>-->
-                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="4" Grid.Column="0">
-                                    <Label Content="Average building height [m]" FontWeight="Bold"/>
-                                    <Label Content="Site Coverage Ratio [0 - 1]"  FontWeight="Bold"/>
-                                    <Label Content="Facade to Site ratio [0 - 1]" FontWeight="Bold"/>
-                                    <Label FontWeight="Bold" Content="Tree coverage [0 - 1]" />
-                                    <Label Content="Non-building sensible heat [W/m^2]"  FontWeight="Bold" />
+                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="5" Grid.Column="0" Grid.RowSpan="2">
+                                    <Label Content="Average building height [m]" />
+                                    <Label Content="Site coverage ratio [0 - 1]"  />
+                                    <Label Content="Facade to site ratio [0 - 1]" />
+                                    <Label Content="Tree coverage [0 - 1]" />
+                                    <Label Content="Non-building sensible heat [W/m^2]" />
                                 </StackPanel>
-                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="4" Grid.Column="1">
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="avgBldgHeight" Text="{Binding XPath=urbanArea/averageBuildingHeight}" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="hBDensity" Text="{Binding XPath=urbanArea/horizontalBuildingDensity}" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="vHRatios" Text="{Binding XPath=urbanArea/verticalToHorizontalUrbanAreaRatio}" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="treeCoverage" Text="{Binding XPath=urbanArea/treeCoverage}" VerticalContentAlignment="Center"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  Name="sensibleAnthroHeat" Text="{Binding XPath=urbanArea/nonBldgSensibleHeat}" VerticalContentAlignment="Center"></TextBox>
+                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="5" Grid.Column="1" Grid.RowSpan="2">
+                                    <TextBox Name="avgBldgHeight" Text="{Binding XPath=urbanArea/averageBuildingHeight}" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Name="siteCoverageRatio" Text="{Binding XPath=urbanArea/siteCoveragRatio}" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Name="facadeToSiteRatio" Text="{Binding XPath=urbanArea/facadeToSiteRatio}" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Name="treeCoverage" Text="{Binding XPath=urbanArea/treeCoverage}" VerticalContentAlignment="Center"></TextBox>
+                                    <TextBox Name="sensibleAnthroHeat" Text="{Binding XPath=urbanArea/nonBldgSensibleHeat}" VerticalContentAlignment="Center"></TextBox>
                                 </StackPanel>
                                 <!-- image-->
-                                <Image HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Top" Width="480" Grid.Row="4" Grid.Column="2" Source="/Images/UWGParam-12_2.png" Margin="0 8 0 0" />
+                                <Image HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Top" Width="480" Grid.Row="5" Grid.Column="2" Source="/Images/urbanAreaParams.png" Margin="0 8 0 0" />
                                 <!-- Expander-->
-                                <Expander Grid.Row="6" Margin="0,10,0,0" Header="Advanced Setting" Grid.Column="0" Grid.ColumnSpan="3"  Foreground="#FF00B4B4" FontWeight="Bold" >
+                                <Expander Grid.Row="7" Header="Advanced Setting" Grid.Column="0" Grid.ColumnSpan="3" HeaderTemplate="{StaticResource expanderHeader}" >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="260" />
@@ -343,31 +347,31 @@
                                             <Label Content="Non-building latent heat [W/m^2]" />
                                             <Label Content="Neighborhood characteristic length [m]" />
                                             <!--vegetation-->
-                                            <Label Margin="4,4,0,4" Width="196" HorizontalAlignment="Left" FontWeight="Bold" Background="#6600B4B4" Content="Vegetation Properties"/>
+                                            <Label Content="Vegetation Properties" Style="{StaticResource heading}"  />
                                             <Label Content="Latent fraction of trees [0- 1]" />
                                             <Label Content="Latent fration of grass [0- 1]" />
                                             <Label Content="Albedo of vegetation [0- 1]" />
                                             <Label Content="Vegetation participation begin month" />
                                             <Label Content="Vegetation participation end month" />
                                             <!--BL-->
-                                            <Label Content="Boundary Layer Parameters"  Margin="4,4,0,4" Width="196" HorizontalAlignment="Left" FontWeight="Bold" Background="#6600B4B4"  />
+                                            <Label Content="Boundary Layer Parameters" Style="{StaticResource heading}" />
                                             <Label Content="Daytime boundary layer height [m]"/>
                                             <Label Content="Nighttime boundary layer height [m]" />
                                             <Label Content="Reference height [m]" />
                                         </StackPanel>
                                         <StackPanel Style="{StaticResource PanelRight}" Grid.Column="1">
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="latentAnthroHeat" Text="{Binding XPath=urbanArea/nonBldgLatentAnthropogenicHeat}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="charLength" Text="{Binding XPath=urbanArea/charLength}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="latentAnthroHeat" Text="{Binding XPath=urbanArea/nonBldgLatentAnthropogenicHeat}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="charLength" Text="{Binding XPath=urbanArea/charLength}" Style="{StaticResource advSetting}"></TextBox>
                                             <Label Margin="4,4,0,4" Width="auto"/>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="latentTrees" Text="{Binding XPath=urbanArea/treeLatent}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="latentGrass" Text="{Binding XPath=urbanArea/grassLatent}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="vegAlbedo" Text="{Binding XPath=urbanArea/vegAlbedo}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="vegStart" Text="{Binding XPath=urbanArea/vegStart}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="vegEnd" Text="{Binding XPath=urbanArea/vegEnd}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="latentTrees" Text="{Binding XPath=urbanArea/treeLatent}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="latentGrass" Text="{Binding XPath=urbanArea/grassLatent}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="vegAlbedo" Text="{Binding XPath=urbanArea/vegAlbedo}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="vegStart" Text="{Binding XPath=urbanArea/vegStart}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="vegEnd" Text="{Binding XPath=urbanArea/vegEnd}" Style="{StaticResource advSetting}"></TextBox>
                                             <Label Margin="4,4,0,4" Width="auto"/>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="daytimeBLHeight" Text="{Binding XPath=urbanArea/daytimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="nighttimeBLHeight" Text="{Binding XPath=urbanArea/nighttimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
-                                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="refHeight" Text="{Binding XPath=urbanArea/refHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="daytimeBLHeight" Text="{Binding XPath=urbanArea/daytimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="nighttimeBLHeight" Text="{Binding XPath=urbanArea/nighttimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                            <TextBox Name="refHeight" Text="{Binding XPath=urbanArea/refHeight}" Style="{StaticResource advSetting}"></TextBox>
                                         </StackPanel>
                                     </Grid>
                                 </Expander>
@@ -766,11 +770,11 @@
                                         <Label Style="{StaticResource SectionHeader}" Grid.Row="0" Content="BUILDING CHARACTERISTICS" VerticalAlignment="Bottom"></Label>
                                         <Line Grid.Row="0" Margin="0,-45,0,0" Style="{StaticResource horizontalLineStyle}"/>
                                         <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0" Height="auto" Width="auto">
-                                                <Label Content="Heat Gain" Margin="4,4,0,4" Width="196" HorizontalAlignment="Left" FontWeight="Bold" />
-                                            </StackPanel>
-                                            <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="1" Height="auto" Width="250" Margin="0,8,0,0">
-                                                <ComboBox Margin="4,6,0,0" Name="heatbox" Loaded="heatbox_load" SelectionChanged="heatbox_change"></ComboBox>
-                                            </StackPanel>
+                                            <Label Content="Heat Gain" Margin="4,4,0,4" Width="196" HorizontalAlignment="Left" FontWeight="Bold" />
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource PanelRight}" Grid.Row="1" Grid.Column="1" Height="auto" Width="250" Margin="0,8,0,0">
+                                            <ComboBox Margin="4,6,0,0" Name="heatbox" Loaded="heatbox_load" SelectionChanged="heatbox_change"></ComboBox>
+                                        </StackPanel>
                                         <Label Content="Summary" Width="80" FontSize="12" Grid.Row="0" Grid.Column="3" FontWeight="SemiBold" VerticalAlignment="Bottom"  HorizontalAlignment="Left"/>
                                         <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="2" Height="auto" Width="auto" Grid.RowSpan="2">
                                             <Label FontWeight="SemiBold" Content="Day Internal Heat Gains" />
@@ -2253,17 +2257,17 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0">
-                            <Label FontWeight="Bold" Content="Latitude [degrees]" />
-                            <Label FontWeight="Bold" Content="Longtitude [degrees]" />
-                            <Label FontWeight="Bold" Content="Average obstacle height [m]" />
+                            <Label Content="Latitude [degrees]" />
+                            <Label Content="Longtitude [degrees]" />
+                            <Label Content="Average obstacle height [m]" />
                         </StackPanel>
                         <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="0" Grid.Column="1">
-                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="latitude" Text="{Binding XPath=referenceSite/latitude}"></TextBox>
-                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="longitude" Text="{Binding XPath=referenceSite/longitude}"></TextBox>
-                            <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="avgObstacleHeight" Text="{Binding XPath=referenceSite/averageObstacleHeight}"></TextBox>
+                            <TextBox Name="latitude" Text="{Binding XPath=referenceSite/latitude}"></TextBox>
+                            <TextBox Name="longitude" Text="{Binding XPath=referenceSite/longitude}"></TextBox>
+                            <TextBox Name="avgObstacleHeight" Text="{Binding XPath=referenceSite/averageObstacleHeight}"></TextBox>
                         </StackPanel>
                         <!-- Expander-->
-                        <Expander Grid.Row="4" Header="Advanced Setting" IsExpanded="False" Grid.Column="0" Grid.ColumnSpan="3"  Foreground="#FF00B4B4" FontWeight="Bold" >
+                        <Expander Grid.Row="4" Header="Advanced Setting" IsExpanded="False" Grid.Column="0" Grid.ColumnSpan="3" HeaderTemplate="{StaticResource expanderHeader}" >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="260" />
@@ -2276,8 +2280,8 @@
                                     </StackPanel>
                                 </Grid>
                                 <StackPanel Style="{StaticResource PanelRight}" Grid.Column="1">
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="tempHeight" Text="{Binding XPath=parameter/tempHeight}" Style="{StaticResource advSetting}"></TextBox>
-                                    <TextBox BorderBrush="Gray" BorderThickness="1.5" Foreground="Black"  VerticalContentAlignment="Center" Name="windHeight" Text="{Binding XPath=parameter/windHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                    <TextBox Name="tempHeight" Text="{Binding XPath=parameter/tempHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                    <TextBox Name="windHeight" Text="{Binding XPath=parameter/windHeight}" Style="{StaticResource advSetting}"></TextBox>
                                 </StackPanel>
                             </Grid>
                         </Expander>
@@ -2285,7 +2289,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Run Simulation" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="runSimTab">
-                    
+
                 <Grid>
                     <!--Status Bar-->
 
@@ -2661,7 +2665,7 @@
                                                     </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
-                                            
+
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
                                             <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim1" SelectionChanged="tAirSim1_change" >
                                                 <ComboBoxItem Content="January" IsSelected="True" />
@@ -3354,7 +3358,7 @@
                                                         </chartingToolkit:CategoryAxis>
                                                     </chartingToolkit:ColumnSeries.IndependentAxis>
                                                 </chartingToolkit:ColumnSeries>
-                                                
+
                                             </chartingToolkit:Chart>
                                             <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
                                             <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim5" SelectionChanged="tAirSim5_change" >

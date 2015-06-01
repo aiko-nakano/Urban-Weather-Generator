@@ -117,7 +117,6 @@ C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Release\UWG.csproj.GenerateResource.Cache
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Release\UWG.exe.manifest
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Release\UWG.application
-C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\bin\Release\System.Windows.Controls.DataVisualization.Toolkit.dll
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\bin\Release\System.Windows.Controls.DataVisualization.Toolkit.xml
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Release\UTCIWindow.baml
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Release\UTCIWindow.g.cs
