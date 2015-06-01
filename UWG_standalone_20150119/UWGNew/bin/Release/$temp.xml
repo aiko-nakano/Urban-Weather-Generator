@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xml_input>
-  <typology1 dist="0" name="">
+  <typology1 dist="100" name="">
     <construction>
       <wall>
         <albedo></albedo>
         <emissivity></emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>Stucco</item>
+            <item>Concrete HW</item>
+            <item>Insulation</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -15,7 +18,7 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.03,0.2,0.09,0.01]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>0</inclination>
@@ -480,12 +483,12 @@
     </construction>
     <building>
       <floorHeight>3</floorHeight>
-      <dayInternalGains />
-      <nightInternalGains />
+      <dayInternalGains></dayInternalGains>
+      <nightInternalGains></nightInternalGains>
       <radiantFraction>0.5</radiantFraction>
       <latentFraction>0.09</latentFraction>
-      <infiltration />
-      <ventilation />
+      <infiltration></infiltration>
+      <ventilation></ventilation>
       <coolingSystemType>air</coolingSystemType>
       <coolingCOP>3.7</coolingCOP>
       <daytimeCoolingSetPoint>25</daytimeCoolingSetPoint>
