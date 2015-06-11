@@ -96,6 +96,7 @@
             <Setter Property="Height" Value="26" />
             <Setter Property="Margin" Value="4" />
             <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <!-- Button-->
         <Style TargetType="Button">
@@ -358,6 +359,15 @@
                                             <Label Content="Daytime boundary layer height [m]"/>
                                             <Label Content="Nighttime boundary layer height [m]" />
                                             <Label Content="Reference height [m]" />
+                                            <!--road-->
+                                            <Label Content="Urban Road" Style="{StaticResource heading}"/>
+                                            <Label Content="Material"/>
+                                            <Label Content="Thickness[m]"/>
+                                            <Label Content="Thermal Conductivity[W/m-K]"/>
+                                            <Label Content="VHC[m^3-K]"/>
+                                            <Label Content="*Albedo [0-1]"/>
+                                            <Label Content="*Emissivity [0-1]"/>
+                                            <Label Content="Vegetation Coverage [0-1]"/>
                                         </StackPanel>
                                         <StackPanel Style="{StaticResource PanelRight}" Grid.Column="1">
                                             <TextBox Name="latentAnthroHeat" Text="{Binding XPath=urbanArea/nonBldgLatentAnthropogenicHeat}" Style="{StaticResource advSetting}"></TextBox>
@@ -372,6 +382,15 @@
                                             <TextBox Name="daytimeBLHeight" Text="{Binding XPath=urbanArea/daytimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
                                             <TextBox Name="nighttimeBLHeight" Text="{Binding XPath=urbanArea/nighttimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
                                             <TextBox Name="refHeight" Text="{Binding XPath=urbanArea/refHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                            <!--urbanRoad-->
+                                            <ComboBox Name="urbanRoadbox" Loaded="urbanRoadbox_load" SelectionChanged="urbanRoadbox_change"></ComboBox>
+                                            <Label IsEnabled="False" Name="urbanRoadMaterial" Content="{Binding XPath=urbanArea/urbanRoad/materials/names/item}"></Label>
+                                            <Label IsEnabled="False" Name="urbanRoadThickness" Content="{Binding XPath=urbanArea/urbanRoad/materials/thickness}"></Label>
+                                            <Label Name="urbanRoadK" Content="{Binding XPath=urbanArea/urbanRoad/materials/thermalConductivity/item}"></Label>
+                                            <Label Name="urbanRoadVHC" Content="{Binding XPath=urbanArea/urbanRoad/materials/volumetricHeatCapacity/item}"></Label>
+                                            <Label Name="urbanRoadAlbedo" Content="{Binding XPath=urbanArea/urbanRoad/albedo}"></Label>
+                                            <Label Name="urbanRoadEmissivity" Content="{Binding XPath=urbanArea/urbanRoad/emissivity}"></Label>
+                                            <TextBox Name="urbanRoadVegFraction" Text="{Binding XPath=urbanArea/urbanRoad/vegetationCoverage}" Style="{StaticResource advSetting}"></TextBox>
                                         </StackPanel>
                                     </Grid>
                                 </Expander>
@@ -650,101 +669,6 @@
                                                 <Label IsEnabled="False" VerticalContentAlignment="Center" Foreground="DarkBlue"  Grid.Column="1" Grid.Row="2" Name="SHGC" Content="{Binding XPath=typology1/construction/glazing/windowSHGC}"/>
                                             </Grid>
                                         </StackPanel>
-                                        <Expander Grid.Row="8" Header="Advanced Settings" Grid.ColumnSpan="3" HeaderTemplate="{StaticResource expanderHeader}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0">
-                                                    <Label Content="Urban Road" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="2" Grid.Column="0" >
-                                                    <Label Content="Rural Road" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="0" Grid.Column="1"  Height="auto" Width="250" Margin="0,8.4,0,0">
-                                                    <ComboBox Margin="4,6,0,0" Name="urbanRoadbox" FontWeight="Normal" Loaded="urbanRoadbox_load" SelectionChanged="urbanRoadbox_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="0" Name="urbanRoadMaterial" Content="{Binding XPath=typology1/construction/urbanRoad/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" Name="urbanRoadK" Content="{Binding XPath=typology1/construction/urbanRoad/materials/thermalConductivity/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" Name="urbanRoadVHC" Content="{Binding XPath=typology1/construction/urbanRoad/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="urbanRoadThickness" Content="{Binding XPath=typology1/construction/urbanRoad/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="urbanRoadAlbedo" Content="{Binding XPath=typology1/construction/urbanRoad/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="urbanRoadEmissivity" Content="{Binding XPath=typology1/construction/urbanRoad/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" BorderBrush="Gray" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="urbanRoadVegFraction" Content="{Binding XPath=typology1/construction/urbanRoad/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="2" Grid.Column="1" Height="auto" Width="250" Margin="0,8.4,0,0" Grid.RowSpan="2">
-                                                    <ComboBox Margin="4,6,0,0" Name="ruralbox" FontWeight="Normal" Loaded="ruralbox_load" SelectionChanged="ruralbox_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="0" Name="ruralRoadMaterial" Content="{Binding XPath=typology1/construction/rural/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" FontWeight="SemiBold" Name="ruralRoadK" Content="{Binding XPath=typology1/construction/rural/materials/thermalConductivity/item}" ></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" FontWeight="SemiBold" Name="ruralRoadVHC" Content="{Binding XPath=typology1/construction/rural/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="ruralRoadThickness" Content="{Binding XPath=typology1/construction/rural/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="ruralRoadAlbedo" Content="{Binding XPath=typology1/construction/rural/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="ruralRoadEmissivity" Content="{Binding XPath=typology1/construction/rural/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="ruralRoadVegFraction" Content="{Binding XPath=typology1/construction/rural/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Grid>
-
-                                        </Expander>
-
                                     </Grid>
                                     <!--End of old Construction tab-->
                                 </StackPanel>
@@ -1116,101 +1040,6 @@
                                                 <Label IsEnabled="False" VerticalContentAlignment="Center" Foreground="DarkBlue"  Grid.Column="1" Grid.Row="2" Name="SHGCTyp2" Content="{Binding XPath=typology2/construction/glazing/windowSHGC}"/>
                                             </Grid>
                                         </StackPanel>
-                                        <Expander Grid.Row="8" Header="Advanced Settings" Height="auto" Grid.ColumnSpan="3" Foreground="#FF00B4B4" FontWeight="Bold">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0" Height="auto" Width="auto" Margin="0,8.4,0,0">
-                                                    <Label Content="Urban Road" HorizontalAlignment="Left" Margin="4,4,0,4" FontWeight="Bold" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="2" Grid.Column="0" Height="34" Width="200" Margin="0,8.4,0,0">
-                                                    <Label Content="Rural Road" HorizontalAlignment="Left" Margin="4,4,0,4" FontWeight="Bold" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="0" Grid.Column="1"  Height="auto" Width="250" Margin="0,8.4,0,0">
-                                                    <ComboBox Margin="4,6,0,0" Name="urbanRoadboxTyp2" FontWeight="Normal" Loaded="urbanRoadboxTyp2_load" SelectionChanged="urbanRoadboxTyp2_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="0" Name="urbanRoadMaterialTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" Name="urbanRoadKTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/materials/thermalConductivity/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" Name="urbanRoadVHCTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="urbanRoadThicknessTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="urbanRoadAlbedoTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="urbanRoadEmissivityTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" BorderBrush="Gray" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="urbanRoadVegFractionTyp2" Content="{Binding XPath=typology2/construction/urbanRoad/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="2" Grid.Column="1" Height="auto" Width="250" Margin="0,8.4,0,0" Grid.RowSpan="2">
-                                                    <ComboBox Margin="4,6,0,0" Name="ruralboxTyp2" FontWeight="Normal" Loaded="ruralboxTyp2_load" SelectionChanged="ruralboxTyp2_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="0" Name="ruralRoadMaterialTyp2" Content="{Binding XPath=typology2/construction/rural/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" FontWeight="SemiBold" Name="ruralRoadKTyp2" Content="{Binding XPath=typology2/construction/rural/materials/thermalConductivity/item}" ></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" FontWeight="SemiBold" Name="ruralRoadVHCTyp2" Content="{Binding XPath=typology2/construction/rural/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="ruralRoadThicknessTyp2" Content="{Binding XPath=typology2/construction/rural/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="ruralRoadAlbedoTyp2" Content="{Binding XPath=typology2/construction/rural/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="ruralRoadEmissivityTyp2" Content="{Binding XPath=typology2/construction/rural/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="ruralRoadVegFractionTyp2" Content="{Binding XPath=typology2/construction/rural/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Grid>
-
-                                        </Expander>
-
                                     </Grid>
                                     <!--End of old Construction tab-->
                                 </StackPanel>
@@ -1581,101 +1410,6 @@
                                                 <Label IsEnabled="False" VerticalContentAlignment="Center" Foreground="DarkBlue"  Grid.Column="1" Grid.Row="2" Name="SHGCTyp3" Content="{Binding XPath=typology3/construction/glazing/windowSHGC}"/>
                                             </Grid>
                                         </StackPanel>
-                                        <Expander Grid.Row="8" Header="Advanced Settings" Height="auto" Grid.ColumnSpan="3" Foreground="#FF00B4B4" FontWeight="Bold">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0" Height="auto" Width="auto" Margin="0,8.4,0,0">
-                                                    <Label Content="Urban Road" HorizontalAlignment="Left" Margin="4,4,0,4" FontWeight="Bold" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="2" Grid.Column="0" Height="34" Width="200" Margin="0,8.4,0,0">
-                                                    <Label Content="Rural Road" HorizontalAlignment="Left" Margin="4,4,0,4" FontWeight="Bold" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="0" Grid.Column="1"  Height="auto" Width="250" Margin="0,8.4,0,0">
-                                                    <ComboBox Margin="4,6,0,0" Name="urbanRoadboxTyp3" FontWeight="Normal" Loaded="urbanRoadboxTyp3_load" SelectionChanged="urbanRoadboxTyp3_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="0" Name="urbanRoadMaterialTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" Name="urbanRoadKTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/materials/thermalConductivity/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" Name="urbanRoadVHCTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="urbanRoadThicknessTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="urbanRoadAlbedoTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="urbanRoadEmissivityTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" BorderBrush="Gray" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="urbanRoadVegFractionTyp3" Content="{Binding XPath=typology3/construction/urbanRoad/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="2" Grid.Column="1" Height="auto" Width="250" Margin="0,8.4,0,0" Grid.RowSpan="2">
-                                                    <ComboBox Margin="4,6,0,0" Name="ruralboxTyp3" FontWeight="Normal" Loaded="ruralboxTyp3_load" SelectionChanged="ruralboxTyp3_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="0" Name="ruralRoadMaterialTyp3" Content="{Binding XPath=typology3/construction/rural/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" FontWeight="SemiBold" Name="ruralRoadKTyp3" Content="{Binding XPath=typology3/construction/rural/materials/thermalConductivity/item}" ></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" FontWeight="SemiBold" Name="ruralRoadVHCTyp3" Content="{Binding XPath=typology3/construction/rural/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="ruralRoadThicknessTyp3" Content="{Binding XPath=typology3/construction/rural/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="ruralRoadAlbedoTyp3" Content="{Binding XPath=typology3/construction/rural/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="ruralRoadEmissivityTyp3" Content="{Binding XPath=typology3/construction/rural/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="ruralRoadVegFractionTyp3" Content="{Binding XPath=typology3/construction/rural/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Grid>
-
-                                        </Expander>
-
                                     </Grid>
                                     <!--End of old Construction tab-->
                                 </StackPanel>
@@ -2046,101 +1780,6 @@
                                                 <Label IsEnabled="False" VerticalContentAlignment="Center" Foreground="DarkBlue"  Grid.Column="1" Grid.Row="2" Name="SHGCTyp4" Content="{Binding XPath=typology4/construction/glazing/windowSHGC}"/>
                                             </Grid>
                                         </StackPanel>
-                                        <Expander Grid.Row="8" Header="Advanced Settings" Height="auto" Grid.ColumnSpan="3" Foreground="#FF00B4B4" FontWeight="Bold">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                    <ColumnDefinition Width="auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0" Height="auto" Width="auto" Margin="0,8.4,0,0">
-                                                    <Label Content="Urban Road" HorizontalAlignment="Left" Margin="4,4,0,4" FontWeight="Bold" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="2" Grid.Column="0" Height="34" Width="200" Margin="0,8.4,0,0">
-                                                    <Label Content="Rural Road" HorizontalAlignment="Left" Margin="4,4,0,4" FontWeight="Bold" />
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="0" Grid.Column="1"  Height="auto" Width="250" Margin="0,8.4,0,0">
-                                                    <ComboBox Margin="4,6,0,0" Name="urbanRoadboxTyp4" FontWeight="Normal" Loaded="urbanRoadboxTyp4_load" SelectionChanged="urbanRoadboxTyp4_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="1" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="0" Name="urbanRoadMaterialTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" Name="urbanRoadKTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/materials/thermalConductivity/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" Name="urbanRoadVHCTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="urbanRoadThicknessTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="urbanRoadAlbedoTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="urbanRoadEmissivityTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" BorderBrush="Gray" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="urbanRoadVegFractionTyp4" Content="{Binding XPath=typology4/construction/urbanRoad/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                                <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="2" Grid.Column="1" Height="auto" Width="250" Margin="0,8.4,0,0" Grid.RowSpan="2">
-                                                    <ComboBox Margin="4,6,0,0" Name="ruralboxTyp4" FontWeight="Normal" Loaded="ruralboxTyp4_load" SelectionChanged="ruralboxTyp4_change"></ComboBox>
-                                                </StackPanel>
-
-                                                <StackPanel Style="{StaticResource PanelRight}" Grid.Row="3" Grid.Column="1" Height="auto" Width="auto" Margin="0,8.4,0,0" >
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="170"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="0"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Label Grid.Column="0" Grid.Row="0" Content="Material" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="1" Content="Thickness[m]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="2" Content="Thermal Conductivity[W/m-K]" FontWeight="SemiBold"/>
-                                                        <Label Grid.Column="0" Grid.Row="3" Content="VHC[m^3-K]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="4" Content="*Albedo [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="5" Content="*Emissivity [0-1]" FontWeight="Bold"/>
-                                                        <Label Grid.Column="0" Grid.Row="6" Content="Vegetation Coverage [0-1]" FontWeight="SemiBold"/>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="0" Name="ruralRoadMaterialTyp4" Content="{Binding XPath=typology4/construction/rural/materials/names/item}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="2" FontWeight="SemiBold" Name="ruralRoadKTyp4" Content="{Binding XPath=typology4/construction/rural/materials/thermalConductivity/item}" ></Label>
-                                                        <Label Grid.Column="1" Grid.Row="3" FontWeight="SemiBold" Name="ruralRoadVHCTyp4" Content="{Binding XPath=typology4/construction/rural/materials/volumetricHeatCapacity/item}"></Label>
-                                                        <Label IsEnabled="False" VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue"  Width="192" Grid.Column="1" Grid.Row="1" Name="ruralRoadThicknessTyp4" Content="{Binding XPath=typology4/construction/rural/materials/thickness}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="4" Name="ruralRoadAlbedoTyp4" Content="{Binding XPath=typology4/construction/rural/albedo}"></Label>
-                                                        <Label Grid.Column="1" Grid.Row="5" Name="ruralRoadEmissivityTyp4" Content="{Binding XPath=typology4/construction/rural/emissivity}"></Label>
-                                                        <Label VerticalContentAlignment="Center" FontWeight="SemiBold" Foreground="DarkBlue" Width="192" Grid.Column="1" Grid.Row="6" Name="ruralRoadVegFractionTyp4" Content="{Binding XPath=typology4/construction/rural/vegetationCoverage}"></Label>
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Grid>
-
-                                        </Expander>
-
                                     </Grid>
                                     <!--End of old Construction tab-->
                                 </StackPanel>
@@ -2273,11 +1912,29 @@
                                     <StackPanel Style="{StaticResource PanelLeft}">
                                         <Label Content="Temperature Measurement Height [m]"/>
                                         <Label Content="Wind Measurement Height [m]" />
+                                        <!--rural road-->
+                                        <Label Content="Rural Road" Style="{StaticResource heading}"/>
+                                        <Label Content="Material"/>
+                                        <Label Content="Thickness[m]" />
+                                        <Label Content="Thermal Conductivity[W/m-K]"/>
+                                        <Label Content="VHC[m^3-K]"/>
+                                        <Label Content="*Albedo [0-1]" />
+                                        <Label Content="*Emissivity [0-1]" />
+                                        <Label Content="Vegetation Coverage [0-1]" />
                                     </StackPanel>
                                 </Grid>
                                 <StackPanel Style="{StaticResource PanelRight}" Grid.Column="1">
                                     <TextBox Name="tempHeight" Text="{Binding XPath=parameter/tempHeight}" Style="{StaticResource advSetting}"></TextBox>
                                     <TextBox Name="windHeight" Text="{Binding XPath=parameter/windHeight}" Style="{StaticResource advSetting}"></TextBox>
+                                    <!--ruralRoad-->
+                                    <ComboBox Name="ruralbox" Loaded="ruralbox_load" SelectionChanged="ruralbox_change"></ComboBox>
+                                    <Label IsEnabled="False" Name="ruralRoadMaterial" Content="{Binding XPath=referenceSite/ruralRoad/materials/names/item}"></Label>
+                                    <Label Name="ruralRoadK" Content="{Binding XPath=referenceSite/ruralRoad/materials/thermalConductivity/item}" ></Label>
+                                    <Label Name="ruralRoadVHC" Content="{Binding XPath=referenceSite/ruralRoad/materials/volumetricHeatCapacity/item}"></Label>
+                                    <Label IsEnabled="False" Name="ruralRoadThickness" Content="{Binding XPath=referenceSite/ruralRoad/materials/thickness}"></Label>
+                                    <Label Name="ruralRoadAlbedo" Content="{Binding XPath=referenceSite/ruralRoad/albedo}"></Label>
+                                    <Label Name="ruralRoadEmissivity" Content="{Binding XPath=referenceSite/ruralRoad/emissivity}"></Label>
+                                    <TextBox Name="ruralRoadVegFraction" Text="{Binding XPath=referenceSite/ruralRoad/vegetationCoverage}" Style="{StaticResource advSetting}"></TextBox>
                                 </StackPanel>
                             </Grid>
                         </Expander>

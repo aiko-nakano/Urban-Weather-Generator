@@ -157,24 +157,24 @@ namespace UWG
             roofboxTyp2_load(sender, e1);
             wallboxTyp2_load(sender, e1);
             massboxTyp2_load(sender, e1);
-            urbanRoadboxTyp2_load(sender, e1);
-            ruralboxTyp2_load(sender, e1);
+            //urbanRoadboxTyp2_load(sender, e1);
+            //ruralboxTyp2_load(sender, e1);
             glazingboxTyp2_load(sender, e1);
             heatboxTyp2_load(sender, e1);
 
             roofboxTyp3_load(sender, e1);
             wallboxTyp3_load(sender, e1);
             massboxTyp3_load(sender, e1);
-            urbanRoadboxTyp3_load(sender, e1);
-            ruralboxTyp3_load(sender, e1);
-            glazingboxTyp3_load(sender, e1);
+            //urbanRoadboxTyp3_load(sender, e1);
+            //ruralboxTyp3_load(sender, e1);
+            //glazingboxTyp3_load(sender, e1);
             heatboxTyp3_load(sender, e1);
 
             roofboxTyp4_load(sender, e1);
             wallboxTyp4_load(sender, e1);
             massboxTyp4_load(sender, e1);
-            urbanRoadboxTyp4_load(sender, e1);
-            ruralboxTyp4_load(sender, e1);
+            //urbanRoadboxTyp4_load(sender, e1);
+            //ruralboxTyp4_load(sender, e1);
             glazingboxTyp4_load(sender, e1);
             heatboxTyp4_load(sender, e1);
 
@@ -1271,52 +1271,52 @@ namespace UWG
             }
             else massboxTyp2.SelectedIndex = 0;
         }
-        private void urbanRoadboxTyp2_load(object sender, RoutedEventArgs e)
-        {
-            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
-            List<string> masslist = new List<string>();
-            masslist.Add("Default");
-            foreach (XmlNode no in massx)
-            {
-                if (no.SelectSingleNode("Type").InnerText == "Urban Road")
-                {
-                    string temp = no.SelectSingleNode("Name").InnerText;
-                    masslist.Add(temp);
-                }
-            }
-            masslist.Add("New Template");
-            urbanRoadboxTyp2.ItemsSource = masslist;
-            if (masslist[urbanRoadboxiTyp2] == "New Template") urbanRoadboxiTyp2 = 0;
-            if (urbanRoadboxiTyp2 != 0)
-            {
-                urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2 - 1;
-                urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2 + 1;
-            }
-            else urbanRoadboxTyp2.SelectedIndex = 0;
-        }
-        private void ruralboxTyp2_load(object sender, RoutedEventArgs e)
-        {
-            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
-            List<string> masslist = new List<string>();
-            masslist.Add("Default");
-            foreach (XmlNode no in massx)
-            {
-                if (no.SelectSingleNode("Type").InnerText == "Rural Road")
-                {
-                    string temp = no.SelectSingleNode("Name").InnerText;
-                    masslist.Add(temp);
-                }
-            }
-            masslist.Add("New Template");
-            ruralboxTyp2.ItemsSource = masslist;
-            if (masslist[ruralboxiTyp2] == "New Template") ruralboxiTyp2 = 0;
-            if (ruralboxiTyp2 != 0)
-            {
-                ruralboxTyp2.SelectedIndex = ruralboxiTyp2 - 1;
-                ruralboxTyp2.SelectedIndex = ruralboxiTyp2 + 1;
-            }
-            else ruralboxTyp2.SelectedIndex = 0;
-        }
+        //private void urbanRoadboxTyp2_load(object sender, RoutedEventArgs e)
+        //{
+        //    XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    List<string> masslist = new List<string>();
+        //    masslist.Add("Default");
+        //    foreach (XmlNode no in massx)
+        //    {
+        //        if (no.SelectSingleNode("Type").InnerText == "Urban Road")
+        //        {
+        //            string temp = no.SelectSingleNode("Name").InnerText;
+        //            masslist.Add(temp);
+        //        }
+        //    }
+        //    masslist.Add("New Template");
+        //    urbanRoadboxTyp2.ItemsSource = masslist;
+        //    if (masslist[urbanRoadboxiTyp2] == "New Template") urbanRoadboxiTyp2 = 0;
+        //    if (urbanRoadboxiTyp2 != 0)
+        //    {
+        //        urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2 - 1;
+        //        urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2 + 1;
+        //    }
+        //    else urbanRoadboxTyp2.SelectedIndex = 0;
+        //}
+        //private void ruralboxTyp2_load(object sender, RoutedEventArgs e)
+        //{
+        //    XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    List<string> masslist = new List<string>();
+        //    masslist.Add("Default");
+        //    foreach (XmlNode no in massx)
+        //    {
+        //        if (no.SelectSingleNode("Type").InnerText == "Rural Road")
+        //        {
+        //            string temp = no.SelectSingleNode("Name").InnerText;
+        //            masslist.Add(temp);
+        //        }
+        //    }
+        //    masslist.Add("New Template");
+        //    ruralboxTyp2.ItemsSource = masslist;
+        //    if (masslist[ruralboxiTyp2] == "New Template") ruralboxiTyp2 = 0;
+        //    if (ruralboxiTyp2 != 0)
+        //    {
+        //        ruralboxTyp2.SelectedIndex = ruralboxiTyp2 - 1;
+        //        ruralboxTyp2.SelectedIndex = ruralboxiTyp2 + 1;
+        //    }
+        //    else ruralboxTyp2.SelectedIndex = 0;
+        //}
         private void roofboxTyp2_load(object sender, RoutedEventArgs e)
         {
             XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
@@ -1777,186 +1777,186 @@ namespace UWG
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
         }
-        private void urbanRoadboxTyp2_change(object sender, RoutedEventArgs e)
-        {
-            int ind = urbanRoadboxTyp2.SelectedIndex;
-            int i = 0;
-            if (ind == 0)
-            {
-                urbanRoadMaterialTyp2.Content = "asphalt";
-                urbanRoadThicknessTyp2.Content = "1.25";
-                urbanRoadVHCTyp2.Content = "1600000";
-                urbanRoadKTyp2.Content = "1";
-                urbanRoadEmissivityTyp2.Content = "0.95";
-                urbanRoadAlbedoTyp2.Content = "0.165";
-                urbanRoadboxiTyp2 = 0;
-                string pathx = Directory.GetCurrentDirectory();
-                string temp1x = this.xmlPath;
-                string temp2x = this.xmlFileName;
-                this.xmlPath = pathx;
-                this.xmlFileName = "$temp.xml";
-                buttonSave_Click(sender, e);
-                var providerx = (XmlDataProvider)this.DataContext;
-                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-                providerx.Refresh();
-                this.xmlPath = temp1x;
-                this.xmlFileName = temp2x;
-                return;
-            }
-            XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
-            XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
-            int j = 0;
-            foreach (XmlNode nod in uRoadx)
-            {
-                if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
-                {
-                    i++;
-                }
-                if (i == ind)
-                {
-                    cuRoad = nod;
-                    break;
-                }
-                j++;
-                if (j == uRoadx.Count && ind == i + 1)
-                {
-                    urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2;
-                    Editor s = new Editor();
-                    s.Top.SelectedIndex = 0;
-                    s.constructionTab.SelectedIndex = 1;
-                    try
-                    {
-                        s.Show();
-                    }
-                    catch { };
-                    this.IsEnabled = false;
-                    s.Closed += new EventHandler(OnChange);
-                    return;
-                }
-                if (j >= uRoadx.Count)
-                {
-                    urbanRoadboxTyp2.SelectedIndex = 0;
-                    return;
-                }
-            }
-            urbanRoadboxiTyp2 = ind;
-            XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
-            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
-            ind = 0;
-            urbanRoadMaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
-            urbanRoadThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
-            foreach (XmlNode ma in mat)
-            {
-                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
-                {
-                    urbanRoadKTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
-                    urbanRoadVHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
-                    urbanRoadAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
-                    urbanRoadEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
-                }
-            }
-            string path = Directory.GetCurrentDirectory();
-            string temp1 = this.xmlPath;
-            string temp2 = this.xmlFileName;
-            this.xmlPath = path;
-            this.xmlFileName = "$temp.xml";
-            buttonSave_Click(sender, e);
-            var provider = (XmlDataProvider)this.DataContext;
-            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-            provider.Refresh();
-            this.xmlPath = temp1;
-            this.xmlFileName = temp2;
-        }
-        private void ruralboxTyp2_change(object sender, RoutedEventArgs e)
-        {
-            int ind = ruralboxTyp2.SelectedIndex;
-            int i = 0;
-            if (ind == 0)
-            {
-                ruralRoadMaterialTyp2.Content = "asphalt";
-                ruralRoadThicknessTyp2.Content = "1.25";
-                ruralRoadVHCTyp2.Content = "1600000";
-                ruralRoadKTyp2.Content = "1";
-                ruralRoadEmissivityTyp2.Content = "0.95";
-                ruralRoadAlbedoTyp2.Content = "0.165";
-                ruralboxiTyp2 = 0;
-                string pathx = Directory.GetCurrentDirectory();
-                string temp1x = this.xmlPath;
-                string temp2x = this.xmlFileName;
-                this.xmlPath = pathx;
-                this.xmlFileName = "$temp.xml";
-                buttonSave_Click(sender, e);
-                var providerx = (XmlDataProvider)this.DataContext;
-                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-                providerx.Refresh();
-                this.xmlPath = temp1x;
-                this.xmlFileName = temp2x;
-                return;
-            }
-            XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
-            XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
-            int j = 0;
-            foreach (XmlNode nod in rRoadx)
-            {
-                if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
-                {
-                    i++;
-                }
-                if (i == ind)
-                {
-                    crRoad = nod;
-                    break;
-                }
-                j++;
-                if (j == rRoadx.Count && ind == i + 1)
-                {
-                    ruralboxTyp2.SelectedIndex = ruralboxiTyp2;
-                    Editor s = new Editor();
-                    s.Top.SelectedIndex = 0;
-                    s.constructionTab.SelectedIndex = 1;
-                    try
-                    {
-                        s.Show();
-                    }
-                    catch { };
-                    this.IsEnabled = false;
-                    s.Closed += new EventHandler(OnChange);
-                    return;
-                }
-                if (j >= rRoadx.Count)
-                {
-                    ruralbox.SelectedIndex = 0;
-                    return;
-                }
-            }
-            ruralboxiTyp2 = ind;
-            XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
-            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
-            ind = 0;
-            ruralRoadMaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
-            ruralRoadThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
-            foreach (XmlNode ma in mat)
-            {
-                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
-                {
-                    ruralRoadKTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
-                    ruralRoadVHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
-                    ruralRoadAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
-                    ruralRoadEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
-                }
-            }
-            string path = Directory.GetCurrentDirectory();
-            string temp1 = this.xmlPath;
-            string temp2 = this.xmlFileName;
-            this.xmlPath = path;
-            this.xmlFileName = "$temp.xml";
-            buttonSave_Click(sender, e);
-            var provider = (XmlDataProvider)this.DataContext;
-            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-            provider.Refresh();
-            this.xmlPath = temp1;
-            this.xmlFileName = temp2;
-        }
+        //private void urbanRoadboxTyp2_change(object sender, RoutedEventArgs e)
+        //{
+        //    int ind = urbanRoadboxTyp2.SelectedIndex;
+        //    int i = 0;
+        //    if (ind == 0)
+        //    {
+        //        urbanRoadMaterialTyp2.Content = "asphalt";
+        //        urbanRoadThicknessTyp2.Content = "1.25";
+        //        urbanRoadVHCTyp2.Content = "1600000";
+        //        urbanRoadKTyp2.Content = "1";
+        //        urbanRoadEmissivityTyp2.Content = "0.95";
+        //        urbanRoadAlbedoTyp2.Content = "0.165";
+        //        urbanRoadboxiTyp2 = 0;
+        //        string pathx = Directory.GetCurrentDirectory();
+        //        string temp1x = this.xmlPath;
+        //        string temp2x = this.xmlFileName;
+        //        this.xmlPath = pathx;
+        //        this.xmlFileName = "$temp.xml";
+        //        buttonSave_Click(sender, e);
+        //        var providerx = (XmlDataProvider)this.DataContext;
+        //        providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //        providerx.Refresh();
+        //        this.xmlPath = temp1x;
+        //        this.xmlFileName = temp2x;
+        //        return;
+        //    }
+        //    XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
+        //    int j = 0;
+        //    foreach (XmlNode nod in uRoadx)
+        //    {
+        //        if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
+        //        {
+        //            i++;
+        //        }
+        //        if (i == ind)
+        //        {
+        //            cuRoad = nod;
+        //            break;
+        //        }
+        //        j++;
+        //        if (j == uRoadx.Count && ind == i + 1)
+        //        {
+        //            urbanRoadboxTyp2.SelectedIndex = urbanRoadboxiTyp2;
+        //            Editor s = new Editor();
+        //            s.Top.SelectedIndex = 0;
+        //            s.constructionTab.SelectedIndex = 1;
+        //            try
+        //            {
+        //                s.Show();
+        //            }
+        //            catch { };
+        //            this.IsEnabled = false;
+        //            s.Closed += new EventHandler(OnChange);
+        //            return;
+        //        }
+        //        if (j >= uRoadx.Count)
+        //        {
+        //            urbanRoadboxTyp2.SelectedIndex = 0;
+        //            return;
+        //        }
+        //    }
+        //    urbanRoadboxiTyp2 = ind;
+        //    XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
+        //    XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+        //    ind = 0;
+        //    urbanRoadMaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+        //    urbanRoadThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+        //    foreach (XmlNode ma in mat)
+        //    {
+        //        if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+        //        {
+        //            urbanRoadKTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+        //            urbanRoadVHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+        //            urbanRoadAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
+        //            urbanRoadEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
+        //        }
+        //    }
+        //    string path = Directory.GetCurrentDirectory();
+        //    string temp1 = this.xmlPath;
+        //    string temp2 = this.xmlFileName;
+        //    this.xmlPath = path;
+        //    this.xmlFileName = "$temp.xml";
+        //    buttonSave_Click(sender, e);
+        //    var provider = (XmlDataProvider)this.DataContext;
+        //    provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //    provider.Refresh();
+        //    this.xmlPath = temp1;
+        //    this.xmlFileName = temp2;
+        //}
+        //private void ruralboxTyp2_change(object sender, RoutedEventArgs e)
+        //{
+        //    int ind = ruralboxTyp2.SelectedIndex;
+        //    int i = 0;
+        //    if (ind == 0)
+        //    {
+        //        ruralRoadMaterialTyp2.Content = "asphalt";
+        //        ruralRoadThicknessTyp2.Content = "1.25";
+        //        ruralRoadVHCTyp2.Content = "1600000";
+        //        ruralRoadKTyp2.Content = "1";
+        //        ruralRoadEmissivityTyp2.Content = "0.95";
+        //        ruralRoadAlbedoTyp2.Content = "0.165";
+        //        ruralboxiTyp2 = 0;
+        //        string pathx = Directory.GetCurrentDirectory();
+        //        string temp1x = this.xmlPath;
+        //        string temp2x = this.xmlFileName;
+        //        this.xmlPath = pathx;
+        //        this.xmlFileName = "$temp.xml";
+        //        buttonSave_Click(sender, e);
+        //        var providerx = (XmlDataProvider)this.DataContext;
+        //        providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //        providerx.Refresh();
+        //        this.xmlPath = temp1x;
+        //        this.xmlFileName = temp2x;
+        //        return;
+        //    }
+        //    XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
+        //    int j = 0;
+        //    foreach (XmlNode nod in rRoadx)
+        //    {
+        //        if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
+        //        {
+        //            i++;
+        //        }
+        //        if (i == ind)
+        //        {
+        //            crRoad = nod;
+        //            break;
+        //        }
+        //        j++;
+        //        if (j == rRoadx.Count && ind == i + 1)
+        //        {
+        //            ruralboxTyp2.SelectedIndex = ruralboxiTyp2;
+        //            Editor s = new Editor();
+        //            s.Top.SelectedIndex = 0;
+        //            s.constructionTab.SelectedIndex = 1;
+        //            try
+        //            {
+        //                s.Show();
+        //            }
+        //            catch { };
+        //            this.IsEnabled = false;
+        //            s.Closed += new EventHandler(OnChange);
+        //            return;
+        //        }
+        //        if (j >= rRoadx.Count)
+        //        {
+        //            ruralbox.SelectedIndex = 0;
+        //            return;
+        //        }
+        //    }
+        //    ruralboxiTyp2 = ind;
+        //    XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
+        //    XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+        //    ind = 0;
+        //    ruralRoadMaterialTyp2.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+        //    ruralRoadThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+        //    foreach (XmlNode ma in mat)
+        //    {
+        //        if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+        //        {
+        //            ruralRoadKTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
+        //            ruralRoadVHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
+        //            ruralRoadAlbedoTyp2.Content = ma.SelectSingleNode("Albedo").InnerText;
+        //            ruralRoadEmissivityTyp2.Content = ma.SelectSingleNode("Emissivity").InnerText;
+        //        }
+        //    }
+        //    string path = Directory.GetCurrentDirectory();
+        //    string temp1 = this.xmlPath;
+        //    string temp2 = this.xmlFileName;
+        //    this.xmlPath = path;
+        //    this.xmlFileName = "$temp.xml";
+        //    buttonSave_Click(sender, e);
+        //    var provider = (XmlDataProvider)this.DataContext;
+        //    provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //    provider.Refresh();
+        //    this.xmlPath = temp1;
+        //    this.xmlFileName = temp2;
+        //}
         private void glazingboxTyp2_change(object sender, RoutedEventArgs e)
         {
             int ind = glazingboxTyp2.SelectedIndex;
@@ -2295,52 +2295,52 @@ namespace UWG
             }
             else massboxTyp3.SelectedIndex = 0;
         }
-        private void urbanRoadboxTyp3_load(object sender, RoutedEventArgs e)
-        {
-            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
-            List<string> masslist = new List<string>();
-            masslist.Add("Default");
-            foreach (XmlNode no in massx)
-            {
-                if (no.SelectSingleNode("Type").InnerText == "Urban Road")
-                {
-                    string temp = no.SelectSingleNode("Name").InnerText;
-                    masslist.Add(temp);
-                }
-            }
-            masslist.Add("New Template");
-            urbanRoadboxTyp3.ItemsSource = masslist;
-            if (masslist[urbanRoadboxiTyp3] == "New Template") urbanRoadboxiTyp3 = 0;
-            if (urbanRoadboxiTyp3 != 0)
-            {
-                urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3 - 1;
-                urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3 + 1;
-            }
-            else urbanRoadboxTyp3.SelectedIndex = 0;
-        }
-        private void ruralboxTyp3_load(object sender, RoutedEventArgs e)
-        {
-            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
-            List<string> masslist = new List<string>();
-            masslist.Add("Default");
-            foreach (XmlNode no in massx)
-            {
-                if (no.SelectSingleNode("Type").InnerText == "Rural Road")
-                {
-                    string temp = no.SelectSingleNode("Name").InnerText;
-                    masslist.Add(temp);
-                }
-            }
-            masslist.Add("New Template");
-            ruralboxTyp3.ItemsSource = masslist;
-            if (masslist[ruralboxiTyp3] == "New Template") ruralboxiTyp3 = 0;
-            if (ruralboxiTyp3 != 0)
-            {
-                ruralboxTyp3.SelectedIndex = ruralboxiTyp3 - 1;
-                ruralboxTyp3.SelectedIndex = ruralboxiTyp3 + 1;
-            }
-            else ruralboxTyp3.SelectedIndex = 0;
-        }
+        //private void urbanRoadboxTyp3_load(object sender, RoutedEventArgs e)
+        //{
+        //    XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    List<string> masslist = new List<string>();
+        //    masslist.Add("Default");
+        //    foreach (XmlNode no in massx)
+        //    {
+        //        if (no.SelectSingleNode("Type").InnerText == "Urban Road")
+        //        {
+        //            string temp = no.SelectSingleNode("Name").InnerText;
+        //            masslist.Add(temp);
+        //        }
+        //    }
+        //    masslist.Add("New Template");
+        //    urbanRoadboxTyp3.ItemsSource = masslist;
+        //    if (masslist[urbanRoadboxiTyp3] == "New Template") urbanRoadboxiTyp3 = 0;
+        //    if (urbanRoadboxiTyp3 != 0)
+        //    {
+        //        urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3 - 1;
+        //        urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3 + 1;
+        //    }
+        //    else urbanRoadboxTyp3.SelectedIndex = 0;
+        //}
+        //private void ruralboxTyp3_load(object sender, RoutedEventArgs e)
+        //{
+        //    XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    List<string> masslist = new List<string>();
+        //    masslist.Add("Default");
+        //    foreach (XmlNode no in massx)
+        //    {
+        //        if (no.SelectSingleNode("Type").InnerText == "Rural Road")
+        //        {
+        //            string temp = no.SelectSingleNode("Name").InnerText;
+        //            masslist.Add(temp);
+        //        }
+        //    }
+        //    masslist.Add("New Template");
+        //    ruralboxTyp3.ItemsSource = masslist;
+        //    if (masslist[ruralboxiTyp3] == "New Template") ruralboxiTyp3 = 0;
+        //    if (ruralboxiTyp3 != 0)
+        //    {
+        //        ruralboxTyp3.SelectedIndex = ruralboxiTyp3 - 1;
+        //        ruralboxTyp3.SelectedIndex = ruralboxiTyp3 + 1;
+        //    }
+        //    else ruralboxTyp3.SelectedIndex = 0;
+        //}
         private void roofboxTyp3_load(object sender, RoutedEventArgs e)
         {
             XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
@@ -2801,186 +2801,186 @@ namespace UWG
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
         }
-        private void urbanRoadboxTyp3_change(object sender, RoutedEventArgs e)
-        {
-            int ind = urbanRoadboxTyp3.SelectedIndex;
-            int i = 0;
-            if (ind == 0)
-            {
-                urbanRoadMaterialTyp3.Content = "asphalt";
-                urbanRoadThicknessTyp3.Content = "1.25";
-                urbanRoadVHCTyp3.Content = "1600000";
-                urbanRoadKTyp3.Content = "1";
-                urbanRoadEmissivityTyp3.Content = "0.95";
-                urbanRoadAlbedoTyp3.Content = "0.165";
-                urbanRoadboxiTyp3 = 0;
-                string pathx = Directory.GetCurrentDirectory();
-                string temp1x = this.xmlPath;
-                string temp2x = this.xmlFileName;
-                this.xmlPath = pathx;
-                this.xmlFileName = "$temp.xml";
-                buttonSave_Click(sender, e);
-                var providerx = (XmlDataProvider)this.DataContext;
-                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-                providerx.Refresh();
-                this.xmlPath = temp1x;
-                this.xmlFileName = temp2x;
-                return;
-            }
-            XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
-            XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
-            int j = 0;
-            foreach (XmlNode nod in uRoadx)
-            {
-                if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
-                {
-                    i++;
-                }
-                if (i == ind)
-                {
-                    cuRoad = nod;
-                    break;
-                }
-                j++;
-                if (j == uRoadx.Count && ind == i + 1)
-                {
-                    urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3;
-                    Editor s = new Editor();
-                    s.Top.SelectedIndex = 0;
-                    s.constructionTab.SelectedIndex = 1;
-                    try
-                    {
-                        s.Show();
-                    }
-                    catch { };
-                    this.IsEnabled = false;
-                    s.Closed += new EventHandler(OnChange);
-                    return;
-                }
-                if (j >= uRoadx.Count)
-                {
-                    urbanRoadboxTyp3.SelectedIndex = 0;
-                    return;
-                }
-            }
-            urbanRoadboxiTyp3 = ind;
-            XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
-            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
-            ind = 0;
-            urbanRoadMaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
-            urbanRoadThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
-            foreach (XmlNode ma in mat)
-            {
-                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
-                {
-                    urbanRoadKTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
-                    urbanRoadVHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
-                    urbanRoadAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
-                    urbanRoadEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
-                }
-            }
-            string path = Directory.GetCurrentDirectory();
-            string temp1 = this.xmlPath;
-            string temp2 = this.xmlFileName;
-            this.xmlPath = path;
-            this.xmlFileName = "$temp.xml";
-            buttonSave_Click(sender, e);
-            var provider = (XmlDataProvider)this.DataContext;
-            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-            provider.Refresh();
-            this.xmlPath = temp1;
-            this.xmlFileName = temp2;
-        }
-        private void ruralboxTyp3_change(object sender, RoutedEventArgs e)
-        {
-            int ind = ruralboxTyp3.SelectedIndex;
-            int i = 0;
-            if (ind == 0)
-            {
-                ruralRoadMaterialTyp3.Content = "asphalt";
-                ruralRoadThicknessTyp3.Content = "1.25";
-                ruralRoadVHCTyp3.Content = "1600000";
-                ruralRoadKTyp3.Content = "1";
-                ruralRoadEmissivityTyp3.Content = "0.95";
-                ruralRoadAlbedoTyp3.Content = "0.165";
-                ruralboxiTyp3 = 0;
-                string pathx = Directory.GetCurrentDirectory();
-                string temp1x = this.xmlPath;
-                string temp2x = this.xmlFileName;
-                this.xmlPath = pathx;
-                this.xmlFileName = "$temp.xml";
-                buttonSave_Click(sender, e);
-                var providerx = (XmlDataProvider)this.DataContext;
-                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-                providerx.Refresh();
-                this.xmlPath = temp1x;
-                this.xmlFileName = temp2x;
-                return;
-            }
-            XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
-            XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
-            int j = 0;
-            foreach (XmlNode nod in rRoadx)
-            {
-                if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
-                {
-                    i++;
-                }
-                if (i == ind)
-                {
-                    crRoad = nod;
-                    break;
-                }
-                j++;
-                if (j == rRoadx.Count && ind == i + 1)
-                {
-                    ruralboxTyp3.SelectedIndex = ruralboxiTyp3;
-                    Editor s = new Editor();
-                    s.Top.SelectedIndex = 0;
-                    s.constructionTab.SelectedIndex = 1;
-                    try
-                    {
-                        s.Show();
-                    }
-                    catch { };
-                    this.IsEnabled = false;
-                    s.Closed += new EventHandler(OnChange);
-                    return;
-                }
-                if (j >= rRoadx.Count)
-                {
-                    ruralbox.SelectedIndex = 0;
-                    return;
-                }
-            }
-            ruralboxiTyp3 = ind;
-            XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
-            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
-            ind = 0;
-            ruralRoadMaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
-            ruralRoadThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
-            foreach (XmlNode ma in mat)
-            {
-                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
-                {
-                    ruralRoadKTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
-                    ruralRoadVHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
-                    ruralRoadAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
-                    ruralRoadEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
-                }
-            }
-            string path = Directory.GetCurrentDirectory();
-            string temp1 = this.xmlPath;
-            string temp2 = this.xmlFileName;
-            this.xmlPath = path;
-            this.xmlFileName = "$temp.xml";
-            buttonSave_Click(sender, e);
-            var provider = (XmlDataProvider)this.DataContext;
-            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-            provider.Refresh();
-            this.xmlPath = temp1;
-            this.xmlFileName = temp2;
-        }
+        //private void urbanRoadboxTyp3_change(object sender, RoutedEventArgs e)
+        //{
+        //    int ind = urbanRoadboxTyp3.SelectedIndex;
+        //    int i = 0;
+        //    if (ind == 0)
+        //    {
+        //        urbanRoadMaterialTyp3.Content = "asphalt";
+        //        urbanRoadThicknessTyp3.Content = "1.25";
+        //        urbanRoadVHCTyp3.Content = "1600000";
+        //        urbanRoadKTyp3.Content = "1";
+        //        urbanRoadEmissivityTyp3.Content = "0.95";
+        //        urbanRoadAlbedoTyp3.Content = "0.165";
+        //        urbanRoadboxiTyp3 = 0;
+        //        string pathx = Directory.GetCurrentDirectory();
+        //        string temp1x = this.xmlPath;
+        //        string temp2x = this.xmlFileName;
+        //        this.xmlPath = pathx;
+        //        this.xmlFileName = "$temp.xml";
+        //        buttonSave_Click(sender, e);
+        //        var providerx = (XmlDataProvider)this.DataContext;
+        //        providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //        providerx.Refresh();
+        //        this.xmlPath = temp1x;
+        //        this.xmlFileName = temp2x;
+        //        return;
+        //    }
+        //    XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
+        //    int j = 0;
+        //    foreach (XmlNode nod in uRoadx)
+        //    {
+        //        if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
+        //        {
+        //            i++;
+        //        }
+        //        if (i == ind)
+        //        {
+        //            cuRoad = nod;
+        //            break;
+        //        }
+        //        j++;
+        //        if (j == uRoadx.Count && ind == i + 1)
+        //        {
+        //            urbanRoadboxTyp3.SelectedIndex = urbanRoadboxiTyp3;
+        //            Editor s = new Editor();
+        //            s.Top.SelectedIndex = 0;
+        //            s.constructionTab.SelectedIndex = 1;
+        //            try
+        //            {
+        //                s.Show();
+        //            }
+        //            catch { };
+        //            this.IsEnabled = false;
+        //            s.Closed += new EventHandler(OnChange);
+        //            return;
+        //        }
+        //        if (j >= uRoadx.Count)
+        //        {
+        //            urbanRoadboxTyp3.SelectedIndex = 0;
+        //            return;
+        //        }
+        //    }
+        //    urbanRoadboxiTyp3 = ind;
+        //    XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
+        //    XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+        //    ind = 0;
+        //    urbanRoadMaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+        //    urbanRoadThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+        //    foreach (XmlNode ma in mat)
+        //    {
+        //        if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+        //        {
+        //            urbanRoadKTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+        //            urbanRoadVHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+        //            urbanRoadAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
+        //            urbanRoadEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
+        //        }
+        //    }
+        //    string path = Directory.GetCurrentDirectory();
+        //    string temp1 = this.xmlPath;
+        //    string temp2 = this.xmlFileName;
+        //    this.xmlPath = path;
+        //    this.xmlFileName = "$temp.xml";
+        //    buttonSave_Click(sender, e);
+        //    var provider = (XmlDataProvider)this.DataContext;
+        //    provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //    provider.Refresh();
+        //    this.xmlPath = temp1;
+        //    this.xmlFileName = temp2;
+        //}
+        //private void ruralboxTyp3_change(object sender, RoutedEventArgs e)
+        //{
+        //    int ind = ruralboxTyp3.SelectedIndex;
+        //    int i = 0;
+        //    if (ind == 0)
+        //    {
+        //        ruralRoadMaterialTyp3.Content = "asphalt";
+        //        ruralRoadThicknessTyp3.Content = "1.25";
+        //        ruralRoadVHCTyp3.Content = "1600000";
+        //        ruralRoadKTyp3.Content = "1";
+        //        ruralRoadEmissivityTyp3.Content = "0.95";
+        //        ruralRoadAlbedoTyp3.Content = "0.165";
+        //        ruralboxiTyp3 = 0;
+        //        string pathx = Directory.GetCurrentDirectory();
+        //        string temp1x = this.xmlPath;
+        //        string temp2x = this.xmlFileName;
+        //        this.xmlPath = pathx;
+        //        this.xmlFileName = "$temp.xml";
+        //        buttonSave_Click(sender, e);
+        //        var providerx = (XmlDataProvider)this.DataContext;
+        //        providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //        providerx.Refresh();
+        //        this.xmlPath = temp1x;
+        //        this.xmlFileName = temp2x;
+        //        return;
+        //    }
+        //    XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
+        //    int j = 0;
+        //    foreach (XmlNode nod in rRoadx)
+        //    {
+        //        if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
+        //        {
+        //            i++;
+        //        }
+        //        if (i == ind)
+        //        {
+        //            crRoad = nod;
+        //            break;
+        //        }
+        //        j++;
+        //        if (j == rRoadx.Count && ind == i + 1)
+        //        {
+        //            ruralboxTyp3.SelectedIndex = ruralboxiTyp3;
+        //            Editor s = new Editor();
+        //            s.Top.SelectedIndex = 0;
+        //            s.constructionTab.SelectedIndex = 1;
+        //            try
+        //            {
+        //                s.Show();
+        //            }
+        //            catch { };
+        //            this.IsEnabled = false;
+        //            s.Closed += new EventHandler(OnChange);
+        //            return;
+        //        }
+        //        if (j >= rRoadx.Count)
+        //        {
+        //            ruralbox.SelectedIndex = 0;
+        //            return;
+        //        }
+        //    }
+        //    ruralboxiTyp3 = ind;
+        //    XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
+        //    XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+        //    ind = 0;
+        //    ruralRoadMaterialTyp3.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+        //    ruralRoadThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+        //    foreach (XmlNode ma in mat)
+        //    {
+        //        if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+        //        {
+        //            ruralRoadKTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
+        //            ruralRoadVHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
+        //            ruralRoadAlbedoTyp3.Content = ma.SelectSingleNode("Albedo").InnerText;
+        //            ruralRoadEmissivityTyp3.Content = ma.SelectSingleNode("Emissivity").InnerText;
+        //        }
+        //    }
+        //    string path = Directory.GetCurrentDirectory();
+        //    string temp1 = this.xmlPath;
+        //    string temp2 = this.xmlFileName;
+        //    this.xmlPath = path;
+        //    this.xmlFileName = "$temp.xml";
+        //    buttonSave_Click(sender, e);
+        //    var provider = (XmlDataProvider)this.DataContext;
+        //    provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //    provider.Refresh();
+        //    this.xmlPath = temp1;
+        //    this.xmlFileName = temp2;
+        //}
         private void glazingboxTyp3_change(object sender, RoutedEventArgs e)
         {
             int ind = glazingboxTyp3.SelectedIndex;
@@ -3319,52 +3319,52 @@ namespace UWG
             }
             else massboxTyp4.SelectedIndex = 0;
         }
-        private void urbanRoadboxTyp4_load(object sender, RoutedEventArgs e)
-        {
-            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
-            List<string> masslist = new List<string>();
-            masslist.Add("Default");
-            foreach (XmlNode no in massx)
-            {
-                if (no.SelectSingleNode("Type").InnerText == "Urban Road")
-                {
-                    string temp = no.SelectSingleNode("Name").InnerText;
-                    masslist.Add(temp);
-                }
-            }
-            masslist.Add("New Template");
-            urbanRoadboxTyp4.ItemsSource = masslist;
-            if (masslist[urbanRoadboxiTyp4] == "New Template") urbanRoadboxiTyp4 = 0;
-            if (urbanRoadboxiTyp4 != 0)
-            {
-                urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4 - 1;
-                urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4 + 1;
-            }
-            else urbanRoadboxTyp4.SelectedIndex = 0;
-        }
-        private void ruralboxTyp4_load(object sender, RoutedEventArgs e)
-        {
-            XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
-            List<string> masslist = new List<string>();
-            masslist.Add("Default");
-            foreach (XmlNode no in massx)
-            {
-                if (no.SelectSingleNode("Type").InnerText == "Rural Road")
-                {
-                    string temp = no.SelectSingleNode("Name").InnerText;
-                    masslist.Add(temp);
-                }
-            }
-            masslist.Add("New Template");
-            ruralboxTyp4.ItemsSource = masslist;
-            if (masslist[ruralboxiTyp4] == "New Template") ruralboxiTyp4 = 0;
-            if (ruralboxiTyp4 != 0)
-            {
-                ruralboxTyp4.SelectedIndex = ruralboxiTyp4 - 1;
-                ruralboxTyp4.SelectedIndex = ruralboxiTyp4 + 1;
-            }
-            else ruralboxTyp4.SelectedIndex = 0;
-        }
+        //private void urbanRoadboxTyp4_load(object sender, RoutedEventArgs e)
+        //{
+        //    XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    List<string> masslist = new List<string>();
+        //    masslist.Add("Default");
+        //    foreach (XmlNode no in massx)
+        //    {
+        //        if (no.SelectSingleNode("Type").InnerText == "Urban Road")
+        //        {
+        //            string temp = no.SelectSingleNode("Name").InnerText;
+        //            masslist.Add(temp);
+        //        }
+        //    }
+        //    masslist.Add("New Template");
+        //    urbanRoadboxTyp4.ItemsSource = masslist;
+        //    if (masslist[urbanRoadboxiTyp4] == "New Template") urbanRoadboxiTyp4 = 0;
+        //    if (urbanRoadboxiTyp4 != 0)
+        //    {
+        //        urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4 - 1;
+        //        urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4 + 1;
+        //    }
+        //    else urbanRoadboxTyp4.SelectedIndex = 0;
+        //}
+        //private void ruralboxTyp4_load(object sender, RoutedEventArgs e)
+        //{
+        //    XmlNodeList massx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    List<string> masslist = new List<string>();
+        //    masslist.Add("Default");
+        //    foreach (XmlNode no in massx)
+        //    {
+        //        if (no.SelectSingleNode("Type").InnerText == "Rural Road")
+        //        {
+        //            string temp = no.SelectSingleNode("Name").InnerText;
+        //            masslist.Add(temp);
+        //        }
+        //    }
+        //    masslist.Add("New Template");
+        //    ruralboxTyp4.ItemsSource = masslist;
+        //    if (masslist[ruralboxiTyp4] == "New Template") ruralboxiTyp4 = 0;
+        //    if (ruralboxiTyp4 != 0)
+        //    {
+        //        ruralboxTyp4.SelectedIndex = ruralboxiTyp4 - 1;
+        //        ruralboxTyp4.SelectedIndex = ruralboxiTyp4 + 1;
+        //    }
+        //    else ruralboxTyp4.SelectedIndex = 0;
+        //}
         private void roofboxTyp4_load(object sender, RoutedEventArgs e)
         {
             XmlNodeList roofx = defxml.GetElementsByTagName("OpaqueConstruction");
@@ -3825,186 +3825,186 @@ namespace UWG
             this.xmlPath = temp1;
             this.xmlFileName = temp2;
         }
-        private void urbanRoadboxTyp4_change(object sender, RoutedEventArgs e)
-        {
-            int ind = urbanRoadboxTyp4.SelectedIndex;
-            int i = 0;
-            if (ind == 0)
-            {
-                urbanRoadMaterialTyp4.Content = "asphalt";
-                urbanRoadThicknessTyp4.Content = "1.25";
-                urbanRoadVHCTyp4.Content = "1600000";
-                urbanRoadKTyp4.Content = "1";
-                urbanRoadEmissivityTyp4.Content = "0.95";
-                urbanRoadAlbedoTyp4.Content = "0.165";
-                urbanRoadboxiTyp4 = 0;
-                string pathx = Directory.GetCurrentDirectory();
-                string temp1x = this.xmlPath;
-                string temp2x = this.xmlFileName;
-                this.xmlPath = pathx;
-                this.xmlFileName = "$temp.xml";
-                buttonSave_Click(sender, e);
-                var providerx = (XmlDataProvider)this.DataContext;
-                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-                providerx.Refresh();
-                this.xmlPath = temp1x;
-                this.xmlFileName = temp2x;
-                return;
-            }
-            XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
-            XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
-            int j = 0;
-            foreach (XmlNode nod in uRoadx)
-            {
-                if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
-                {
-                    i++;
-                }
-                if (i == ind)
-                {
-                    cuRoad = nod;
-                    break;
-                }
-                j++;
-                if (j == uRoadx.Count && ind == i + 1)
-                {
-                    urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4;
-                    Editor s = new Editor();
-                    s.Top.SelectedIndex = 0;
-                    s.constructionTab.SelectedIndex = 1;
-                    try
-                    {
-                        s.Show();
-                    }
-                    catch { };
-                    this.IsEnabled = false;
-                    s.Closed += new EventHandler(OnChange);
-                    return;
-                }
-                if (j >= uRoadx.Count)
-                {
-                    urbanRoadboxTyp4.SelectedIndex = 0;
-                    return;
-                }
-            }
-            urbanRoadboxiTyp4 = ind;
-            XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
-            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
-            ind = 0;
-            urbanRoadMaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
-            urbanRoadThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
-            foreach (XmlNode ma in mat)
-            {
-                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
-                {
-                    urbanRoadKTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
-                    urbanRoadVHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
-                    urbanRoadAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
-                    urbanRoadEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
-                }
-            }
-            string path = Directory.GetCurrentDirectory();
-            string temp1 = this.xmlPath;
-            string temp2 = this.xmlFileName;
-            this.xmlPath = path;
-            this.xmlFileName = "$temp.xml";
-            buttonSave_Click(sender, e);
-            var provider = (XmlDataProvider)this.DataContext;
-            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-            provider.Refresh();
-            this.xmlPath = temp1;
-            this.xmlFileName = temp2;
-        }
-        private void ruralboxTyp4_change(object sender, RoutedEventArgs e)
-        {
-            int ind = ruralboxTyp4.SelectedIndex;
-            int i = 0;
-            if (ind == 0)
-            {
-                ruralRoadMaterialTyp4.Content = "asphalt";
-                ruralRoadThicknessTyp4.Content = "1.25";
-                ruralRoadVHCTyp4.Content = "1600000";
-                ruralRoadKTyp4.Content = "1";
-                ruralRoadEmissivityTyp4.Content = "0.95";
-                ruralRoadAlbedoTyp4.Content = "0.165";
-                ruralboxiTyp4 = 0;
-                string pathx = Directory.GetCurrentDirectory();
-                string temp1x = this.xmlPath;
-                string temp2x = this.xmlFileName;
-                this.xmlPath = pathx;
-                this.xmlFileName = "$temp.xml";
-                buttonSave_Click(sender, e);
-                var providerx = (XmlDataProvider)this.DataContext;
-                providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-                providerx.Refresh();
-                this.xmlPath = temp1x;
-                this.xmlFileName = temp2x;
-                return;
-            }
-            XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
-            XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
-            int j = 0;
-            foreach (XmlNode nod in rRoadx)
-            {
-                if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
-                {
-                    i++;
-                }
-                if (i == ind)
-                {
-                    crRoad = nod;
-                    break;
-                }
-                j++;
-                if (j == rRoadx.Count && ind == i + 1)
-                {
-                    ruralboxTyp4.SelectedIndex = ruralboxiTyp4;
-                    Editor s = new Editor();
-                    s.Top.SelectedIndex = 0;
-                    s.constructionTab.SelectedIndex = 1;
-                    try
-                    {
-                        s.Show();
-                    }
-                    catch { };
-                    this.IsEnabled = false;
-                    s.Closed += new EventHandler(OnChange);
-                    return;
-                }
-                if (j >= rRoadx.Count)
-                {
-                    ruralbox.SelectedIndex = 0;
-                    return;
-                }
-            }
-            ruralboxiTyp4 = ind;
-            XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
-            XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
-            ind = 0;
-            ruralRoadMaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
-            ruralRoadThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
-            foreach (XmlNode ma in mat)
-            {
-                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
-                {
-                    ruralRoadKTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
-                    ruralRoadVHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
-                    ruralRoadAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
-                    ruralRoadEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
-                }
-            }
-            string path = Directory.GetCurrentDirectory();
-            string temp1 = this.xmlPath;
-            string temp2 = this.xmlFileName;
-            this.xmlPath = path;
-            this.xmlFileName = "$temp.xml";
-            buttonSave_Click(sender, e);
-            var provider = (XmlDataProvider)this.DataContext;
-            provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
-            provider.Refresh();
-            this.xmlPath = temp1;
-            this.xmlFileName = temp2;
-        }
+        //private void urbanRoadboxTyp4_change(object sender, RoutedEventArgs e)
+        //{
+        //    int ind = urbanRoadboxTyp4.SelectedIndex;
+        //    int i = 0;
+        //    if (ind == 0)
+        //    {
+        //        urbanRoadMaterialTyp4.Content = "asphalt";
+        //        urbanRoadThicknessTyp4.Content = "1.25";
+        //        urbanRoadVHCTyp4.Content = "1600000";
+        //        urbanRoadKTyp4.Content = "1";
+        //        urbanRoadEmissivityTyp4.Content = "0.95";
+        //        urbanRoadAlbedoTyp4.Content = "0.165";
+        //        urbanRoadboxiTyp4 = 0;
+        //        string pathx = Directory.GetCurrentDirectory();
+        //        string temp1x = this.xmlPath;
+        //        string temp2x = this.xmlFileName;
+        //        this.xmlPath = pathx;
+        //        this.xmlFileName = "$temp.xml";
+        //        buttonSave_Click(sender, e);
+        //        var providerx = (XmlDataProvider)this.DataContext;
+        //        providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //        providerx.Refresh();
+        //        this.xmlPath = temp1x;
+        //        this.xmlFileName = temp2x;
+        //        return;
+        //    }
+        //    XmlNodeList uRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    XmlNode cuRoad = defxml.CreateElement("OpaqueConstruction");
+        //    int j = 0;
+        //    foreach (XmlNode nod in uRoadx)
+        //    {
+        //        if (nod.SelectSingleNode("Type").InnerText == "Urban Road")
+        //        {
+        //            i++;
+        //        }
+        //        if (i == ind)
+        //        {
+        //            cuRoad = nod;
+        //            break;
+        //        }
+        //        j++;
+        //        if (j == uRoadx.Count && ind == i + 1)
+        //        {
+        //            urbanRoadboxTyp4.SelectedIndex = urbanRoadboxiTyp4;
+        //            Editor s = new Editor();
+        //            s.Top.SelectedIndex = 0;
+        //            s.constructionTab.SelectedIndex = 1;
+        //            try
+        //            {
+        //                s.Show();
+        //            }
+        //            catch { };
+        //            this.IsEnabled = false;
+        //            s.Closed += new EventHandler(OnChange);
+        //            return;
+        //        }
+        //        if (j >= uRoadx.Count)
+        //        {
+        //            urbanRoadboxTyp4.SelectedIndex = 0;
+        //            return;
+        //        }
+        //    }
+        //    urbanRoadboxiTyp4 = ind;
+        //    XmlNodeList names = cuRoad.SelectNodes("Layers/OpaqueLayer");
+        //    XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+        //    ind = 0;
+        //    urbanRoadMaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+        //    urbanRoadThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+        //    foreach (XmlNode ma in mat)
+        //    {
+        //        if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+        //        {
+        //            urbanRoadKTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+        //            urbanRoadVHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+        //            urbanRoadAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
+        //            urbanRoadEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
+        //        }
+        //    }
+        //    string path = Directory.GetCurrentDirectory();
+        //    string temp1 = this.xmlPath;
+        //    string temp2 = this.xmlFileName;
+        //    this.xmlPath = path;
+        //    this.xmlFileName = "$temp.xml";
+        //    buttonSave_Click(sender, e);
+        //    var provider = (XmlDataProvider)this.DataContext;
+        //    provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //    provider.Refresh();
+        //    this.xmlPath = temp1;
+        //    this.xmlFileName = temp2;
+        //}
+        //private void ruralboxTyp4_change(object sender, RoutedEventArgs e)
+        //{
+        //    int ind = ruralboxTyp4.SelectedIndex;
+        //    int i = 0;
+        //    if (ind == 0)
+        //    {
+        //        ruralRoadMaterialTyp4.Content = "asphalt";
+        //        ruralRoadThicknessTyp4.Content = "1.25";
+        //        ruralRoadVHCTyp4.Content = "1600000";
+        //        ruralRoadKTyp4.Content = "1";
+        //        ruralRoadEmissivityTyp4.Content = "0.95";
+        //        ruralRoadAlbedoTyp4.Content = "0.165";
+        //        ruralboxiTyp4 = 0;
+        //        string pathx = Directory.GetCurrentDirectory();
+        //        string temp1x = this.xmlPath;
+        //        string temp2x = this.xmlFileName;
+        //        this.xmlPath = pathx;
+        //        this.xmlFileName = "$temp.xml";
+        //        buttonSave_Click(sender, e);
+        //        var providerx = (XmlDataProvider)this.DataContext;
+        //        providerx.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //        providerx.Refresh();
+        //        this.xmlPath = temp1x;
+        //        this.xmlFileName = temp2x;
+        //        return;
+        //    }
+        //    XmlNodeList rRoadx = defxml.GetElementsByTagName("OpaqueConstruction");
+        //    XmlNode crRoad = defxml.CreateElement("OpaqueConstruction");
+        //    int j = 0;
+        //    foreach (XmlNode nod in rRoadx)
+        //    {
+        //        if (nod.SelectSingleNode("Type").InnerText == "Rural Road")
+        //        {
+        //            i++;
+        //        }
+        //        if (i == ind)
+        //        {
+        //            crRoad = nod;
+        //            break;
+        //        }
+        //        j++;
+        //        if (j == rRoadx.Count && ind == i + 1)
+        //        {
+        //            ruralboxTyp4.SelectedIndex = ruralboxiTyp4;
+        //            Editor s = new Editor();
+        //            s.Top.SelectedIndex = 0;
+        //            s.constructionTab.SelectedIndex = 1;
+        //            try
+        //            {
+        //                s.Show();
+        //            }
+        //            catch { };
+        //            this.IsEnabled = false;
+        //            s.Closed += new EventHandler(OnChange);
+        //            return;
+        //        }
+        //        if (j >= rRoadx.Count)
+        //        {
+        //            ruralbox.SelectedIndex = 0;
+        //            return;
+        //        }
+        //    }
+        //    ruralboxiTyp4 = ind;
+        //    XmlNodeList names = crRoad.SelectNodes("Layers/OpaqueLayer");
+        //    XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
+        //    ind = 0;
+        //    ruralRoadMaterialTyp4.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+        //    ruralRoadThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+        //    foreach (XmlNode ma in mat)
+        //    {
+        //        if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+        //        {
+        //            ruralRoadKTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
+        //            ruralRoadVHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
+        //            ruralRoadAlbedoTyp4.Content = ma.SelectSingleNode("Albedo").InnerText;
+        //            ruralRoadEmissivityTyp4.Content = ma.SelectSingleNode("Emissivity").InnerText;
+        //        }
+        //    }
+        //    string path = Directory.GetCurrentDirectory();
+        //    string temp1 = this.xmlPath;
+        //    string temp2 = this.xmlFileName;
+        //    this.xmlPath = path;
+        //    this.xmlFileName = "$temp.xml";
+        //    buttonSave_Click(sender, e);
+        //    var provider = (XmlDataProvider)this.DataContext;
+        //    provider.Source = new Uri(this.xmlFilePath, UriKind.Absolute);
+        //    provider.Refresh();
+        //    this.xmlPath = temp1;
+        //    this.xmlFileName = temp2;
+        //}
         private void glazingboxTyp4_change(object sender, RoutedEventArgs e)
         {
             int ind = glazingboxTyp4.SelectedIndex;
@@ -5872,13 +5872,41 @@ namespace UWG
                                                                 new XElement("vegEnd", vegEnd.Text),
                                                                 new XElement("daytimeBLHeight", daytimeBLHeight.Text),
                                                                 new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                                new XElement("refHeight", refHeight.Text)
+                                                                new XElement("refHeight", refHeight.Text),
+                                                                new XElement("urbanRoad",
+                                                                    new XElement("albedo", urbanRoadAlbedo.Content),
+                                                                    new XElement("emissivity", urbanRoadEmissivity.Content),
+                                                                    new XElement("materials",
+                                                                        new XElement("names",
+                                                                            new XElement("item", urbanRoadMaterial.Content)),
+                                                                        new XElement("thermalConductivity",
+                                                                            new XElement("item", urbanRoadK.Content)),
+                                                                        new XElement("volumetricHeatCapacity",
+                                                                            new XElement("item", urbanRoadVHC.Content)),
+                                                                        new XElement("thickness", urbanRoadThickness.Content)),
+                                                                    new XElement("vegetationCoverage", urbanRoadVegFraction.Text),
+                                                                    new XElement("inclination", 1),
+                                                                    new XElement("initialTemperature", 20))
                                                             ),
                                                             new XElement("referenceSite",
                                                                 new XElement("latitude", latitude.Text),
                                                                 new XElement("longitude", longitude.Text),
-                                                                new XElement("averageObstacleHeight", avgObstacleHeight.Text)
-                                                            ),
+                                                                new XElement("averageObstacleHeight", avgObstacleHeight.Text),
+                                                                new XElement("ruralRoad",
+                                                                    new XElement("albedo", ruralRoadAlbedo.Content),
+                                                                    new XElement("emissivity", ruralRoadEmissivity.Content),
+                                                                    new XElement("materials",
+                                                                        new XElement("names",
+                                                                            new XElement("item", ruralRoadMaterial.Content)),
+                                                                        new XElement("thermalConductivity",
+                                                                            new XElement("item", ruralRoadK.Content)),
+                                                                        new XElement("volumetricHeatCapacity",
+                                                                            new XElement("item", ruralRoadVHC.Content)),
+                                                                        new XElement("thickness", ruralRoadThickness.Content)),
+                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Text,
+                                                                    new XElement("inclination", 1),
+                                                                    new XElement("initialTemperature", 20))
+                                                                ),
                                                             new XElement("parameter",
                                                                 new XElement("tempHeight", tempHeight.Text),
                                                                 new XElement("windHeight", windHeight.Text),
@@ -5890,7 +5918,8 @@ namespace UWG
                                                                 new XElement("wgmax", 0.05),
                                                                 new XElement("exCoeff", 0.3)
                                                             )
-                                                        );
+                                                        )
+                                                    );
 
 
                         this.xmlFilePath = this.xmlPath + "\\" + this.xmlFileName;
@@ -5995,12 +6024,40 @@ namespace UWG
                                                         new XElement("vegEnd", vegEnd.Text),
                                                         new XElement("daytimeBLHeight", daytimeBLHeight.Text),
                                                         new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                        new XElement("refHeight", refHeight.Text)
+                                                        new XElement("refHeight", refHeight.Text),
+                                                        new XElement("urbanRoad",
+                                                                    new XElement("albedo", urbanRoadAlbedo.Content),
+                                                                    new XElement("emissivity", urbanRoadEmissivity.Content),
+                                                                    new XElement("materials",
+                                                                        new XElement("names",
+                                                                            new XElement("item", urbanRoadMaterial.Content)),
+                                                                        new XElement("thermalConductivity",
+                                                                            new XElement("item", urbanRoadK.Content)),
+                                                                        new XElement("volumetricHeatCapacity",
+                                                                            new XElement("item", urbanRoadVHC.Content)),
+                                                                        new XElement("thickness", urbanRoadThickness.Content)),
+                                                                    new XElement("vegetationCoverage", urbanRoadVegFraction.Text),
+                                                                    new XElement("inclination", 1),
+                                                                    new XElement("initialTemperature", 20))
                                                     ),
                                                     new XElement("referenceSite",
                                                         new XElement("latitude", latitude.Text),
                                                         new XElement("longitude", longitude.Text),
-                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text)
+                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text),
+                                                        new XElement("ruralRoad",
+                                                                    new XElement("albedo", ruralRoadAlbedo.Content),
+                                                                    new XElement("emissivity", ruralRoadEmissivity.Content),
+                                                                    new XElement("materials",
+                                                                        new XElement("names",
+                                                                            new XElement("item", ruralRoadMaterial.Content)),
+                                                                        new XElement("thermalConductivity",
+                                                                            new XElement("item", ruralRoadK.Content)),
+                                                                        new XElement("volumetricHeatCapacity",
+                                                                            new XElement("item", ruralRoadVHC.Content)),
+                                                                        new XElement("thickness", ruralRoadThickness.Content)),
+                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Text),
+                                                                    new XElement("inclination", 1),
+                                                                    new XElement("initialTemperature", 20))
                                                     ),
                                                     new XElement("parameter",
                                                         new XElement("tempHeight", tempHeight.Text),
@@ -6324,37 +6381,7 @@ namespace UWG
                                                         new XElement("glazing",
                                                             new XElement("glazingRatio", wwr.Content),
                                                             new XElement("windowUvalue", uValue.Content),
-                                                            new XElement("windowSHGC", SHGC.Content)),
-
-                                                        new XElement("urbanRoad",
-                                                            new XElement("albedo", urbanRoadAlbedo.Content),
-                                                            new XElement("emissivity", urbanRoadEmissivity.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", urbanRoadMaterial.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", urbanRoadK.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", urbanRoadVHC.Content)),
-                                                                new XElement("thickness", urbanRoadThickness.Content)),
-                                                            new XElement("vegetationCoverage", urbanRoadVegFraction.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20)),
-
-                                                        new XElement("rural",
-                                                            new XElement("albedo", ruralRoadAlbedo.Content),
-                                                            new XElement("emissivity", ruralRoadEmissivity.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", ruralRoadMaterial.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", ruralRoadK.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", ruralRoadVHC.Content)),
-                                                                new XElement("thickness", ruralRoadThickness.Content)),
-                                                            new XElement("vegetationCoverage", ruralRoadVegFraction.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20))
+                                                            new XElement("windowSHGC", SHGC.Content))
                                                     ),
 
                                                     //BUILDING GEOMETRY:
@@ -6658,37 +6685,7 @@ namespace UWG
                                                         new XElement("glazing",
                                                             new XElement("glazingRatio", wwrTyp2.Content),
                                                             new XElement("windowUvalue", uValueTyp2.Content),
-                                                            new XElement("windowSHGC", SHGCTyp2.Content)),
-
-                                                        new XElement("urbanRoad",
-                                                            new XElement("albedo", urbanRoadAlbedoTyp2.Content),
-                                                            new XElement("emissivity", urbanRoadEmissivityTyp2.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", urbanRoadMaterialTyp2.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", urbanRoadKTyp2.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", urbanRoadVHCTyp2.Content)),
-                                                                new XElement("thickness", urbanRoadThicknessTyp2.Content)),
-                                                            new XElement("vegetationCoverage", urbanRoadVegFractionTyp2.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20)),
-
-                                                        new XElement("rural",
-                                                            new XElement("albedo", ruralRoadAlbedoTyp2.Content),
-                                                            new XElement("emissivity", ruralRoadEmissivityTyp2.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", ruralRoadMaterialTyp2.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", ruralRoadKTyp2.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", ruralRoadVHCTyp2.Content)),
-                                                                new XElement("thickness", ruralRoadThicknessTyp2.Content)),
-                                                            new XElement("vegetationCoverage", ruralRoadVegFractionTyp2.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20))
+                                                            new XElement("windowSHGC", SHGCTyp2.Content))
                                                     ),
 
                                                     //BUILDING GEOMETRY:
@@ -6992,37 +6989,7 @@ namespace UWG
                                                         new XElement("glazing",
                                                             new XElement("glazingRatio", wwrTyp3.Content),
                                                             new XElement("windowUvalue", uValueTyp3.Content),
-                                                            new XElement("windowSHGC", SHGCTyp3.Content)),
-
-                                                        new XElement("urbanRoad",
-                                                            new XElement("albedo", urbanRoadAlbedoTyp3.Content),
-                                                            new XElement("emissivity", urbanRoadEmissivityTyp3.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", urbanRoadMaterialTyp3.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", urbanRoadKTyp3.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", urbanRoadVHCTyp3.Content)),
-                                                                new XElement("thickness", urbanRoadThicknessTyp3.Content)),
-                                                            new XElement("vegetationCoverage", urbanRoadVegFractionTyp3.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20)),
-
-                                                        new XElement("rural",
-                                                            new XElement("albedo", ruralRoadAlbedoTyp3.Content),
-                                                            new XElement("emissivity", ruralRoadEmissivityTyp3.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", ruralRoadMaterialTyp3.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", ruralRoadKTyp3.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", ruralRoadVHCTyp3.Content)),
-                                                                new XElement("thickness", ruralRoadThicknessTyp3.Content)),
-                                                            new XElement("vegetationCoverage", ruralRoadVegFractionTyp3.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20))
+                                                            new XElement("windowSHGC", SHGCTyp3.Content))
                                                     ),
 
                                                     //BUILDING GEOMETRY:
@@ -7326,37 +7293,7 @@ namespace UWG
                                                         new XElement("glazing",
                                                             new XElement("glazingRatio", wwrTyp4.Content),
                                                             new XElement("windowUvalue", uValueTyp4.Content),
-                                                            new XElement("windowSHGC", SHGCTyp4.Content)),
-
-                                                        new XElement("urbanRoad",
-                                                            new XElement("albedo", urbanRoadAlbedoTyp4.Content),
-                                                            new XElement("emissivity", urbanRoadEmissivityTyp4.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", urbanRoadMaterialTyp4.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", urbanRoadKTyp4.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", urbanRoadVHCTyp4.Content)),
-                                                                new XElement("thickness", urbanRoadThicknessTyp4.Content)),
-                                                            new XElement("vegetationCoverage", urbanRoadVegFractionTyp4.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20)),
-
-                                                        new XElement("rural",
-                                                            new XElement("albedo", ruralRoadAlbedoTyp4.Content),
-                                                            new XElement("emissivity", ruralRoadEmissivityTyp4.Content),
-                                                            new XElement("materials",
-                                                                new XElement("names",
-                                                                    new XElement("item", ruralRoadMaterialTyp4.Content)),
-                                                                new XElement("thermalConductivity",
-                                                                    new XElement("item", ruralRoadKTyp4.Content)),
-                                                                new XElement("volumetricHeatCapacity",
-                                                                    new XElement("item", ruralRoadVHCTyp4.Content)),
-                                                                new XElement("thickness", ruralRoadThicknessTyp4.Content)),
-                                                            new XElement("vegetationCoverage", ruralRoadVegFractionTyp4.Content),
-                                                            new XElement("inclination", 1),
-                                                            new XElement("initialTemperature", 20))
+                                                            new XElement("windowSHGC", SHGCTyp4.Content))
                                                     ),
 
                                                     //BUILDING GEOMETRY:
@@ -7743,19 +7680,19 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp2.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             if (loadTyp3 == true)
@@ -7852,19 +7789,19 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp3.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             if (loadTyp4 == true)
@@ -7961,19 +7898,19 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp4.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
 
@@ -8002,24 +7939,24 @@ namespace UWG
 
             wallboxTyp2.SelectedIndex = 0;
             roofboxTyp2.SelectedIndex = 0;
-            ruralboxTyp2.SelectedIndex = 0;
-            urbanRoadboxTyp2.SelectedIndex = 0;
+            //ruralboxTyp2.SelectedIndex = 0;
+            //urbanRoadboxTyp2.SelectedIndex = 0;
             glazingboxTyp2.SelectedIndex = 0;
             massboxTyp2.SelectedIndex = 0;
             heatboxTyp2.SelectedIndex = 0;
 
             wallboxTyp3.SelectedIndex = 0;
             roofboxTyp3.SelectedIndex = 0;
-            ruralboxTyp3.SelectedIndex = 0;
-            urbanRoadboxTyp3.SelectedIndex = 0;
+            //ruralboxTyp3.SelectedIndex = 0;
+            //urbanRoadboxTyp3.SelectedIndex = 0;
             glazingboxTyp3.SelectedIndex = 0;
             massboxTyp3.SelectedIndex = 0;
             heatboxTyp3.SelectedIndex = 0;
             
             wallboxTyp4.SelectedIndex = 0;
             roofboxTyp4.SelectedIndex = 0;
-            ruralboxTyp4.SelectedIndex = 0;
-            urbanRoadboxTyp4.SelectedIndex = 0;
+            //ruralboxTyp4.SelectedIndex = 0;
+            //urbanRoadboxTyp4.SelectedIndex = 0;
             glazingboxTyp4.SelectedIndex = 0;
             massboxTyp4.SelectedIndex = 0;
             heatboxTyp4.SelectedIndex = 0;
@@ -8222,19 +8159,19 @@ namespace UWG
                 {
                     massLayer1Thickness.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             if (loadTyp2 == true)
@@ -8331,19 +8268,19 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp2.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             if (loadTyp3 == true)
@@ -8440,19 +8377,19 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp3.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             if (loadTyp4 == true)
@@ -8549,19 +8486,19 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp4.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             this.xmlPath = "";

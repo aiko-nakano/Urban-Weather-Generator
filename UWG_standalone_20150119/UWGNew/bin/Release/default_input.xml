@@ -16,21 +16,60 @@
     <daytimeBLHeight></daytimeBLHeight>
     <nighttimeBLHeight></nighttimeBLHeight>
     <refHeight></refHeight>
+    <urbanRoad>
+      <albedo />
+      <emissivity />
+      <materials>
+        <names>
+          <item />
+        </names>
+        <thermalConductivity>
+          <item />
+        </thermalConductivity>
+        <volumetricHeatCapacity>
+          <item />
+        </volumetricHeatCapacity>
+        <thickness />
+      </materials>
+      <vegetationCoverage></vegetationCoverage>
+      <inclination>1</inclination>
+      <initialTemperature>20</initialTemperature>
+    </urbanRoad>
   </urbanArea>
   <referenceSite>
     <latitude></latitude>
     <longitude></longitude>
     <averageObstacleHeight></averageObstacleHeight>
+    <ruralRoad>
+      <albedo />
+      <emissivity />
+      <materials>
+        <names>
+          <item />
+        </names>
+        <thermalConductivity>
+          <item />
+        </thermalConductivity>
+        <volumetricHeatCapacity>
+          <item />
+        </volumetricHeatCapacity>
+        <thickness />
+      </materials>
+      <vegetationCoverage>
+        <inclination>1</inclination>
+        <initialTemperature>20</initialTemperature>
+      </vegetationCoverage>
+    </ruralRoad>
+    <parameter>
+      <tempHeight></tempHeight>
+      <windHeight></windHeight>
+      <circCoeff>1.2</circCoeff>
+      <dayThreshold>200</dayThreshold>
+      <nightThreshold>50</nightThreshold>
+      <windMin>0.1</windMin>
+      <windMax>10</windMax>
+      <wgmax>0.05</wgmax>
+      <exCoeff>0.3</exCoeff>
+    </parameter>
   </referenceSite>
-  <parameter>
-    <tempHeight></tempHeight>
-    <windHeight></windHeight>
-    <circCoeff>1.2</circCoeff>
-    <dayThreshold>200</dayThreshold>
-    <nightThreshold>50</nightThreshold>
-    <windMin>0.1</windMin>
-    <windMax>10</windMax>
-    <wgmax>0.05</wgmax>
-    <exCoeff>0.3</exCoeff>
-  </parameter>
 </xml_input>

@@ -64,44 +64,6 @@
       <windowUvalue></windowUvalue>
       <windowSHGC></windowSHGC>
     </glazing>
-    <urbanRoad>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </urbanRoad>
-    <rural>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </rural>
   </construction>
   <building>
     <floorHeight>3</floorHeight>
@@ -189,44 +151,6 @@
       <windowUvalue></windowUvalue>
       <windowSHGC></windowSHGC>
     </glazing>
-    <urbanRoad>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </urbanRoad>
-    <rural>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </rural>
   </construction>
   <building>
     <floorHeight>3</floorHeight>
@@ -314,44 +238,6 @@
       <windowUvalue></windowUvalue>
       <windowSHGC></windowSHGC>
     </glazing>
-    <urbanRoad>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </urbanRoad>
-    <rural>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </rural>
   </construction>
   <building>
     <floorHeight>3</floorHeight>
@@ -439,44 +325,6 @@
       <windowUvalue></windowUvalue>
       <windowSHGC></windowSHGC>
     </glazing>
-    <urbanRoad>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </urbanRoad>
-    <rural>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
-        <names>
-          <item>asphalt</item>
-        </names>
-        <thermalConductivity>
-          <item>1</item>
-        </thermalConductivity>
-        <volumetricHeatCapacity>
-          <item>1600000</item>
-        </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
-      </materials>
-      <vegetationCoverage>0.5</vegetationCoverage>
-      <initialTemperature>20</initialTemperature>
-      <inclination>1</inclination>
-    </rural>
   </construction>
   <building>
     <floorHeight>3</floorHeight>
@@ -502,8 +350,8 @@
 </typology4>
   <urbanArea>
     <averageBuildingHeight></averageBuildingHeight>
-    <horizontalBuildingDensity></horizontalBuildingDensity>
-    <verticalToHorizontalUrbanAreaRatio></verticalToHorizontalUrbanAreaRatio>
+    <siteCoverageRatio></siteCoverageRatio>
+    <facadeToSiteRatio></facadeToSiteRatio>
     <treeCoverage></treeCoverage>
     <nonBldgSensibleHeat></nonBldgSensibleHeat>
     <nonBldgLatentAnthropogenicHeat>0</nonBldgLatentAnthropogenicHeat>
@@ -516,11 +364,49 @@
     <daytimeBLHeight>700</daytimeBLHeight>
     <nighttimeBLHeight>80</nighttimeBLHeight>
     <refHeight>150</refHeight>
+    <urbanRoad>
+      <albedo>0.165</albedo>
+      <emissivity>0.95</emissivity>
+      <materials>
+        <names>
+          <item>asphalt</item>
+        </names>
+        <thermalConductivity>
+          <item>1</item>
+        </thermalConductivity>
+        <volumetricHeatCapacity>
+          <item>1600000</item>
+        </volumetricHeatCapacity>
+        <thickness>1.25</thickness>
+      </materials>
+      <vegetationCoverage>0.5</vegetationCoverage>
+      <initialTemperature>20</initialTemperature>
+      <inclination>1</inclination>
+    </urbanRoad>
   </urbanArea>
   <referenceSite>
     <latitude></latitude>
     <longitude></longitude>
     <averageObstacleHeight></averageObstacleHeight>
+    <ruralRoad>
+      <albedo>0.165</albedo>
+      <emissivity>0.95</emissivity>
+      <materials>
+        <names>
+          <item>asphalt</item>
+        </names>
+        <thermalConductivity>
+          <item>1</item>
+        </thermalConductivity>
+        <volumetricHeatCapacity>
+          <item>1600000</item>
+        </volumetricHeatCapacity>
+        <thickness>1.25</thickness>
+      </materials>
+      <vegetationCoverage>0.5</vegetationCoverage>
+      <initialTemperature>20</initialTemperature>
+      <inclination>1</inclination>
+    </ruralRoad>
   </referenceSite>
   <parameter>
     <tempHeight>2</tempHeight>
