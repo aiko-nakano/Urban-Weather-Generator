@@ -6338,6 +6338,7 @@ namespace UWG
                 }
 
                 XElement elem = new XElement("typology1",
+                                                    new XElement("dist", typology1Dist.Text),
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedo.Text),
@@ -6642,6 +6643,7 @@ namespace UWG
                 }
 
                 XElement elem = new XElement("typology2",
+                                                    new XElement("dist", typology2Dist.Text), 
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedoTyp2.Text),
@@ -6946,6 +6948,7 @@ namespace UWG
                 }
 
                 XElement elem = new XElement("typology3",
+                                                    new XElement("dist", typology3Dist.Text), 
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedoTyp3.Text),
@@ -7250,6 +7253,7 @@ namespace UWG
                 }
 
                 XElement elem = new XElement("typology4",
+                                                    new XElement("dist", typology4Dist.Text), 
                                                     new XElement("construction",
                                                         new XElement("wall",
                                                             new XElement("albedo", wallAlbedoTyp4.Text),

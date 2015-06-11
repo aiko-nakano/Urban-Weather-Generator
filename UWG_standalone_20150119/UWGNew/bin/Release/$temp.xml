@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xml_input>
   <typology1 dist="0" name="">
+    <dist>0</dist>
     <construction>
       <wall>
         <albedo></albedo>
@@ -88,6 +89,7 @@
     </building>
   </typology1>
   <typology2 dist="0" name="">
+    <dist>0</dist>
     <construction>
       <wall>
         <albedo></albedo>
@@ -175,6 +177,7 @@
     </building>
   </typology2>
   <typology3 dist="0" name="">
+    <dist>0</dist>
     <construction>
       <wall>
         <albedo></albedo>
@@ -262,6 +265,7 @@
     </building>
   </typology3>
   <typology4 dist="0" name="">
+    <dist>0</dist>
     <construction>
       <wall>
         <albedo></albedo>
