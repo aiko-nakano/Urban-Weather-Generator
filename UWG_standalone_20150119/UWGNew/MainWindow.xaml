@@ -28,6 +28,12 @@
             <Setter Property="Cursor" Value="Help" />
             <Setter Property="Focusable" Value="True" />
         </Style>
+        <Style x:Key="advSettingLabel" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="gray" />
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="26" />
+            <Setter Property="Margin" Value="4" />
+        </Style>
         <!--Heading-->
         <Style  x:Key="heading" TargetType="Label">
             <Setter Property="Height" Value="26" />
@@ -96,6 +102,14 @@
             <Setter Property="Height" Value="26" />
             <Setter Property="Margin" Value="4" />
             <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <!-- Combobox-->
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="26" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <!-- Button-->
@@ -207,55 +221,25 @@
 
 
     <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Background="#FF262626" >
-        <!--<StackPanel Background="#FF262626" DockPanel.Dock="Top" >
-            <Menu  Height="40" Margin="16,0,0,0">
-                <Menu.Background>
-                    <ImageBrush AlignmentY="Center" ImageSource="/Images/UWGParam-12.png" Stretch="None" AlignmentX="Left"/>
-                </Menu.Background>
-                make xml 
-                <MenuItem Header="_New" Click="newXml_Click"  Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="200,0,0,0" Height="40" FontSize="14" >
-                    </MenuItem>
-                <MenuItem Header="_Open" Click="openXml_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
-                </MenuItem>
-                <MenuItem Header="_Save" Click="buttonSave_Click1"  Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14">
-                    </MenuItem>
-                <MenuItem Header="_Save As" Click="buttonSaveAs_Click"  Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" />
-                <MenuItem Header="Template Editor" Click="startEditor"  Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" />
-                run uwg 
-                <MenuItem Header="_Run" Click="run_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
-                </MenuItem>
-                simulation uwg 
-                <MenuItem Header="_Simulation" Click="sim_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
-                </MenuItem>
-                <MenuItem Click="uwgWebsite_Click" Header="Help" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
-                </MenuItem>
-            </Menu>
-        </StackPanel> -->
-        <StackPanel Background="#FF262626" DockPanel.Dock="Top" >
-            <Menu  Height="40" Margin="16,0,0,0">
-                <Menu.Background>
-                    <ImageBrush AlignmentY="Center" ImageSource="/Images/UWGParam-12.png" Stretch="None" AlignmentX="Left"/>
-                </Menu.Background>
-                <!--make xml-->
-                <MenuItem Header="Make Input File" Click="makeFile_Click" Style="{StaticResource idd}" ContextMenuService.Placement="Bottom" ContextMenuService.ShowOnDisabled="True" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Margin="200,0,0,0" Height="40" FontSize="14" Name="makeFileMenuItem" >
+        <StackPanel DockPanel.Dock="Top" >
+            <Menu Background="#FF262626">
+                <!--run uwg -->
+                <MenuItem Header="Make Input File" Click="makeFile_Click" Style="{StaticResource idd}" ContextMenuService.Placement="Bottom" ContextMenuService.ShowOnDisabled="True" x:Name="makeFileMenuItem" >
                     <MenuItem.ContextMenu>
-                        <ContextMenu HorizontalAlignment="Left" Name="makeFileContextMenu" >
-                            <MenuItem Header="_New..." Click="newXml_Click"  FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
-                            <MenuItem Header="_Open..." Click="openXml_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" ></MenuItem>
-                            <MenuItem Header="_Save..." Click="buttonSave_Click1" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" Name="saveButton"></MenuItem>
-                            <MenuItem Header="_Save As..." Click="buttonSaveAs_Click" FontWeight="Light" FontFamily="MS PGothic" Foreground="Black" Height="40" FontSize="14" />
+                        <ContextMenu HorizontalAlignment="Left" x:Name="makeFileContextMenu" >
+                            <MenuItem Header="_New..." Click="newXml_Click" />
+                            <MenuItem Header="_Open..." Click="openXml_Click" />
+                            <MenuItem Header="_Save..." Click="buttonSave_Click1" x:Name="saveButton"/>
+                            <MenuItem Header="_Save As..." Click="buttonSaveAs_Click" />
                         </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
-                <MenuItem Header="_Edit Building Template Library" Click="startEditor" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="editMenuItem" >
-                </MenuItem>
                 <!--run uwg -->
-                <MenuItem Header="_Run Simulation" Click="run_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="runMenuItem" >
-                </MenuItem>
+                <MenuItem Header="_Run Simulation" Click="run_Click" Style="{StaticResource idd}" x:Name="runMenuItem" />
                 <!--simulation uwg -->
-                <MenuItem Header="_View Simulation Results" Click="sim_Click" Style="{StaticResource idd}" FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" Name="simMenuItem" ></MenuItem>
-                <MenuItem Header="Help" Click="uwgWebsite_Click" Style="{StaticResource idd}"  FontWeight="Light" FontFamily="MS PGothic" Foreground="White" Margin="0,0,0,0" Height="40" FontSize="14" >
-                </MenuItem>
+                <MenuItem Header="_View Simulation Results" Click="sim_Click" Style="{StaticResource idd}" x:Name="simMenuItem" />
+                <MenuItem Header="_| Edit Building Template Library |" Click="startEditor" Style="{StaticResource idd}" x:Name="editMenuItem" />
+                <MenuItem Header="Help" Click="uwgWebsite_Click" Style="{StaticResource idd}" />
             </Menu>
         </StackPanel>
         <!--Status Bar-->
@@ -349,9 +333,9 @@
                                             <Label Content="Neighborhood characteristic length [m]" />
                                             <!--vegetation-->
                                             <Label Content="Vegetation Properties" Style="{StaticResource heading}"  />
-                                            <Label Content="Latent fraction of trees [0- 1]" />
-                                            <Label Content="Latent fration of grass [0- 1]" />
-                                            <Label Content="Albedo of vegetation [0- 1]" />
+                                            <Label Content="Latent fraction of trees [0-1]" />
+                                            <Label Content="Latent fraction of grass [0-1]" />
+                                            <Label Content="Albedo of vegetation [0-1]" />
                                             <Label Content="Vegetation participation begin month" />
                                             <Label Content="Vegetation participation end month" />
                                             <!--BL-->
@@ -361,10 +345,11 @@
                                             <Label Content="Reference height [m]" />
                                             <!--road-->
                                             <Label Content="Urban Road" Style="{StaticResource heading}"/>
+                                            <Label Content="Assembly Template"/>
                                             <Label Content="Material"/>
-                                            <Label Content="Thickness[m]"/>
-                                            <Label Content="Thermal Conductivity[W/m-K]"/>
-                                            <Label Content="VHC[m^3-K]"/>
+                                            <Label Content="Thickness [m]"/>
+                                            <Label Content="Thermal Conductivity [W/m-K]"/>
+                                            <Label Content="VHC [m^3-K]"/>
                                             <Label Content="*Albedo [0-1]"/>
                                             <Label Content="*Emissivity [0-1]"/>
                                             <Label Content="Vegetation Coverage [0-1]"/>
@@ -383,19 +368,21 @@
                                             <TextBox Name="nighttimeBLHeight" Text="{Binding XPath=urbanArea/nighttimeBLHeight}" Style="{StaticResource advSetting}"></TextBox>
                                             <TextBox Name="refHeight" Text="{Binding XPath=urbanArea/refHeight}" Style="{StaticResource advSetting}"></TextBox>
                                             <!--urbanRoad-->
+                                            <Label Margin="4,4,0,4" Width="auto"/>
                                             <ComboBox Name="urbanRoadbox" Loaded="urbanRoadbox_load" SelectionChanged="urbanRoadbox_change"></ComboBox>
-                                            <Label IsEnabled="False" Name="urbanRoadMaterial" Content="{Binding XPath=urbanArea/urbanRoad/materials/names/item}"></Label>
-                                            <Label IsEnabled="False" Name="urbanRoadThickness" Content="{Binding XPath=urbanArea/urbanRoad/materials/thickness}"></Label>
-                                            <Label Name="urbanRoadK" Content="{Binding XPath=urbanArea/urbanRoad/materials/thermalConductivity/item}"></Label>
-                                            <Label Name="urbanRoadVHC" Content="{Binding XPath=urbanArea/urbanRoad/materials/volumetricHeatCapacity/item}"></Label>
-                                            <Label Name="urbanRoadAlbedo" Content="{Binding XPath=urbanArea/urbanRoad/albedo}"></Label>
-                                            <Label Name="urbanRoadEmissivity" Content="{Binding XPath=urbanArea/urbanRoad/emissivity}"></Label>
+                                            <Label IsEnabled="False" Name="urbanRoadMaterial" Content="{Binding XPath=urbanArea/urbanRoad/materials/names/item}" Style="{StaticResource advSettingLabel}"></Label>
+                                            <Label IsEnabled="False" Name="urbanRoadThickness" Content="{Binding XPath=urbanArea/urbanRoad/materials/thickness}" Style="{StaticResource advSettingLabel}"></Label>
+                                                <Label Name="urbanRoadK" Content="{Binding XPath=urbanArea/urbanRoad/materials/thermalConductivity/item}" Style="{StaticResource advSettingLabel}"></Label>
+                                                <Label Name="urbanRoadVHC" Content="{Binding XPath=urbanArea/urbanRoad/materials/volumetricHeatCapacity/item}" Style="{StaticResource advSettingLabel}"></Label>
+                                                <Label Name="urbanRoadAlbedo" Content="{Binding XPath=urbanArea/urbanRoad/albedo}" Style="{StaticResource advSettingLabel}"></Label>
+                                                <Label Name="urbanRoadEmissivity" Content="{Binding XPath=urbanArea/urbanRoad/emissivity}" Style="{StaticResource advSettingLabel}"></Label>
                                             <TextBox Name="urbanRoadVegFraction" Text="{Binding XPath=urbanArea/urbanRoad/vegetationCoverage}" Style="{StaticResource advSetting}"></TextBox>
                                         </StackPanel>
                                     </Grid>
                                 </Expander>
                             </Grid>
                         </TabItem>
+                        <!--beginning of building construction for each typology -->
                         <TabItem Header="Typology 1" Style="{StaticResource sec}" Width="150" Visibility="Collapsed" Name="typTab1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -407,11 +394,10 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="0" Grid.Column="0">
                                     <Grid>
-                                        <!--Beginning of old Construction tab -->
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" MinWidth="200" />
-                                            <ColumnDefinition Width="auto" MinWidth="300" />
-                                            <ColumnDefinition Width="auto" MinWidth="300" />
+                                       <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" MinWidth="260" />
+                                            <ColumnDefinition Width="auto" MinWidth="260" />
+                                            <ColumnDefinition Width="auto" MinWidth="260" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40" />
@@ -425,12 +411,13 @@
                                             <RowDefinition Height="auto" MinHeight="0" />
                                             <RowDefinition Height="20" />
                                         </Grid.RowDefinitions>
-                                        <Label Style="{StaticResource SectionHeader}" Grid.Row="0" Grid.Column="0" Height="Auto" Content="BUILDING CONSTRUCTION" Margin="4,4,4,2.8" Width="Auto"  VerticalContentAlignment="Bottom"/>
+                                        <Label Style="{StaticResource SectionHeader}" Grid.Row="0" Grid.Column="0" Height="Auto" Content="Building Construction" />
                                         <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
-                                        <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0" Height="auto" Width="200" Margin="0,8.2,0,0" >
+                                        <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0">
                                             <Label Content="Wall" Style="{StaticResource heading}" />
                                         </StackPanel>
-                                        <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="3" Grid.Column="0" Height="auto" Width="auto" Margin="0,8.4,0,0" >
+                                        <Line Grid.Row="1" Style="{StaticResource horizontalLineStyle}"/>
+                                        <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="3" Grid.Column="0" >
                                             <Label Content="Roof Assembly" Style="{StaticResource heading}" />
                                         </StackPanel>
                                         <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="5" Grid.Column="0" Height="auto" Width="auto" Margin="0,8.4,0,0">
@@ -792,7 +779,7 @@
                                             <RowDefinition Height="auto" MinHeight="0" />
                                             <RowDefinition Height="20" />
                                         </Grid.RowDefinitions>
-                                        <Label Style="{StaticResource SectionHeader}" Grid.Row="0" Grid.Column="0" Height="Auto" Content="BUILDING CONSTRUCTION" Margin="4,4,4,2.8" Width="Auto" VerticalContentAlignment="Bottom" />
+                                        <Label Style="{StaticResource SectionHeader}" Grid.Row="0" Grid.Column="0" Height="Auto" Content="Building Construction" />
                                         <Label Grid.Row="0" Grid.Column="1" Height="Auto" Content="Assembly" FontWeight="SemiBold" Margin="0,4,0,2.8" Width="Auto" VerticalContentAlignment="Bottom"/>
                                         <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
                                         <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="1" Grid.Column="0" Height="auto" Width="200" Margin="0,8.2,0,0" >
@@ -1884,7 +1871,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="260" />
                             <ColumnDefinition Width="130" />
-                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -1915,9 +1901,9 @@
                                         <!--rural road-->
                                         <Label Content="Rural Road" Style="{StaticResource heading}"/>
                                         <Label Content="Material"/>
-                                        <Label Content="Thickness[m]" />
-                                        <Label Content="Thermal Conductivity[W/m-K]"/>
-                                        <Label Content="VHC[m^3-K]"/>
+                                        <Label Content="Thickness [m]" />
+                                        <Label Content="Thermal Conductivity [W/m-K]"/>
+                                        <Label Content="VHC [m^3-K]"/>
                                         <Label Content="*Albedo [0-1]" />
                                         <Label Content="*Emissivity [0-1]" />
                                         <Label Content="Vegetation Coverage [0-1]" />
@@ -1928,12 +1914,12 @@
                                     <TextBox Name="windHeight" Text="{Binding XPath=parameter/windHeight}" Style="{StaticResource advSetting}"></TextBox>
                                     <!--ruralRoad-->
                                     <ComboBox Name="ruralbox" Loaded="ruralbox_load" SelectionChanged="ruralbox_change"></ComboBox>
-                                    <Label IsEnabled="False" Name="ruralRoadMaterial" Content="{Binding XPath=referenceSite/ruralRoad/materials/names/item}"></Label>
-                                    <Label Name="ruralRoadK" Content="{Binding XPath=referenceSite/ruralRoad/materials/thermalConductivity/item}" ></Label>
-                                    <Label Name="ruralRoadVHC" Content="{Binding XPath=referenceSite/ruralRoad/materials/volumetricHeatCapacity/item}"></Label>
-                                    <Label IsEnabled="False" Name="ruralRoadThickness" Content="{Binding XPath=referenceSite/ruralRoad/materials/thickness}"></Label>
-                                    <Label Name="ruralRoadAlbedo" Content="{Binding XPath=referenceSite/ruralRoad/albedo}"></Label>
-                                    <Label Name="ruralRoadEmissivity" Content="{Binding XPath=referenceSite/ruralRoad/emissivity}"></Label>
+                                    <Label IsEnabled="False" Name="ruralRoadMaterial" Content="{Binding XPath=referenceSite/ruralRoad/materials/names/item}" Style="{StaticResource advSettingLabel}"></Label>
+                                    <Label Name="ruralRoadK" Content="{Binding XPath=referenceSite/ruralRoad/materials/thermalConductivity/item}" Style="{StaticResource advSettingLabel}"></Label>
+                                    <Label Name="ruralRoadVHC" Content="{Binding XPath=referenceSite/ruralRoad/materials/volumetricHeatCapacity/item}" Style="{StaticResource advSettingLabel}"></Label>
+                                    <Label IsEnabled="False" Name="ruralRoadThickness" Content="{Binding XPath=referenceSite/ruralRoad/materials/thickness}" Style="{StaticResource advSettingLabel}"></Label>
+                                    <Label Name="ruralRoadAlbedo" Content="{Binding XPath=referenceSite/ruralRoad/albedo}" Style="{StaticResource advSettingLabel}"></Label>
+                                    <Label Name="ruralRoadEmissivity" Content="{Binding XPath=referenceSite/ruralRoad/emissivity}" Style="{StaticResource advSettingLabel}"></Label>
                                     <TextBox Name="ruralRoadVegFraction" Text="{Binding XPath=referenceSite/ruralRoad/vegetationCoverage}" Style="{StaticResource advSetting}"></TextBox>
                                 </StackPanel>
                             </Grid>
@@ -1944,8 +1930,6 @@
             <TabItem Header="Run Simulation" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="runSimTab">
 
                 <Grid>
-                    <!--Status Bar-->
-
                     <TextBlock HorizontalAlignment="Left" Margin="-200,310,0,0" Name="textBoxRun" VerticalAlignment="Top" Width="112" Height="150" />
                     <ScrollViewer>
                         <Grid x:Name="uwgRun">
@@ -1994,12 +1978,12 @@
                             </Grid.RowDefinitions>
 
                             <!--Open dialogue box-->
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0" Height="20">
-                                <TextBlock Margin="8 4 4 4" FontSize="11" FontWeight="SemiBold" >Browse EPW file and XML file to run UWG.
-                                </TextBlock>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0">
+                                <TextBlock>Select files to run UWG</TextBlock>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="13" Grid.Column="0" Width="400"  Name="rs">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" x:Name="resultPathText"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" />
+                            <!--save location-->
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="13" Grid.Column="0" Name="rs">
+                                <TextBox IsEnabled="False" x:Name="resultPathText" />
                             </StackPanel>
                             <Label Grid.Row="15" Grid.Column="0" Name="sim1FNLabel" Visibility="Visible" Content="Simulation 1 Filename" HorizontalAlignment="Left"></Label>
                             <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="15" Grid.Column="1" Width="130" Name="rs0" HorizontalAlignment="Left">
@@ -2034,10 +2018,8 @@
                                 <!-- navigate to DOE site-->
 
                             </StackPanel>
-                            <Label Margin="4 0 4 0" FontSize="10" Height="Auto" Width="auto" Grid.Row="3" Grid.Column="0">
-                                <TextBlock>*Please make sure that there is no space
-                                    anywhere <LineBreak /> in the file extension or name
-                                </TextBlock>
+                            <Label FontSize="10" Height="Auto" Width="auto" Grid.Row="3">
+                                <TextBlock>*Please make sure that there is no space anywhere in the file extension or name</TextBlock>
                             </Label>
                             <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="4" Grid.Column="0" Width="400">
                                 <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
