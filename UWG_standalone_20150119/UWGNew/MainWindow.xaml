@@ -155,7 +155,6 @@
             <Setter Property="Margin" Value="4" />
         </Style>
         <Style x:Key="SectionHeader" TargetType="Label">
-            <Setter Property="FontSize" Value="15" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
@@ -213,13 +212,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="lineStyle" TargetType="Line">
             <Setter Property="Stroke" Value="Gray" />
             <Setter Property="Stretch" Value="Fill" />
             <Setter Property="Grid.ZIndex" Value="100" />
         </Style>
-
         <Style x:Key="horizontalLineStyle" TargetType="Line" BasedOn="{StaticResource lineStyle}">
             <Setter Property="X2" Value="1" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -232,7 +229,6 @@
     <Window.DataContext>
         <XmlDataProvider Source="default_input.xml" XPath="xml_input" />
     </Window.DataContext>
-
 
     <DockPanel LastChildFill="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Background="#FF262626" >
         <StackPanel DockPanel.Dock="Top">
@@ -445,7 +441,7 @@
                                     <Label Content="Glazing" Style="{StaticResource heading}" />
                                 </StackPanel>
                                 <Label Content="Summary" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" />
-                                <!-- start of wall -->-->
+                                <!-- start of wall -->
                                 <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="1" Grid.Column="3">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -670,7 +666,7 @@
                             </Grid>
                         </TabItem>
                         <!--TYPOLOGY2 -->
-                        <TabItem Header="Typology 2" Style="{StaticResource sec}" Width="150" Visibility="Collapsed" Name="typTab2">
+                        <TabItem Header="Typology 2" Style="{StaticResource sec}" Width="130" Visibility="Collapsed" Name="typTab2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />

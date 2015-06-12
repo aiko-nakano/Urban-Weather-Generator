@@ -146,7 +146,8 @@ namespace UWG
             //startUWG.FileName = "C:\\Users\\anakano\\Documents\\Research\\UWG2.1\\For_Installer\\UWGv2.0.exe";
             startUWG.FileName = "UWGEngine.exe";
             //make sure there is space in between each of the four inputs and that folder extension ends with \\
-            startUWG.Arguments = ep + "\\ " + ef + " " + xp + "\\ " + xf + " " + rp + "\\ " + rf + " " + mon + " " + day + " " + dur;
+            startUWG.Arguments = ep + "\\ " + ef + " " + xp + "\\ " + xf + " " + rp + "\\ " + rf;
+            //startUWG.Arguments = ep + "\\ " + ef + " " + xp + "\\ " + xf + " " + rp + "\\ " + rf + " " + mon + " " + day + " " + dur;
             //startUWG.Arguments = this.epwPath + this.epwFileName + this.xmlPath + this.xmlFilename;
             startUWG.UseShellExecute = false;
             startUWG.CreateNoWindow = true;
