@@ -167,7 +167,7 @@ namespace UWG
             massboxTyp3_load(sender, e1);
             //urbanRoadboxTyp3_load(sender, e1);
             //ruralboxTyp3_load(sender, e1);
-            //glazingboxTyp3_load(sender, e1);
+            glazingboxTyp3_load(sender, e1);
             heatboxTyp3_load(sender, e1);
 
             roofboxTyp4_load(sender, e1);
@@ -5977,9 +5977,7 @@ namespace UWG
             }
             catch
             {
-
             }
-
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -7511,16 +7509,16 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
+                        //// Urban Road
+                        //if (i == 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
                         //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
@@ -7575,19 +7573,19 @@ namespace UWG
                 {
                     massLayer1Thickness.Content = mass[desiredIndexMass];
                 }
-                //urbanRoad
-                int desiredIndexUrban = 0;
-                if (desiredIndexUrban < urbanRoad.Count)
-                {
-                    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
-                }
-                //Rural
-                System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                int desiredIndexRural = 0;
-                if (desiredIndexRural < ruralRoad.Count)
-                {
-                    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
-                }
+                ////urbanRoad
+                //int desiredIndexUrban = 0;
+                //if (desiredIndexUrban < urbanRoad.Count)
+                //{
+                //    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
+                //}
+                ////Rural
+                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
+                //int desiredIndexRural = 0;
+                //if (desiredIndexRural < ruralRoad.Count)
+                //{
+                //    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
+                //}
             }
 
             if (loadTyp2 == true)
@@ -7620,17 +7618,17 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == startTyp2 + 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == startTyp2 + 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                        //// Urban Road
+                        //if (i == startTyp2 + 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == startTyp2 + 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        ////System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7729,17 +7727,17 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == startTyp3 + 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == startTyp3 + 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                        //// Urban Road
+                        //if (i == startTyp3 + 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == startTyp3 + 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        ////System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7838,17 +7836,17 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == startTyp4 + 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == startTyp4 + 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
+                        //// Urban Road
+                        //if (i == startTyp4 + 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == startTyp4 + 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        ////System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7916,9 +7914,6 @@ namespace UWG
                 //    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
                 //}
             }
-
-
-
         }
 
         //New xml = default to default_input.xml
@@ -8099,16 +8094,16 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
+                        //// Urban Road
+                        //if (i == 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
                         //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
@@ -8208,16 +8203,16 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == startTyp2 + 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == startTyp2 + 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
+                        //// Urban Road
+                        //if (i == startTyp2 + 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == startTyp2 + 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
                         //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
@@ -8318,15 +8313,15 @@ namespace UWG
                         }
 
                         // Urban Road
-                        if (i == startTyp3 + 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == startTyp3 + 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
+                        //if (i == startTyp3 + 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == startTyp3 + 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
                         //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
@@ -8426,16 +8421,16 @@ namespace UWG
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
 
-                        // Urban Road
-                        if (i == startTyp4 + 3)
-                        {
-                            urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
-                        // Rural
-                        if (i == startTyp4 + 4)
-                        {
-                            ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        }
+                        //// Urban Road
+                        //if (i == startTyp4 + 3)
+                        //{
+                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
+                        //// Rural
+                        //if (i == startTyp4 + 4)
+                        //{
+                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
+                        //}
                         //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
