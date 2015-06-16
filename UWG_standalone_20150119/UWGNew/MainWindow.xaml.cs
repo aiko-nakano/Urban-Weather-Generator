@@ -8989,5 +8989,10 @@ namespace UWG
             simuStartDay.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
             simuDuration.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
         }
+
+        private void mainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xml_input>
-  <typology1 dist="0" name="">
-    <dist>0</dist>
+  <typology1 dist="10" name="">
+    <dist>10</dist>
     <construction>
       <wall>
         <albedo></albedo>
@@ -88,15 +88,18 @@
       <initialT>20</initialT>
     </building>
   </typology1>
-  <typology2 dist="0" name="">
-    <dist>0</dist>
+  <typology2 dist="30" name="">
+    <dist>30</dist>
     <construction>
       <wall>
         <albedo></albedo>
         <emissivity></emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>Stucco</item>
+            <item>Concrete HW</item>
+            <item>Insulation</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -104,7 +107,7 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.03,0.2,0.09,0.01]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>0</inclination>
@@ -176,8 +179,8 @@
       <initialT>20</initialT>
     </building>
   </typology2>
-  <typology3 dist="0" name="">
-    <dist>0</dist>
+  <typology3 dist="7" name="">
+    <dist>7</dist>
     <construction>
       <wall>
         <albedo></albedo>
@@ -244,12 +247,12 @@
     </construction>
     <building>
       <floorHeight>3</floorHeight>
-      <dayInternalGains></dayInternalGains>
-      <nightInternalGains></nightInternalGains>
+      <dayInternalGains>24.7145454545455</dayInternalGains>
+      <nightInternalGains>5.58725274725274</nightInternalGains>
       <radiantFraction>0.5</radiantFraction>
       <latentFraction>0.09</latentFraction>
-      <infiltration></infiltration>
-      <ventilation></ventilation>
+      <infiltration>0.176785714285714</infiltration>
+      <ventilation>1</ventilation>
       <coolingSystemType>air</coolingSystemType>
       <coolingCOP>3.7</coolingCOP>
       <daytimeCoolingSetPoint>25</daytimeCoolingSetPoint>
@@ -264,8 +267,8 @@
       <initialT>20</initialT>
     </building>
   </typology3>
-  <typology4 dist="0" name="">
-    <dist>0</dist>
+  <typology4 dist="9" name="">
+    <dist>9</dist>
     <construction>
       <wall>
         <albedo></albedo>
@@ -393,25 +396,25 @@
     <longitude></longitude>
     <averageObstacleHeight></averageObstacleHeight>
     <ruralRoad>
-      <albedo />
-      <emissivity />
+      <albedo>0.165</albedo>
+      <emissivity>0.95</emissivity>
       <materials>
         <names>
-          <item />
+          <item>asphalt</item>
         </names>
         <thermalConductivity>
-          <item />
+          <item>1</item>
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item />
+          <item>1600000</item>
         </volumetricHeatCapacity>
-        <thickness />
+        <thickness>1.25</thickness>
       </materials>
-      <vegetationCoverage>0.5<inclination>1</inclination><initialTemperature>20</initialTemperature></vegetationCoverage>
+      <vegetationCoverage>0.5120120120120120120120120120120<inclination>1</inclination><initialTemperature>20</initialTemperature></vegetationCoverage>
     </ruralRoad>
     <parameter>
-      <tempHeight>2</tempHeight>
-      <windHeight>10</windHeight>
+      <tempHeight></tempHeight>
+      <windHeight></windHeight>
       <circCoeff>1.2</circCoeff>
       <dayThreshold>200</dayThreshold>
       <nightThreshold>50</nightThreshold>
