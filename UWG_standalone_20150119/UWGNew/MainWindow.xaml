@@ -76,7 +76,7 @@
         </Style>
         <!--Level 2 stackpanel-->
         <Style x:Key="level2" TargetType="StackPanel">
-            <Setter Property="Margin" Value="20 0 20 0" />
+            <Setter Property="Margin" Value="20 0 10 0" />
         </Style>
         <!-- stackpanel level 1-->
         <Style x:Key="level1" TargetType="StackPanel">
@@ -95,6 +95,19 @@
             <!-- total height is 30-->
             <Setter Property="Margin" Value="4" />
             <Setter Property="Width" Value="120" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Height" Value="26" />
+            <!-- total height is 30-->
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style x:Key="filePath" TargetType="TextBox">
+            <Setter Property="Height" Value="26" />
+            <!-- total height is 30-->
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Width" Value="250" />
         </Style>
         <Style x:Key="separator_left" TargetType="{x:Type Separator}">
             <Setter Property="Margin" Value="0 8 0 8" />
@@ -1540,14 +1553,14 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Run Simulation" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="runSimTab">
+            <TabItem Header="Run Simulation" Style="{StaticResource sec}" Visibility="Collapsed" Name="runSimTab">
                 <Grid>
-                    <TextBlock HorizontalAlignment="Left" Margin="-200,310,0,0" Name="textBoxRun" VerticalAlignment="Top" Width="112" Height="150" />
+                    <TextBlock HorizontalAlignment="Left" Name="textBoxRun" />
                     <ScrollViewer>
                         <Grid x:Name="uwgRun">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="400" />
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="260" />
+                                <ColumnDefinition Width="130" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -1589,93 +1602,93 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
-                            <!--Open dialogue box-->
+                            <!--browse epw box-->
                             <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="0" Grid.Column="0">
-                                <TextBlock>Select files to run UWG</TextBlock>
+                                <Label Style="{StaticResource SectionHeader}">Select files to run UWG</Label>
+                                <TextBlock Width="auto" Height="auto" FontSize="10">*Go to <Hyperlink NavigateUri="http://apps1.eere.energy.gov/buildings/energyplus/weatherdata_about.cfm" RequestNavigate="Hyperlink_RequestNavigate">DOE website</Hyperlink> to download epw file<LineBreak />*Please make sure that there is no space anywhere <LineBreak/> in the file exntesion or name</TextBlock>
+                            </StackPanel>
+                            <!-- broese epw text box-->
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="2" Grid.Column="1">
+                            <Button Content="Browse EPW" Name="browse" Click="browse_Click"/>
                             </StackPanel>
                             <!--save location-->
                             <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="13" Grid.Column="0" Name="rs">
-                                <TextBox IsEnabled="False" x:Name="resultPathText" />
+                                <TextBox IsEnabled="False" x:Name="resultPathText" Style="{StaticResource filePath}"/>
                             </StackPanel>
-                            <Label Grid.Row="15" Grid.Column="0" Name="sim1FNLabel" Visibility="Visible" Content="Simulation 1 Filename" HorizontalAlignment="Left"></Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="15" Grid.Column="1" Width="130" Name="rs0" HorizontalAlignment="Left">
-                                <TextBox VerticalContentAlignment="Center" x:Name="resultName"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" TextChanged="check_"/>
+                            <Label Grid.Row="15" Grid.Column="0" Name="sim1FNLabel" Visibility="Visible" Content="Simulation 1 file name"></Label>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="15" Grid.Column="1" Name="rs0">
+                                <TextBox x:Name="resultName" TextChanged="check_"/>
                             </StackPanel>
-                            <Label Grid.Row="16" Grid.Column="0" Name="sim2FNLabel" Visibility="Collapsed" Content="Simulation 2 Filename" HorizontalAlignment="Left"></Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="16" Grid.Column="1" Width="130" Name="rs1" Visibility="Collapsed" HorizontalAlignment="Left">
-                                <TextBox VerticalContentAlignment="Center" x:Name="resultName1"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" TextChanged="check_" />
+                            <Label Grid.Row="16" Grid.Column="0" Name="sim2FNLabel" Visibility="Collapsed" Content="Simulation 2 file name"></Label>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="16" Grid.Column="1" Name="rs1" Visibility="Collapsed" >
+                                <TextBox x:Name="resultName1" TextChanged="check_" />
                             </StackPanel>
-                            <Label Grid.Row="17" Grid.Column="0" Name="sim3FNLabel" Visibility="Collapsed" Content="Simulation 3 Filename" HorizontalAlignment="Left"></Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="17" Grid.Column="1" Width="130" Name="rs2" Visibility="Collapsed" HorizontalAlignment="Left">
-                                <TextBox VerticalContentAlignment="Center" x:Name="resultName2"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" TextChanged="check_" />
+                            <Label Grid.Row="17" Grid.Column="0" Name="sim3FNLabel" Visibility="Collapsed" Content="Simulation 3 file name"></Label>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="17" Grid.Column="1" Name="rs2" Visibility="Collapsed" >
+                                <TextBox x:Name="resultName2" TextChanged="check_" />
                             </StackPanel>
-                            <Label Grid.Row="18" Grid.Column="0" Name="sim4FNLabel" Visibility="Collapsed" Content="Simulation 4 Filename" HorizontalAlignment="Left"></Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="18" Grid.Column="1" Width="130" Name="rs3" Visibility="Collapsed" HorizontalAlignment="Left">
-                                <TextBox VerticalContentAlignment="Center" x:Name="resultName3"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" TextChanged="check_" />
+                            <Label Grid.Row="18" Grid.Column="0" Name="sim4FNLabel" Visibility="Collapsed" Content="Simulation 4 file name"></Label>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="18" Grid.Column="1" Name="rs3" Visibility="Collapsed">
+                                <TextBox x:Name="resultName3" TextChanged="check_" />
                             </StackPanel>
-                            <Label Grid.Row="19" Grid.Column="0" Name="sim5FNLabel" Visibility="Collapsed" Content="Simulation 5 Filename" HorizontalAlignment="Left"></Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="19" Grid.Column="1" Width="130" Name="rs4" Visibility="Collapsed" HorizontalAlignment="Left">
-                                <TextBox VerticalContentAlignment="Center" x:Name="resultName4"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" TextChanged="check_" />
+                            <Label Grid.Row="19" Grid.Column="0" Name="sim5FNLabel" Visibility="Collapsed" Content="Simulation 5 file name"></Label>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="19" Grid.Column="1" Name="rs4" Visibility="Collapsed">
+                                <TextBox x:Name="resultName4" TextChanged="check_" />
                             </StackPanel>
-                            <Label Grid.Row="20" Grid.Column="0" Name="sim6FNLabel" Visibility="Collapsed" Content="Simulation 6 Filename" HorizontalAlignment="Left"></Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="20" Grid.Column="1" Width="130" Name="rs5" Visibility="Collapsed" HorizontalAlignment="Left">
-                                <TextBox VerticalContentAlignment="Center" x:Name="resultName5"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" TextChanged="check_" />
+                            <Label Grid.Row="20" Grid.Column="0" Name="sim6FNLabel" Visibility="Collapsed" Content="Simulation 6 file name"></Label>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="20" Grid.Column="1" Name="rs5" Visibility="Collapsed">
+                                <TextBox  x:Name="resultName5" TextChanged="check_" />
                             </StackPanel>
-                            <Label Margin="4 0 4 0" FontSize="10" Height="auto" Width="auto" Grid.Row="1" Grid.Column="0">
-                                <TextBlock Width="auto">*Go to <Hyperlink NavigateUri="http://apps1.eere.energy.gov/buildings/energyplus/weatherdata_about.cfm" RequestNavigate="Hyperlink_RequestNavigate">DOE website</Hyperlink> to download epw file<LineBreak />*Please make sure that there is no space anywhere <LineBreak />in the file exntesion or name</TextBlock>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="2" Grid.Column="0" >
+                                <TextBox IsEnabled="False" Name="epwFileEmpty" Style="{StaticResource filePath}" />
+                            </StackPanel>
+                            <Label FontSize="10" Height="Auto" Grid.Row="3">
+                                <TextBlock>*Please make sure that there is no space anywhere <LineBreak></LineBreak> the file extension or name</TextBlock>
                             </Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="2" Grid.Column="0" Width="400">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="epwFileEmpty"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0" >
-                                </TextBox>
-                                <!-- navigate to DOE site-->
-
-                            </StackPanel>
-                            <Label FontSize="10" Height="Auto" Width="auto" Grid.Row="3">
-                                <TextBlock>*Please make sure that there is no space anywhere in the file extension or name</TextBlock>
-                            </Label>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="4" Grid.Column="0" Width="400">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="4" Grid.Column="0" >
+                                <TextBox IsEnabled="False" Name="xmlFileEmpty" Style="{StaticResource filePath}" >
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="5" Grid.Column="0" Width="400" Name="bx1" Visibility="Collapsed">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty1"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="5" Grid.Column="0" Name="bx1" Visibility="Collapsed">
+                                <TextBox IsEnabled="False" Name="xmlFileEmpty1"  Style="{StaticResource filePath}">
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="6" Grid.Column="0" Width="400" Name="bx2" Visibility="Collapsed">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty2"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="6" Grid.Column="0" Name="bx2" Visibility="Collapsed">
+                                <TextBox IsEnabled="False" Name="xmlFileEmpty2"  Style="{StaticResource filePath}">
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="7" Grid.Column="0" Width="400" Name="bx3" Visibility="Collapsed">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty3"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="7" Grid.Column="0" Name="bx3" Visibility="Collapsed">
+                                <TextBox IsEnabled="False" Name="xmlFileEmpty3"  Style="{StaticResource filePath}">
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="8" Grid.Column="0" Width="400" Name="bx4" Visibility="Collapsed">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty4"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="8" Grid.Column="0" Name="bx4" Visibility="Collapsed">
+                                <TextBox IsEnabled="False" Name="xmlFileEmpty4"  Style="{StaticResource filePath}">
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="9" Grid.Column="0" Width="400" Name="bx5" Visibility="Collapsed">
-                                <TextBox VerticalContentAlignment="Center" IsEnabled="False" Name="xmlFileEmpty5"  Width="auto" Style="{StaticResource advSetting}" Margin="4 4 4 0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="9" Grid.Column="0" Name="bx5" Visibility="Collapsed">
+                                <TextBox IsEnabled="False" Name="xmlFileEmpty5"  Style="{StaticResource filePath}">
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="12" Grid.Column="0" Height="20">
-                                <TextBlock Margin="8 4 4 4" FontSize="11" FontWeight="SemiBold" >Choose path for generated weather file.
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="12" Grid.Column="0">
+                                <Label Style="{StaticResource SectionHeader}">Select save locations</Label>
+                                <TextBlock>Choose path for generated weather file. </TextBlock>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="14" Grid.Column="0">
+                                <TextBlock >Set names for generated weather file (No need to add ".epw" in the end).
                                 </TextBlock>
                             </StackPanel>
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="14" Grid.Column="0" Height="20">
-                                <TextBlock Margin="8 4 4 4" FontSize="11" FontWeight="SemiBold" >Set names for generated weather file (you needn't add ".epw" in the end).
-                                </TextBlock>
-                            </StackPanel>
-                            <Button Content="Remove XML" Name="minus" Click="minus_Click" Grid.Row="11" Grid.Column="0" Margin="-20,12,0,0" IsEnabled="False"/>
-                            <Button Content="Add XML" Name="plus" Click="plus_Click" Grid.Row="11" Grid.Column="0" Margin="-272,12,0,0"/>
+                            <Button Content="Remove XML" Name="minus" Click="minus_Click" Grid.Row="11" Grid.Column="0" IsEnabled="False" HorizontalAlignment="Right" Margin="0 0 8 0"/>
+                            <Button Content="Add XML" Name="plus" Click="plus_Click" Grid.Row="11" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource specialButton}"/>
                             <!-- Simulation settings-->
-                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="21" Grid.Column="0" Margin="0,3,0,0">
+                            <StackPanel Style="{StaticResource PanelLeft}" Grid.Row="21" Grid.Column="0">
                                 <Label Content="Simulation Period" Style="{StaticResource heading}" />
                                 <Label Content="Start Month" />
                                 <Label Content="Start Day" />
                                 <Label Content="Duration" />
                             </StackPanel>
                             <StackPanel Style="{StaticResource PanelRight}" Grid.Row="21" Grid.Column="1">
-                                <TextBox VerticalContentAlignment="Center" Name="simuStartMonth" Margin="4 38 4 4" Style="{StaticResource advSetting}">
+                                <Label></Label>
+                                <TextBox Name="simuStartMonth" Style="{StaticResource advSetting}">
                                     <TextBox.Text>
                                         <Binding Path ="simuStartMonthValidate" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
                                             <Binding.ValidationRules>
@@ -1684,7 +1697,7 @@
                                         </Binding>
                                     </TextBox.Text>
                                 </TextBox>
-                                <TextBox VerticalContentAlignment="Center" Name="simuStartDay" Style="{StaticResource advSetting}">
+                                <TextBox Name="simuStartDay" Style="{StaticResource advSetting}">
                                     <TextBox.Text>
                                         <Binding Path ="simuStartDayValidate" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
                                             <Binding.ValidationRules>
@@ -1693,7 +1706,7 @@
                                         </Binding>
                                     </TextBox.Text>
                                 </TextBox>
-                                <TextBox VerticalContentAlignment="Center" Name="simuDuration" Style="{StaticResource advSetting}">
+                                <TextBox Name="simuDuration" Style="{StaticResource advSetting}">
                                     <TextBox.Text>
                                         <Binding Path ="simuDurationValidate" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
                                             <Binding.ValidationRules>
@@ -1704,188 +1717,146 @@
                                 </TextBox>
                                 <Button   Content="Start UWG" Name="UWGStart" Click="startUWG_Click"  Loaded="Window_Loaded" IsEnabled="False"/>
                             </StackPanel>
-                            <!--Browse button for epw -->
-                            <!-- width set for right aligning the button-->
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="2" Grid.Column="1">
-                                <!-- choose epw-->
-                                <Button Content="Browse EPW" Name="browse" Grid.Column="2" VerticalAlignment="Top" Click="browse_Click"/>
-                            </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="4" Grid.Column="1">
+                            
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="4" Grid.Column="1">
                                 <!-- choose xml -->
                                 <Button Content="Browse XML" Name="xmlbrowse" Grid.Column="2" Click="xmlBrowse_Click" />
                             </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="5" Grid.Column="1" Visibility="Collapsed" Name="bb1">
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="5" Grid.Column="1" Visibility="Collapsed" Name="bb1">
                                 <!-- choose xml -->
                                 <Button Content="Browse XML" Name="xmlbrowse1" Grid.Column="2" Click="xmlBrowse_Click1"  />
                             </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="6" Grid.Column="1" Visibility="Collapsed" Name="bb2">
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="6" Grid.Column="1" Visibility="Collapsed" Name="bb2">
                                 <!-- choose xml -->
                                 <Button Content="Browse XML" Name="xmlbrowse2" Grid.Column="2" Click="xmlBrowse_Click2" />
                             </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="7" Grid.Column="1" Visibility="Collapsed" Name="bb3">
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="7" Grid.Column="1" Visibility="Collapsed" Name="bb3">
                                 <!-- choose xml -->
                                 <Button Content="Browse XML" Name="xmlbrowse3" Grid.Column="2" Click="xmlBrowse_Click3" />
                             </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="8" Grid.Column="1" Visibility="Collapsed" Name="bb4">
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="8" Grid.Column="1" Visibility="Collapsed" Name="bb4">
                                 <!-- choose xml -->
                                 <Button Content="Browse XML" Name="xmlbrowse4" Grid.Column="2" Click="xmlBrowse_Click4" />
                             </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="9" Grid.Column="1" Visibility="Collapsed" Name="bb5">
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="9" Grid.Column="1" Visibility="Collapsed" Name="bb5">
                                 <!-- choose xml -->
                                 <Button Content="Browse XML" Name="xmlbrowse5" Grid.Column="2" Click="xmlBrowse_Click5" />
                             </StackPanel>
-                            <StackPanel Width="128" Style="{StaticResource PanelRight}"  Grid.Row="13" Grid.Column="1">
-                                <Button Content="Select" Name="pathbrowse" Grid.Column="2" Click="select" />
+                            <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="13" Grid.Column="1">
+                                <Button Content="Select Save Path" Name="pathbrowse" Grid.Column="2" Click="select" />
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="View Simulation Results" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="viewSimTab">
+            <TabItem Header="View Simulation Results" Style="{StaticResource sec}" Visibility="Collapsed" Name="viewSimTab">
                 <ScrollViewer Margin="0,0,0,25">
-                    <TabControl BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0" Name="simTabControl">
-                        <TabItem Header="Overview" Style="{StaticResource sec}" Width="100" Name="simOverview">
+                    <TabControl Name="simTabControl">
+                        <TabItem Header="Overview" Style="{StaticResource sec}" Name=" ">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
                                     <RowDefinition Height="auto" />
-
+                                    <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="300" />
-                                    <ColumnDefinition Width="190" />
-                                    <ColumnDefinition Width="190" />
+                                    <ColumnDefinition Width="260" />
+                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="260" />
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Simulation" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
-                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
-                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Top"></Label>
-                                <Label Content="Comfortable Hours (% of year)" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
+                                <Label Content="Simulation" Grid.Row="0" Grid.Column="0" Style="{StaticResource SectionHeader}"></Label>
+                                <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Grid.Row="0" Grid.Column="2">Comfortable Hours (% of year)</Label>
                                 <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Top"></Label>
                                 <Label Content="Total Degree Days" Grid.Row="0" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"></Label>-->
-                                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource PanelLeft}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30" />
-                                            <RowDefinition Height="30" />
-                                            <RowDefinition Height="30" />
-                                            <RowDefinition Height="30" />
-                                            <RowDefinition Height="30" />
-                                            <RowDefinition Height="30" />
-                                            <RowDefinition Height="30" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="200" />
-                                            <ColumnDefinition Width="100" />
-                                            <ColumnDefinition Width="190" />
-                                            <ColumnDefinition Width="190" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label Content="Reference Site" Grid.Row="0" Grid.Column="0"></Label>
-                                        <Label Content="Simulation 1" Grid.Row="1" Grid.Column="0" Visibility="Visible" Name="labelSim1"></Label>
-                                        <Label Content="Simulation 2" Grid.Row="2" Grid.Column="0" Visibility="Visible" Name="labelSim2"></Label>
-                                        <Label Content="Simulation 3" Grid.Row="3" Grid.Column="0" Visibility="Visible" Name="labelSim3"></Label>
-                                        <Label Content="Simulation 4" Grid.Row="4" Grid.Column="0" Visibility="Visible" Name="labelSim4"></Label>
-                                        <Label Content="Simulation 5" Grid.Row="5" Grid.Column="0" Visibility="Visible" Name="labelSim5"></Label>
-                                        <Label Content="Simulation 6" Grid.Row="6" Grid.Column="0" Visibility="Visible" Name="labelSim6"></Label>
-
-                                        <Button Content="Select" Name="pathbrowseSim1" Grid.Row="1" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
-                                        <Button Content="Select" Name="pathbrowseSim2" Grid.Row="2" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
-                                        <Button Content="Select" Name="pathbrowseSim3" Grid.Row="3" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
-                                        <Button Content="Select" Name="pathbrowseSim4" Grid.Row="4" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
-                                        <Button Content="Select" Name="pathbrowseSim5" Grid.Row="5" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
-                                        <Button Content="Select" Name="pathbrowseSim6" Grid.Row="6" Grid.Column="1" Click="selectSim" Visibility="Visible" Width="90" Height="20" />
-
-                                        <Label Content="" Grid.Row="0" Grid.Column="2" Name="refSiteHours" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="1" Grid.Column="2" Name="sim1Hours" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="2" Grid.Column="2" Name="sim2Hours" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="3" Grid.Column="2" Name="sim3Hours" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="4" Grid.Column="2" Name="sim4Hours" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="5" Grid.Column="2" Name="sim5Hours" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="6" Grid.Column="2" Name="sim6Hours" Visibility="Visible"></Label>
-
-                                        <Label Content="" Grid.Row="0" Grid.Column="3" Name="refSiteDegDays" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="1" Grid.Column="3" Name="sim1DegDays" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="2" Grid.Column="3" Name="sim2DegDays" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="3" Grid.Column="3" Name="sim3DegDays" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="4" Grid.Column="3" Name="sim4DegDays" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="5" Grid.Column="3" Name="sim5DegDays" Visibility="Visible"></Label>
-                                        <Label Content="" Grid.Row="6" Grid.Column="3" Name="sim6DegDays" Visibility="Visible"></Label>
-
-                                    </Grid>
-
+                                <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource PanelLeft}">
+                                    <Label Content="Simulation 1" Visibility="Visible" Name="labelSim1"></Label>
+                                    <Label Content="Simulation 2" Visibility="Visible" Name="labelSim2"></Label>
+                                    <Label Content="Simulation 3" Visibility="Visible" Name="labelSim3"></Label>
+                                    <Label Content="Simulation 4" Visibility="Visible" Name="labelSim4"></Label>
+                                    <Label Content="Simulation 5" Visibility="Visible" Name="labelSim5"></Label>
+                                    <Label Content="Simulation 6" Visibility="Visible" Name="labelSim6"></Label>
                                 </StackPanel>
-
+                                <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource PanelLeft}">
+                                    <Button Content="Select" Name="pathbrowseSim1" Click="selectSim" Visibility="Visible"/>
+                                    <Button Content="Select" Name="pathbrowseSim2" Click="selectSim" Visibility="Visible"/>
+                                    <Button Content="Select" Name="pathbrowseSim3" Grid.Row="3" Grid.Column="1" Click="selectSim" Visibility="Visible"/>
+                                    <Button Content="Select" Name="pathbrowseSim4" Grid.Row="4" Grid.Column="1" Click="selectSim" Visibility="Visible"/>
+                                    <Button Content="Select" Name="pathbrowseSim5" Grid.Row="5" Grid.Column="1" Click="selectSim" Visibility="Visible"/>
+                                    <Button Content="Select" Name="pathbrowseSim6" Grid.Row="6" Grid.Column="1" Click="selectSim" Visibility="Visible"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="2" >
+                                    <Label Content="" Name="sim1Hours" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim2Hours" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim3Hours" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim4Hours" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim5Hours" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim6Hours" Visibility="Visible"></Label>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="3" >
+                                    <Label Content="" Name="sim1DegDays" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim2DegDays" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim3DegDays" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim4DegDays" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim5DegDays" Visibility="Visible"></Label>
+                                    <Label Content="" Name="sim6DegDays" Visibility="Visible"></Label>
+                                </StackPanel>
                             </Grid>
-
                         </TabItem>
-                        <TabItem Header="Simulation 1" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab1">
+                        <TabItem Header="Simulation 1" Style="{StaticResource sec}" Visibility="Collapsed" Name="simTab1">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="600" />
-                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition Width="520" />
                                 </Grid.ColumnDefinitions>
-                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>
-                                <Line Grid.Row="0" Grid.ColumnSpan="3" Style="{StaticResource horizontalLineStyle}"/>
+                                <Label Content="Thermal Comfort" Grid.Row="0" Grid.Column="0" Style="{StaticResource SectionHeader}"></Label>
+                                <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
                                 <!--<Label Content="Energy Efficiency" Grid.Row="0" Grid.Column="1" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Label>-->
-                                <StackPanel Grid.Row="1" Grid.Column="0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="170" />
-                                            <ColumnDefinition Width="50" />
-                                            <ColumnDefinition Width="auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                        </Grid.RowDefinitions>
-                                        <Label Content="Comfortable Hours (% year)" Margin="0,-5,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontWeight="SemiBold"></Label>
-                                        <Label Content="{Binding Path=Content, ElementName=sim1Hours, Mode=TwoWay}" Margin="-180,-5,0,0" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Name="comfortableHoursSim1" FontWeight="SemiBold"></Label>
-                                        <StackPanel Margin="0,-50,0,0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3">
-
-                                            <Label Content="UTCI" Margin="50,70,0,-64" HorizontalAlignment="Left" >
-                                                <Label.ToolTip>
-                                                    <TextBlock>
-                                                        Thermal comfort metric using air temperature,
-                                                        <LineBreak/>
-                                                        mean radiant temperature of the urban canyon,
-                                                        <LineBreak/>
-                                                        wind velocity, and relative humidity.
-                                                        <LineBreak/>
-                                                        [More on http://www.utci.org/]
-                                                    </TextBlock>
-                                                </Label.ToolTip>
-                                            </Label>
-                                            <ComboBox Margin="100,40,0,-60" Width="200" Height="25" Name="utciChangeboxSim1" SelectionChanged="utciSim1_change" >
-                                                <ComboBoxItem Content="Sidewalk" IsSelected="True" />
-                                                <ComboBoxItem Content="Urban Canyon" />
-                                            </ComboBox>
-
-                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
-                                                                   Name="utciChartSim1" 
-                                                                   Title="" 
-                                                                   VerticalAlignment="Bottom" 
-                                                                   Width="600" 
-                                                                   BorderThickness="0"
-                                                                   LegendTitle="UTCI"
-                                                                   
-                                                                   >
-                                                <chartingToolkit:Chart.PlotAreaStyle>
-                                                    <Style TargetType="Grid">
-                                                        <Setter Property="Background" Value="Transparent" />
-                                                    </Style>
-                                                </chartingToolkit:Chart.PlotAreaStyle>
-                                                <chartingToolkit:Chart.LegendStyle>
-                                                    <Style TargetType="datavis:Legend" >
-                                                        <Setter Property="Width" Value="0" />
-                                                    </Style>
-                                                </chartingToolkit:Chart.LegendStyle>
-                                                <chartingToolkit:Chart.Axes>
-                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" Margin="0,0,10,0" />
-                                                </chartingToolkit:Chart.Axes>
-                                                <chartingToolkit:ColumnSeries DependentValuePath="Value"  
+                                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Label Grid.Column="0" Content="Comfortable Hours [% of year]"></Label>
+                                    <Label Grid.Column="1" HorizontalAlignment="Left" Content="{Binding Path=Content, ElementName=sim1Hours, Mode=TwoWay}" Name="comfortableHoursSim1" ></Label>
+                                </StackPanel>
+                                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+                                    <Label Grid.Row="2" Grid.Column="0" Content="UTCI" HorizontalAlignment="Left">
+                                     <!--<Image Source="Images/icons/menu_help.png"></Image> -->
+                                        <Label.ToolTip>
+                                            <TextBlock>
+                                                    Thermal comfort metric using air temperature,<LineBreak/>
+                                                    mean radiant temperature of the urban canyon,<LineBreak/>
+                                                    wind velocity, and relative humidity.<LineBreak/>
+                                                    [More on http://www.utci.org/]
+                                            </TextBlock>
+                                        </Label.ToolTip>
+                                        
+                                    </Label>
+                                    
+                                    <ComboBox Grid.Row="2" Grid.Column ="1" Name="utciChangeboxSim1" SelectionChanged="utciSim1_change" HorizontalAlignment="Left">
+                                        <ComboBoxItem Content="Sidewalk" IsSelected="True" />
+                                        <ComboBoxItem Content="Urban Canyon" />
+                                    </ComboBox>
+                                    <chartingToolkit:Chart Name="utciChartSim1" 
+                                                            Title=""
+                                                            LegendTitle="UTCI"
+                                                            BorderThickness="0"
+                                                            Height="240">
+                                        <chartingToolkit:Chart.PlotAreaStyle>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="Background" Value="Transparent" />
+                                            </Style>
+                                        </chartingToolkit:Chart.PlotAreaStyle>
+                                        <chartingToolkit:Chart.LegendStyle>
+                                            <Style TargetType="datavis:Legend" >
+                                                <Setter Property="Width" Value="0" />
+                                            </Style>
+                                            </chartingToolkit:Chart.LegendStyle>
+                                            <chartingToolkit:Chart.Axes>
+                                                <chartingToolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Title="Percentage" />
+                                            </chartingToolkit:Chart.Axes>
+                                            <chartingToolkit:ColumnSeries DependentValuePath="Value"  
                                                                               IndependentValuePath="Key" 
                                                                               ItemsSource="{Binding}" 
                                                                               Title=""
@@ -1913,8 +1884,8 @@
                                                 </chartingToolkit:ColumnSeries>
                                             </chartingToolkit:Chart>
 
-                                            <Label Content="Monthly Temperature Average" Margin="50,-50,0,-50" HorizontalAlignment="Left"></Label>
-                                            <ComboBox Margin="100,-10,0,-10" Width="200" Height="25" Name="tAirChangeboxSim1" SelectionChanged="tAirSim1_change" >
+                                            <Label Content="Monthly Temperature Average" ></Label>
+                                            <ComboBox Name="tAirChangeboxSim1" SelectionChanged="tAirSim1_change" >
                                                 <ComboBoxItem Content="January" IsSelected="True" />
                                                 <ComboBoxItem Content="February" />
                                                 <ComboBoxItem Content="March" />
@@ -1929,45 +1900,34 @@
                                                 <ComboBoxItem Content="December" />
                                             </ComboBox>
 
-                                            <chartingToolkit:Chart Height="262" HorizontalAlignment="Left"  
-                                                                   Name="tAirChartSim1" 
+                                    <chartingToolkit:Chart Name="tAirChartSim1" 
                                                                    Title="" 
-                                                                   VerticalAlignment="Bottom" 
-                                                                   Width="600" 
-                                                                   BorderThickness="0"
-                                                                   LegendTitle="Monthly Temperature"
-                                                                   Margin="0,-50,0,0"
-                                                                   
-                                                                   >
-                                                <chartingToolkit:Chart.PlotAreaStyle>
-                                                    <Style TargetType="Grid">
-                                                        <Setter Property="Background" Value="Transparent" />
-                                                    </Style>
-                                                </chartingToolkit:Chart.PlotAreaStyle>
-                                                <chartingToolkit:Chart.LegendStyle>
-                                                    <Style TargetType="datavis:Legend" >
-                                                        <Setter Property="Width" Value="0" />
-                                                    </Style>
-                                                </chartingToolkit:Chart.LegendStyle>
-                                                <chartingToolkit:Chart.Axes>
-                                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
-                                                </chartingToolkit:Chart.Axes>
-                                                <chartingToolkit:LineSeries DependentValuePath="Value"  
+                                                                   Width="650" 
+                                                                   LegendTitle="Monthly Temperature">
+                                        <chartingToolkit:Chart.PlotAreaStyle>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="Background" Value="Transparent" />
+                                            </Style>
+                                        </chartingToolkit:Chart.PlotAreaStyle>
+                                        <chartingToolkit:Chart.LegendStyle>
+                                            <Style TargetType="datavis:Legend" >
+                                                <Setter Property="Width" Value="0" />
+                                            </Style>
+                                        </chartingToolkit:Chart.LegendStyle>
+                                        <chartingToolkit:Chart.Axes>
+                                            <chartingToolkit:LinearAxis Orientation="Y" Minimum="-5" Maximum="30" Title="Degrees Celsius" Margin="0,0,10,0" />
+                                        </chartingToolkit:Chart.Axes>
+                                        <chartingToolkit:LineSeries DependentValuePath="Value"  
                                                                               IndependentValuePath="Key" 
                                                                               ItemsSource="{Binding}" 
                                                                               Title=""
                                                                               IsSelectionEnabled="True"
                                                                               >
-                                                </chartingToolkit:LineSeries>
-                                            </chartingToolkit:Chart>
-
-
-                                        </StackPanel>
-
-
-                                    </Grid>
+                                        </chartingToolkit:LineSeries>
+                                    </chartingToolkit:Chart>
                                 </StackPanel>
-                                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,-5,0,0" >
+                                <!--total degree days, not used -->
+                                <StackPanel Grid.Row="1" Grid.Column="1" >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="130" />
@@ -1984,13 +1944,9 @@
                                         <Label Content="0" Grid.Column="1" Grid.Row="1" Name="heatDegDaysSim1"></Label>
                                         <Label Content="Cooling Degree Days" Grid.Column="0" Grid.Row="2" ></Label>
                                         <Label Content="0" Grid.Column="1" Grid.Row="2" Name="coolDegDaysSim1"></Label> to be added later-->
-
                                     </Grid>
                                 </StackPanel>
-
                             </Grid>
-
-
                         </TabItem>
                         <TabItem Header="Simulation 2" Style="{StaticResource sec}" Width="100" Visibility="Collapsed" Name="simTab2">
                             <Grid>
