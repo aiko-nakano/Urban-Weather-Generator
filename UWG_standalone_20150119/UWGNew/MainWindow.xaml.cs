@@ -138,7 +138,7 @@ namespace UWG
             p.simuStartDayValidate = "1";
             p.simuDurationValidate = "365";
             uwgRun.DataContext = p;
-            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
 
         }
         private void OnChange(object sender, EventArgs e)
@@ -5039,7 +5039,7 @@ namespace UWG
             mainTabControl.SelectedItem = runSimTab;
 
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
             //runMenuItem.Background = new SolidColorBrush(Colors.Black);
@@ -5096,7 +5096,7 @@ namespace UWG
 
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
 
             //sim1DegDays.Content = "100";
 
@@ -5112,7 +5112,6 @@ namespace UWG
             //String csvPathSim1 = System.IO.Path.ChangeExtension(origPath1, ".csv");
             try
             {
-
                 String csvPathInput = System.IO.Path.ChangeExtension(pathSim1, ".csv");
                 String csvFilename = System.IO.Path.GetFileName(csvPathInput);
                 if (!File.Exists(csvPathInput))
@@ -5188,6 +5187,9 @@ namespace UWG
                     sim1Hours.Content = (Int32.Parse(sim1Data[9, 86].Substring(0, sim1Data[9, 86].Length - 1)) + Int32.Parse(sim1Data[10, 86].Substring(0, sim1Data[10, 86].Length - 1))).ToString() + "%";
                     simTab1.Visibility = System.Windows.Visibility.Visible;
                     labelSim1.Content = System.IO.Path.GetFileName(pathSim1);
+                    labelSim1.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    labelSim1.Margin = new Thickness(4, 4, 4, 4);
+                    labelSim1.Padding = new Thickness(0, 0, 0, 0);
                 }
 
             }
@@ -5278,6 +5280,9 @@ namespace UWG
                     sim2Hours.Content = (Int32.Parse(sim2Data[9, 86].Substring(0, sim2Data[9, 86].Length - 1)) + Int32.Parse(sim2Data[10, 86].Substring(0, sim2Data[10, 86].Length - 1))).ToString() + "%";
                     simTab2.Visibility = System.Windows.Visibility.Visible;
                     labelSim2.Content = System.IO.Path.GetFileName(pathSim2);
+                    labelSim2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    labelSim2.Margin = new Thickness(4, 4, 4, 4);
+                    labelSim2.Padding = new Thickness(0, 0, 0, 0);
 
                 }
 
@@ -5369,6 +5374,9 @@ namespace UWG
                     sim3Hours.Content = (Int32.Parse(sim3Data[9, 86].Substring(0, sim3Data[9, 86].Length - 1)) + Int32.Parse(sim3Data[10, 86].Substring(0, sim3Data[10, 86].Length - 1))).ToString() + "%";
                     simTab3.Visibility = System.Windows.Visibility.Visible;
                     labelSim3.Content = System.IO.Path.GetFileName(pathSim3);
+                    labelSim3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    labelSim3.Margin = new Thickness(4, 4, 4, 4);
+                    labelSim3.Padding = new Thickness(0, 0, 0, 0);
 
                 }
 
@@ -5460,6 +5468,9 @@ namespace UWG
                     sim4Hours.Content = (Int32.Parse(sim4Data[9, 86].Substring(0, sim4Data[9, 86].Length - 1)) + Int32.Parse(sim4Data[10, 86].Substring(0, sim4Data[10, 86].Length - 1))).ToString() + "%";
                     simTab4.Visibility = System.Windows.Visibility.Visible;
                     labelSim4.Content = System.IO.Path.GetFileName(pathSim4);
+                    labelSim4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    labelSim4.Margin = new Thickness(4, 4, 4, 4);
+                    labelSim4.Padding = new Thickness(0, 0, 0, 0);
 
                 }
 
@@ -5551,6 +5562,9 @@ namespace UWG
                     sim5Hours.Content = (Int32.Parse(sim5Data[9, 86].Substring(0, sim5Data[9, 86].Length - 1)) + Int32.Parse(sim5Data[10, 86].Substring(0, sim5Data[10, 86].Length - 1))).ToString() + "%";
                     simTab5.Visibility = System.Windows.Visibility.Visible;
                     labelSim5.Content = System.IO.Path.GetFileName(pathSim5);
+                    labelSim5.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    labelSim5.Margin = new Thickness(4, 4, 4, 4);
+                    labelSim5.Padding = new Thickness(0, 0, 0, 0);
 
                 }
 
@@ -5642,6 +5656,9 @@ namespace UWG
                     sim6Hours.Content = (Int32.Parse(sim6Data[9, 86].Substring(0, sim6Data[9, 86].Length - 1)) + Int32.Parse(sim6Data[10, 86].Substring(0, sim6Data[10, 86].Length - 1))).ToString() + "%";
                     simTab6.Visibility = System.Windows.Visibility.Visible;
                     labelSim6.Content = System.IO.Path.GetFileName(pathSim6);
+                    labelSim6.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    labelSim6.Margin = new Thickness(4, 4, 4, 4);
+                    labelSim6.Padding = new Thickness(0, 0, 0, 0);
 
                 }
 
@@ -5661,7 +5678,7 @@ namespace UWG
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
 
-            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
@@ -8988,11 +9005,6 @@ namespace UWG
             simuStartMonth.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
             simuStartDay.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
             simuDuration.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
-        }
-
-        private void mainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
