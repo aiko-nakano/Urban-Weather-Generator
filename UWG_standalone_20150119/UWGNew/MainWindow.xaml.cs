@@ -5034,6 +5034,10 @@ namespace UWG
                 return;
             }
             urbanCanyonTab.Visibility = System.Windows.Visibility.Collapsed;
+            typTab1.Visibility = System.Windows.Visibility.Collapsed;
+            typTab2.Visibility = System.Windows.Visibility.Collapsed;
+            typTab3.Visibility = System.Windows.Visibility.Collapsed;
+            typTab4.Visibility = System.Windows.Visibility.Collapsed;
             refSiteTab.Visibility = System.Windows.Visibility.Collapsed;
             runSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = runSimTab;
@@ -5089,6 +5093,10 @@ namespace UWG
             //Get only the file name
             //this.epwFileNameRun = System.IO.Path.GetFileName(filenameRun);
             urbanCanyonTab.Visibility = System.Windows.Visibility.Collapsed;
+            typTab1.Visibility = System.Windows.Visibility.Collapsed;
+            typTab2.Visibility = System.Windows.Visibility.Collapsed;
+            typTab3.Visibility = System.Windows.Visibility.Collapsed;
+            typTab4.Visibility = System.Windows.Visibility.Collapsed; 
             refSiteTab.Visibility = System.Windows.Visibility.Collapsed;
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Visible;
@@ -5674,6 +5682,10 @@ namespace UWG
         private void makeFile_Click(object sender, RoutedEventArgs e)
         {
             urbanCanyonTab.Visibility = System.Windows.Visibility.Visible;
+            typTab1.Visibility = System.Windows.Visibility.Collapsed;
+            typTab2.Visibility = System.Windows.Visibility.Collapsed;
+            typTab3.Visibility = System.Windows.Visibility.Collapsed;
+            typTab4.Visibility = System.Windows.Visibility.Collapsed; 
             refSiteTab.Visibility = System.Windows.Visibility.Visible;
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
@@ -7986,8 +7998,6 @@ namespace UWG
             typology2Type.Text = "";
             typology3Type.Text = "";
             typology4Type.Text = "";
-
-            typTabControl.SelectedIndex = 0;
 
             var provider = (XmlDataProvider)this.DataContext;
             provider.Source = new Uri("default_input.xml", UriKind.RelativeOrAbsolute);
