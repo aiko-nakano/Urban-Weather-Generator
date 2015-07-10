@@ -138,7 +138,7 @@ namespace UWG
             p.simuStartDayValidate = "1";
             p.simuDurationValidate = "365";
             uwgRun.DataContext = p;
-            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
 
         }
         private void OnChange(object sender, EventArgs e)
@@ -5039,7 +5039,7 @@ namespace UWG
             mainTabControl.SelectedItem = runSimTab;
 
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
+            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
             //runMenuItem.Background = new SolidColorBrush(Colors.Black);
@@ -5096,7 +5096,7 @@ namespace UWG
 
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
+            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
 
             //sim1DegDays.Content = "100";
 
@@ -5678,7 +5678,7 @@ namespace UWG
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
 
-            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 0, 0, 0));
+            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
