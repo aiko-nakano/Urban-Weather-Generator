@@ -5041,7 +5041,12 @@ namespace UWG
             refSiteTab.Visibility = System.Windows.Visibility.Collapsed;
             runSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = runSimTab;
-
+            simTab1.Visibility = System.Windows.Visibility.Collapsed;
+            simTab2.Visibility = System.Windows.Visibility.Collapsed;
+            simTab3.Visibility = System.Windows.Visibility.Collapsed;
+            simTab4.Visibility = System.Windows.Visibility.Collapsed;
+            simTab5.Visibility = System.Windows.Visibility.Collapsed;
+            simTab6.Visibility = System.Windows.Visibility.Collapsed;
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
@@ -5054,10 +5059,10 @@ namespace UWG
 
         private void sim_Click(object sender, RoutedEventArgs e)
         {
-            if (mainTabControl.SelectedItem != viewSimTab)
-            {
-                simTabControl.SelectedItem = simOverview;
-            }
+            //if (mainTabControl.SelectedItem != viewSimTab)
+            //{
+            //    simTabControl.SelectedItem = simOverview;
+            //}
             if (pathSim1 != "")
             {
                 loadDataSim1(sender, e); 
@@ -5101,6 +5106,12 @@ namespace UWG
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = viewSimTab;
+            simTab1.Visibility = System.Windows.Visibility.Collapsed;
+            simTab2.Visibility = System.Windows.Visibility.Collapsed;
+            simTab3.Visibility = System.Windows.Visibility.Collapsed;
+            simTab4.Visibility = System.Windows.Visibility.Collapsed;
+            simTab5.Visibility = System.Windows.Visibility.Collapsed;
+            simTab6.Visibility = System.Windows.Visibility.Collapsed;
 
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
@@ -5689,6 +5700,12 @@ namespace UWG
             refSiteTab.Visibility = System.Windows.Visibility.Visible;
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
+            simTab1.Visibility = System.Windows.Visibility.Collapsed;
+            simTab2.Visibility = System.Windows.Visibility.Collapsed;
+            simTab3.Visibility = System.Windows.Visibility.Collapsed;
+            simTab4.Visibility = System.Windows.Visibility.Collapsed;
+            simTab5.Visibility = System.Windows.Visibility.Collapsed;
+            simTab6.Visibility = System.Windows.Visibility.Collapsed;
 
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
