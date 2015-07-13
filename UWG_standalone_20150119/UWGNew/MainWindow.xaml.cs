@@ -96,6 +96,10 @@ namespace UWG
         private String resultPath="";
         private String resultFileName="";
         private String resultFilePath="";
+        private Boolean isTypTab1Visible = false;
+        private Boolean isTypTab2Visible = false;
+        private Boolean isTypTab3Visible = false;
+        private Boolean isTypTab4Visible = false;
 
         String[,] sim1Data = new String[24, 88];
         String[,] sim2Data = new String[24, 88];
@@ -5059,10 +5063,6 @@ namespace UWG
 
         private void sim_Click(object sender, RoutedEventArgs e)
         {
-            //if (mainTabControl.SelectedItem != viewSimTab)
-            //{
-            //    simTabControl.SelectedItem = simOverview;
-            //}
             if (pathSim1 != "")
             {
                 loadDataSim1(sender, e); 
@@ -5693,10 +5693,38 @@ namespace UWG
         private void makeFile_Click(object sender, RoutedEventArgs e)
         {
             urbanCanyonTab.Visibility = System.Windows.Visibility.Visible;
-            typTab1.Visibility = System.Windows.Visibility.Collapsed;
-            typTab2.Visibility = System.Windows.Visibility.Collapsed;
-            typTab3.Visibility = System.Windows.Visibility.Collapsed;
-            typTab4.Visibility = System.Windows.Visibility.Collapsed; 
+            if (this.isTypTab1Visible || typTab1.Visibility == System.Windows.Visibility.Visible)
+            {
+                typTab1.Visibility = System.Windows.Visibility.Visible;
+            }
+            else 
+            { 
+                typTab1.Visibility = System.Windows.Visibility.Collapsed; 
+            }
+            if (this.isTypTab2Visible || typTab2.Visibility == System.Windows.Visibility.Visible)
+            {
+                typTab2.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                typTab2.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (this.isTypTab3Visible || typTab3.Visibility == System.Windows.Visibility.Visible)
+            {
+                typTab3.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                typTab3.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (this.isTypTab4Visible || typTab4.Visibility == System.Windows.Visibility.Visible)
+            {
+                typTab4.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                typTab4.Visibility = System.Windows.Visibility.Collapsed;
+            } 
             refSiteTab.Visibility = System.Windows.Visibility.Visible;
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
@@ -5743,8 +5771,7 @@ namespace UWG
                 typology2Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel2.Visibility = System.Windows.Visibility.Visible;
                 //typTab2.Visibility = System.Windows.Visibility.Visible;
-
-
+                addTypButton.IsEnabled = true;
             }
             else if (numberOfTypology == 3)
             {
@@ -5753,6 +5780,7 @@ namespace UWG
                 typology3Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel3.Visibility = System.Windows.Visibility.Visible;
                 //typTab3.Visibility = System.Windows.Visibility.Visible;
+                addTypButton.IsEnabled = true;
 
             }
             else if (numberOfTypology == 4)
@@ -5778,9 +5806,10 @@ namespace UWG
                 typology2Type.Visibility = System.Windows.Visibility.Collapsed;
                 typology2Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPercLabel2.Visibility = System.Windows.Visibility.Collapsed;
-                typTab2.Visibility = System.Windows.Visibility.Collapsed;
+                this.isTypTab2Visible = false;
+                typTab1.Visibility = System.Windows.Visibility.Visible;
                 minusTypButton.IsEnabled = false;
-
+                typology2Dist.Text = "";
 
             }
             else if (numberOfTypology == 3)
@@ -5789,8 +5818,8 @@ namespace UWG
                 typology3Type.Visibility = System.Windows.Visibility.Collapsed;
                 typology3Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPercLabel3.Visibility = System.Windows.Visibility.Collapsed;
-                typTab3.Visibility = System.Windows.Visibility.Collapsed;
-
+                this.isTypTab3Visible = false;
+                typology3Dist.Text = "";
             }
             else if (numberOfTypology == 4)
             {
@@ -5799,7 +5828,8 @@ namespace UWG
                 typology4Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPercLabel4.Visibility = System.Windows.Visibility.Collapsed;
                 typTab4.Visibility = System.Windows.Visibility.Collapsed;
-                addTypButton.IsEnabled = false;
+                this.isTypTab4Visible = false;
+                typology4Dist.Text = "";
             }
             typologyCheck(sender, e);
             numberOfTypology--;
@@ -5998,26 +6028,30 @@ namespace UWG
         {
             var inputTyp = sender as System.Windows.Controls.TextBox;
             var visibility = System.Windows.Visibility.Visible;
-            if (inputTyp.Text == "0" || inputTyp.Text == "")
-            {
-                visibility = System.Windows.Visibility.Collapsed;
-            }
+            //if (inputTyp.Text == "0" || inputTyp.Text == "")
+            //{
+            //    visibility = System.Windows.Visibility.Collapsed;
+            //}
             try
             {
-                if (inputTyp == typology1Dist)
+                if (typology1Dist.Text != "0" && typology1Dist.Text != "")
                 {
-                    typTab1.Visibility = visibility;
+                    this.isTypTab1Visible = true;
+                    typTab1.Visibility = System.Windows.Visibility.Visible;
                 }
-                if (inputTyp == typology2Dist)
+                if (typology2Dist.Text != "0" && typology2Dist.Text != "")
                 {
+                    this.isTypTab2Visible = true;
                     typTab2.Visibility = visibility;
                 }
-                if (inputTyp == typology3Dist)
+                if (typology3Dist.Text != "0" && typology3Dist.Text != "")
                 {
+                    this.isTypTab3Visible = true; 
                     typTab3.Visibility = visibility;
                 }
-                if (inputTyp == typology4Dist)
+                if (typology4Dist.Text != "0" && typology4Dist.Text != "")
                 {
+                    this.isTypTab4Visible = true; 
                     typTab4.Visibility = visibility;
                 }
             }
