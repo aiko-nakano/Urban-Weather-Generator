@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xml_input>
-  <typology1 dist="0" name="">
-    <dist>0</dist>
+  <typology1 dist="25" name="test">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.1</albedo>
+        <emissivity>0.7</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>Wood Siding</item>
+            <item>Steel Frame Insulation</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -16,18 +18,20 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.14,0.01]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.05</albedo>
+        <emissivity>0.98</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>Builtup_roofing</item>
+            <item>Foam_polyurethane_40kgm3</item>
+            <item>Concrete_block_1550kgm3</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -35,9 +39,9 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.02,0.085,0.1]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
@@ -46,7 +50,7 @@
         <emissivity />
         <materials>
           <names>
-            <item></item>
+            <item>concrete</item>
           </names>
           <thermalConductivity>
             <item />
@@ -54,7 +58,7 @@
           <volumetricHeatCapacity>
             <item />
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.10]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
@@ -88,15 +92,18 @@
       <initialT>20</initialT>
     </building>
   </typology1>
-  <typology2 dist="0" name="">
-    <dist>0</dist>
+  <typology2 dist="25" name="test">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.1</albedo>
+        <emissivity>0.7</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>layer1</item>
+            <item>layer2</item>
+            <item>layer3</item>
+            <item>layer4</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -104,18 +111,20 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.07,0.09,0.14,0.02]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.05</albedo>
+        <emissivity>0.98</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>built-up_roofing</item>
+            <item>sheathing</item>
+            <item>insulation</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -123,9 +132,9 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.01,0.16]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
@@ -134,7 +143,7 @@
         <emissivity />
         <materials>
           <names>
-            <item></item>
+            <item>concrete</item>
           </names>
           <thermalConductivity>
             <item />
@@ -142,7 +151,7 @@
           <volumetricHeatCapacity>
             <item />
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.10]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
@@ -176,15 +185,18 @@
       <initialT>20</initialT>
     </building>
   </typology2>
-  <typology3 dist="0" name="">
-    <dist>0</dist>
+  <typology3 dist="25" name="test">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.1</albedo>
+        <emissivity>0.7</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>layer1</item>
+            <item>layer2</item>
+            <item>layer3</item>
+            <item>layer4</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -192,18 +204,20 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.07,0.09,0.14,0.02]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.05</albedo>
+        <emissivity>0.98</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>built-up_roofing</item>
+            <item>sheathing</item>
+            <item>insualtion</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -211,9 +225,9 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.01,0.16]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
@@ -222,7 +236,7 @@
         <emissivity />
         <materials>
           <names>
-            <item></item>
+            <item>concrete</item>
           </names>
           <thermalConductivity>
             <item />
@@ -230,7 +244,7 @@
           <volumetricHeatCapacity>
             <item />
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.10]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
@@ -264,15 +278,18 @@
       <initialT>20</initialT>
     </building>
   </typology3>
-  <typology4 dist="0" name="">
-    <dist>0</dist>
+  <typology4 dist="25" name="test">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.1</albedo>
+        <emissivity>0.7</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>layer1</item>
+            <item>layer2</item>
+            <item>layer3</item>
+            <item>layer4</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -280,18 +297,20 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.07,0.09,0.14,0.02]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
+        <albedo>0.05</albedo>
+        <emissivity>0.98</emissivity>
         <materials>
           <names>
-            <item></item>
+            <item>built-up_roofing</item>
+            <item>sheathing</item>
+            <item>insualtion</item>
           </names>
           <thermalConductivity>
             <item></item>
@@ -299,9 +318,9 @@
           <volumetricHeatCapacity>
             <item></item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.01,0.16]</thickness>
         </materials>
-        <vegetationCoverage></vegetationCoverage>
+        <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
@@ -310,7 +329,7 @@
         <emissivity />
         <materials>
           <names>
-            <item></item>
+            <item>concrete</item>
           </names>
           <thermalConductivity>
             <item />
@@ -318,7 +337,7 @@
           <volumetricHeatCapacity>
             <item />
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.10]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
@@ -353,11 +372,11 @@
     </building>
   </typology4>
   <urbanArea>
-    <averageBuildingHeight></averageBuildingHeight>
-    <siteCoverageRatio></siteCoverageRatio>
-    <facadeToSiteRatio></facadeToSiteRatio>
-    <treeCoverage></treeCoverage>
-    <nonBldgSensibleHeat></nonBldgSensibleHeat>
+    <averageBuildingHeight>41.16399</averageBuildingHeight>
+    <siteCoverageRatio>0.395993</siteCoverageRatio>
+    <facadeToSiteRatio>2.332322</facadeToSiteRatio>
+    <treeCoverage>0.225519</treeCoverage>
+    <nonBldgSensibleHeat>6.8</nonBldgSensibleHeat>
     <nonBldgLatentAnthropogenicHeat>0</nonBldgLatentAnthropogenicHeat>
     <charLength>1000</charLength>
     <treeLatent>0.7</treeLatent>
@@ -389,29 +408,29 @@
     </urbanRoad>
   </urbanArea>
   <referenceSite>
-    <latitude></latitude>
-    <longitude></longitude>
-    <averageObstacleHeight></averageObstacleHeight>
+    <latitude>42.3598</latitude>
+    <longitude>-71.063694</longitude>
+    <averageObstacleHeight>0.1</averageObstacleHeight>
     <ruralRoad>
-      <albedo />
-      <emissivity />
+      <albedo>0.165</albedo>
+      <emissivity>0.95</emissivity>
       <materials>
         <names>
-          <item />
+          <item>asphalt</item>
         </names>
         <thermalConductivity>
-          <item />
+          <item>1</item>
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item />
+          <item>1600000</item>
         </volumetricHeatCapacity>
-        <thickness />
+        <thickness>1.25</thickness>
       </materials>
-      <vegetationCoverage>0.5<inclination>1</inclination><initialTemperature>20</initialTemperature></vegetationCoverage>
+      <vegetationCoverage>0.5120120120120120120<inclination>1</inclination><initialTemperature>20</initialTemperature></vegetationCoverage>
     </ruralRoad>
     <parameter>
-      <tempHeight>2</tempHeight>
-      <windHeight>10</windHeight>
+      <tempHeight></tempHeight>
+      <windHeight></windHeight>
       <circCoeff>1.2</circCoeff>
       <dayThreshold>200</dayThreshold>
       <nightThreshold>50</nightThreshold>

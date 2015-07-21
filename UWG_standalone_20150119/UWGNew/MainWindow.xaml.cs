@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Xml;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Xml.XPath;
 //using Excel = Microsoft.Office.Interop.Excel;
 
 namespace UWG
@@ -100,6 +101,12 @@ namespace UWG
         private Boolean isTypTab2Visible = false;
         private Boolean isTypTab3Visible = false;
         private Boolean isTypTab4Visible = false;
+        private Boolean isSim1Visible = false;
+        private Boolean isSim2Visible = false;
+        private Boolean isSim3Visible = false;
+        private Boolean isSim4Visible = false;
+        private Boolean isSim5Visible = false;
+        private Boolean isSim6Visible = false;
 
         String[,] sim1Data = new String[24, 88];
         String[,] sim2Data = new String[24, 88];
@@ -115,6 +122,10 @@ namespace UWG
         String pathSim5 = "";
         String pathSim6 = "";
 
+        bool loadTyp1 = false;
+        bool loadTyp2 = false;
+        bool loadTyp3 = false;
+        bool loadTyp4 = false;
 
         public UWGInputs()
         {
@@ -142,8 +153,8 @@ namespace UWG
             p.simuStartDayValidate = "1";
             p.simuDurationValidate = "365";
             uwgRun.DataContext = p;
-            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
-
+            makeFileMenuItem.BorderBrush = new SolidColorBrush(Color.FromArgb(10, 0, 255, 180));
+            makeFileMenuItem.BorderThickness = new Thickness(0,0,0,3);
         }
         private void OnChange(object sender, EventArgs e)
         {
@@ -360,6 +371,18 @@ namespace UWG
                 roofLayer2Thickness.Content = "";
                 roofLayer3Material.Content = "";
                 roofLayer3Thickness.Content = "";
+                roofLayer1Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer1Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer1Material.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer1Material.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer2Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer2Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer2Material.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer2Material.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer3Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer3Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer3Material.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer3Material.Padding = new Thickness(0, 0, 0, 0);
                 roofboxi = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -497,7 +520,10 @@ namespace UWG
         }
         private void wallbox_change(object sender, RoutedEventArgs e)
         {
+            //check from here
+
             int ind = wallbox.SelectedIndex;
+            
             wallLayer1K.Content = "";
             wallLayer2K.Content = "";
             wallLayer3K.Content = "";
@@ -516,6 +542,10 @@ namespace UWG
                 wallLayer3Thickness.Content = "";
                 wallLayer4Material.Content = "";
                 wallLayer4Thickness.Content = "";
+                wallLayer1Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer2Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer3Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer4Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 wallboxi = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -679,6 +709,7 @@ namespace UWG
             {
                 massLayer1Material.Content = "";
                 massLayer1Thickness.Content = "";
+                massLayer1Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 massboxi = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -764,7 +795,11 @@ namespace UWG
             if (ind == 0)
             {
                 urbanRoadMaterial.Content = "asphalt";
+                urbanRoadMaterial.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                urbanRoadMaterial.Margin = new Thickness(4, 4, 4, 4);
+                urbanRoadMaterial.Padding = new Thickness(0, 0, 0, 0);
                 urbanRoadThickness.Content = "1.25";
+                urbanRoadVegFraction.Text = "0.5";
                 urbanRoadVHC.Content = "1600000";
                 urbanRoadK.Content = "1";
                 urbanRoadEmissivity.Content = "0.95";
@@ -854,11 +889,15 @@ namespace UWG
             if (ind == 0)
             {
                 ruralRoadMaterial.Content = "asphalt";
+                ruralRoadMaterial.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                ruralRoadMaterial.Margin = new Thickness(4, 4, 4, 4);
+                ruralRoadMaterial.Padding = new Thickness(0, 0, 0, 0); 
                 ruralRoadThickness.Content = "1.25";
                 ruralRoadVHC.Content = "1600000";
                 ruralRoadK.Content = "1";
                 ruralRoadEmissivity.Content = "0.95";
                 ruralRoadAlbedo.Content = "0.165";
+                ruralRoadVegFraction.Text = "0.5";
                 ruralboxi = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -1384,6 +1423,18 @@ namespace UWG
                 roofLayer2ThicknessTyp2.Content = "";
                 roofLayer3MaterialTyp2.Content = "";
                 roofLayer3ThicknessTyp2.Content = "";
+                roofLayer1MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer1MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer1MaterialTyp2.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer1MaterialTyp2.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer2MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer2MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left; 
+                roofLayer2MaterialTyp2.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer2MaterialTyp2.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer3MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer3MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left; 
+                roofLayer3MaterialTyp2.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer3MaterialTyp2.Padding = new Thickness(0, 0, 0, 0);
                 roofboxiTyp2 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -1540,6 +1591,10 @@ namespace UWG
                 wallLayer3ThicknessTyp2.Content = "";
                 wallLayer4MaterialTyp2.Content = "";
                 wallLayer4ThicknessTyp2.Content = "";
+                wallLayer1MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer2MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer3MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer4MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 wallboxiTyp2 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -1703,6 +1758,7 @@ namespace UWG
             {
                 massLayer1MaterialTyp2.Content = "";
                 massLayer1ThicknessTyp2.Content = "";
+                massLayer1MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 massboxiTyp2 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -2408,6 +2464,18 @@ namespace UWG
                 roofLayer2ThicknessTyp3.Content = "";
                 roofLayer3MaterialTyp3.Content = "";
                 roofLayer3ThicknessTyp3.Content = "";
+                roofLayer1MaterialTyp3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer1MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer1MaterialTyp3.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer1MaterialTyp3.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer2MaterialTyp3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer2MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer2MaterialTyp3.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer2MaterialTyp3.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer3MaterialTyp3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer3MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer3MaterialTyp3.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer3MaterialTyp3.Padding = new Thickness(0, 0, 0, 0); 
                 roofboxiTyp3 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -2564,6 +2632,10 @@ namespace UWG
                 wallLayer3ThicknessTyp3.Content = "";
                 wallLayer4MaterialTyp3.Content = "";
                 wallLayer4ThicknessTyp3.Content = "";
+                wallLayer1MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer2MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer3MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer4MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 wallboxiTyp3 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -2727,6 +2799,7 @@ namespace UWG
             {
                 massLayer1MaterialTyp3.Content = "";
                 massLayer1ThicknessTyp3.Content = "";
+                massLayer1MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 massboxiTyp3 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -3432,6 +3505,18 @@ namespace UWG
                 roofLayer2ThicknessTyp4.Content = "";
                 roofLayer3MaterialTyp4.Content = "";
                 roofLayer3ThicknessTyp4.Content = "";
+                roofLayer1MaterialTyp4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer1MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer1MaterialTyp4.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer1MaterialTyp4.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer2MaterialTyp4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer2MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer2MaterialTyp4.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer2MaterialTyp4.Padding = new Thickness(0, 0, 0, 0);
+                roofLayer3MaterialTyp4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                roofLayer3MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                roofLayer3MaterialTyp4.Margin = new Thickness(4, 4, 4, 4);
+                roofLayer3MaterialTyp4.Padding = new Thickness(0, 0, 0, 0);
                 roofboxiTyp4 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -3588,6 +3673,10 @@ namespace UWG
                 wallLayer3ThicknessTyp4.Content = "";
                 wallLayer4MaterialTyp4.Content = "";
                 wallLayer4ThicknessTyp4.Content = "";
+                wallLayer1MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer2MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer3MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                wallLayer4MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 wallboxiTyp4 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -3751,6 +3840,7 @@ namespace UWG
             {
                 massLayer1MaterialTyp4.Content = "";
                 massLayer1ThicknessTyp4.Content = "";
+                massLayer1MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 massboxiTyp4 = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -5051,8 +5141,11 @@ namespace UWG
             simTab4.Visibility = System.Windows.Visibility.Collapsed;
             simTab5.Visibility = System.Windows.Visibility.Collapsed;
             simTab6.Visibility = System.Windows.Visibility.Collapsed;
+            viewSimTab.Visibility = System.Windows.Visibility.Collapsed;
+            
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            runMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
+            runMenuItem.BorderBrush = new SolidColorBrush(Color.FromArgb(100, 0, 255, 180));
+            runMenuItem.BorderThickness = new Thickness(0, 0, 0, 20);
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
             //runMenuItem.Background = new SolidColorBrush(Colors.Black);
@@ -5065,33 +5158,27 @@ namespace UWG
         {
             if (pathSim1 != "")
             {
-                loadDataSim1(sender, e); 
-
+                loadDataSim1(sender, e);
             }
             if (pathSim2 != "")
             {
-                loadDataSim2(sender, e);  
-
+                loadDataSim2(sender, e);
             }
             if (pathSim3 != "")
             {
                 loadDataSim3(sender, e);
-
             }
             if (pathSim4 != "")
             {
-                loadDataSim4(sender, e);  
-
+                loadDataSim4(sender, e);
             }
             if (pathSim5 != "")
             {
                 loadDataSim5(sender, e);
-
             }
             if (pathSim6 != "")
             {
-                loadDataSim6(sender, e);   
-
+                loadDataSim6(sender, e);
             }
 
             //this.epwPathRun = System.IO.Path.GetDirectoryName(filenameRun);
@@ -5106,17 +5193,35 @@ namespace UWG
             runSimTab.Visibility = System.Windows.Visibility.Collapsed;
             viewSimTab.Visibility = System.Windows.Visibility.Visible;
             mainTabControl.SelectedItem = viewSimTab;
-            simTab1.Visibility = System.Windows.Visibility.Collapsed;
-            simTab2.Visibility = System.Windows.Visibility.Collapsed;
-            simTab3.Visibility = System.Windows.Visibility.Collapsed;
-            simTab4.Visibility = System.Windows.Visibility.Collapsed;
-            simTab5.Visibility = System.Windows.Visibility.Collapsed;
-            simTab6.Visibility = System.Windows.Visibility.Collapsed;
 
+            if (isSim1Visible) 
+            {
+                simTab1.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (isSim2Visible)
+            {
+                simTab2.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (isSim3Visible)
+            {
+                simTab3.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (isSim4Visible)
+            {
+                simTab4.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (isSim5Visible)
+            {
+                simTab5.Visibility = System.Windows.Visibility.Visible;
+            }
+            if (isSim6Visible)
+            {
+                simTab6.Visibility = System.Windows.Visibility.Visible;
+            }
             makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            simMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
-
+            simMenuItem.BorderBrush = new SolidColorBrush(Color.FromArgb(10, 0, 255, 180));
+            simMenuItem.BorderThickness = new Thickness(0, 0, 0, 3);
             //sim1DegDays.Content = "100";
 
 
@@ -5209,6 +5314,10 @@ namespace UWG
                     labelSim1.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim1.Margin = new Thickness(4, 4, 4, 4);
                     labelSim1.Padding = new Thickness(0, 0, 0, 0);
+
+                    simTab1.Visibility = System.Windows.Visibility.Visible;
+                    this.isSim1Visible = true;
+                    
                 }
 
             }
@@ -5303,6 +5412,8 @@ namespace UWG
                     labelSim2.Margin = new Thickness(4, 4, 4, 4);
                     labelSim2.Padding = new Thickness(0, 0, 0, 0);
 
+                    simTab2.Visibility = System.Windows.Visibility.Visible;
+                    this.isSim2Visible = true;
                 }
 
             }
@@ -5397,6 +5508,8 @@ namespace UWG
                     labelSim3.Margin = new Thickness(4, 4, 4, 4);
                     labelSim3.Padding = new Thickness(0, 0, 0, 0);
 
+                    simTab3.Visibility = System.Windows.Visibility.Visible;
+                    this.isSim3Visible = true;
                 }
 
             }
@@ -5491,6 +5604,8 @@ namespace UWG
                     labelSim4.Margin = new Thickness(4, 4, 4, 4);
                     labelSim4.Padding = new Thickness(0, 0, 0, 0);
 
+                    simTab4.Visibility = System.Windows.Visibility.Visible;
+                    this.isSim4Visible = true;
                 }
 
             }
@@ -5585,6 +5700,8 @@ namespace UWG
                     labelSim5.Margin = new Thickness(4, 4, 4, 4);
                     labelSim5.Padding = new Thickness(0, 0, 0, 0);
 
+                    simTab5.Visibility = System.Windows.Visibility.Visible;
+                    this.isSim5Visible = true;
                 }
 
             }
@@ -5679,6 +5796,8 @@ namespace UWG
                     labelSim6.Margin = new Thickness(4, 4, 4, 4);
                     labelSim6.Padding = new Thickness(0, 0, 0, 0);
 
+                    simTab6.Visibility = System.Windows.Visibility.Visible;
+                    this.isSim6Visible = true;
                 }
 
             }
@@ -5735,7 +5854,8 @@ namespace UWG
             simTab5.Visibility = System.Windows.Visibility.Collapsed;
             simTab6.Visibility = System.Windows.Visibility.Collapsed;
 
-            makeFileMenuItem.Background = new SolidColorBrush(Color.FromArgb(10, 255, 0, 180));
+            makeFileMenuItem.BorderBrush = new SolidColorBrush(Color.FromArgb(10, 0, 255, 180));
+            makeFileMenuItem.BorderThickness = new Thickness(0,0,0,3);
             runMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             simMenuItem.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
@@ -6088,70 +6208,70 @@ namespace UWG
                 doc.Root.Add(typ4XML_create());
 
                 doc.Root.Add(new XElement("urbanArea",
-                                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                                        new XElement("siteCoveragRatio", siteCoverageRatio.Text),
-                                                        new XElement("facadeToSiteRatio", facadeToSiteRatio.Text),
-                                                        new XElement("treeCoverage", treeCoverage.Text),
-                                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
-                                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
-                                                        new XElement("charLength", charLength.Text),
-                                                        new XElement("treeLatent", latentTrees.Text),
-                                                        new XElement("grassLatent", latentGrass.Text),
-                                                        new XElement("vegAlbedo", vegAlbedo.Text),
-                                                        new XElement("vegStart", vegStart.Text),
-                                                        new XElement("vegEnd", vegEnd.Text),
-                                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
-                                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                        new XElement("refHeight", refHeight.Text),
-                                                        new XElement("urbanRoad",
-                                                                    new XElement("albedo", urbanRoadAlbedo.Content),
-                                                                    new XElement("emissivity", urbanRoadEmissivity.Content),
-                                                                    new XElement("materials",
-                                                                        new XElement("names",
-                                                                            new XElement("item", urbanRoadMaterial.Content)),
-                                                                        new XElement("thermalConductivity",
-                                                                            new XElement("item", urbanRoadK.Content)),
-                                                                        new XElement("volumetricHeatCapacity",
-                                                                            new XElement("item", urbanRoadVHC.Content)),
-                                                                        new XElement("thickness", urbanRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", urbanRoadVegFraction.Text),
-                                                                    new XElement("inclination", 1),
-                                                                    new XElement("initialTemperature", 20))
-                                                    ),
-                                                    new XElement("referenceSite",
-                                                        new XElement("latitude", latitude.Text),
-                                                        new XElement("longitude", longitude.Text),
-                                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text),
-                                                        new XElement("ruralRoad",
-                                                                    new XElement("albedo", ruralRoadAlbedo.Content),
-                                                                    new XElement("emissivity", ruralRoadEmissivity.Content),
-                                                                    new XElement("materials",
-                                                                        new XElement("names",
-                                                                            new XElement("item", ruralRoadMaterial.Content)),
-                                                                        new XElement("thermalConductivity",
-                                                                            new XElement("item", ruralRoadK.Content)),
-                                                                        new XElement("volumetricHeatCapacity",
-                                                                            new XElement("item", ruralRoadVHC.Content)),
-                                                                        new XElement("thickness", ruralRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Text),
-                                                                    new XElement("inclination", 1),
-                                                                    new XElement("initialTemperature", 20))
-                                                    ),
-                                                    new XElement("parameter",
-                                                        new XElement("tempHeight", tempHeight.Text),
-                                                        new XElement("windHeight", windHeight.Text),
-                                                        new XElement("circCoeff", 1.2),
-                                                        new XElement("dayThreshold", 200),
-                                                        new XElement("nightThreshold", 50),
-                                                        new XElement("windMin", 0.1),
-                                                        new XElement("windMax", 10),
-                                                        new XElement("wgmax", 0.005),
-                                                        new XElement("exCoeff", 0.3),
-                                                        new XElement("simuStartMonth" , p.simuStartMonthValidate),
-                                                        new XElement("simuStartDay", p.simuStartDayValidate),
-                                                        new XElement("simuDuration", p.simuDurationValidate)
+                    new XElement("averageBuildingHeight", avgBldgHeight.Text),
+                    new XElement("siteCoverageRatio", siteCoverageRatio.Text),
+                    new XElement("facadeToSiteRatio", facadeToSiteRatio.Text),
+                    new XElement("treeCoverage", treeCoverage.Text),
+                    new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
+                    new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
+                    new XElement("charLength", charLength.Text),
+                    new XElement("treeLatent", latentTrees.Text),
+                    new XElement("grassLatent", latentGrass.Text),
+                    new XElement("vegAlbedo", vegAlbedo.Text),
+                    new XElement("vegStart", vegStart.Text),
+                    new XElement("vegEnd", vegEnd.Text),
+                    new XElement("daytimeBLHeight", daytimeBLHeight.Text),
+                    new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
+                    new XElement("refHeight", refHeight.Text),
+                    new XElement("urbanRoad",
+                        new XElement("albedo", urbanRoadAlbedo.Content),
+                        new XElement("emissivity", urbanRoadEmissivity.Content),
+                        new XElement("materials",
+                            new XElement("names",
+                                new XElement("item", urbanRoadMaterial.Content)),
+                            new XElement("thermalConductivity",
+                                new XElement("item", urbanRoadK.Content)),
+                            new XElement("volumetricHeatCapacity",
+                                new XElement("item", urbanRoadVHC.Content)),
+                            new XElement("thickness", urbanRoadThickness.Content)),
+                        new XElement("vegetationCoverage", urbanRoadVegFraction.Text),
+                        new XElement("inclination", 1),
+                        new XElement("initialTemperature", 20))
+                ),
+                new XElement("referenceSite",
+                    new XElement("latitude", latitude.Text),
+                    new XElement("longitude", longitude.Text),
+                    new XElement("averageObstacleHeight", avgObstacleHeight.Text),
+                    new XElement("ruralRoad",
+                        new XElement("albedo", ruralRoadAlbedo.Content),
+                        new XElement("emissivity", ruralRoadEmissivity.Content),
+                        new XElement("materials",
+                            new XElement("names",
+                                new XElement("item", ruralRoadMaterial.Content)),
+                            new XElement("thermalConductivity",
+                                new XElement("item", ruralRoadK.Content)),
+                            new XElement("volumetricHeatCapacity",
+                                new XElement("item", ruralRoadVHC.Content)),
+                            new XElement("thickness", ruralRoadThickness.Content)),
+                        new XElement("vegetationCoverage", ruralRoadVegFraction.Text),
+                        new XElement("inclination", 1),
+                        new XElement("initialTemperature", 20))
+                ),
+                new XElement("parameter",
+                    new XElement("tempHeight", tempHeight.Text),
+                    new XElement("windHeight", windHeight.Text),
+                    new XElement("circCoeff", 1.2),
+                    new XElement("dayThreshold", 200),
+                    new XElement("nightThreshold", 50),
+                    new XElement("windMin", 0.1),
+                    new XElement("windMax", 10),
+                    new XElement("wgmax", 0.005),
+                    new XElement("exCoeff", 0.3),
+                    new XElement("simuStartMonth" , p.simuStartMonthValidate),
+                    new XElement("simuStartDay", p.simuStartDayValidate),
+                    new XElement("simuDuration", p.simuDurationValidate)
                                 
-                                                    ));
+                ));
 
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
                 dlg.Title = DialogName;
@@ -7485,7 +7605,7 @@ namespace UWG
             provider.Refresh();
             this.xmlPath = System.IO.Path.GetDirectoryName(dialog.FileName);
             this.xmlFileName = System.IO.Path.GetFileName(dialog.FileName);
-            
+
             //parse xml to load existing xml
             XmlDocument parseXml = new XmlDocument();
             parseXml.Load(dialog.FileName);
@@ -7493,11 +7613,7 @@ namespace UWG
             int numOfTypsInXML = 0;
             IEnumerator xmlEnum = parseXml.GetElementsByTagName("xml_input")[0].GetEnumerator();
             XmlNode typNode;
-            int numThickPerTyp = 5;
-            bool loadTyp1 = false;
-            bool loadTyp2 = false;
-            bool loadTyp3 = false;
-            bool loadTyp4 = false;
+            int numThickPerTyp = 3;
             int startTyp2 = 0;
             int startTyp3 = 0;
             int startTyp4 = 0;
@@ -7522,6 +7638,48 @@ namespace UWG
                     endTyp2 += numThickPerTyp;
                     endTyp3 += numThickPerTyp;
                     endTyp4 += numThickPerTyp;
+
+                    //binding layer names
+                    XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeList)
+                    {
+                        wallLayer1Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList2 = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeList2)
+                    {
+                        wallLayer2Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList3 = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeList3)
+                    {
+                        wallLayer3Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList4 = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials/names/item[4]");
+                    foreach (XmlNode myNode in nodeList4)
+                    {
+                        wallLayer4Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof = parseXml.SelectNodes("/xml_input/typology1/construction/roof/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListRoof)
+                    {
+                        roofLayer1Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof2 = parseXml.SelectNodes("/xml_input/typology1/construction/roof/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeListRoof2)
+                    {
+                        roofLayer2Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof3 = parseXml.SelectNodes("/xml_input/typology1/construction/roof/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeListRoof3)
+                    {
+                        roofLayer3Material.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListMass = parseXml.SelectNodes("/xml_input/typology1/construction/mass/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListMass)
+                    {
+                        massLayer1Material.Content = myNode.InnerText;
+                    }
                 }
                 else if (typNode.Name == "typology2")
                 {
@@ -7535,6 +7693,47 @@ namespace UWG
                     endTyp3 += numThickPerTyp;
                     endTyp4 += numThickPerTyp;
 
+                    //binding layer names
+                    XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology2/construction/wall/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeList)
+                    {
+                        wallLayer1MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList2 = parseXml.SelectNodes("/xml_input/typology2/construction/wall/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeList2)
+                    {
+                        wallLayer2MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList3 = parseXml.SelectNodes("/xml_input/typology2/construction/wall/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeList3)
+                    {
+                        wallLayer3MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList4 = parseXml.SelectNodes("/xml_input/typology2/construction/wall/materials/names/item[4]");
+                    foreach (XmlNode myNode in nodeList4)
+                    {
+                        wallLayer4MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof = parseXml.SelectNodes("/xml_input/typology2/construction/roof/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListRoof)
+                    {
+                        roofLayer1MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof2 = parseXml.SelectNodes("/xml_input/typology2/construction/roof/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeListRoof2)
+                    {
+                        roofLayer2MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof3 = parseXml.SelectNodes("/xml_input/typology2/construction/roof/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeListRoof3)
+                    {
+                        roofLayer3MaterialTyp2.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListMass = parseXml.SelectNodes("/xml_input/typology2/construction/mass/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListMass)
+                    {
+                        massLayer1MaterialTyp2.Content = myNode.InnerText;
+                    }
                 }
                 else if (typNode.Name == "typology3")
                 {
@@ -7545,6 +7744,48 @@ namespace UWG
                     startTyp4 += numThickPerTyp;
 
                     endTyp4 += numThickPerTyp;
+
+                    //binding layer names
+                    XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology3/construction/wall/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeList)
+                    {
+                        wallLayer1MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList2 = parseXml.SelectNodes("/xml_input/typology3/construction/wall/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeList2)
+                    {
+                        wallLayer2MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList3 = parseXml.SelectNodes("/xml_input/typology3/construction/wall/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeList3)
+                    {
+                        wallLayer3MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList4 = parseXml.SelectNodes("/xml_input/typology3/construction/wall/materials/names/item[4]");
+                    foreach (XmlNode myNode in nodeList4)
+                    {
+                        wallLayer4MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof = parseXml.SelectNodes("/xml_input/typology3/construction/roof/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListRoof)
+                    {
+                        roofLayer1MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof2 = parseXml.SelectNodes("/xml_input/typology3/construction/roof/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeListRoof2)
+                    {
+                        roofLayer2MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof3 = parseXml.SelectNodes("/xml_input/typology3/construction/roof/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeListRoof3)
+                    {
+                        roofLayer3MaterialTyp3.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListMass = parseXml.SelectNodes("/xml_input/typology3/construction/mass/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListMass)
+                    {
+                        massLayer1MaterialTyp3.Content = myNode.InnerText;
+                    }
                 }
                 else if (typNode.Name == "typology4")
                 {
@@ -7552,11 +7793,50 @@ namespace UWG
                     typology4Dist.Text = typNode.Attributes["dist"].Value.ToString();
                     typology4Type.Text = typNode.Attributes["name"].Value.ToString();
                     numOfTypsInXML++;
+
+                    //binding layer names
+                    XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology4/construction/wall/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeList)
+                    {
+                        wallLayer1MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList2 = parseXml.SelectNodes("/xml_input/typology4/construction/wall/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeList2)
+                    {
+                        wallLayer2MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList3 = parseXml.SelectNodes("/xml_input/typology4/construction/wall/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeList3)
+                    {
+                        wallLayer3MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeList4 = parseXml.SelectNodes("/xml_input/typology4/construction/wall/materials/names/item[4]");
+                    foreach (XmlNode myNode in nodeList4)
+                    {
+                        wallLayer4MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof = parseXml.SelectNodes("/xml_input/typology4/construction/roof/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListRoof)
+                    {
+                        roofLayer1MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof2 = parseXml.SelectNodes("/xml_input/typology4/construction/roof/materials/names/item[2]");
+                    foreach (XmlNode myNode in nodeListRoof2)
+                    {
+                        roofLayer2MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListRoof3 = parseXml.SelectNodes("/xml_input/typology4/construction/roof/materials/names/item[3]");
+                    foreach (XmlNode myNode in nodeListRoof3)
+                    {
+                        roofLayer3MaterialTyp4.Content = myNode.InnerText;
+                    }
+                    XmlNodeList nodeListMass = parseXml.SelectNodes("/xml_input/typology4/construction/mass/materials/names/item[1]");
+                    foreach (XmlNode myNode in nodeListMass)
+                    {
+                        massLayer1MaterialTyp4.Content = myNode.InnerText;
+                    }
                 }
-
-
             }
-      
             XmlNodeList elemList = parseXml.GetElementsByTagName("thickness");
 
             if (loadTyp1 == true)
@@ -7588,18 +7868,6 @@ namespace UWG
                         {
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
-
-                        //// Urban Road
-                        //if (i == 3)
-                        //{
-                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        //// Rural
-                        //if (i == 4)
-                        //{
-                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        //System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7653,19 +7921,6 @@ namespace UWG
                 {
                     massLayer1Thickness.Content = mass[desiredIndexMass];
                 }
-                ////urbanRoad
-                //int desiredIndexUrban = 0;
-                //if (desiredIndexUrban < urbanRoad.Count)
-                //{
-                //    urbanRoadThickness.Content = urbanRoad[desiredIndexUrban];
-                //}
-                ////Rural
-                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                //int desiredIndexRural = 0;
-                //if (desiredIndexRural < ruralRoad.Count)
-                //{
-                //    ruralRoadThickness.Content = ruralRoad[desiredIndexRural];
-                //}
             }
 
             if (loadTyp2 == true)
@@ -7697,18 +7952,6 @@ namespace UWG
                         {
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
-
-                        //// Urban Road
-                        //if (i == startTyp2 + 3)
-                        //{
-                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        //// Rural
-                        //if (i == startTyp2 + 4)
-                        //{
-                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        ////System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7762,19 +8005,6 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp2.Content = mass[desiredIndexMass];
                 }
-                ////urbanRoad
-                //int desiredIndexUrban = 0;
-                //if (desiredIndexUrban < urbanRoad.Count)
-                //{
-                //    urbanRoadThicknessTyp2.Content = urbanRoad[desiredIndexUrban];
-                //}
-                ////Rural
-                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                //int desiredIndexRural = 0;
-                //if (desiredIndexRural < ruralRoad.Count)
-                //{
-                //    ruralRoadThicknessTyp2.Content = ruralRoad[desiredIndexRural];
-                //}
             }
 
             if (loadTyp3 == true)
@@ -7806,18 +8036,6 @@ namespace UWG
                         {
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
-
-                        //// Urban Road
-                        //if (i == startTyp3 + 3)
-                        //{
-                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        //// Rural
-                        //if (i == startTyp3 + 4)
-                        //{
-                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        ////System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7871,19 +8089,6 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp3.Content = mass[desiredIndexMass];
                 }
-                ////urbanRoad
-                //int desiredIndexUrban = 0;
-                //if (desiredIndexUrban < urbanRoad.Count)
-                //{
-                //    urbanRoadThicknessTyp3.Content = urbanRoad[desiredIndexUrban];
-                //}
-                ////Rural
-                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                //int desiredIndexRural = 0;
-                //if (desiredIndexRural < ruralRoad.Count)
-                //{
-                //    ruralRoadThicknessTyp3.Content = ruralRoad[desiredIndexRural];
-                //}
             }
 
             if (loadTyp4 == true)
@@ -7915,18 +8120,6 @@ namespace UWG
                         {
                             mass.Add(value.Trim(new Char[] { '[', ']' }));
                         }
-
-                        //// Urban Road
-                        //if (i == startTyp4 + 3)
-                        //{
-                        //    urbanRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        //// Rural
-                        //if (i == startTyp4 + 4)
-                        //{
-                        //    ruralRoad.Add(value.Trim(new Char[] { '[', ']' }));
-                        //}
-                        ////System.Diagnostics.Debug.WriteLine(value.Trim(new Char[] { '[', ']' }));
                     }
                 }
                 //wall
@@ -7980,19 +8173,6 @@ namespace UWG
                 {
                     massLayer1ThicknessTyp4.Content = mass[desiredIndexMass];
                 }
-                ////urbanRoad
-                //int desiredIndexUrban = 0;
-                //if (desiredIndexUrban < urbanRoad.Count)
-                //{
-                //    urbanRoadThicknessTyp4.Content = urbanRoad[desiredIndexUrban];
-                //}
-                ////Rural
-                //System.Diagnostics.Debug.WriteLine(ruralRoad[0]);
-                //int desiredIndexRural = 0;
-                //if (desiredIndexRural < ruralRoad.Count)
-                //{
-                //    ruralRoadThicknessTyp4.Content = ruralRoad[desiredIndexRural];
-                //}
             }
         }
 
@@ -8077,7 +8257,7 @@ namespace UWG
             int numOfTypsInXML = 0;
             IEnumerator xmlEnum = parseXml.GetElementsByTagName("xml_input")[0].GetEnumerator();
             XmlNode typNode;
-            int numThickPerTyp = 5;
+            int numThickPerTyp = 4;
             bool loadTyp1 = false;
             bool loadTyp2 = false;
             bool loadTyp3 = false;
@@ -8141,6 +8321,7 @@ namespace UWG
             }
 
             XmlNodeList elemList = parseXml.GetElementsByTagName("thickness");
+            
 
             if (loadTyp1 == true)
             {
@@ -8806,11 +8987,12 @@ namespace UWG
             {
                 // Open document
                 filenameRun = dlg.FileName;
-                epwFileEmpty.Text = filenameRun;
+                //epwFileEmpty.Text = filenameRun;
                 //Get directory path only
                 this.epwPathRun = System.IO.Path.GetDirectoryName(filenameRun);
                 //Get only the file name
                 this.epwFileNameRun = System.IO.Path.GetFileName(filenameRun);
+                epwFileEmpty.Text = epwFileNameRun;
                 check();
             };
         }
@@ -8866,7 +9048,7 @@ namespace UWG
             {
                 // Open document
                 filename_xmlUWGRun = dlg.FileName;
-                xmlFileEmpty.Text = filename_xmlUWG;
+                //xmlFileEmpty.Text = filename_xmlUWG;
                 //Get directory path only
                 this.xmlUWGPathRun = System.IO.Path.GetDirectoryName(filename_xmlUWGRun);
                 //Get only the file name
