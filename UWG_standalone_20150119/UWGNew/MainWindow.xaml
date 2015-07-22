@@ -37,9 +37,11 @@
         </Style>
         <Style x:Key="templateValues" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="gray" />
-            <Setter Property="Width" Value="120" />
+            <Setter Property="Width" Value="260" />
             <Setter Property="Height" Value="26" />
             <Setter Property="Margin" Value="4" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
         <!--Heading-->
         <Style  x:Key="heading" TargetType="Label">
@@ -620,9 +622,9 @@
                                     <Label IsEnabled="False" x:Name="roofLayer1Thickness" Grid.Column="2" Grid.Row="0" Style="{StaticResource templateValues}"/>
                                     <Label IsEnabled="False" x:Name="roofLayer2Thickness" Grid.Column="2" Grid.Row="1" Style="{StaticResource templateValues}"/>
                                     <Label IsEnabled="False" x:Name="roofLayer3Thickness" Grid.Column="2" Grid.Row="2" Style="{StaticResource templateValues}"/>
-                                    <Label x:Name="roofLayer1K" Grid.Column="3" Grid.Row="0" Content="{Binding XPath=typology1/construction/roof/materials/thermalConductivity/item[1]}" Style="{StaticResource templateValues}"/>
-                                    <Label x:Name="roofLayer2K" Grid.Column="3" Grid.Row="1" Content="{Binding XPath=typology1/construction/roof/materials/thermalConductivity/item[2]}" Style="{StaticResource templateValues}"/>
-                                    <Label x:Name="roofLayer3K" Grid.Column="3" Grid.Row="2" Content="{Binding XPath=typology1/construction/roof/materials/thermalConductivity/item[3]}" Style="{StaticResource templateValues}"/>
+                                    <Label x:Name="roofLayer1K" Grid.Column="4" Grid.Row="0" Content="{Binding XPath=typology1/construction/roof/materials/thermalConductivity/item[1]}" Style="{StaticResource templateValues}"/>
+                                    <Label x:Name="roofLayer2K" Grid.Column="4" Grid.Row="1" Content="{Binding XPath=typology1/construction/roof/materials/thermalConductivity/item[2]}" Style="{StaticResource templateValues}"/>
+                                    <Label x:Name="roofLayer3K" Grid.Column="4" Grid.Row="2" Content="{Binding XPath=typology1/construction/roof/materials/thermalConductivity/item[3]}" Style="{StaticResource templateValues}"/>
                                     <Label x:Name="roofLayer1VHC" Grid.Column="4" Grid.Row="0" Content="{Binding XPath=typology1/construction/roof/materials/volumetricHeatCapacity/item[1]}" Style="{StaticResource templateValues}"/>
                                     <Label x:Name="roofLayer2VHC" Grid.Column="4" Grid.Row="1" Content="{Binding XPath=typology1/construction/roof/materials/volumetricHeatCapacity/item[2]}" Style="{StaticResource templateValues}"/>
                                     <Label x:Name="roofLayer3VHC" Grid.Column="4" Grid.Row="2" Content="{Binding XPath=typology1/construction/roof/materials/volumetricHeatCapacity/item[3]}" Style="{StaticResource templateValues}"/>

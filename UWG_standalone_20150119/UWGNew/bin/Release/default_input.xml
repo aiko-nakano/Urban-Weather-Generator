@@ -55,21 +55,20 @@
         </volumetricHeatCapacity>
         <thickness />
       </materials>
-      <vegetationCoverage>
-        <inclination>1</inclination>
-        <initialTemperature>20</initialTemperature>
-      </vegetationCoverage>
+      <vegetationCoverage></vegetationCoverage>
+      <inclination>1</inclination>
+      <initialTemperature>20</initialTemperature>
     </ruralRoad>
-    <parameter>
-      <tempHeight></tempHeight>
-      <windHeight></windHeight>
-      <circCoeff>1.2</circCoeff>
-      <dayThreshold>200</dayThreshold>
-      <nightThreshold>50</nightThreshold>
-      <windMin>0.1</windMin>
-      <windMax>10</windMax>
-      <wgmax>0.05</wgmax>
-      <exCoeff>0.3</exCoeff>
-    </parameter>
   </referenceSite>
+  <parameter>
+    <tempHeight></tempHeight>
+    <windHeight></windHeight>
+    <circCoeff>1.2</circCoeff>
+    <dayThreshold>200</dayThreshold>
+    <nightThreshold>50</nightThreshold>
+    <windMin>0.1</windMin>
+    <windMax>10</windMax>
+    <wgmax>0.05</wgmax>
+    <exCoeff>0.3</exCoeff>
+  </parameter>
 </xml_input>

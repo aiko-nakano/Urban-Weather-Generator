@@ -446,7 +446,7 @@ namespace UWG
                     roofLayer1Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach(XmlNode ma in mat)
                     {
-                        if(ma.SelectSingleNode("Name").InnerText==roofLayer1Material.Content)
+                        if(ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content.ToString())
                         {
                             roofLayer1K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer1VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -461,7 +461,7 @@ namespace UWG
                     roofLayer2Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content.ToString())
                         {
                             roofLayer2K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer2VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -474,7 +474,7 @@ namespace UWG
                     roofLayer3Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content.ToString())
                         {
                             roofLayer3K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer3VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -520,10 +520,7 @@ namespace UWG
         }
         private void wallbox_change(object sender, RoutedEventArgs e)
         {
-            //check from here
-
             int ind = wallbox.SelectedIndex;
-            
             wallLayer1K.Content = "";
             wallLayer2K.Content = "";
             wallLayer3K.Content = "";
@@ -609,7 +606,7 @@ namespace UWG
                     wallLayer1Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content.ToString())
                         {
                             wallLayer1K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer1VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -624,7 +621,7 @@ namespace UWG
                     wallLayer2Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content.ToString())
                         {
                             wallLayer2K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer2VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -637,7 +634,7 @@ namespace UWG
                     wallLayer3Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content.ToString())
                         {
                             wallLayer3K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer3VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -650,7 +647,7 @@ namespace UWG
                     wallLayer4Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content.ToString())
                         {
                             wallLayer4K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer4VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -768,7 +765,7 @@ namespace UWG
             massLayer1Thickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
-                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content.ToString())
                 {
                     massLayer1K.Content = ma.SelectSingleNode("Conductivity").InnerText;
                     massLayer1VHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -795,9 +792,6 @@ namespace UWG
             if (ind == 0)
             {
                 urbanRoadMaterial.Content = "asphalt";
-                urbanRoadMaterial.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                urbanRoadMaterial.Margin = new Thickness(4, 4, 4, 4);
-                urbanRoadMaterial.Padding = new Thickness(0, 0, 0, 0);
                 urbanRoadThickness.Content = "1.25";
                 urbanRoadVegFraction.Text = "0.5";
                 urbanRoadVHC.Content = "1600000";
@@ -862,7 +856,7 @@ namespace UWG
             urbanRoadThickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
-                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content)
+                if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content.ToString())
                 {
                     urbanRoadK.Content = ma.SelectSingleNode("Conductivity").InnerText;
                     urbanRoadVHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -889,9 +883,6 @@ namespace UWG
             if (ind == 0)
             {
                 ruralRoadMaterial.Content = "asphalt";
-                ruralRoadMaterial.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                ruralRoadMaterial.Margin = new Thickness(4, 4, 4, 4);
-                ruralRoadMaterial.Padding = new Thickness(0, 0, 0, 0); 
                 ruralRoadThickness.Content = "1.25";
                 ruralRoadVHC.Content = "1600000";
                 ruralRoadK.Content = "1";
@@ -956,7 +947,7 @@ namespace UWG
             ruralRoadThickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
-                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content)
+                if (ma.SelectSingleNode("Name").InnerText == ruralRoadMaterial.Content.ToString())
                 {
                     ruralRoadK.Content = ma.SelectSingleNode("Conductivity").InnerText;
                     ruralRoadVHC.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1428,11 +1419,11 @@ namespace UWG
                 roofLayer1MaterialTyp2.Margin = new Thickness(4, 4, 4, 4);
                 roofLayer1MaterialTyp2.Padding = new Thickness(0, 0, 0, 0);
                 roofLayer2MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                roofLayer2MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left; 
+                roofLayer2MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 roofLayer2MaterialTyp2.Margin = new Thickness(4, 4, 4, 4);
                 roofLayer2MaterialTyp2.Padding = new Thickness(0, 0, 0, 0);
                 roofLayer3MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                roofLayer3MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left; 
+                roofLayer3MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 roofLayer3MaterialTyp2.Margin = new Thickness(4, 4, 4, 4);
                 roofLayer3MaterialTyp2.Padding = new Thickness(0, 0, 0, 0);
                 roofboxiTyp2 = 0;
@@ -1498,7 +1489,7 @@ namespace UWG
                     roofLayer1ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1MaterialTyp2.Content.ToString())
                         {
                             roofLayer1KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer1VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1513,7 +1504,7 @@ namespace UWG
                     roofLayer2ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2MaterialTyp2.Content.ToString())
                         {
                             roofLayer2KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer2VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1526,7 +1517,7 @@ namespace UWG
                     roofLayer3ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3MaterialTyp2.Content.ToString())
                         {
                             roofLayer3KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer3VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1658,7 +1649,7 @@ namespace UWG
                     wallLayer1ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1MaterialTyp2.Content.ToString())
                         {
                             wallLayer1KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer1VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1673,7 +1664,7 @@ namespace UWG
                     wallLayer2ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2MaterialTyp2.Content.ToString())
                         {
                             wallLayer2KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer2VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1686,7 +1677,7 @@ namespace UWG
                     wallLayer3ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3MaterialTyp2.Content.ToString())
                         {
                             wallLayer3KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer3VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1699,7 +1690,7 @@ namespace UWG
                     wallLayer4ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4MaterialTyp2.Content.ToString())
                         {
                             wallLayer4KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer4VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -1817,7 +1808,7 @@ namespace UWG
             massLayer1ThicknessTyp2.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
-                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1MaterialTyp2.Content.ToString())
                 {
                     massLayer1KTyp2.Content = ma.SelectSingleNode("Conductivity").InnerText;
                     massLayer1VHCTyp2.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2539,7 +2530,7 @@ namespace UWG
                     roofLayer1ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1MaterialTyp3.Content.ToString())
                         {
                             roofLayer1KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer1VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2554,7 +2545,7 @@ namespace UWG
                     roofLayer2ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2MaterialTyp3.Content.ToString())
                         {
                             roofLayer2KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer2VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2567,7 +2558,7 @@ namespace UWG
                     roofLayer3ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3MaterialTyp3.Content.ToString())
                         {
                             roofLayer3KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer3VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2699,7 +2690,7 @@ namespace UWG
                     wallLayer1ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1MaterialTyp3.Content.ToString())
                         {
                             wallLayer1KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer1VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2714,7 +2705,7 @@ namespace UWG
                     wallLayer2ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2MaterialTyp3.Content.ToString())
                         {
                             wallLayer2KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer2VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2727,7 +2718,7 @@ namespace UWG
                     wallLayer3ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3MaterialTyp3.Content.ToString())
                         {
                             wallLayer3KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer3VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2740,7 +2731,7 @@ namespace UWG
                     wallLayer4ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4MaterialTyp3.Content.ToString())
                         {
                             wallLayer4KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer4VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -2858,7 +2849,7 @@ namespace UWG
             massLayer1ThicknessTyp3.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
-                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1MaterialTyp3.Content.ToString())
                 {
                     massLayer1KTyp3.Content = ma.SelectSingleNode("Conductivity").InnerText;
                     massLayer1VHCTyp3.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3580,7 +3571,7 @@ namespace UWG
                     roofLayer1ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer1MaterialTyp4.Content.ToString())
                         {
                             roofLayer1KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer1VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3595,7 +3586,7 @@ namespace UWG
                     roofLayer2ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer2MaterialTyp4.Content.ToString())
                         {
                             roofLayer2KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer2VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3608,7 +3599,7 @@ namespace UWG
                     roofLayer3ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == roofLayer3MaterialTyp4.Content.ToString())
                         {
                             roofLayer3KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             roofLayer3VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3740,7 +3731,7 @@ namespace UWG
                     wallLayer1ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer1MaterialTyp4.Content.ToString())
                         {
                             wallLayer1KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer1VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3755,7 +3746,7 @@ namespace UWG
                     wallLayer2ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer2MaterialTyp4.Content.ToString())
                         {
                             wallLayer2KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer2VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3768,7 +3759,7 @@ namespace UWG
                     wallLayer3ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer3MaterialTyp4.Content.ToString())
                         {
                             wallLayer3KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer3VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3781,7 +3772,7 @@ namespace UWG
                     wallLayer4ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
                     foreach (XmlNode ma in mat)
                     {
-                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4Material.Content)
+                        if (ma.SelectSingleNode("Name").InnerText == wallLayer4MaterialTyp4.Content.ToString())
                         {
                             wallLayer4KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                             wallLayer4VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -3899,7 +3890,7 @@ namespace UWG
             massLayer1ThicknessTyp4.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
-                if (ma.SelectSingleNode("Name").InnerText == massLayer1Material.Content)
+                if (ma.SelectSingleNode("Name").InnerText == massLayer1MaterialTyp4.Content.ToString())
                 {
                     massLayer1KTyp4.Content = ma.SelectSingleNode("Conductivity").InnerText;
                     massLayer1VHCTyp4.Content = ma.SelectSingleNode("VHC").InnerText;
@@ -6099,7 +6090,7 @@ namespace UWG
                                                                         new XElement("volumetricHeatCapacity",
                                                                             new XElement("item", ruralRoadVHC.Content)),
                                                                         new XElement("thickness", ruralRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Text,
+                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Text),
                                                                     new XElement("inclination", 1),
                                                                     new XElement("initialTemperature", 20))
                                                                 ),
@@ -6114,7 +6105,6 @@ namespace UWG
                                                                 new XElement("wgmax", 0.05),
                                                                 new XElement("exCoeff", 0.3)
                                                             )
-                                                        )
                                                     );
 
 
@@ -6258,8 +6248,8 @@ namespace UWG
                         new XElement("initialTemperature", 20))
                 ),
                 new XElement("parameter",
-                    new XElement("tempHeight", tempHeight.Text),
-                    new XElement("windHeight", windHeight.Text),
+                    new XElement("tempHeight", 2),
+                    new XElement("windHeight", 10),
                     new XElement("circCoeff", 1.2),
                     new XElement("dayThreshold", 200),
                     new XElement("nightThreshold", 50),
@@ -7679,7 +7669,20 @@ namespace UWG
                     foreach (XmlNode myNode in nodeListMass)
                     {
                         massLayer1Material.Content = myNode.InnerText;
-                    }
+                    } 
+                    roofLayer1Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer1Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer1Material.Margin = new Thickness(4, 12, 4, 4);
+                    roofLayer1Material.Padding = new Thickness(4, 0, 0, 0);
+                    roofLayer2Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer2Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer2Material.Margin = new Thickness(4, 4, 4, 4);
+                    roofLayer2Material.Padding = new Thickness(4, 0, 0, 0);
+                    roofLayer3Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer3Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer3Material.Margin = new Thickness(4, 4, 4, 4);
+                    roofLayer3Material.Padding = new Thickness(4, 0, 0, 0);
+
                 }
                 else if (typNode.Name == "typology2")
                 {
@@ -9249,5 +9252,6 @@ namespace UWG
             simuStartDay.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
             simuDuration.GetBindingExpression(System.Windows.Controls.TextBox.TextProperty).UpdateSource();
         }
+
     }
 }
