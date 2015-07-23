@@ -19,7 +19,7 @@
     <urbanRoad>
       <albedo />
       <emissivity />
-      <materials name="">
+      <materials>
         <names>
           <item />
         </names>
@@ -43,7 +43,7 @@
     <ruralRoad>
       <albedo />
       <emissivity />
-      <materials name="">
+      <materials>
         <names>
           <item />
         </names>
@@ -70,5 +70,8 @@
     <windMax>10</windMax>
     <wgmax>0.05</wgmax>
     <exCoeff>0.3</exCoeff>
+    <simuStartMonth></simuStartMonth>
+    <simuStartDay></simuStartDay>
+    <simuDuration></simuDuration>
   </parameter>
 </xml_input>

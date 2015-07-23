@@ -188,8 +188,7 @@ namespace UWG
                 feed.rf4 = resultName4.Text + ".epw";
                 feed.rf5 = resultName5.Text + ".epw";
                 feed.Show();
-                feed.starten();
-                //feed.startrun();
+                feed.startrun();
                 if(numberOfSimulation > 1)
                 {
                     System.IO.File.Delete(System.IO.Path.Combine(feed.ep, feed.ef1));

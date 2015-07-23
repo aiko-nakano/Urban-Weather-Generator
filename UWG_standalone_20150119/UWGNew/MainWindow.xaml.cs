@@ -6045,69 +6045,72 @@ namespace UWG
                         doc.Root.Add(typ4XML_create());
 
                         doc.Root.Add(new XElement("urbanArea",
-                                                                new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                                                new XElement("siteCoverageRatio", siteCoverageRatio.Text),
-                                                                new XElement("facadeToSiteRatio", facadeToSiteRatio.Text),
-                                                                new XElement("treeCoverage", treeCoverage.Text),
-                                                                new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
-                                                                new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
-                                                                new XElement("charLength", charLength.Text),
-                                                                new XElement("treeLatent", latentTrees.Text),
-                                                                new XElement("grassLatent", latentGrass.Text),
-                                                                new XElement("vegAlbedo", vegAlbedo.Text),
-                                                                new XElement("vegStart", vegStart.Text),
-                                                                new XElement("vegEnd", vegEnd.Text),
-                                                                new XElement("daytimeBLHeight", daytimeBLHeight.Text),
-                                                                new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
-                                                                new XElement("refHeight", refHeight.Text),
-                                                                new XElement("urbanRoad",
-                                                                    new XElement("albedo", urbanRoadAlbedo.Content),
-                                                                    new XElement("emissivity", urbanRoadEmissivity.Content),
-                                                                    new XElement("materials",
-                                                                        new XAttribute("name", urbanRoadbox.Text),
-                                                                        new XElement("names",
-                                                                            new XElement("item", urbanRoadMaterial.Content)),
-                                                                        new XElement("thermalConductivity",
-                                                                            new XElement("item", urbanRoadK.Content)),
-                                                                        new XElement("volumetricHeatCapacity",
-                                                                            new XElement("item", urbanRoadVHC.Content)),
-                                                                        new XElement("thickness", urbanRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", urbanRoadVegFraction.Text),
-                                                                    new XElement("inclination", 1),
-                                                                    new XElement("initialTemperature", 20))
-                                                            ),
-                                                            new XElement("referenceSite",
-                                                                new XElement("latitude", latitude.Text),
-                                                                new XElement("longitude", longitude.Text),
-                                                                new XElement("averageObstacleHeight", avgObstacleHeight.Text),
-                                                                new XElement("ruralRoad",
-                                                                    new XElement("albedo", ruralRoadAlbedo.Content),
-                                                                    new XElement("emissivity", ruralRoadEmissivity.Content),
-                                                                    new XElement("materials",
-                                                                        new XAttribute("name", ruralbox.Text),
-                                                                        new XElement("names",
-                                                                            new XElement("item", ruralRoadMaterial.Content)),
-                                                                        new XElement("thermalConductivity",
-                                                                            new XElement("item", ruralRoadK.Content)),
-                                                                        new XElement("volumetricHeatCapacity",
-                                                                            new XElement("item", ruralRoadVHC.Content)),
-                                                                        new XElement("thickness", ruralRoadThickness.Content)),
-                                                                    new XElement("vegetationCoverage", ruralRoadVegFraction.Text),
-                                                                    new XElement("inclination", 1),
-                                                                    new XElement("initialTemperature", 20))
-                                                                ),
-                                                            new XElement("parameter",
-                                                                new XElement("tempHeight", tempHeight.Text),
-                                                                new XElement("windHeight", windHeight.Text),
-                                                                new XElement("circCoeff", 1.2),
-                                                                new XElement("dayThreshold", 200),
-                                                                new XElement("nightThreshold", 50),
-                                                                new XElement("windMin", 0.1),
-                                                                new XElement("windMax", 10),
-                                                                new XElement("wgmax", 0.05),
-                                                                new XElement("exCoeff", 0.3)
-                                                            )
-                                                    );
+                                        new XElement("averageBuildingHeight", avgBldgHeight.Text),
+                                        new XElement("siteCoverageRatio", siteCoverageRatio.Text),
+                                        new XElement("facadeToSiteRatio", facadeToSiteRatio.Text),
+                                        new XElement("treeCoverage", treeCoverage.Text),
+                                        new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
+                                        new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
+                                        new XElement("charLength", charLength.Text),
+                                        new XElement("treeLatent", latentTrees.Text),
+                                        new XElement("grassLatent", latentGrass.Text),
+                                        new XElement("vegAlbedo", vegAlbedo.Text),
+                                        new XElement("vegStart", vegStart.Text),
+                                        new XElement("vegEnd", vegEnd.Text),
+                                        new XElement("daytimeBLHeight", daytimeBLHeight.Text),
+                                        new XElement("nighttimeBLHeight", nighttimeBLHeight.Text),
+                                        new XElement("refHeight", refHeight.Text),
+                                        new XElement("urbanRoad",
+                                            new XElement("albedo", urbanRoadAlbedo.Content),
+                                            new XElement("emissivity", urbanRoadEmissivity.Content),
+                                            new XElement("materials",
+                                                //new XAttribute("name", urbanRoadbox.SelectedItem),
+                                                new XElement("names",
+                                                    new XElement("item", urbanRoadMaterial.Content)),
+                                                new XElement("thermalConductivity",
+                                                    new XElement("item", urbanRoadK.Content)),
+                                                new XElement("volumetricHeatCapacity",
+                                                    new XElement("item", urbanRoadVHC.Content)),
+                                                new XElement("thickness", urbanRoadThickness.Content)),
+                                            new XElement("vegetationCoverage", urbanRoadVegFraction.Text),
+                                            new XElement("inclination", 1),
+                                            new XElement("initialTemperature", 20))
+                                    ),
+                                    new XElement("referenceSite",
+                                        new XElement("latitude", latitude.Text),
+                                        new XElement("longitude", longitude.Text),
+                                        new XElement("averageObstacleHeight", avgObstacleHeight.Text),
+                                        new XElement("ruralRoad",
+                                            new XElement("albedo", ruralRoadAlbedo.Content),
+                                            new XElement("emissivity", ruralRoadEmissivity.Content),
+                                            new XElement("materials",
+                                                //new XAttribute("name", ruralbox.SelectedItem),
+                                                new XElement("names",
+                                                    new XElement("item", ruralRoadMaterial.Content)),
+                                                new XElement("thermalConductivity",
+                                                    new XElement("item", ruralRoadK.Content)),
+                                                new XElement("volumetricHeatCapacity",
+                                                    new XElement("item", ruralRoadVHC.Content)),
+                                                new XElement("thickness", ruralRoadThickness.Content)),
+                                            new XElement("vegetationCoverage", ruralRoadVegFraction.Text),
+                                            new XElement("inclination", 1),
+                                            new XElement("initialTemperature", 20))
+                                        ),
+                                        new XElement("parameter",
+                                            new XElement("tempHeight", tempHeight.Text),
+                                            new XElement("windHeight", windHeight.Text),
+                                            new XElement("circCoeff", 1.2),
+                                            new XElement("dayThreshold", 200),
+                                            new XElement("nightThreshold", 50),
+                                            new XElement("windMin", 0.1),
+                                            new XElement("windMax", 10),
+                                            new XElement("wgmax", 0.05),
+                                            new XElement("exCoeff", 0.3),
+                                            new XElement("simuStartMonth", simuStartMonth.Text),
+                                            new XElement("simuStartDay", simuStartDay.Text),
+                                            new XElement("simuDuration", simuDuration.Text)
+                                        )
+                                );
 
 
                         this.xmlFilePath = this.xmlPath + "\\" + this.xmlFileName;
@@ -7591,8 +7594,6 @@ namespace UWG
         private String epwFileName = "";
         private String filename = "";
 
-
-
         private String xmlUWGPath = "1";
         private String xmlUWGFileName = "";
         private String filename_xmlUWG = "";
@@ -7637,9 +7638,25 @@ namespace UWG
             while (xmlEnum.MoveNext())
             {
                 typNode = (XmlNode)xmlEnum.Current;
+                
                 if (typNode.Name == "typology1")
                 {
                     loadTyp1 = true;
+                    //binding road info
+                    /*
+                     * urbanRoadbox.Text = typNode.Attributes["name"].Value.ToString();
+                    ruralbox.Text = typNode.Attributes["name"].Value.ToString();
+                    XmlNodeList nodeListurban = parseXml.SelectNodes("/xml_input/urbanArea/urbanRoad/materials");
+                    foreach (XmlNode myNode in nodeListurban)
+                    {
+                        urbanRoadbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListrural = parseXml.SelectNodes("/xml_input/referenceSite/ruralRoad/materials");
+                    foreach (XmlNode myNode in nodeListrural)
+                    {
+                        ruralbox.SelectedItem = myNode.Attributes["name"].Value;
+                    } 
+                    */
                     typology1Dist.Text = typNode.Attributes["dist"].Value.ToString();
                     typology1Type.Text = typNode.Attributes["name"].Value.ToString();
                     wallbox.Text = typNode.Attributes["name"].Value.ToString();
@@ -7662,8 +7679,7 @@ namespace UWG
                     heatboxTyp2.Text = typNode.Attributes["name"].Value.ToString();
                     heatboxTyp3.Text = typNode.Attributes["name"].Value.ToString();
                     heatboxTyp4.Text = typNode.Attributes["name"].Value.ToString();
-                    urbanRoadbox.Text = typNode.Attributes["name"].Value.ToString();
-                    ruralbox.Text = typNode.Attributes["name"].Value.ToString();
+                    
                     
                     numOfTypsInXML++;
                     startTyp2 += numThickPerTyp;
@@ -7675,17 +7691,6 @@ namespace UWG
                     endTyp4 += numThickPerTyp;
 
                     //make sure the combo box is loaded
-                    XmlNodeList nodeListurban = parseXml.SelectNodes("/xml_input/urbanArea/urbanRoad/materials");
-                    foreach (XmlNode myNode in nodeListurban)
-                    {
-                        urbanRoadbox.SelectedItem = myNode.Attributes["name"].Value;
-                    }
-                    XmlNodeList nodeListrural = parseXml.SelectNodes("/xml_input/referenceSite/ruralRoad/materials");
-                    foreach (XmlNode myNode in nodeListrural)
-                    {
-                        ruralbox.SelectedItem = myNode.Attributes["name"].Value;
-                    }
-                    
                     XmlNodeList nodeListwall1 = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials");
                     foreach (XmlNode myNode in nodeListwall1)
                     {

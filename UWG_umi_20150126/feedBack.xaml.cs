@@ -62,7 +62,18 @@ namespace UWG
         public String rf5;
         public int runNum;
         public Process UWGs;
+        public Process UWGs1;
+        public Process UWGs2;
+        public Process UWGs3;
+        public Process UWGs4;
+        public Process UWGs5;
         public int UWGst = 0;
+        public int UWGst1 = 0;
+        public int UWGst2 = 0;
+        public int UWGst3 = 0;
+        public int UWGst4 = 0;
+        public int UWGst5 = 0;
+        public int OnRun = 0;
         public void starten()
         {
             ProcessStartInfo startEn = new ProcessStartInfo();
@@ -71,13 +82,72 @@ namespace UWG
             startEn.Arguments = "D:\\EnergyPlusV8-2-5\\ExampleFiles\\1ZoneEvapCooler.idf";
             Process.Start(startEn);
         }
+
+        public void onClose(object sender, EventArgs e)
+        {
+            if(UWGst == -1)
+            {
+                return;
+            }
+            if(UWGst == 1)
+            {
+                OnRun--;
+                UWGst++;
+                MessageBox.Show("Simulation 1 run time error, please check input files!");
+                return;
+            }
+            if (UWGst1 == 1)
+            {
+                OnRun--;
+                UWGst1++;
+                System.IO.File.Delete(System.IO.Path.Combine(ep, ef1));
+                MessageBox.Show("Simulation 2 run time error, please check input files!");
+                return;
+            }
+            if (UWGst2 == 1)
+            {
+                OnRun--;
+                UWGst2++;
+                System.IO.File.Delete(System.IO.Path.Combine(ep, ef2));
+                MessageBox.Show("Simulation 3 run time error, please check input files!");
+                return;
+            }
+            if (UWGst3 == 1)
+            {
+                OnRun--;
+                UWGst3++;
+                System.IO.File.Delete(System.IO.Path.Combine(ep, ef3));
+                MessageBox.Show("Simulation 4 run time error, please check input files!");
+                return;
+            }
+            if (UWGst4 == 1)
+            {
+                OnRun--;
+                System.IO.File.Delete(System.IO.Path.Combine(ep, ef2));
+                UWGst4++;
+                MessageBox.Show("Simulation 5 run time error, please check input files!");
+                return;
+            }
+            if (UWGst5 == 1)
+            {
+                OnRun--;
+                UWGst5++;
+                System.IO.File.Delete(System.IO.Path.Combine(ep, ef2));
+                MessageBox.Show("Simulation 6 run time error, please check input files!");
+                return;
+            }
+            OnRun--;
+        }
+    
         public void startrun()
         {
+            OnRun++;
             ProcessStartInfo startUWG = new ProcessStartInfo();
             //startUWG.FileName = "C:\\Users\\anakano\\Documents\\Research\\UWG2.1\\For_Installer\\UWGv2.0.exe";
             startUWG.FileName = "UWGEngine.exe";
             //make sure there is space in between each of the four inputs and that folder extension ends with \\
-            startUWG.Arguments = ep + "\\ " + ef + " " + xp + "\\ " + xf + " " + rp + "\\ " + rf + " " + mon + " " + day + " " + dur;
+            startUWG.Arguments = ep + "\\ " + ef + " " + xp + "\\ " + xf + " " + rp + "\\ " + rf;
+            //startUWG.Arguments = ep + "\\ " + ef + " " + xp + "\\ " + xf + " " + rp + "\\ " + rf + " " + mon + " " + day + " " + dur;
             //startUWG.Arguments = this.epwPath + this.epwFileName + this.xmlPath + this.xmlFilename;
             startUWG.UseShellExecute = false;
             startUWG.CreateNoWindow = true;
@@ -86,6 +156,8 @@ namespace UWG
             ProgressBar.Maximum = System.Convert.ToDouble(dur);
             UWGs = Process.Start(startUWG);
             UWGst = 1;
+            UWGs.EnableRaisingEvents = true;
+            UWGs.Exited += new EventHandler(onClose);
             StreamReader UWGreader = UWGs.StandardOutput;
             new Thread(() =>
             {
@@ -144,9 +216,9 @@ namespace UWG
                 }
             }).Start();
         }
-
         public void startrun1()
         {
+            OnRun++;
             sd1.Visibility = System.Windows.Visibility.Visible;
             sp1.Visibility = System.Windows.Visibility.Visible;
 
@@ -162,8 +234,11 @@ namespace UWG
             startUWG.RedirectStandardOutput = true;
             double maxx = System.Convert.ToDouble(dur);
             ProgressBar1.Maximum = System.Convert.ToDouble(dur);
-            UWGs = Process.Start(startUWG);
-            StreamReader UWGreader = UWGs.StandardOutput;
+            UWGs1 = Process.Start(startUWG);
+            UWGst1 = 1;
+            UWGs1.EnableRaisingEvents = true;
+            UWGs1.Exited += new EventHandler(onClose);
+            StreamReader UWGreader = UWGs1.StandardOutput;
             new Thread(() =>
             {
                 String UWGreaderst;
@@ -214,6 +289,7 @@ namespace UWG
                         }
                         if (UWGreaderst == "over")
                         {
+                            UWGst1 = 0;
                             RunningInfo1.Text = "Generating finished!";
                             System.IO.File.Delete(System.IO.Path.Combine(ep, ef1));
                         }
@@ -223,6 +299,7 @@ namespace UWG
         }
         public void startrun2()
         {
+            OnRun++;
             sd2.Visibility = System.Windows.Visibility.Visible;
             sp2.Visibility = System.Windows.Visibility.Visible;
 
@@ -238,8 +315,11 @@ namespace UWG
             startUWG.RedirectStandardOutput = true;
             double maxx = System.Convert.ToDouble(dur);
             ProgressBar2.Maximum = System.Convert.ToDouble(dur);
-            UWGs = Process.Start(startUWG);
-            StreamReader UWGreader = UWGs.StandardOutput;
+            UWGs2 = Process.Start(startUWG);
+            UWGst2 = 1;
+            UWGs2.EnableRaisingEvents = true;
+            UWGs2.Exited += new EventHandler(onClose);
+            StreamReader UWGreader = UWGs2.StandardOutput;
             new Thread(() =>
             {
                 String UWGreaderst;
@@ -290,6 +370,7 @@ namespace UWG
                         }
                         if (UWGreaderst == "over")
                         {
+                            UWGst2 = 0;
                             RunningInfo2.Text = "Generating finished!";
                             System.IO.File.Delete(System.IO.Path.Combine(ep, ef2));
                         }
@@ -299,6 +380,7 @@ namespace UWG
         }
         public void startrun3()
         {
+            OnRun++;
             sd3.Visibility = System.Windows.Visibility.Visible;
             sp3.Visibility = System.Windows.Visibility.Visible;
 
@@ -314,8 +396,11 @@ namespace UWG
             startUWG.RedirectStandardOutput = true;
             double maxx = System.Convert.ToDouble(dur);
             ProgressBar3.Maximum = System.Convert.ToDouble(dur);
-            UWGs = Process.Start(startUWG);
-            StreamReader UWGreader = UWGs.StandardOutput;
+            UWGs3 = Process.Start(startUWG);
+            UWGst3 = 1;
+            UWGs3.EnableRaisingEvents = true;
+            UWGs3.Exited += new EventHandler(onClose);
+            StreamReader UWGreader = UWGs3.StandardOutput;
             new Thread(() =>
             {
                 String UWGreaderst;
@@ -366,6 +451,7 @@ namespace UWG
                         }
                         if (UWGreaderst == "over")
                         {
+                            UWGst3 = 0;
                             RunningInfo3.Text = "Generating finished!";
                             System.IO.File.Delete(System.IO.Path.Combine(ep, ef3));
                         }
@@ -375,6 +461,7 @@ namespace UWG
         }
         public void startrun4()
         {
+            OnRun++;
             sd4.Visibility = System.Windows.Visibility.Visible;
             sp4.Visibility = System.Windows.Visibility.Visible;
 
@@ -390,8 +477,11 @@ namespace UWG
             startUWG.RedirectStandardOutput = true;
             double maxx = System.Convert.ToDouble(dur);
             ProgressBar4.Maximum = System.Convert.ToDouble(dur);
-            UWGs = Process.Start(startUWG);
-            StreamReader UWGreader = UWGs.StandardOutput;
+            UWGs4 = Process.Start(startUWG);
+            UWGst4 = 1;
+            UWGs4.EnableRaisingEvents = true;
+            UWGs4.Exited += new EventHandler(onClose);
+            StreamReader UWGreader = UWGs4.StandardOutput;
             new Thread(() =>
             {
                 String UWGreaderst;
@@ -442,6 +532,7 @@ namespace UWG
                         }
                         if (UWGreaderst == "over")
                         {
+                            UWGst4 = 0;
                             RunningInfo4.Text = "Generating finished!";
                             System.IO.File.Delete(System.IO.Path.Combine(ep, ef4));
                         }
@@ -451,6 +542,7 @@ namespace UWG
         }
         public void startrun5()
         {
+            OnRun++;
             sd5.Visibility = System.Windows.Visibility.Visible;
             sp5.Visibility = System.Windows.Visibility.Visible;
 
@@ -466,8 +558,11 @@ namespace UWG
             startUWG.RedirectStandardOutput = true;
             double maxx = System.Convert.ToDouble(dur);
             ProgressBar5.Maximum = System.Convert.ToDouble(dur);
-            UWGs = Process.Start(startUWG);
-            StreamReader UWGreader = UWGs.StandardOutput;
+            UWGs5 = Process.Start(startUWG);
+            UWGst5 = 1;
+            UWGs5.EnableRaisingEvents = true;
+            UWGs5.Exited += new EventHandler(onClose);
+            StreamReader UWGreader = UWGs5.StandardOutput;
             new Thread(() =>
             {
                 String UWGreaderst;
@@ -518,6 +613,7 @@ namespace UWG
                         }
                         if (UWGreaderst == "over")
                         {
+                            UWGst5 = 0;
                             RunningInfo5.Text = "Generating finished!";
                             System.IO.File.Delete(System.IO.Path.Combine(ep, ef5));
                         }
@@ -525,10 +621,9 @@ namespace UWG
                 }
             }).Start();
         }
-
         private void abort_Click(object sender, RoutedEventArgs e)
         {
-            if (UWGst == 1)
+            if(OnRun > 0)
             {
                 string message = "Simulation is running, do you want to abort?";
                 string captain = "UWG";
@@ -536,14 +631,31 @@ namespace UWG
                 var result = MessageBox.Show(message, captain, buttons);
                 if (result == MessageBoxResult.Cancel) return;
             }
+            UWGst = -1;
+            UWGst1 = -1;
+            UWGst2 = -1;
+            UWGst3 = -1;
+            UWGst4 = -1;
+            UWGst5 = -1;
             try
             {
                 UWGs.Kill();
+                UWGs1.Kill();
+                UWGs2.Kill();
+                UWGs3.Kill();
+                UWGs4.Kill();
+                UWGs5.Kill();
                 this.Close();
             }
             catch
             {
-                this.Close();
+                try
+                {
+                    this.Close();
+                }
+                catch
+                {
+                }
             }
         }
     }
