@@ -6064,6 +6064,7 @@ namespace UWG
                                                                     new XElement("albedo", urbanRoadAlbedo.Content),
                                                                     new XElement("emissivity", urbanRoadEmissivity.Content),
                                                                     new XElement("materials",
+                                                                        new XAttribute("name", urbanRoadbox.Text),
                                                                         new XElement("names",
                                                                             new XElement("item", urbanRoadMaterial.Content)),
                                                                         new XElement("thermalConductivity",
@@ -6083,6 +6084,7 @@ namespace UWG
                                                                     new XElement("albedo", ruralRoadAlbedo.Content),
                                                                     new XElement("emissivity", ruralRoadEmissivity.Content),
                                                                     new XElement("materials",
+                                                                        new XAttribute("name", ruralbox.Text),
                                                                         new XElement("names",
                                                                             new XElement("item", ruralRoadMaterial.Content)),
                                                                         new XElement("thermalConductivity",
@@ -6532,6 +6534,7 @@ namespace UWG
                                                             new XElement("albedo", wallAlbedo.Text),
                                                             new XElement("emissivity", wallEmissivity.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", wallbox.SelectedItem),
                                                                 wallMaterialsNames,
                                                                 wallMaterialsThermalConductivity,
                                                                 wallMaterialsVolumetricHeatCapacity,
@@ -6544,6 +6547,7 @@ namespace UWG
                                                             new XElement("albedo", roofAlbedo.Text),
                                                             new XElement("emissivity", roofEmissivity.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", roofbox.SelectedItem), 
                                                                 roofMaterialsNames,
                                                                 roofMaterialsThermalConductivity,
                                                                 roofMaterialsVolumetricHeatCapacity,
@@ -6556,6 +6560,7 @@ namespace UWG
                                                             new XElement("albedo", massAlbedo.Content),
                                                                 new XElement("emissivity", massEmissivity.Content),
                                                                 new XElement("materials",
+                                                                    new XAttribute("name", massbox.Text),
                                                                     new XElement("names",
                                                                         new XElement("item", massLayer1Material.Content)),
                                                                     new XElement("thermalConductivity",
@@ -6568,6 +6573,7 @@ namespace UWG
                                                                          new XElement("initialTemperature", 20)),
 
                                                         new XElement("glazing",
+                                                            new XAttribute("name", glazingbox.Text), 
                                                             new XElement("glazingRatio", wwr.Content),
                                                             new XElement("windowUvalue", uValue.Content),
                                                             new XElement("windowSHGC", SHGC.Content))
@@ -6575,6 +6581,7 @@ namespace UWG
 
                                                     //BUILDING GEOMETRY:
                                                     new XElement("building",
+                                                        new XAttribute("name", heatbox.SelectedItem),
                                                         new XElement("floorHeight", floorHeight.Text),
                                                         new XElement("dayInternalGains", dayInternalHeatGain.Content),
                                                         new XElement("nightInternalGains", nightInternalHeatGain.Content),
@@ -6837,6 +6844,7 @@ namespace UWG
                                                             new XElement("albedo", wallAlbedoTyp2.Text),
                                                             new XElement("emissivity", wallEmissivityTyp2.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", wallboxTyp2.SelectedItem),
                                                                 wallMaterialsNames,
                                                                 wallMaterialsThermalConductivity,
                                                                 wallMaterialsVolumetricHeatCapacity,
@@ -6849,6 +6857,7 @@ namespace UWG
                                                             new XElement("albedo", roofAlbedoTyp2.Text),
                                                             new XElement("emissivity", roofEmissivityTyp2.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", roofboxTyp2.SelectedItem),
                                                                 roofMaterialsNames,
                                                                 roofMaterialsThermalConductivity,
                                                                 roofMaterialsVolumetricHeatCapacity,
@@ -6861,8 +6870,9 @@ namespace UWG
                                                             new XElement("albedo", massAlbedoTyp2.Content),
                                                                 new XElement("emissivity", massEmissivityTyp2.Content),
                                                                 new XElement("materials",
+                                                                    new XAttribute("name", massboxTyp2.Text),
                                                                     new XElement("names",
-                                                                        new XElement("item", massLayer1MaterialTyp2.Content)),
+                                                                    new XElement("item", massLayer1MaterialTyp2.Content)),
                                                                     new XElement("thermalConductivity",
                                                                         new XElement("item", massLayer1KTyp2.Content)),
                                                                     new XElement("volumetricHeatCapacity",
@@ -6873,6 +6883,7 @@ namespace UWG
                                                                          new XElement("initialTemperature", 20)),
 
                                                         new XElement("glazing",
+                                                            new XAttribute("name", glazingboxTyp2.Text),
                                                             new XElement("glazingRatio", wwrTyp2.Content),
                                                             new XElement("windowUvalue", uValueTyp2.Content),
                                                             new XElement("windowSHGC", SHGCTyp2.Content))
@@ -6880,6 +6891,7 @@ namespace UWG
 
                                                     //BUILDING GEOMETRY:
                                                     new XElement("building",
+                                                        new XAttribute("name", heatbox.SelectedItem), 
                                                         new XElement("floorHeight", floorHeightTyp2.Text),
                                                         new XElement("dayInternalGains", dayInternalHeatGainTyp2.Content),
                                                         new XElement("nightInternalGains", nightInternalHeatGainTyp2.Content),
@@ -7142,6 +7154,7 @@ namespace UWG
                                                             new XElement("albedo", wallAlbedoTyp3.Text),
                                                             new XElement("emissivity", wallEmissivityTyp3.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", wallboxTyp3.SelectedItem),
                                                                 wallMaterialsNames,
                                                                 wallMaterialsThermalConductivity,
                                                                 wallMaterialsVolumetricHeatCapacity,
@@ -7154,6 +7167,7 @@ namespace UWG
                                                             new XElement("albedo", roofAlbedoTyp3.Text),
                                                             new XElement("emissivity", roofEmissivityTyp3.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", roofboxTyp3.SelectedItem),
                                                                 roofMaterialsNames,
                                                                 roofMaterialsThermalConductivity,
                                                                 roofMaterialsVolumetricHeatCapacity,
@@ -7166,8 +7180,9 @@ namespace UWG
                                                             new XElement("albedo", massAlbedoTyp3.Content),
                                                                 new XElement("emissivity", massEmissivityTyp3.Content),
                                                                 new XElement("materials",
+                                                                    new XAttribute("name", massboxTyp3.Text),
                                                                     new XElement("names",
-                                                                        new XElement("item", massLayer1MaterialTyp3.Content)),
+                                                                    new XElement("item", massLayer1MaterialTyp3.Content)),
                                                                     new XElement("thermalConductivity",
                                                                         new XElement("item", massLayer1KTyp3.Content)),
                                                                     new XElement("volumetricHeatCapacity",
@@ -7178,6 +7193,7 @@ namespace UWG
                                                                          new XElement("initialTemperature", 20)),
 
                                                         new XElement("glazing",
+                                                            new XAttribute("name", glazingboxTyp3.Text), 
                                                             new XElement("glazingRatio", wwrTyp3.Content),
                                                             new XElement("windowUvalue", uValueTyp3.Content),
                                                             new XElement("windowSHGC", SHGCTyp3.Content))
@@ -7185,6 +7201,7 @@ namespace UWG
 
                                                     //BUILDING GEOMETRY:
                                                     new XElement("building",
+                                                        new XAttribute("name", heatbox.SelectedItem), 
                                                         new XElement("floorHeight", floorHeightTyp3.Text),
                                                         new XElement("dayInternalGains", dayInternalHeatGainTyp3.Content),
                                                         new XElement("nightInternalGains", nightInternalHeatGainTyp3.Content),
@@ -7447,6 +7464,7 @@ namespace UWG
                                                             new XElement("albedo", wallAlbedoTyp4.Text),
                                                             new XElement("emissivity", wallEmissivityTyp4.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", wallboxTyp4.SelectedItem),
                                                                 wallMaterialsNames,
                                                                 wallMaterialsThermalConductivity,
                                                                 wallMaterialsVolumetricHeatCapacity,
@@ -7459,6 +7477,7 @@ namespace UWG
                                                             new XElement("albedo", roofAlbedoTyp4.Text),
                                                             new XElement("emissivity", roofEmissivityTyp4.Text),
                                                             new XElement("materials",
+                                                                new XAttribute("name", roofboxTyp4.SelectedItem),
                                                                 roofMaterialsNames,
                                                                 roofMaterialsThermalConductivity,
                                                                 roofMaterialsVolumetricHeatCapacity,
@@ -7471,6 +7490,7 @@ namespace UWG
                                                             new XElement("albedo", massAlbedoTyp4.Content),
                                                                 new XElement("emissivity", massEmissivityTyp4.Content),
                                                                 new XElement("materials",
+                                                                    new XAttribute("name", massboxTyp4.Text), 
                                                                     new XElement("names",
                                                                         new XElement("item", massLayer1MaterialTyp4.Content)),
                                                                     new XElement("thermalConductivity",
@@ -7483,6 +7503,7 @@ namespace UWG
                                                                          new XElement("initialTemperature", 20)),
 
                                                         new XElement("glazing",
+                                                            new XAttribute("name", glazingboxTyp4.Text), 
                                                             new XElement("glazingRatio", wwrTyp4.Content),
                                                             new XElement("windowUvalue", uValueTyp4.Content),
                                                             new XElement("windowSHGC", SHGCTyp4.Content))
@@ -7490,6 +7511,7 @@ namespace UWG
 
                                                     //BUILDING GEOMETRY:
                                                     new XElement("building",
+                                                        new XAttribute("name", heatbox.SelectedItem), 
                                                         new XElement("floorHeight", floorHeightTyp4.Text),
                                                         new XElement("dayInternalGains", dayInternalHeatGainTyp4.Content),
                                                         new XElement("nightInternalGains", nightInternalHeatGainTyp4.Content),
@@ -7620,6 +7642,29 @@ namespace UWG
                     loadTyp1 = true;
                     typology1Dist.Text = typNode.Attributes["dist"].Value.ToString();
                     typology1Type.Text = typNode.Attributes["name"].Value.ToString();
+                    wallbox.Text = typNode.Attributes["name"].Value.ToString();
+                    wallboxTyp2.Text = typNode.Attributes["name"].Value.ToString();
+                    wallboxTyp3.Text = typNode.Attributes["name"].Value.ToString();
+                    wallboxTyp4.Text = typNode.Attributes["name"].Value.ToString();
+                    roofbox.Text = typNode.Attributes["name"].Value.ToString();
+                    roofboxTyp2.Text = typNode.Attributes["name"].Value.ToString();
+                    roofboxTyp3.Text = typNode.Attributes["name"].Value.ToString();
+                    roofboxTyp4.Text = typNode.Attributes["name"].Value.ToString();
+                    massbox.Text = typNode.Attributes["name"].Value.ToString();
+                    massboxTyp2.Text = typNode.Attributes["name"].Value.ToString();
+                    massboxTyp3.Text = typNode.Attributes["name"].Value.ToString();
+                    massboxTyp4.Text = typNode.Attributes["name"].Value.ToString();
+                    glazingbox.Text = typNode.Attributes["name"].Value.ToString();
+                    glazingboxTyp2.Text = typNode.Attributes["name"].Value.ToString();
+                    glazingboxTyp3.Text = typNode.Attributes["name"].Value.ToString();
+                    glazingboxTyp4.Text = typNode.Attributes["name"].Value.ToString();
+                    heatbox.Text = typNode.Attributes["name"].Value.ToString();
+                    heatboxTyp2.Text = typNode.Attributes["name"].Value.ToString();
+                    heatboxTyp3.Text = typNode.Attributes["name"].Value.ToString();
+                    heatboxTyp4.Text = typNode.Attributes["name"].Value.ToString();
+                    urbanRoadbox.Text = typNode.Attributes["name"].Value.ToString();
+                    ruralbox.Text = typNode.Attributes["name"].Value.ToString();
+                    
                     numOfTypsInXML++;
                     startTyp2 += numThickPerTyp;
                     startTyp3 += numThickPerTyp;
@@ -7629,6 +7674,43 @@ namespace UWG
                     endTyp3 += numThickPerTyp;
                     endTyp4 += numThickPerTyp;
 
+                    //make sure the combo box is loaded
+                    XmlNodeList nodeListurban = parseXml.SelectNodes("/xml_input/urbanArea/urbanRoad/materials");
+                    foreach (XmlNode myNode in nodeListurban)
+                    {
+                        urbanRoadbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListrural = parseXml.SelectNodes("/xml_input/referenceSite/ruralRoad/materials");
+                    foreach (XmlNode myNode in nodeListrural)
+                    {
+                        ruralbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    
+                    XmlNodeList nodeListwall1 = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials");
+                    foreach (XmlNode myNode in nodeListwall1)
+                    {
+                        wallbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListroof1 = parseXml.SelectNodes("/xml_input/typology1/construction/roof/materials");
+                    foreach (XmlNode myNode in nodeListroof1)
+                    {
+                        roofbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListmass1 = parseXml.SelectNodes("/xml_input/typology1/construction/mass/materials");
+                    foreach (XmlNode myNode in nodeListmass1)
+                    {
+                        massbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListglazing1 = parseXml.SelectNodes("/xml_input/typology1/construction/glazing");
+                    foreach (XmlNode myNode in nodeListglazing1)
+                    {
+                        glazingbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListheat1 = parseXml.SelectNodes("/xml_input/typology1/building");
+                    foreach (XmlNode myNode in nodeListheat1)
+                    {
+                        heatbox.SelectedItem = myNode.Attributes["name"].Value;
+                    }
                     //binding layer names
                     XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology1/construction/wall/materials/names/item[1]");
                     foreach (XmlNode myNode in nodeList)
@@ -7672,16 +7754,16 @@ namespace UWG
                     } 
                     roofLayer1Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     roofLayer1Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-                    roofLayer1Material.Margin = new Thickness(4, 12, 4, 4);
-                    roofLayer1Material.Padding = new Thickness(4, 0, 0, 0);
+                    roofLayer1Material.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer1Material.Padding = new Thickness(0, 4, 0, 0);
                     roofLayer2Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     roofLayer2Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-                    roofLayer2Material.Margin = new Thickness(4, 4, 4, 4);
-                    roofLayer2Material.Padding = new Thickness(4, 0, 0, 0);
+                    roofLayer2Material.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer2Material.Padding = new Thickness(0, 4, 0, 0);
                     roofLayer3Material.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     roofLayer3Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-                    roofLayer3Material.Margin = new Thickness(4, 4, 4, 4);
-                    roofLayer3Material.Padding = new Thickness(4, 0, 0, 0);
+                    roofLayer3Material.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer3Material.Padding = new Thickness(0, 4, 0, 0);
 
                 }
                 else if (typNode.Name == "typology2")
@@ -7695,7 +7777,32 @@ namespace UWG
 
                     endTyp3 += numThickPerTyp;
                     endTyp4 += numThickPerTyp;
-
+                    //make sure the combo box is loaded
+                    XmlNodeList nodeListwall2 = parseXml.SelectNodes("/xml_input/typology2/construction/wall/materials");
+                    foreach (XmlNode myNode in nodeListwall2)
+                    {
+                        wallboxTyp2.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListroof2 = parseXml.SelectNodes("/xml_input/typology2/construction/roof/materials");
+                    foreach (XmlNode myNode in nodeListroof2)
+                    {
+                        roofboxTyp2.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListmass2 = parseXml.SelectNodes("/xml_input/typology2/construction/mass/materials");
+                    foreach (XmlNode myNode in nodeListmass2)
+                    {
+                        massboxTyp2.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListglazing2 = parseXml.SelectNodes("/xml_input/typology2/construction/glazing");
+                    foreach (XmlNode myNode in nodeListglazing2)
+                    {
+                        glazingboxTyp2.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListheat3 = parseXml.SelectNodes("/xml_input/typology3/building");
+                    foreach (XmlNode myNode in nodeListheat3)
+                    {
+                        heatboxTyp3.SelectedItem = myNode.Attributes["name"].Value;
+                    }
                     //binding layer names
                     XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology2/construction/wall/materials/names/item[1]");
                     foreach (XmlNode myNode in nodeList)
@@ -7737,6 +7844,18 @@ namespace UWG
                     {
                         massLayer1MaterialTyp2.Content = myNode.InnerText;
                     }
+                    roofLayer1MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer1MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer1MaterialTyp2.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer1MaterialTyp2.Padding = new Thickness(0, 4, 0, 0);
+                    roofLayer2MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer2MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer2MaterialTyp2.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer2MaterialTyp2.Padding = new Thickness(0, 4, 0, 0);
+                    roofLayer3MaterialTyp2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer3MaterialTyp2.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer3MaterialTyp2.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer3MaterialTyp2.Padding = new Thickness(0, 4, 0, 0);
                 }
                 else if (typNode.Name == "typology3")
                 {
@@ -7747,7 +7866,32 @@ namespace UWG
                     startTyp4 += numThickPerTyp;
 
                     endTyp4 += numThickPerTyp;
-
+                    //make sure the combo box is loaded
+                    XmlNodeList nodeListwall3 = parseXml.SelectNodes("/xml_input/typology3/construction/wall/materials");
+                    foreach (XmlNode myNode in nodeListwall3)
+                    {
+                        wallboxTyp3.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListroof3 = parseXml.SelectNodes("/xml_input/typology3/construction/roof/materials");
+                    foreach (XmlNode myNode in nodeListroof3)
+                    {
+                        roofboxTyp3.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListmass3 = parseXml.SelectNodes("/xml_input/typology3/construction/mass/materials");
+                    foreach (XmlNode myNode in nodeListmass3)
+                    {
+                        massboxTyp3.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListglazing3 = parseXml.SelectNodes("/xml_input/typology3/construction/glazing");
+                    foreach (XmlNode myNode in nodeListglazing3)
+                    {
+                        glazingboxTyp3.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListheat3 = parseXml.SelectNodes("/xml_input/typology3/building");
+                    foreach (XmlNode myNode in nodeListheat3)
+                    {
+                        heatboxTyp3.SelectedItem = myNode.Attributes["name"].Value;
+                    }
                     //binding layer names
                     XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology3/construction/wall/materials/names/item[1]");
                     foreach (XmlNode myNode in nodeList)
@@ -7789,6 +7933,18 @@ namespace UWG
                     {
                         massLayer1MaterialTyp3.Content = myNode.InnerText;
                     }
+                    roofLayer1MaterialTyp3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer1MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer1MaterialTyp3.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer1MaterialTyp3.Padding = new Thickness(0, 4, 0, 0);
+                    roofLayer2MaterialTyp3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer2MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer2MaterialTyp3.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer2MaterialTyp3.Padding = new Thickness(0, 4, 0, 0);
+                    roofLayer3MaterialTyp3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer3MaterialTyp3.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer3MaterialTyp3.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer3MaterialTyp3.Padding = new Thickness(0, 4, 0, 0);
                 }
                 else if (typNode.Name == "typology4")
                 {
@@ -7796,7 +7952,32 @@ namespace UWG
                     typology4Dist.Text = typNode.Attributes["dist"].Value.ToString();
                     typology4Type.Text = typNode.Attributes["name"].Value.ToString();
                     numOfTypsInXML++;
-
+                    //make sure the combo box is loaded
+                    XmlNodeList nodeListwall4 = parseXml.SelectNodes("/xml_input/typology4/construction/wall/materials");
+                    foreach (XmlNode myNode in nodeListwall4)
+                    {
+                        wallboxTyp4.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListroof4 = parseXml.SelectNodes("/xml_input/typology4/construction/roof/materials");
+                    foreach (XmlNode myNode in nodeListroof4)
+                    {
+                        roofboxTyp4.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListmass4 = parseXml.SelectNodes("/xml_input/typology4/construction/mass/materials");
+                    foreach (XmlNode myNode in nodeListmass4)
+                    {
+                        massboxTyp4.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListglazing4 = parseXml.SelectNodes("/xml_input/typology4/construction/glazing");
+                    foreach (XmlNode myNode in nodeListglazing4)
+                    {
+                        glazingboxTyp4.SelectedItem = myNode.Attributes["name"].Value;
+                    }
+                    XmlNodeList nodeListheat4 = parseXml.SelectNodes("/xml_input/typology4/building");
+                    foreach (XmlNode myNode in nodeListheat4)
+                    {
+                        heatboxTyp4.SelectedItem = myNode.Attributes["name"].Value;
+                    }
                     //binding layer names
                     XmlNodeList nodeList = parseXml.SelectNodes("/xml_input/typology4/construction/wall/materials/names/item[1]");
                     foreach (XmlNode myNode in nodeList)
@@ -7838,6 +8019,18 @@ namespace UWG
                     {
                         massLayer1MaterialTyp4.Content = myNode.InnerText;
                     }
+                    roofLayer1MaterialTyp4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer1MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer1MaterialTyp4.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer1MaterialTyp4.Padding = new Thickness(0, 4, 0, 0);
+                    roofLayer2MaterialTyp4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer2MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer2MaterialTyp4.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer2MaterialTyp4.Padding = new Thickness(0, 4, 0, 0);
+                    roofLayer3MaterialTyp4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                    roofLayer3MaterialTyp4.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                    roofLayer3MaterialTyp4.Margin = new Thickness(8, 4, 4, 4);
+                    roofLayer3MaterialTyp4.Padding = new Thickness(0, 4, 0, 0);
                 }
             }
             XmlNodeList elemList = parseXml.GetElementsByTagName("thickness");

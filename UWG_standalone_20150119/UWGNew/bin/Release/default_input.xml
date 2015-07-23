@@ -19,7 +19,7 @@
     <urbanRoad>
       <albedo />
       <emissivity />
-      <materials>
+      <materials name="">
         <names>
           <item />
         </names>
@@ -43,7 +43,7 @@
     <ruralRoad>
       <albedo />
       <emissivity />
-      <materials>
+      <materials name="">
         <names>
           <item />
         </names>

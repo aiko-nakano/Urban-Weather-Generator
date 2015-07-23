@@ -1,79 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xml_input>
-  <typology1 dist="0" name="">
-    <dist>0</dist>
+  <typology1 dist="25" name="">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0.52</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Boston R">
           <names>
-            <item></item>
+            <item>Wood Siding</item>
+            <item>Steel Frame Insulation</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.11</item>
+            <item>0.05</item>
+            <item>0.16</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>658990</item>
+            <item>221752</item>
+            <item>651467</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.12,0.01]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0</albedo>
+        <emissivity>0</emissivity>
+        <materials name="Boston R Roof">
           <names>
-            <item></item>
+            <item>Roof Membrane</item>
+            <item>Insulation</item>
+            <item>Metal Decking</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.16</item>
+            <item>0.5</item>
+            <item>45.01</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>1637083</item>
+            <item>221752</item>
+            <item>3213312</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.1273,0.0015]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
       <mass>
-        <albedo />
-        <emissivity />
-        <materials>
+        <albedo>0.5</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Boston R IM">
           <names>
-            <item></item>
+            <item>Concrete HW</item>
           </names>
           <thermalConductivity>
-            <item />
+            <item>1.31</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item />
+            <item>1874432</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.1]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
-        <glazingRatio></glazingRatio>
-        <windowUvalue></windowUvalue>
-        <windowSHGC></windowSHGC>
+      <glazing name="Boston R">
+        <glazingRatio>0.15</glazingRatio>
+        <windowUvalue>3.8</windowUvalue>
+        <windowSHGC>0.39</windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="BOS Commericial">
       <floorHeight>3</floorHeight>
-      <dayInternalGains></dayInternalGains>
-      <nightInternalGains></nightInternalGains>
+      <dayInternalGains>24.7145454545455</dayInternalGains>
+      <nightInternalGains>5.58725274725274</nightInternalGains>
       <radiantFraction>0.5</radiantFraction>
       <latentFraction>0.09</latentFraction>
-      <infiltration></infiltration>
-      <ventilation></ventilation>
+      <infiltration>0.176785714285714</infiltration>
+      <ventilation>1</ventilation>
       <coolingSystemType>air</coolingSystemType>
       <coolingCOP>3.7</coolingCOP>
       <daytimeCoolingSetPoint>25</daytimeCoolingSetPoint>
@@ -88,73 +100,85 @@
       <initialT>20</initialT>
     </building>
   </typology1>
-  <typology2 dist="0" name="">
-    <dist>0</dist>
+  <typology2 dist="25" name="">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0.52</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Phoenix R">
           <names>
-            <item></item>
+            <item>Wood Siding</item>
+            <item>Steel Frame Insulation</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.11</item>
+            <item>0.05</item>
+            <item>0.16</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>658990</item>
+            <item>221752</item>
+            <item>651467</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.05,0.01]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0</albedo>
+        <emissivity>0</emissivity>
+        <materials name="Phoenix R Roof">
           <names>
-            <item></item>
+            <item>Roof Membrane</item>
+            <item>Insulation</item>
+            <item>Metal Decking</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.16</item>
+            <item>0.5</item>
+            <item>45.01</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>1637083</item>
+            <item>221752</item>
+            <item>3213312</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.1247,0.0015]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
       <mass>
-        <albedo />
-        <emissivity />
-        <materials>
+        <albedo>0.5</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Phoenix R IM">
           <names>
-            <item></item>
+            <item>Concrete HW</item>
           </names>
           <thermalConductivity>
-            <item />
+            <item>1.31</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item />
+            <item>1874432</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.1]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
-        <glazingRatio></glazingRatio>
-        <windowUvalue></windowUvalue>
-        <windowSHGC></windowSHGC>
+      <glazing name="Phoenix R">
+        <glazingRatio>0.15</glazingRatio>
+        <windowUvalue>7.0</windowUvalue>
+        <windowSHGC>0.25</windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="BOS Commericial">
       <floorHeight>3</floorHeight>
       <dayInternalGains></dayInternalGains>
       <nightInternalGains></nightInternalGains>
@@ -176,80 +200,90 @@
       <initialT>20</initialT>
     </building>
   </typology2>
-  <typology3 dist="0" name="">
-    <dist>0</dist>
+  <typology3 dist="25" name="">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0.5</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Phoenix C">
           <names>
-            <item></item>
+            <item>Stucco</item>
+            <item>Concrete HW</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.69</item>
+            <item>1.31</item>
+            <item>0.16</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>1555146</item>
+            <item>1874432</item>
+            <item>651467</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.03,0.2,0.01]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0</albedo>
+        <emissivity>0</emissivity>
+        <materials name="Phoenix C Roof">
           <names>
+            <item>Roof Membrane</item>
+            <item>Metal Decking</item>
             <item></item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.16</item>
+            <item>45.01</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>1637083</item>
+            <item>3213312</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.0015]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
       <mass>
-        <albedo />
-        <emissivity />
-        <materials>
+        <albedo>0.5</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Phoenix C IM">
           <names>
-            <item></item>
+            <item>Concrete HW</item>
           </names>
           <thermalConductivity>
-            <item />
+            <item>1.31</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item />
+            <item>1874432</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.1]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
-        <glazingRatio></glazingRatio>
-        <windowUvalue></windowUvalue>
-        <windowSHGC></windowSHGC>
+      <glazing name="Phoenix C">
+        <glazingRatio>0.212</glazingRatio>
+        <windowUvalue>6.93</windowUvalue>
+        <windowSHGC>0.25</windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="BOS Commericial">
       <floorHeight>3</floorHeight>
-      <dayInternalGains></dayInternalGains>
-      <nightInternalGains></nightInternalGains>
+      <dayInternalGains>24.7145454545455</dayInternalGains>
+      <nightInternalGains>5.58725274725274</nightInternalGains>
       <radiantFraction>0.5</radiantFraction>
       <latentFraction>0.09</latentFraction>
-      <infiltration></infiltration>
-      <ventilation></ventilation>
+      <infiltration>0.176785714285714</infiltration>
+      <ventilation>1</ventilation>
       <coolingSystemType>air</coolingSystemType>
       <coolingCOP>3.7</coolingCOP>
       <daytimeCoolingSetPoint>25</daytimeCoolingSetPoint>
@@ -264,80 +298,92 @@
       <initialT>20</initialT>
     </building>
   </typology3>
-  <typology4 dist="0" name="">
-    <dist>0</dist>
+  <typology4 dist="25" name="">
+    <dist>25</dist>
     <construction>
       <wall>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0.52</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Fairbanks R">
           <names>
-            <item></item>
+            <item>Wood Siding</item>
+            <item>Steel Frame Insulation</item>
+            <item>Gypsum</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.11</item>
+            <item>0.05</item>
+            <item>0.16</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>658990</item>
+            <item>221752</item>
+            <item>651467</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.14,0.01]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>0</inclination>
         <initialTemperature>20</initialTemperature>
       </wall>
       <roof>
-        <albedo></albedo>
-        <emissivity></emissivity>
-        <materials>
+        <albedo>0</albedo>
+        <emissivity>0</emissivity>
+        <materials name="Fairbanks R Roof">
           <names>
-            <item></item>
+            <item>Roof Membrane</item>
+            <item>Insulation</item>
+            <item>Metal Decking</item>
           </names>
           <thermalConductivity>
-            <item></item>
+            <item>0.16</item>
+            <item>0.5</item>
+            <item>45.01</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item></item>
+            <item>1637083</item>
+            <item>221752</item>
+            <item>3213312</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.01,0.1701,0.0015]</thickness>
         </materials>
         <vegetationCoverage></vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </roof>
       <mass>
-        <albedo />
-        <emissivity />
-        <materials>
+        <albedo>0.5</albedo>
+        <emissivity>0.5</emissivity>
+        <materials name="Fairbanks R IM">
           <names>
-            <item></item>
+            <item>Concrete HW</item>
           </names>
           <thermalConductivity>
-            <item />
+            <item>1.31</item>
           </thermalConductivity>
           <volumetricHeatCapacity>
-            <item />
+            <item>1874432</item>
           </volumetricHeatCapacity>
-          <thickness>[]</thickness>
+          <thickness>[0.1]</thickness>
         </materials>
         <vegetationCoverage>0</vegetationCoverage>
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
-        <glazingRatio></glazingRatio>
-        <windowUvalue></windowUvalue>
-        <windowSHGC></windowSHGC>
+      <glazing name="Fairbanks R">
+        <glazingRatio>0.15</glazingRatio>
+        <windowUvalue>2.67</windowUvalue>
+        <windowSHGC>0.3</windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="BOS Commericial">
       <floorHeight>3</floorHeight>
-      <dayInternalGains></dayInternalGains>
-      <nightInternalGains></nightInternalGains>
+      <dayInternalGains>24.7145454545455</dayInternalGains>
+      <nightInternalGains>5.58725274725274</nightInternalGains>
       <radiantFraction>0.5</radiantFraction>
       <latentFraction>0.09</latentFraction>
-      <infiltration></infiltration>
-      <ventilation></ventilation>
+      <infiltration>0.176785714285714</infiltration>
+      <ventilation>1</ventilation>
       <coolingSystemType>air</coolingSystemType>
       <coolingCOP>3.7</coolingCOP>
       <daytimeCoolingSetPoint>25</daytimeCoolingSetPoint>
@@ -369,19 +415,19 @@
     <nighttimeBLHeight>80</nighttimeBLHeight>
     <refHeight>150</refHeight>
     <urbanRoad>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
+      <albedo>0</albedo>
+      <emissivity>0</emissivity>
+      <materials name="SFO">
         <names>
-          <item>asphalt</item>
+          <item>Particlebrd_medium_dens</item>
         </names>
         <thermalConductivity>
-          <item>1</item>
+          <item>MIT BT LAB</item>
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item>1600000</item>
+          <item>0</item>
         </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
+        <thickness>1</thickness>
       </materials>
       <vegetationCoverage>0.5</vegetationCoverage>
       <inclination>1</inclination>
@@ -393,19 +439,19 @@
     <longitude></longitude>
     <averageObstacleHeight></averageObstacleHeight>
     <ruralRoad>
-      <albedo>0.165</albedo>
-      <emissivity>0.95</emissivity>
-      <materials>
+      <albedo>0</albedo>
+      <emissivity>0</emissivity>
+      <materials name="NY-R">
         <names>
-          <item>asphalt</item>
+          <item>Particlebrd_medium_dens</item>
         </names>
         <thermalConductivity>
-          <item>1</item>
+          <item>MIT BT LAB</item>
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item>1600000</item>
+          <item>0</item>
         </volumetricHeatCapacity>
-        <thickness>1.25</thickness>
+        <thickness>1</thickness>
       </materials>
       <vegetationCoverage>0.5</vegetationCoverage>
       <inclination>1</inclination>

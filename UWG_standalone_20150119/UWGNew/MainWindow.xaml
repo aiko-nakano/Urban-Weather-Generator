@@ -42,6 +42,7 @@
             <Setter Property="Margin" Value="4" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
+            
         </Style>
         <!--Heading-->
         <Style  x:Key="heading" TargetType="Label">
