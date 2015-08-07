@@ -346,7 +346,7 @@
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{0E9E8668-1FB9-497E-9A4F-C4C8FF2CD1D9}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{1A0CB8B4-8521-4CA4-8835-8BE6E590437A}</td><td>DATABASEDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>UWG.Primary_output</td><td>{DAE02AEF-0EE6-4DBC-BB68-7681A1F602EF}</td><td>INSTALLDIR</td><td>2</td><td/><td>uwg.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>UWGEngine.exe</td><td>{B4CC47FF-D2EC-4A31-AB2C-E71DCCB38D92}</td><td>INSTALLDIR</td><td>2</td><td/><td>uwgengine.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>UWGEngine.exe</td><td>{C9E73973-6C5A-44B6-A509-715B64EA70B1}</td><td>INSTALLDIR</td><td>2</td><td/><td>uwgengine.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -557,7 +557,7 @@
 		<row><td>LicenseAgreement</td><td>DlgLine</td><td>Line</td><td>48</td><td>234</td><td>326</td><td>0</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>DlgTitle</td><td>Text</td><td>13</td><td>6</td><td>292</td><td>25</td><td>65539</td><td/><td>##IDS__IsLicenseDlg_LicenseAgreement##</td><td/><td/><td>0</td><td/><td/><td/></row>
 		<row><td>LicenseAgreement</td><td>ISPrintButton</td><td>PushButton</td><td>301</td><td>188</td><td>65</td><td>17</td><td>3</td><td/><td>##IDS_PRINT_BUTTON##</td><td>Agree</td><td/><td>0</td><td/><td/><td/></row>
-		<row><td>LicenseAgreement</td><td>Memo</td><td>ScrollableText</td><td>8</td><td>55</td><td>358</td><td>130</td><td>7</td><td/><td/><td/><td/><td>0</td><td/><td>\\JA_CLOUD\Aiko\Research_backups\UI\installer\For_Installer\UWG license agreement.rtf</td><td/></row>
+		<row><td>LicenseAgreement</td><td>Memo</td><td>ScrollableText</td><td>8</td><td>55</td><td>358</td><td>130</td><td>7</td><td/><td/><td/><td/><td>0</td><td/><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\package\UWG license agreement.rtf</td><td/></row>
 		<row><td>LicenseAgreement</td><td>Next</td><td>PushButton</td><td>230</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_NEXT##</td><td>Cancel</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>MaintenanceType</td><td>Back</td><td>PushButton</td><td>164</td><td>243</td><td>66</td><td>17</td><td>3</td><td/><td>##IDS_BACK##</td><td>Next</td><td/><td>0</td><td/><td/><td/></row>
 		<row><td>MaintenanceType</td><td>Banner</td><td>Bitmap</td><td>0</td><td>0</td><td>374</td><td>44</td><td>1</td><td/><td/><td/><td/><td>0</td><td/><td/><td>NewBinary21</td></row>
@@ -1148,7 +1148,7 @@
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
-		<row><td>INSTALLDIR</td><td>MY_PRODUCT_NAME</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>INSTALLDIR</td><td>URBANWEATHERGENERATOR</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
 		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
@@ -1174,11 +1174,15 @@
 		<row><td>TARGETDIR</td><td/><td>SourceDir</td><td/><td>0</td><td/></row>
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
 		<row><td>TemplateFolder</td><td>TARGETDIR</td><td>.:ShellNew</td><td/><td>0</td><td/></row>
+		<row><td>URBANWEATHERGENERATOR</td><td>URBAN_WEATHER_GENERATOR</td><td>URBANW~1|UrbanWeatherGenerator</td><td/><td>0</td><td/></row>
+		<row><td>URBAN_WEATHER_GENERATOR</td><td>ProgramFilesFolder</td><td>URBANW~1|Urban Weather Generator</td><td/><td>0</td><td/></row>
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>mit</td><td>ProgramMenuFolder</td><td>MIT</td><td/><td>1</td><td/></row>
+		<row><td>urbanw_1_urban_weather_generator</td><td>ProgramMenuFolder</td><td>URBANW~1|Urban Weather Generator</td><td/><td>1</td><td/></row>
 		<row><td>uwg_in_1_uwg_installer</td><td>mit</td><td>UWG_IN~1|UWG_installer</td><td/><td>1</td><td/></row>
+		<row><td>uwg_in_1_uwg_installer1</td><td>urbanw_1_urban_weather_generator</td><td>UWG_IN~1|UWG_installer</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -1889,13 +1893,13 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>default_input.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>DEFAUL~1.XML|default_input.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\UWG_20150113\UWGNew\bin\Debug\default_input.xml</td><td>1</td><td/></row>
-		<row><td>example_inputs.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>EXAMPL~1.XML|Example_Inputs.xml</td><td>0</td><td/><td/><td/><td>1</td><td>\\JA_CLOUD\Aiko\Research_backups\UI\installer\For_Installer\Example\Example_Inputs.xml</td><td>1</td><td/></row>
-		<row><td>readme.txt</td><td>ISX_DEFAULTCOMPONENT1</td><td>readme.txt</td><td>0</td><td/><td/><td/><td>1</td><td>\\JA_CLOUD\Aiko\Research_backups\UI\installer\For_Installer\readme.txt</td><td>1</td><td/></row>
-		<row><td>sgp_singapore.486980_iwec.ep</td><td>ISX_DEFAULTCOMPONENT</td><td>SGP_SI~1.EPW|SGP_Singapore.486980_IWEC.epw</td><td>0</td><td/><td/><td/><td>1</td><td>\\JA_CLOUD\Aiko\Research_backups\UI\installer\For_Installer\Example\SGP_Singapore.486980_IWEC.epw</td><td>1</td><td/></row>
-		<row><td>templatelibrary.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>TEMPLA~1.XML|TemplateLibrary.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\UWG_20150113\UWGNew\bin\Debug\TemplateLibrary.xml</td><td>1</td><td/></row>
+		<row><td>default_input.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>DEFAUL~1.XML|default_input.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\default_input.xml</td><td>1</td><td/></row>
+		<row><td>readme.txt</td><td>ISX_DEFAULTCOMPONENT1</td><td>readme.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\package\readme.txt</td><td>1</td><td/></row>
+		<row><td>sample.epw</td><td>ISX_DEFAULTCOMPONENT</td><td>sample.epw</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\package\sample.epw</td><td>1</td><td/></row>
+		<row><td>sample.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>sample.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\package\sample.xml</td><td>1</td><td/></row>
+		<row><td>templatelibrary.xml</td><td>ISX_DEFAULTCOMPONENT1</td><td>TEMPLA~1.XML|TemplateLibrary.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\TemplateLibrary.xml</td><td>1</td><td/></row>
 		<row><td>uwg.primary_output</td><td>UWG.Primary_output</td><td>UWG.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;UWG&gt;|Built</td><td>3</td><td/></row>
-		<row><td>uwgengine.exe</td><td>UWGEngine.exe</td><td>UWGENG~1.EXE|UWGEngine.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\UWG_20150113\UWGNew\bin\Release\UWGEngine.exe</td><td>1</td><td/></row>
+		<row><td>uwgengine.exe</td><td>UWGEngine.exe</td><td>UWGENG~1.EXE|UWGEngine.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\bin\Debug\UWGEngine.exe</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2043,7 +2047,7 @@
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_442D5136_C25F_4D87_ABF7_13A8ACF8542E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_C7603CC9_7587_4E39_8796_D923CF3A3CB7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>UWG.Primary_output</td><td/><td/><td>_9DD2E811_3668_401E_A82F_3BB4EFA49208_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>UWGEngine.exe</td><td/><td/><td>_D34A5458_5539_410B_9AB3_72AADB88527D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>UWGEngine.exe</td><td/><td/><td>_4692793C_422D_4364_9C71_ED1B1D472A7A_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2661,7 +2665,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>MIT</td><td>0</td><td/><td>2023948577</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Urban Weather Generator</td><td>0</td><td/><td>-1146941101</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1889788887</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1889788887</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>1889788887</td></row>
@@ -3480,6 +3484,8 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>LAUNCH~1.EXE|Launch UWGengine2.exe</td><td>0</td><td/><td>2024009473</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch UWGEngine2.exe</td><td>0</td><td/><td>2023981538</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>LAUNCH~1.EXE|Launch UWGEngine.exe</td><td>0</td><td/><td>2023951554</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch UWG Engine.exe</td><td>0</td><td/><td>-1146930733</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>1033</td><td>LAUNCH~1.EXE|Launch UWGEngine.exe</td><td>0</td><td/><td>-1146920461</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>1889788887</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>1889788887</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>1889788887</td></row>
@@ -3768,8 +3774,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1889788887</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1889788887</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1889788887</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.MIT.com</td><td>0</td><td/><td>2023948577</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>MIT</td><td>0</td><td/><td>2023948577</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://urbanmicroclimate.scripts.mit.edu/</td><td>0</td><td/><td>-1146902189</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>Urban Weather Generator</td><td>0</td><td/><td>-1146941101</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1889788887</td></row>
 	</table>
 
@@ -3877,11 +3883,13 @@
 		<col def="V0">Data</col>
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
-		<row><td>ARPPRODUCTICON.exe</td><td/><td>\\JA_CLOUD\Aiko\Research_backups\UI\installer\favicon.ico</td><td>0</td></row>
+		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\anakano\Dropbox\Research\UWG\UWG_Matlab\UWG\for_redistribution_files_only\icon.ico</td><td>0</td></row>
 		<row><td>UWGEngine.exe_645D85045016447391109E4553278BBC.exe</td><td/><td>D:\UWG_20150113\UWGNew\bin\Release\UWGEngine.exe</td><td>0</td></row>
 		<row><td>UWGEngine.exe_A6D7F8A78D68499EA22BF810FE597239.exe</td><td/><td>D:\UWG_20150113\UWGNew\bin\UWGEngine.exe</td><td>0</td></row>
+		<row><td>UWGEngine.exe_EC65974FB808424EAC25E7A023E0246F.exe</td><td/><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\bin\Debug\UWGEngine.exe</td><td>0</td></row>
 		<row><td>UWGEngine2.exe_58D269658BD9464B9837750114C30459.exe</td><td/><td>D:\UWG_20150113\UWGNew\bin\Debug\UWGEngine2.exe</td><td>0</td></row>
 		<row><td>UWGEngine2.exe_85D36E60BD6144F590002B484578D26A.exe</td><td/><td>D:\UWG_20150113\UWGNew\bin\Debug\UWGEngine2.exe</td><td>0</td></row>
+		<row><td>UWG_Engine.exe_E434EC97B7FA4DDC80326C0F97D6A0BC.exe</td><td/><td>C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\bin\Debug\UWG Engine.exe</td><td>0</td></row>
 		<row><td>UWGengine2.exe_37EA2C2528444808BF6E18386A42CF14.exe</td><td/><td>D:\UWG_20150113\UWGNew\bin\UWGengine2.exe</td><td>0</td></row>
 		<row><td>UWGengine2.exe_5A85AF3139924383BD4A074E5B7D71AD.exe</td><td/><td>D:\UWG_20150113\UWGNew\bin\UWGengine2.exe</td><td>0</td></row>
 		<row><td>UWGengine2.exe_903506FB90D6459F87A5BC6B48E1A2B3.exe</td><td/><td>\\JA_CLOUD\Aiko\Research_backups\UI\installer\UWGengine2.exe</td><td>0</td></row>
@@ -4394,7 +4402,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]UWG.Primary output</td><td/></row>
 		<row><td>ProductCode</td><td>{7DF8CBAA-3676-4573-A4DA-1615812C2F83}</td><td/></row>
 		<row><td>ProductName</td><td>UWG_installer</td><td/></row>
-		<row><td>ProductVersion</td><td>1.1.0</td><td/></row>
+		<row><td>ProductVersion</td><td>3.0.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4470,7 +4478,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>UWGEngine.exe</td><td>UWGEngine.exe</td><td/><td>uwg_in_1_uwg_installer</td><td>2</td></row>
+		<row><td>UWGEngine.exe</td><td>UWGEngine.exe</td><td/><td>uwg_in_1_uwg_installer1</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4556,7 +4564,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>UWGEngine.exe</td><td>uwg_in_1_uwg_installer</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>UWGEngine.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>UWGEngine.exe_645D85045016447391109E4553278BBC.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>UWGEngine.exe</td><td>uwg_in_1_uwg_installer1</td><td>##IDS_SHORTCUT_DISPLAY_NAME9##</td><td>UWGEngine.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>UWGEngine.exe_EC65974FB808424EAC25E7A023E0246F.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

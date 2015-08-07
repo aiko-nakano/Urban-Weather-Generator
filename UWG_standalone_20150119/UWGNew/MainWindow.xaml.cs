@@ -156,6 +156,12 @@ namespace UWG
             makeFileMenuItem.BorderBrush = new SolidColorBrush(Color.FromArgb(10, 0, 255, 180));
             makeFileMenuItem.BorderThickness = new Thickness(0,0,0,3);
         }
+
+        private void exit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void OnChange(object sender, EventArgs e)
         {
             defxml.Load("TemplateLibrary.xml");
@@ -307,6 +313,7 @@ namespace UWG
                 ruralbox.SelectedIndex = ruralboxi + 1;
             }
             else ruralbox.SelectedIndex = 0;
+                
         }
         private void roofbox_load(object sender, RoutedEventArgs e)
         {
@@ -539,10 +546,6 @@ namespace UWG
                 wallLayer3Thickness.Content = "";
                 wallLayer4Material.Content = "";
                 wallLayer4Thickness.Content = "";
-                wallLayer1Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-                wallLayer2Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-                wallLayer3Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-                wallLayer4Material.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 wallboxi = 0;
                 string pathx = Directory.GetCurrentDirectory();
                 string temp1x = this.xmlPath;
@@ -854,6 +857,11 @@ namespace UWG
             ind = 0;
             urbanRoadMaterial.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
             urbanRoadThickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
+            urbanRoadMaterial.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            urbanRoadMaterial.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            urbanRoadMaterial.Margin = new Thickness(4, 4, 4, 4);
+            urbanRoadMaterial.Padding = new Thickness(0, 0, 0, 0); 
+
             foreach (XmlNode ma in mat)
             {
                 if (ma.SelectSingleNode("Name").InnerText == urbanRoadMaterial.Content.ToString())
@@ -944,6 +952,9 @@ namespace UWG
             XmlNodeList mat = defxml.GetElementsByTagName("OpaqueMaterial");
             ind = 0;
             ruralRoadMaterial.Content = names[ind].SelectSingleNode("MaterialName").InnerText;
+            ruralRoadMaterial.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            ruralRoadMaterial.Margin = new Thickness(4, 4, 4, 4);
+            ruralRoadMaterial.Padding = new Thickness(0, 0, 0, 0); 
             ruralRoadThickness.Content = names[ind].SelectSingleNode("Thickness").InnerText;
             foreach (XmlNode ma in mat)
             {
@@ -5300,12 +5311,14 @@ namespace UWG
                     utciSim1_change(sender, e);
                     tAirSim1_change(sender, e);
                     sim1Hours.Content = (Int32.Parse(sim1Data[9, 86].Substring(0, sim1Data[9, 86].Length - 1)) + Int32.Parse(sim1Data[10, 86].Substring(0, sim1Data[10, 86].Length - 1))).ToString() + "%";
-                    simTab1.Visibility = System.Windows.Visibility.Visible;
                     labelSim1.Content = System.IO.Path.GetFileName(pathSim1);
                     labelSim1.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim1.Margin = new Thickness(4, 4, 4, 4);
                     labelSim1.Padding = new Thickness(0, 0, 0, 0);
-
+                    simTab1Name.Text = System.IO.Path.GetFileNameWithoutExtension(pathSim1);
+                    simTab1Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    simTab1Name.Margin = new Thickness(0, 0, 0, 0);
+                    simTab1Name.Padding = new Thickness(0, 0, 0, 0);
                     simTab1.Visibility = System.Windows.Visibility.Visible;
                     this.isSim1Visible = true;
                     
@@ -5402,7 +5415,10 @@ namespace UWG
                     labelSim2.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim2.Margin = new Thickness(4, 4, 4, 4);
                     labelSim2.Padding = new Thickness(0, 0, 0, 0);
-
+                    simTab2Name.Text = System.IO.Path.GetFileNameWithoutExtension(pathSim2);
+                    simTab2Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    simTab2Name.Margin = new Thickness(0, 0, 0, 0);
+                    simTab2Name.Padding = new Thickness(0, 0, 0, 0);
                     simTab2.Visibility = System.Windows.Visibility.Visible;
                     this.isSim2Visible = true;
                 }
@@ -5498,7 +5514,11 @@ namespace UWG
                     labelSim3.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim3.Margin = new Thickness(4, 4, 4, 4);
                     labelSim3.Padding = new Thickness(0, 0, 0, 0);
-
+                    simTab3Name.Text = System.IO.Path.GetFileNameWithoutExtension(pathSim3);
+                    simTab3Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    simTab3Name.Margin = new Thickness(0, 0, 0, 0);
+                    simTab3Name.Padding = new Thickness(0, 0, 0, 0);
+                    simTab2.Visibility = System.Windows.Visibility.Visible; 
                     simTab3.Visibility = System.Windows.Visibility.Visible;
                     this.isSim3Visible = true;
                 }
@@ -5594,7 +5614,11 @@ namespace UWG
                     labelSim4.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim4.Margin = new Thickness(4, 4, 4, 4);
                     labelSim4.Padding = new Thickness(0, 0, 0, 0);
-
+                    simTab4Name.Text = System.IO.Path.GetFileNameWithoutExtension(pathSim4);
+                    simTab4Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    simTab4Name.Margin = new Thickness(0, 0, 0, 0);
+                    simTab4Name.Padding = new Thickness(0, 0, 0, 0);
+                    simTab2.Visibility = System.Windows.Visibility.Visible;
                     simTab4.Visibility = System.Windows.Visibility.Visible;
                     this.isSim4Visible = true;
                 }
@@ -5690,7 +5714,11 @@ namespace UWG
                     labelSim5.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim5.Margin = new Thickness(4, 4, 4, 4);
                     labelSim5.Padding = new Thickness(0, 0, 0, 0);
-
+                    simTab5Name.Text = System.IO.Path.GetFileNameWithoutExtension(pathSim5);
+                    simTab5Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    simTab5Name.Margin = new Thickness(0, 0, 0, 0);
+                    simTab5Name.Padding = new Thickness(0, 0, 0, 0);
+                    simTab2.Visibility = System.Windows.Visibility.Visible;
                     simTab5.Visibility = System.Windows.Visibility.Visible;
                     this.isSim5Visible = true;
                 }
@@ -5786,7 +5814,11 @@ namespace UWG
                     labelSim6.VerticalAlignment = System.Windows.VerticalAlignment.Center;
                     labelSim6.Margin = new Thickness(4, 4, 4, 4);
                     labelSim6.Padding = new Thickness(0, 0, 0, 0);
-
+                    simTab6Name.Text = System.IO.Path.GetFileNameWithoutExtension(pathSim6);
+                    simTab6Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    simTab6Name.Margin = new Thickness(0, 0, 0, 0);
+                    simTab6Name.Padding = new Thickness(0, 0, 0, 0);
+                    simTab2.Visibility = System.Windows.Visibility.Visible;
                     simTab6.Visibility = System.Windows.Visibility.Visible;
                     this.isSim6Visible = true;
                 }
@@ -5809,10 +5841,11 @@ namespace UWG
             }
             else 
             { 
-                typTab1.Visibility = System.Windows.Visibility.Collapsed; 
+                typTab1.Visibility = System.Windows.Visibility.Collapsed;
+                isTypTab1Visible = false;
             }
             if (this.isTypTab2Visible || typTab2.Visibility == System.Windows.Visibility.Visible)
-            {
+            {typTab2.Visibility = System.Windows.Visibility.Collapsed;
                 typTab2.Visibility = System.Windows.Visibility.Visible;
             }
             else
@@ -5876,12 +5909,11 @@ namespace UWG
             minusTypButton.IsEnabled = true;
             numberOfTypology++;
             if(numberOfTypology==2)
-            {
+           { 
                 typLabel2.Visibility = System.Windows.Visibility.Visible;
                 typology2Type.Visibility = System.Windows.Visibility.Visible;
                 typology2Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel2.Visibility = System.Windows.Visibility.Visible;
-                //typTab2.Visibility = System.Windows.Visibility.Visible;
                 addTypButton.IsEnabled = true;
             }
             else if (numberOfTypology == 3)
@@ -5890,7 +5922,6 @@ namespace UWG
                 typology3Type.Visibility = System.Windows.Visibility.Visible;
                 typology3Dist.Visibility = System.Windows.Visibility.Visible;
                 typPercLabel3.Visibility = System.Windows.Visibility.Visible;
-                //typTab3.Visibility = System.Windows.Visibility.Visible;
                 addTypButton.IsEnabled = true;
 
             }
@@ -5914,6 +5945,7 @@ namespace UWG
             if (numberOfTypology == 2)
             {
                 typLabel2.Visibility = System.Windows.Visibility.Collapsed;
+                typTab2.Visibility = System.Windows.Visibility.Collapsed;
                 typology2Type.Visibility = System.Windows.Visibility.Collapsed;
                 typology2Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPercLabel2.Visibility = System.Windows.Visibility.Collapsed;
@@ -5926,6 +5958,7 @@ namespace UWG
             else if (numberOfTypology == 3)
             {
                 typLabel3.Visibility = System.Windows.Visibility.Collapsed;
+                typTab3.Visibility = System.Windows.Visibility.Collapsed; 
                 typology3Type.Visibility = System.Windows.Visibility.Collapsed;
                 typology3Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPercLabel3.Visibility = System.Windows.Visibility.Collapsed;
@@ -5935,6 +5968,7 @@ namespace UWG
             else if (numberOfTypology == 4)
             {
                 typLabel4.Visibility = System.Windows.Visibility.Collapsed;
+                typTab4.Visibility = System.Windows.Visibility.Collapsed;
                 typology4Type.Visibility = System.Windows.Visibility.Collapsed;
                 typology4Dist.Visibility = System.Windows.Visibility.Collapsed;
                 typPercLabel4.Visibility = System.Windows.Visibility.Collapsed;
@@ -6153,21 +6187,41 @@ namespace UWG
                 {
                     this.isTypTab1Visible = true;
                     typTab1.Visibility = System.Windows.Visibility.Visible;
+                    typ1Name.Text = typology1Type.Text.ToString();
+                    typ1Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    typ1Name.Margin = new Thickness(0, 0, 0, 0);
+                    typ1Name.Padding = new Thickness(0, 0, 0, 0);
                 }
                 if (typology2Dist.Text != "0" && typology2Dist.Text != "")
                 {
                     this.isTypTab2Visible = true;
                     typTab2.Visibility = visibility;
+                    typ2Name.Text = typology2Type.Text.ToString();
+                    typ2Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    typ2Name.Margin = new Thickness(0, 0, 0, 0);
+                    typ2Name.Padding = new Thickness(0, 0, 0, 0);
+
                 }
                 if (typology3Dist.Text != "0" && typology3Dist.Text != "")
                 {
                     this.isTypTab3Visible = true; 
                     typTab3.Visibility = visibility;
+                    typ3Name.Text = typology3Type.Text.ToString();
+                    typ3Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    typ3Name.Margin = new Thickness(0, 0, 0, 0);
+                    typ3Name.Padding = new Thickness(0, 0, 0, 0);
                 }
                 if (typology4Dist.Text != "0" && typology4Dist.Text != "")
                 {
-                    this.isTypTab4Visible = true; 
+                    this.isTypTab4Visible = true;
                     typTab4.Visibility = visibility;
+                    typ4Name.Text = typology4Type.Text.ToString();
+                    typ4Name.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                    typ4Name.Margin = new Thickness(0, 0, 0, 0);
+                    typ4Name.Padding = new Thickness(0, 0, 0, 0);
+                }
+                else 
+                {
                 }
             }
             catch
