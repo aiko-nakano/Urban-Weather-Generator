@@ -6,7 +6,7 @@
       <wall>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -25,7 +25,7 @@
       <roof>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -44,7 +44,7 @@
       <mass>
         <albedo />
         <emissivity />
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -60,13 +60,13 @@
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
+      <glazing name="Blank">
         <glazingRatio></glazingRatio>
         <windowUvalue></windowUvalue>
         <windowSHGC></windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="Blank">
       <floorHeight>3</floorHeight>
       <dayInternalGains></dayInternalGains>
       <nightInternalGains></nightInternalGains>
@@ -94,7 +94,7 @@
       <wall>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -113,7 +113,7 @@
       <roof>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -132,7 +132,7 @@
       <mass>
         <albedo />
         <emissivity />
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -148,13 +148,13 @@
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
+      <glazing name="Blank">
         <glazingRatio></glazingRatio>
         <windowUvalue></windowUvalue>
         <windowSHGC></windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="Blank">
       <floorHeight>3</floorHeight>
       <dayInternalGains></dayInternalGains>
       <nightInternalGains></nightInternalGains>
@@ -182,7 +182,7 @@
       <wall>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -201,7 +201,7 @@
       <roof>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -220,7 +220,7 @@
       <mass>
         <albedo />
         <emissivity />
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -236,13 +236,13 @@
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
+      <glazing name="Blank">
         <glazingRatio></glazingRatio>
         <windowUvalue></windowUvalue>
         <windowSHGC></windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="Blank">
       <floorHeight>3</floorHeight>
       <dayInternalGains></dayInternalGains>
       <nightInternalGains></nightInternalGains>
@@ -270,7 +270,7 @@
       <wall>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -289,7 +289,7 @@
       <roof>
         <albedo></albedo>
         <emissivity></emissivity>
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -308,7 +308,7 @@
       <mass>
         <albedo />
         <emissivity />
-        <materials>
+        <materials name="Blank">
           <names>
             <item></item>
           </names>
@@ -324,13 +324,13 @@
         <inclination>1</inclination>
         <initialTemperature>20</initialTemperature>
       </mass>
-      <glazing>
+      <glazing name="Blank">
         <glazingRatio></glazingRatio>
         <windowUvalue></windowUvalue>
         <windowSHGC></windowSHGC>
       </glazing>
     </construction>
-    <building>
+    <building name="Blank">
       <floorHeight>3</floorHeight>
       <dayInternalGains></dayInternalGains>
       <nightInternalGains></nightInternalGains>
@@ -371,7 +371,7 @@
     <urbanRoad>
       <albedo>0.165</albedo>
       <emissivity>0.95</emissivity>
-      <materials>
+      <materials name="Default">
         <names>
           <item>asphalt</item>
         </names>
@@ -395,7 +395,7 @@
     <ruralRoad>
       <albedo />
       <emissivity />
-      <materials>
+      <materials name="">
         <names>
           <item />
         </names>
@@ -407,18 +407,23 @@
         </volumetricHeatCapacity>
         <thickness />
       </materials>
-      <vegetationCoverage>0.5<inclination>1</inclination><initialTemperature>20</initialTemperature></vegetationCoverage>
+      <vegetationCoverage>0.5</vegetationCoverage>
+      <inclination>1</inclination>
+      <initialTemperature>20</initialTemperature>
     </ruralRoad>
-    <parameter>
-      <tempHeight>2</tempHeight>
-      <windHeight>10</windHeight>
-      <circCoeff>1.2</circCoeff>
-      <dayThreshold>200</dayThreshold>
-      <nightThreshold>50</nightThreshold>
-      <windMin>0.1</windMin>
-      <windMax>10</windMax>
-      <wgmax>0.05</wgmax>
-      <exCoeff>0.3</exCoeff>
-    </parameter>
   </referenceSite>
+  <parameter>
+    <tempHeight>2</tempHeight>
+    <windHeight>10</windHeight>
+    <circCoeff>1.2</circCoeff>
+    <dayThreshold>200</dayThreshold>
+    <nightThreshold>50</nightThreshold>
+    <windMin>0.1</windMin>
+    <windMax>10</windMax>
+    <wgmax>0.05</wgmax>
+    <exCoeff>0.3</exCoeff>
+    <simuStartMonth>1</simuStartMonth>
+    <simuStartDay>1</simuStartDay>
+    <simuDuration>365</simuDuration>
+  </parameter>
 </xml_input>

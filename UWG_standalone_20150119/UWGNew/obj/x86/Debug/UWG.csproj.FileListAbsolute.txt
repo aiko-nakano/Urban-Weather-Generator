@@ -134,7 +134,6 @@ C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\MainWindow.baml
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\RunWindow.baml
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\UTCIWindow.baml
-C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\App.baml
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\Editor.g.cs
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\feedBack.g.cs
 C:\Users\anakano\Documents\Research\Urban-Weather-Generator\UWG_standalone_20150119\UWGNew\obj\x86\Debug\MainWindow.g.cs
