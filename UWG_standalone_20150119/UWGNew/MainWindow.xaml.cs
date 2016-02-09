@@ -6043,7 +6043,7 @@ namespace UWG
             {
                 if (this.xmlFileName == "")
                 {
-                    button1_Click(sender, e);
+                    save(sender, e);
                 }
                 else
                 {
@@ -6057,7 +6057,7 @@ namespace UWG
             DialogName = "Save";
             if (this.xmlFileName == "")
             {
-                button1_Click(sender, e);
+                save(sender, e);
             }
             else
             {
@@ -6098,7 +6098,7 @@ namespace UWG
                                             new XElement("albedo", urbanRoadAlbedo.Content),
                                             new XElement("emissivity", urbanRoadEmissivity.Content),
                                             new XElement("materials",
-                                                //new XAttribute("name", urbanRoadbox.SelectedItem),
+                                                new XAttribute("name", urbanRoadbox.Text),
                                                 new XElement("names",
                                                     new XElement("item", urbanRoadMaterial.Content)),
                                                 new XElement("thermalConductivity",
@@ -6118,7 +6118,7 @@ namespace UWG
                                             new XElement("albedo", ruralRoadAlbedo.Content),
                                             new XElement("emissivity", ruralRoadEmissivity.Content),
                                             new XElement("materials",
-                                                //new XAttribute("name", ruralbox.SelectedItem),
+                                                new XAttribute("name", ruralbox.Text),
                                                 new XElement("names",
                                                     new XElement("item", ruralRoadMaterial.Content)),
                                                 new XElement("thermalConductivity",
@@ -6169,7 +6169,7 @@ namespace UWG
             else {
 
                 DialogName = "Save As";
-                button1_Click(sender, e);
+                save(sender, e);
             }
         }
 
@@ -6229,7 +6229,7 @@ namespace UWG
             }
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void save(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -6276,6 +6276,7 @@ namespace UWG
                         new XElement("albedo", urbanRoadAlbedo.Content),
                         new XElement("emissivity", urbanRoadEmissivity.Content),
                         new XElement("materials",
+                            new XAttribute("name", urbanRoadbox.Text),
                             new XElement("names",
                                 new XElement("item", urbanRoadMaterial.Content)),
                             new XElement("thermalConductivity",
@@ -6295,6 +6296,7 @@ namespace UWG
                         new XElement("albedo", ruralRoadAlbedo.Content),
                         new XElement("emissivity", ruralRoadEmissivity.Content),
                         new XElement("materials",
+                            new XAttribute("name", ruralbox.Text),
                             new XElement("names",
                                 new XElement("item", ruralRoadMaterial.Content)),
                             new XElement("thermalConductivity",

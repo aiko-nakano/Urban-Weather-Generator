@@ -59,14 +59,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UWG.exe" size="728576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UWG.exe" size="731648">
       <assemblyIdentity name="UWG" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Xya/UuoRT3wfP+fThS985YTSyGc=</dsig:DigestValue>
+        <dsig:DigestValue>VKsivB6C2NpL0jCul8jxav7ObDU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

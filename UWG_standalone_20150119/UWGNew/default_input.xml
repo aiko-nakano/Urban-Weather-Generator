@@ -371,7 +371,7 @@
     <urbanRoad>
       <albedo>0.165</albedo>
       <emissivity>0.95</emissivity>
-      <materials name="">
+      <materials name="default">
         <names>
           <item>asphalt</item>
         </names>
@@ -395,7 +395,7 @@
     <ruralRoad>
       <albedo>0.165</albedo>
       <emissivity>0.95</emissivity>
-      <materials name="">
+      <materials name="default">
         <names>
           <item>asphalt</item>
         </names>

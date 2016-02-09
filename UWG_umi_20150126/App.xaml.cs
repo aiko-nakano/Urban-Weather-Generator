@@ -34,11 +34,11 @@ namespace UWG
                 {
                     main.avgBldgHeight.Text = e.Args[0].ToString();
                     main.charLength.Text = e.Args[1].ToString();
-                    main.hBDensity.Text = e.Args[2].ToString();
-                    main.vHRatios.Text = e.Args[3].ToString();
+                    main.siteCoverageRatio.Text = e.Args[2].ToString();
+                    main.facadeToSiteRatio.Text = e.Args[3].ToString();
                     main.wwr.Content = e.Args[4].ToString();
                     main.uValue.Content = e.Args[5].ToString();
-                    main.SHGC.Content = e.Args[6].ToString();
+                    //main.SHGC.Content = e.Args[6].ToString();
                     //main.Refresh();
                     main.Show();
                 }
