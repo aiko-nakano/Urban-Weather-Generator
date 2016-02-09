@@ -6047,8 +6047,8 @@ namespace UWG
 
                         doc.Root.Add(new XElement("urbanArea",
                                         new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                                        new XElement("siteCoverageRatio", hBDensity.Text),
-                                        new XElement("facadeToSiteRatio", vHRatios.Text),
+                                        new XElement("siteCoverageRatio", siteCoverageRatio.Text),
+                                        new XElement("facadeToSiteRatio", facadeToSiteRatio.Text),
                                         new XElement("treeCoverage", treeCoverage.Text),
                                         new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
                                         new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
@@ -6205,8 +6205,8 @@ namespace UWG
 
                 doc.Root.Add(new XElement("urbanArea",
                     new XElement("averageBuildingHeight", avgBldgHeight.Text),
-                    new XElement("siteCoverageRatio", hBDensity.Text),
-                    new XElement("facadeToSiteRatio", vHRatios.Text),
+                    new XElement("siteCoverageRatio", siteCoverageRatio.Text),
+                    new XElement("facadeToSiteRatio", facadeToSiteRatio.Text),
                     new XElement("treeCoverage", treeCoverage.Text),
                     new XElement("nonBldgSensibleHeat", sensibleAnthroHeat.Text),
                     new XElement("nonBldgLatentAnthropogenicHeat", latentAnthroHeat.Text),
