@@ -403,8 +403,8 @@
                             </StackPanel>
                             <StackPanel Style="{StaticResource PanelRight}"  Grid.Row="5" Grid.Column="1" Grid.RowSpan="2">
                                 <TextBox Height="0" Name="avgBldgHeight" Text="{Binding XPath=urbanArea/averageBuildingHeight}"></TextBox>
-                                <TextBox Height="0" Name="hBDensity" Text="{Binding XPath=urbanArea/siteCoverageRatio}"></TextBox>
-                                <TextBox Height="0" Name="vHRatios" Text="{Binding XPath=urbanArea/facadeToSiteRatio}"></TextBox>
+                                <TextBox Height="0" Name="siteCoverageRatio" Text="{Binding XPath=urbanArea/siteCoverageRatio}"></TextBox>
+                                <TextBox Height="0" Name="facadeToSiteRatio" Text="{Binding XPath=urbanArea/facadeToSiteRatio}"></TextBox>
                                 <TextBox Margin="4 -20 0 0" Name="treeCoverage" Text="{Binding XPath=urbanArea/treeCoverage}"></TextBox>
                                 <TextBox Name="sensibleAnthroHeat" Text="{Binding XPath=urbanArea/nonBldgSensibleHeat}"></TextBox>
                             </StackPanel>
