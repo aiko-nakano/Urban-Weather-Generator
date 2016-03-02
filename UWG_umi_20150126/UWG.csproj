@@ -70,6 +70,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="system.windows.controls.ribbon, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -107,6 +110,11 @@
     <Compile Include="simuParam.cs" />
     <Compile Include="RunWindow.xaml.cs">
       <DependentUpon>RunWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Trad.cs" />
+    <Compile Include="utci.cs" />
+    <Compile Include="UTCIWindow.xaml.cs">
+      <DependentUpon>UTCIWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -151,15 +159,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UTCIWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\CENSAM Poster_diagrams2_3-21.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\CENSAM Poster_diagrams3-24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\UWGParam-12_2.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -184,9 +193,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\UWGParam-12.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="default_input.xml">
       <SubType>Designer</SubType>
     </Resource>
@@ -207,6 +213,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons\menu_external.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\caret_down.png" />
+    <Resource Include="Images\icons\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
