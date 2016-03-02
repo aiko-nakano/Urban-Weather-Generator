@@ -2,3 +2,12 @@
 ```UWG_Standalone_20150119``` is the main repo. The ```UWG_umi_20150226``` is the one with slightly different code for umi (App.xaml.cs has the code with console interface, MainWindow files are different from the other folder because they hide parameters that no longer require separate user inputs).
 
 These two folders should be merged in the future for ease of maintenance. 
+
+Executable file downloadable from [Urban Microclimate website] (http://urbanmicroclimate.scripts.mit.edu/uwg.php)
+
+## Version 3.0.0 unresolved issues (to be fixed in version 3.0.1)
+
+Error check does not close automatically, but simulation is completed once the Matlab progress bar is completed [and the epw file is created in the designated location]
+
+The software has been developed and tested in Windows 7 operating system (32 bit).
+
