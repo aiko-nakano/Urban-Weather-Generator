@@ -1,6 +1,6 @@
 # Urban-Weather-Generator
 
-This repo is for developing the front-end GUI for Urban Weather Generator. The Executable file is downloadable from [Urban Microclimate website] (http://urbanmicroclimate.scripts.mit.edu/uwg.php)
+This repo is for developing the front-end GUI for Urban Weather Generator. The Executable file is downloadable from [Urban Microclimate website] (http://urbanmicroclimate.scripts.mit.edu/uwg.php).
 
 The software has been developed and tested in Windows 7 operating system (32 bit).
 
