@@ -1,0 +1,8 @@
+﻿<Window x:Class="UTCI_calc.UTCIWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UTCIWindow" Height="350" Width="525">
+    <Grid>
+        <Label Content="Generating simulation results..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></Label>
+    </Grid>
+</Window>

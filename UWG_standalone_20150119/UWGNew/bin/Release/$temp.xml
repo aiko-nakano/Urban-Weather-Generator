@@ -393,19 +393,19 @@
     <longitude></longitude>
     <averageObstacleHeight></averageObstacleHeight>
     <ruralRoad>
-      <albedo />
-      <emissivity />
+      <albedo>0.165</albedo>
+      <emissivity>0.95</emissivity>
       <materials name="">
         <names>
-          <item />
+          <item>asphalt</item>
         </names>
         <thermalConductivity>
-          <item />
+          <item>1</item>
         </thermalConductivity>
         <volumetricHeatCapacity>
-          <item />
+          <item>1600000</item>
         </volumetricHeatCapacity>
-        <thickness />
+        <thickness>1.25</thickness>
       </materials>
       <vegetationCoverage>0.5</vegetationCoverage>
       <inclination>1</inclination>
