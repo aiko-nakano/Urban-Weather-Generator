@@ -12,6 +12,8 @@ These two folders should be merged in the future for ease of maintenance.
 
 ```UWG_Standalone_20150119/package``` folder contains the necessary install files for compiling the executable. The settings are specified within ```UWG_Standalone_20150119/UWG_installer```.
 
+## Note on Building the Project
+If you get an error along the lines of "The tag 'Chart' does not exist in XML namespace 'clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit'.", try uninstalling and reinstalling the WPF Toolkit Charting Controls and turn off code signing.
 
 ## Version 3.0.0 unresolved issues (to be fixed in version 3.0.1)
 
